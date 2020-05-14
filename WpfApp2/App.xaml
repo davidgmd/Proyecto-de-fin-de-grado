@@ -14,5 +14,22 @@
             <Setter Property="FontSize" Value="24"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
+
+        <Style x:Key="creditos" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <Style x:Key="licenciaImagen" TargetType="Image">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Source" Value="/WpfApp2;component/images/licencia.png" />
+        </Style>
+
+        <Style x:Key="licenciaTextBlock" TargetType="TextBlock" BasedOn="{StaticResource creditos}">
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="FontSize" Value="10"/>
+        </Style>
     </Application.Resources>
 </Application>
