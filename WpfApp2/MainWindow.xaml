@@ -9,28 +9,52 @@
         xmlns:tools="clr-namespace:WpfApp2"
         Height="691" 
         Width="1229">
-    <Grid Background="Black">
+
+    <Window.Resources>
+        <Style x:Key="imagenTitulo" TargetType="Image">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="Source" Value="/WpfApp2;component/images/asistente.jpg" />
+        </Style>
+
+        <Style x:Key="narracion" TargetType="TextBlock">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid Style="{DynamicResource pantallaInicio}">
         <StackPanel>
-            <Label x:Name="label" Content="Bienvenido a &quot;Él escriba del DJ&quot;" HorizontalAlignment="Center" Margin="20" Foreground="White" RenderTransformOrigin="-0.79,0.618" FontSize="24" FontWeight="Bold"/>
-            <Image Width="100" Height="100" Source = "/WpfApp2;component/images/asistente.jpg" >
-            </Image>
-            <TextBlock Margin="10" TextWrapping="Wrap" FontSize="18" Foreground="White" TextAlignment="Center"><Italic>Una vez llegais a la mansión de aquel viejo familiar ya fallecido, observais el estado de la casa, la mansión de madera de color blanquecino, con multiples manchas de humedad todavía se conserva bastante bien, pero necesitaría algunos arreglos, aunque quizas ahora no es el mejor momento para pensar en gastos y quizas os preocupa más los rumores que habeís escuchado sobre la casa, sin tiempo a seguir con vuestros pensamientos, un hombre de edad avanzada aparece, limpia sus gafas,  os mira y os dice:</Italic> <LineBreak/><LineBreak/> - Usted debe ser el nuevo señor, me presento mi nombre es Francisco de Agora, ¿Vos sois?</TextBlock>
+            <TextBlock Style="{DynamicResource titulo}" x:Name="titulo" Text='Bienvenido a "el escriba del DJ"'/>
+            <Image Style="{DynamicResource imagenTitulo}"/>
+
+            <TextBlock Style="{DynamicResource narracion}"><Italic>Una vez llegais a la mansión de aquel viejo familiar ya fallecido, observais el estado de la casa, 
+                la mansión de madera de color blanquecino, con multiples manchas de humedad todavía se conserva bastante bien, pero necesitaría algunos arreglos, 
+                aunque quizas ahora no es el mejor momento para pensar en gastos y quizas os preocupa más los rumores que habeís escuchado sobre la casa, 
+                sin tiempo a seguir con vuestros pensamientos, un hombre de edad avanzada aparece, limpia sus gafas,  
+                os mira y os dice:</Italic> 
+                
+                <LineBreak/><LineBreak/> - Usted debe ser el nuevo señor, me presento mi nombre es Francisco de Agora, 
+                ¿Vos sois?</TextBlock>
 
             <Grid Margin="10" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" MinWidth="200" />
+                    <ColumnDefinition Width="Auto" MinWidth="80"/>
+                    <ColumnDefinition Width="Auto" MinWidth="200" />
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <Label x:Name="userLabel" Foreground="White" Grid.Row = "0" Grid.Column = "0">Usuario</Label>
-                <TextBox x:Name="userTextBox"  Grid.Row = "0" Grid.Column = "1" Text="Introduzca su nombre de usuario" Height="26" Grid.RowSpan="2" VerticalAlignment="Top" GotFocus="userTextBox_GotFocus"/>
-                <Label Foreground="White"  Grid.Row = "1" Grid.Column = "0">Contraseña</Label>
+                <TextBlock x:Name="userLabel" Foreground="White" Grid.Row = "0" Grid.Column = "0">Usuario</TextBlock>
+                <TextBox x:Name="userTextBox"  Grid.Row = "0" Grid.Column = "1" Text="Introduzca su nombre de usuario" Height="26" Grid.RowSpan="2" VerticalAlignment="Top" GotFocus="userTextBox_GotFocus" LostFocus="userTextBox_LostFocus"/>
+                <TextBlock Foreground="White"  Grid.Row = "1" Grid.Column = "0">Contraseña</TextBlock>
                 <PasswordBox Grid.Row = "1" Grid.Column = "1"></PasswordBox>
                 <StackPanel Orientation="Horizontal" Grid.Row = "2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10">
                     <Button Content="Registrarse" Width="{Binding Path=ActualWidth, ElementName=userLabel}" Margin="60,0,10,0">

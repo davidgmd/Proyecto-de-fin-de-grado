@@ -4,6 +4,15 @@
              xmlns:local="clr-namespace:WpfApp2"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="pantallaInicio" TargetType="Grid">
+            <Setter Property="Background" Value="Black" />
+        </Style>
+        <Style x:Key="titulo" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
     </Application.Resources>
 </Application>

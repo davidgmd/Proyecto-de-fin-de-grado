@@ -39,5 +39,13 @@ namespace WpfApp2
                 this.userTextBox.Text = "";
             }
         }
+
+        private void userTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (this.userTextBox.Text == "")
+            {
+                this.userTextBox.Text = "Introduzca su nombre de usuario";
+            }
+        }
     }
 }
