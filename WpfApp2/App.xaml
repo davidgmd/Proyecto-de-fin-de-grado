@@ -23,7 +23,7 @@
 
         <Style x:Key="licenciaImagen" TargetType="Image">
             <Setter Property="Height" Value="50"/>
-            <Setter Property="Source" Value="/WpfApp2;component/images/licencia.png" />
+            <Setter Property="Source" Value="/images/licencia.png" />
         </Style>
 
         <Style x:Key="licenciaTextBlock" TargetType="TextBlock" BasedOn="{StaticResource creditos}">

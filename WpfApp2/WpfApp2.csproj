@@ -8,12 +8,14 @@
 
   <ItemGroup>
     <None Remove="images\asistente.jpg" />
+    <None Remove="images\licencia.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="images\asistente.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="images\licencia.png" />
   </ItemGroup>
 
 </Project>

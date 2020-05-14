@@ -130,7 +130,7 @@
                     Grid.Row="1"
                     Margin="0,0,0,10">
             <TextBlock Text="Este producto esta bajo la licencia" Style="{DynamicResource licenciaTextBlock}" />
-            <Image Height="50" Style="{DynamicResource licenciaImagen}"/>
+            <Image Style="{DynamicResource licenciaImagen}"/>
             <TextBlock Text="Creditos" Style="{DynamicResource creditos}"/>
         </StackPanel>
     </Grid>
