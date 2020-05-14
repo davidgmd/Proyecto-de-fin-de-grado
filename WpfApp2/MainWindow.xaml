@@ -15,10 +15,9 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Margin" Value="10"/>
         </Style>
-        
+
         <Style x:Key="imagenTitulo" TargetType="Image">
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Height" Value="100"/>
+            <Setter Property="Height" Value="200"/>
             <Setter Property="Source" Value="/WpfApp2;component/images/asistente.jpg" />
         </Style>
 
@@ -36,9 +35,9 @@
             <TextBlock Style="{DynamicResource titulo}" x:Name="titulo" Text='Bienvenido a "el escriba del DJ"'/>
             <Image Style="{DynamicResource imagenTitulo}"/>
 
-            <TextBlock Style="{DynamicResource narracion}"><Italic>Una vez llegais a la mansión de aquel viejo familiar ya fallecido, observais el estado de la casa, 
-                la mansión de madera de color blanquecino, con multiples manchas de humedad todavía se conserva bastante bien, pero necesitaría algunos arreglos, 
-                aunque quizas ahora no es el mejor momento para pensar en gastos y quizas os preocupa más los rumores que habeís escuchado sobre la casa, 
+            <TextBlock Style="{DynamicResource narracion}"><Italic>Una vez llegais a la mansión de vuestro familiar, ya fallecido, observais el estado de la casa, 
+                la mansión de madera de color blanquecino, con multiples manchas de humedad, todavía se conserva bastante bien, pero necesitaría algunos arreglos, 
+                aunque quizas, ahora no es el mejor momento para pensar en gastos y os preocupa más los rumores que habeís escuchado sobre la casa, 
                 sin tiempo a seguir con vuestros pensamientos, un hombre de edad avanzada aparece, limpia sus gafas,  
                 os mira y os dice:</Italic> 
                 
