@@ -11,19 +11,24 @@
         Width="1229">
 
     <Window.Resources>
+        <Style x:Key="tipoBase" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+        
         <Style x:Key="imagenTitulo" TargetType="Image">
             <Setter Property="Width" Value="100"/>
             <Setter Property="Height" Value="100"/>
             <Setter Property="Source" Value="/WpfApp2;component/images/asistente.jpg" />
         </Style>
 
-        <Style x:Key="narracion" TargetType="TextBlock">
-            <Setter Property="Margin" Value="10"/>
+        <Style x:Key="narracion" TargetType="TextBlock" BasedOn="{StaticResource tipoBase}">
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="FontSize" Value="18"/>
-            <Setter Property="Foreground" Value="White"/>
             <Setter Property="TextAlignment" Value="Center"/>
         </Style>
+        
+        
     </Window.Resources>
     
     <Grid Style="{DynamicResource pantallaInicio}">
@@ -52,28 +57,50 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <TextBlock x:Name="userLabel" Foreground="White" Grid.Row = "0" Grid.Column = "0">Usuario</TextBlock>
-                <TextBox x:Name="userTextBox"  Grid.Row = "0" Grid.Column = "1" Text="Introduzca su nombre de usuario" Height="26" Grid.RowSpan="2" VerticalAlignment="Top" GotFocus="userTextBox_GotFocus" LostFocus="userTextBox_LostFocus"/>
-                <TextBlock Foreground="White"  Grid.Row = "1" Grid.Column = "0">Contraseña</TextBlock>
-                <PasswordBox Grid.Row = "1" Grid.Column = "1"></PasswordBox>
-                <StackPanel Orientation="Horizontal" Grid.Row = "2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10">
-                    <Button Content="Registrarse" Width="{Binding Path=ActualWidth, ElementName=userLabel}" Margin="60,0,10,0">
+                <TextBlock x:Name="userLabel" 
+                           Foreground="White" 
+                           Grid.Row = "0" 
+                           Grid.Column = "0">Usuario</TextBlock>
+                
+                <TextBox x:Name="userTextBox"  
+                         Grid.Row = "0" 
+                         Grid.Column = "1" 
+                         Text="Introduzca su nombre de usuario"                       
+                         GotFocus="userTextBox_GotFocus" 
+                         LostFocus="userTextBox_LostFocus"/>
+                
+                <TextBlock Foreground="White"  
+                           Grid.Row = "1" 
+                           Grid.Column = "0">Contraseña</TextBlock>
+
+                <PasswordBox Grid.Row = "1" 
+                             Grid.Column = "1"/>
+
+                <Grid Grid.Row="2" 
+                      Grid.Column="1"
+                      Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Content="Registrarse" Margin="0,0,5,0">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                    <Button Content="Login" Width="{Binding Path=ActualWidth, ElementName=userLabel}">
+                    <Button Content="Login"
+                            Grid.Column="1">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>
                             </Style>
                         </Button.Resources>
                     </Button>
-                </StackPanel>
-            </Grid>
-            
+                </Grid>
+            </Grid>        
         </StackPanel>
     </Grid>
 </Window>
