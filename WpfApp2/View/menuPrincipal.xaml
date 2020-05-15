@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2.View"
         mc:Ignorable="d"
-        Title="menuPrincipal" Height="450" Width="800">
+        Title="menuPrincipal" Height="600" Width="800">
 
     <Window.Resources>
         <Style x:Key="comboBoxCampaigne" TargetType="ComboBox">
@@ -17,9 +17,9 @@
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
-        
+
         <Style x:Key="iconCampaigne" TargetType="Image">
-            <Setter Property="Height" Value="100"/>
+            <Setter Property="Stretch" Value="Uniform"/>
         </Style>
     </Window.Resources>
     
@@ -30,19 +30,30 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid Style="{DynamicResource gridButton}"
                   Grid.ColumnSpan="2">
-            <StackPanel Margin="10">
+            
+            <Grid Margin="10"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
                 <TextBlock Style="{DynamicResource Encabezado}" Text="Seleccionar campaña"/>
                 <ComboBox Style="{DynamicResource comboBoxCampaigne}"
                           x:Name="campaigneComboBox"
                           Text="Si no tiene ninguna creada, marque Nueva Campaña"
-                          SelectionChanged="CampaigneComboBox_SelectionChanged">
+                          SelectionChanged="CampaigneComboBox_SelectionChanged"
+                          Grid.Row="1">
                     <ComboBoxItem>
                         <TextBlock Text="Nueva campaña"/>
                     </ComboBoxItem>
@@ -53,10 +64,12 @@
                         <TextBlock Text="Warhammer"/>
                     </ComboBoxItem>
                 </ComboBox>
-                <Image Style="{DynamicResource iconCampaigne}" 
+                <Image Style="{DynamicResource iconCampaigne}"
+                       Grid.Row="2"
                        x:Name="iconoCampaigne"
-                       Source="/images/icons/icons8-escudopregunta.png"/>
-            </StackPanel>
+                       Source="/images/icons/icons8-escudopregunta.png">
+                </Image>
+            </Grid>
         </Grid>
 
         <Border Style="{DynamicResource borderMenu}"
@@ -83,7 +96,7 @@
                 </StackPanel>
             </Button>
         </Border>
-
+        
         <Border Style="{DynamicResource borderMenu}"
                 Grid.Row="2">
             <Button Style="{DynamicResource botonMenu}"
