@@ -1,0 +1,76 @@
+﻿<Window x:Class="WpfApp2.View.menuPrincipal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2.View"
+        mc:Ignorable="d"
+        Title="menuPrincipal" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Style="{DynamicResource gridButton}"
+                  Grid.ColumnSpan="2">
+            <StackPanel>
+                <TextBlock Style="{DynamicResource textoGridButton}" VerticalAlignment="Top" Text="Seleccionar campaña"/>
+                <Image />
+                <ComboBox>
+                    <ComboBoxItem>
+                        <TextBlock Text="Nueva campaña"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="D&amp;D 3.5"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="Warhammer"/>
+                    </ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
+
+        <Border BorderThickness="2" BorderBrush="Black"
+                Grid.Row="1">
+            <Grid Style="{DynamicResource gridButton}">
+                <TextBlock Style="{DynamicResource textoGridButton}" Text="Calendario"/>
+                <Image />
+            </Grid>
+        </Border>
+
+        <Border BorderThickness="2" 
+                BorderBrush="Black" 
+                Grid.Column="1"
+                Grid.Row="1">
+            <Grid Style="{DynamicResource gridButton}">
+                <TextBlock Style="{DynamicResource textoGridButton}" Text="Recursos Partida"/>
+                <Image />
+            </Grid>
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black"
+                Grid.Row="2">
+            <Grid Style="{DynamicResource gridButton}">
+                <TextBlock Style="{DynamicResource textoGridButton}" Text="Tirador de dados"/>
+                <Image />
+            </Grid>
+        </Border>
+
+        <Border BorderThickness="2" 
+                BorderBrush="DarkRed" 
+                Grid.Column="1"
+                Grid.Row="2">
+            <Grid Style="{DynamicResource gridButton}">
+                <TextBlock Style="{DynamicResource textoGridButton}" Text="Opciones"/>
+                <Image />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

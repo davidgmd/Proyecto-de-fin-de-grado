@@ -47,7 +47,7 @@
                 <LineBreak/><LineBreak/> - Usted debe ser el nuevo señor, me presento mi nombre es Francisco de Agora, 
                 ¿Vos sois?</TextBlock>
 
-            <Grid Margin="10" HorizontalAlignment="Center">
+            <Grid x:Name="bloqueRegistro" Margin="10" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" MinWidth="80"/>
                     <ColumnDefinition Width="Auto" MinWidth="200" />
@@ -59,12 +59,12 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <TextBlock x:Name="userLabel" 
+                <TextBlock x:Name="userTextBlock" 
                            Foreground="White" 
                            Grid.Row = "0" 
                            Grid.Column = "0">Usuario</TextBlock>
 
-                <TextBox x:Name="userTextBox"  
+                <TextBox x:Name="userText"  
                          Grid.Row = "0" 
                          Grid.Column = "1" 
                          Text="Introduzca su nombre de usuario"                       
@@ -78,7 +78,7 @@
                 <PasswordBox Grid.Row = "1" 
                              Grid.Column = "1"/>
 
-                <Grid Grid.Row="2" 
+                <Grid x:Name="gridRegistro" Grid.Row="2" 
                       Grid.Column="1"
                       Margin="10">
                     <Grid.ColumnDefinitions>
@@ -93,7 +93,8 @@
 
                     <Button Grid.Row="1" 
                             Content="Registrarse" 
-                            Margin="0,0,5,0">
+                            Margin="0,0,5,0"
+                            Click="registrarse_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>
@@ -101,9 +102,9 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button Content="Login"
+                    <Button x:Name="loginButton" IsEnabled="False" Content="Login"
                             Grid.Column="1"
-                            Grid.Row="1">
+                            Grid.Row="1" Click="login_Click">
                         <Button.Resources>
                             <Style TargetType="Border">
                                 <Setter Property="CornerRadius" Value="5"/>
@@ -116,6 +117,7 @@
                         <CheckBox Margin="0,0,2,0"/>
                         <TextBlock Foreground="White" Text="Recordar usuario"/>
                     </StackPanel>
+                    
                     <StackPanel Orientation="Horizontal"
                                 Margin="2"
                                 Grid.Column="1">

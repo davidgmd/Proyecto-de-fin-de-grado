@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp2.View;
 
 namespace WpfApp2
 {
@@ -32,20 +33,36 @@ namespace WpfApp2
 
         private void userTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (this.userTextBox.Text == "Introduzca su nombre de usuario")
+            if (this.userText.Text == "Introduzca su nombre de usuario")
             {
-                this.userTextBox.SelectionStart = 0;
-                this.userTextBox.SelectionLength = this.userTextBox.Text.Length;
-                this.userTextBox.Text = "";
+                this.userText.SelectionStart = 0;
+                this.userText.SelectionLength = this.userText.Text.Length;
+                this.userText.Text = "";
             }
         }
 
         private void userTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (this.userTextBox.Text == "")
+            if (this.userText.Text == "")
             {
-                this.userTextBox.Text = "Introduzca su nombre de usuario";
+                this.userText.Text = "Introduzca su nombre de usuario";
             }
+            else
+            {
+                this.loginButton.IsEnabled = true;
+            }
+        }
+
+        private void registrarse_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void login_Click(object sender, RoutedEventArgs e)
+        {
+            menuPrincipal ventanaPrincipal = new menuPrincipal();
+
+            ventanaPrincipal.Show();
         }
     }
 }
