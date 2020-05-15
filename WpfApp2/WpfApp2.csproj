@@ -8,6 +8,13 @@
 
   <ItemGroup>
     <None Remove="images\asistente.jpg" />
+    <None Remove="images\icons8-calendar.png" />
+    <None Remove="images\icons\D&amp;D.png" />
+    <None Remove="images\icons\icons8-books.png" />
+    <None Remove="images\icons\icons8-dices.png" />
+    <None Remove="images\icons\icons8-escudopregunta.png" />
+    <None Remove="images\icons\icons8-options.png" />
+    <None Remove="images\icons\warhammer.jpg" />
     <None Remove="images\licencia.png" />
   </ItemGroup>
 
@@ -15,6 +22,13 @@
     <Resource Include="images\asistente.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="images\icons\D&amp;D.png" />
+    <Resource Include="images\icons\icons8-books.png" />
+    <Resource Include="images\icons\icons8-calendar.png" />
+    <Resource Include="images\icons\icons8-dices.png" />
+    <Resource Include="images\icons\icons8-escudopregunta.png" />
+    <Resource Include="images\icons\icons8-options.png" />
+    <Resource Include="images\icons\warhammer.jpg" />
     <Resource Include="images\licencia.png" />
   </ItemGroup>
 

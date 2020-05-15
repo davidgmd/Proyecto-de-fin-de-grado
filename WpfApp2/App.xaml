@@ -7,11 +7,11 @@
         <Style x:Key="pantallaInicio" TargetType="Grid">
             <Setter Property="Background" Value="Black" />
         </Style>
-        <Style x:Key="titulo" TargetType="TextBlock">
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Margin" Value="20"/>
-            <Setter Property="Foreground" Value="White"/>
+
+        <Style x:Key="Encabezado" TargetType="TextBlock">
             <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
 
@@ -32,13 +32,29 @@
             <Setter Property="FontSize" Value="10"/>
         </Style>
 
-        <Style x:Key="gridButton" TargetType="Grid">
-            <Setter Property="Background" Value="Gray"/>
+        <!-- Opciones de la ventana de menuPrincipal -->
+        <Style x:Key="borderMenu" TargetType="Border">
+            <Setter Property="BorderBrush" Value="Goldenrod"/>
+            <Setter Property="BorderThickness" Value="4"/>
         </Style>
 
-        <Style x:Key="textoGridButton" TargetType="TextBlock">
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Style x:Key="botonMenu" TargetType="Button">
+            <Setter Property="BorderBrush" Value="Gold"/>
+            <Setter Property="BorderThickness" Value="4"/>
+            <Setter Property="Background" Value="Yellow"/>
+            <Setter Property="IsEnabled" Value="False"/>
         </Style>
+
+        <Style x:Key="textoGridMenu" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Red"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="iconMenu" TargetType="Image">
+            <Setter Property="Height" Value="50"/>
+        </Style>
+        
     </Application.Resources>
 </Application>

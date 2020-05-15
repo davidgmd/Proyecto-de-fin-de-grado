@@ -6,24 +6,43 @@
         xmlns:local="clr-namespace:WpfApp2.View"
         mc:Ignorable="d"
         Title="menuPrincipal" Height="450" Width="800">
-    <Grid>
+
+    <Window.Resources>
+        <Style x:Key="comboBoxCampaigne" TargetType="ComboBox">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="IsEditable" Value="True"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="Focusable" Value="True"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        
+        <Style x:Key="iconCampaigne" TargetType="Image">
+            <Setter Property="Height" Value="100"/>
+        </Style>
+    </Window.Resources>
+    
+    <Grid x:Name="gridBase" Background="Silver">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid Style="{DynamicResource gridButton}"
                   Grid.ColumnSpan="2">
-            <StackPanel>
-                <TextBlock Style="{DynamicResource textoGridButton}" VerticalAlignment="Top" Text="Seleccionar campaña"/>
-                <Image />
-                <ComboBox>
+            <StackPanel Margin="10">
+                <TextBlock Style="{DynamicResource Encabezado}" Text="Seleccionar campaña"/>
+                <ComboBox Style="{DynamicResource comboBoxCampaigne}"
+                          x:Name="campaigneComboBox"
+                          Text="Si no tiene ninguna creada, marque Nueva Campaña"
+                          SelectionChanged="CampaigneComboBox_SelectionChanged">
                     <ComboBoxItem>
                         <TextBlock Text="Nueva campaña"/>
                     </ComboBoxItem>
@@ -34,43 +53,60 @@
                         <TextBlock Text="Warhammer"/>
                     </ComboBoxItem>
                 </ComboBox>
+                <Image Style="{DynamicResource iconCampaigne}" 
+                       x:Name="iconoCampaigne"
+                       Source="/images/icons/icons8-escudopregunta.png"/>
             </StackPanel>
         </Grid>
 
-        <Border BorderThickness="2" BorderBrush="Black"
+        <Border Style="{DynamicResource borderMenu}"
                 Grid.Row="1">
-            <Grid Style="{DynamicResource gridButton}">
-                <TextBlock Style="{DynamicResource textoGridButton}" Text="Calendario"/>
-                <Image />
-            </Grid>
+            <Button Style="{DynamicResource botonMenu}"
+                    x:Name="botonCalendario">
+                <StackPanel>
+                    <TextBlock Style="{DynamicResource textoGridMenu}" 
+                               Text="Calendario" />
+                    <Image Style="{DynamicResource iconMenu}" Source="/images/icons/icons8-calendar.png"/>
+                </StackPanel>
+            </Button>
         </Border>
 
-        <Border BorderThickness="2" 
-                BorderBrush="Black" 
-                Grid.Column="1"
-                Grid.Row="1">
-            <Grid Style="{DynamicResource gridButton}">
-                <TextBlock Style="{DynamicResource textoGridButton}" Text="Recursos Partida"/>
-                <Image />
-            </Grid>
+        <Border Style="{DynamicResource borderMenu}"
+                Grid.Row="1"
+                Grid.Column="1">
+            <Button Style="{DynamicResource botonMenu}"
+                    x:Name="botonRecursos">
+                <StackPanel>
+                    <TextBlock Style="{DynamicResource textoGridMenu}" 
+                               Text="Recursos Partidas" />
+                    <Image Style="{DynamicResource iconMenu}" Source="/images/icons/icons8-books.png"/>
+                </StackPanel>
+            </Button>
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black"
+        <Border Style="{DynamicResource borderMenu}"
                 Grid.Row="2">
-            <Grid Style="{DynamicResource gridButton}">
-                <TextBlock Style="{DynamicResource textoGridButton}" Text="Tirador de dados"/>
-                <Image />
-            </Grid>
+            <Button Style="{DynamicResource botonMenu}"
+                    x:Name="botonTirador">
+                <StackPanel>
+                    <TextBlock Style="{DynamicResource textoGridMenu}" 
+                               Text="Tirador de dados" />
+                    <Image Style="{DynamicResource iconMenu}" Source="/images/icons/icons8-dices.png"/>
+                </StackPanel>
+            </Button>
         </Border>
 
-        <Border BorderThickness="2" 
-                BorderBrush="DarkRed" 
-                Grid.Column="1"
-                Grid.Row="2">
-            <Grid Style="{DynamicResource gridButton}">
-                <TextBlock Style="{DynamicResource textoGridButton}" Text="Opciones"/>
-                <Image />
-            </Grid>
+        <Border Style="{DynamicResource borderMenu}"
+                Grid.Row="2"
+                Grid.Column="1">
+            <Button Style="{DynamicResource botonMenu}"
+                    x:Name="botonOpciones">
+                <StackPanel>
+                    <TextBlock Style="{DynamicResource textoGridMenu}" 
+                               Text="Opciones" />
+                    <Image Style="{DynamicResource iconMenu}" Source="/images/icons/icons8-options.png"/>
+                </StackPanel>
+            </Button>
         </Border>
     </Grid>
 </Window>
