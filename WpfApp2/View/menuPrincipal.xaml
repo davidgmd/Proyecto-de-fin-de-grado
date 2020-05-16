@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp2.View"
         mc:Ignorable="d"
-        Title="menuPrincipal" Height="600" Width="800">
+        Title="menuPrincipal" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen">
+        
 
     <Window.Resources>
         <Style x:Key="comboBoxCampaigne" TargetType="ComboBox">
@@ -22,7 +24,7 @@
             <Setter Property="Stretch" Value="Uniform"/>
         </Style>
     </Window.Resources>
-    
+
     <Grid x:Name="gridBase" Background="Silver">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -35,25 +37,37 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Style="{DynamicResource gridButton}"
-                  Grid.ColumnSpan="2">
-            
-            <Grid Margin="10"
-                        Grid.Row="0"
-                        Grid.ColumnSpan="2">
+        <Grid Grid.ColumnSpan="2"
+              Margin="10"
+              Grid.Row="0">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                
-                <TextBlock Style="{DynamicResource Encabezado}" Text="Seleccionar campaña"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Style="{DynamicResource Encabezado}" 
+                       Text="Seleccionar campaña"
+                       x:Name="tituloCampana"/>
+
+            <StackPanel Orientation="Horizontal"
+                        Grid.Row="1"
+                        HorizontalAlignment="Center">
+
+                <Button
+                        Width="30"
+                        Height="30"  
+                        Background="ForestGreen"
+                        BorderBrush="Transparent"
+                        >
+                    <Image Source="/images/icons/iconoMas.png"/>
+                </Button>
+
                 <ComboBox Style="{DynamicResource comboBoxCampaigne}"
-                          x:Name="campaigneComboBox"
-                          Text="Si no tiene ninguna creada, marque Nueva Campaña"
-                          SelectionChanged="CampaigneComboBox_SelectionChanged"
-                          Grid.Row="1">
+                            x:Name="campaigneComboBox"
+                            Text="Si no tiene ninguna creada, marque Nueva Campaña"
+                            SelectionChanged="CampaigneComboBox_SelectionChanged">
                     <ComboBoxItem>
                         <TextBlock Text="Nueva campaña"/>
                     </ComboBoxItem>
@@ -64,22 +78,37 @@
                         <TextBlock Text="Warhammer"/>
                     </ComboBoxItem>
                 </ComboBox>
-                <Image Style="{DynamicResource iconCampaigne}"
-                       Grid.Row="2"
-                       x:Name="iconoCampaigne"
-                       Source="/images/icons/icons8-escudopregunta.png">
-                </Image>
-            </Grid>
-        </Grid>
 
+                <Button Width="30"
+                        Height="30"
+                        VerticalAlignment="Center"
+                        Margin="0 0 5 0"
+                        Background="Red"
+                        BorderBrush="Transparent">
+                    <Image Source="/images/icons/iconoMenos.png"/>
+                </Button>
+
+            </StackPanel>
+            
+            <Image Style="{DynamicResource iconCampaigne}"
+                    Grid.Row="2"
+                    x:Name="iconoCampaigne"
+                    Source="/images/icons/icons8-escudopregunta.png"/>
+        </Grid>
+        
         <Border Style="{DynamicResource borderMenu}"
                 Grid.Row="1">
             <Button Style="{DynamicResource botonMenu}"
                     x:Name="botonCalendario">
                 <StackPanel>
                     <TextBlock Style="{DynamicResource textoGridMenu}" 
-                               Text="Calendario" />
-                    <Image Style="{DynamicResource iconMenu}" Source="/images/icons/icons8-calendar.png"/>
+                               Text="Calendario" >
+                        <TextBlock.Effect>
+                            <DropShadowEffect RenderingBias="Quality"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <Image Style="{DynamicResource noVisible}" Source="/images/icons/icons8-calendar.png"/>
+                    <Image Style="{DynamicResource visibleInicio}" Source="/images/icons/icons8-lock.png" />
                 </StackPanel>
             </Button>
         </Border>
@@ -91,20 +120,30 @@
                     x:Name="botonRecursos">
                 <StackPanel>
                     <TextBlock Style="{DynamicResource textoGridMenu}" 
-                               Text="Recursos Partidas" />
-                    <Image Style="{DynamicResource iconMenu}" Source="/images/icons/icons8-books.png"/>
+                               Text="Recursos Partidas" >
+                        <TextBlock.Effect>
+                            <DropShadowEffect RenderingBias="Quality"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <Image Style="{DynamicResource noVisible}" Source="/images/icons/icons8-books.png"/>
+                    <Image Style="{DynamicResource visibleInicio}" Source="/images/icons/icons8-lock.png" />
                 </StackPanel>
             </Button>
         </Border>
-        
+
         <Border Style="{DynamicResource borderMenu}"
                 Grid.Row="2">
             <Button Style="{DynamicResource botonMenu}"
                     x:Name="botonTirador">
                 <StackPanel>
                     <TextBlock Style="{DynamicResource textoGridMenu}" 
-                               Text="Tirador de dados" />
-                    <Image Style="{DynamicResource iconMenu}" Source="/images/icons/icons8-dices.png"/>
+                               Text="Tirador de dados" >
+                        <TextBlock.Effect>
+                            <DropShadowEffect RenderingBias="Quality"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <Image Style="{DynamicResource noVisible}" Source="/images/icons/icons8-dices.png"/>
+                    <Image Style="{DynamicResource visibleInicio}" Source="/images/icons/icons8-lock.png" />
                 </StackPanel>
             </Button>
         </Border>
@@ -116,8 +155,13 @@
                     x:Name="botonOpciones">
                 <StackPanel>
                     <TextBlock Style="{DynamicResource textoGridMenu}" 
-                               Text="Opciones" />
-                    <Image Style="{DynamicResource iconMenu}" Source="/images/icons/icons8-options.png"/>
+                               Text="Opciones" >
+                        <TextBlock.Effect>
+                            <DropShadowEffect RenderingBias="Quality"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <Image Style="{DynamicResource noVisible}" Source="/images/icons/icons8-options.png"/>
+                    <Image Style="{DynamicResource visibleInicio}" Source="/images/icons/icons8-lock.png" />
                 </StackPanel>
             </Button>
         </Border>

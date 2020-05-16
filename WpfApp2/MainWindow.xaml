@@ -6,7 +6,8 @@
         mc:Ignorable="d"
         Title="MainWindow"
         Height="691" 
-        Width="1229">
+        Width="1229"
+        WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <Style x:Key="titulo" TargetType="TextBlock" BasedOn="{StaticResource Encabezado}">

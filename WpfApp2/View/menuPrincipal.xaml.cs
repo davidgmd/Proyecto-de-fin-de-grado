@@ -24,14 +24,20 @@ namespace WpfApp2.View
 
         private void CampaigneComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.botonCalendario.IsEnabled = true;
-            this.botonOpciones.IsEnabled = true;
-            this.botonRecursos.IsEnabled = true;
-            this.botonTirador.IsEnabled = true;
+
+            Application.Current.Resources["borderMenu"] = Application.Current.Resources["borderMenuEnabled"];
+            Application.Current.Resources["botonMenu"] = Application.Current.Resources["botonMenuEnabled"];
+
+            if(Application.Current.Resources["noVisible"] != Application.Current.Resources["iconMenu"])
+            {
+                Application.Current.Resources["visibleInicio"] = Application.Current.Resources["noVisible"];
+                Application.Current.Resources["noVisible"] = Application.Current.Resources["iconMenu"];
+            } 
 
             var item = (ComboBoxItem)this.campaigneComboBox.SelectedValue;
-                var content = (TextBlock)item.Content;
-            
+            var content = (TextBlock)item.Content;
+
+            this.tituloCampana.Text = content.Text.Trim();
 
             switch (content.Text.Trim())
             {

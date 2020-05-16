@@ -46,6 +46,7 @@ namespace WpfApp2
             if (this.userText.Text == "")
             {
                 this.userText.Text = "Introduzca su nombre de usuario";
+                this.loginButton.IsEnabled = false;
             }
             else
             {
