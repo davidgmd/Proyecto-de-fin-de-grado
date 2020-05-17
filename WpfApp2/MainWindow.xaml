@@ -150,8 +150,11 @@
         <StackPanel VerticalAlignment="Bottom"
                     Grid.Row="1"
                     Margin="0,0,0,10">
-            <TextBlock Text="Este producto esta bajo la licencia" Style="{DynamicResource licenciaTextBlock}" />
-            <Image Style="{DynamicResource licenciaImagen}"/>
+            <TextBlock Text="Este producto esta bajo la licencia" 
+                       Style="{DynamicResource licenciaTextBlock}"
+                       Mouse.MouseDown="Image_MouseDown"/>
+            <Image Style="{DynamicResource licenciaImagen}"
+                  Mouse.MouseDown="Image_MouseDown"/>
             <TextBlock Text="Creditos" Style="{DynamicResource creditos}"/>
         </StackPanel>
     </Grid>

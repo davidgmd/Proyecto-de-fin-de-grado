@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -70,6 +71,13 @@ namespace WpfApp2
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            string url = "http://creativecommons.org/licenses/by-nc-sa/4.0/";
+            url = url.Replace("&", "^&");
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
         }
     }
 }
