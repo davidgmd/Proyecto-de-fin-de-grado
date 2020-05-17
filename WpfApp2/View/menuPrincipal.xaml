@@ -109,7 +109,11 @@
             <Image Style="{DynamicResource iconCampaigne}"
                     Grid.Row="2"
                     x:Name="iconoCampaigne"
-                    Source="/images/icons/icons8-escudopregunta.png"/>
+                    Source="/images/icons/icons8-escudopregunta.png">
+                <Image.Effect>
+                    <DropShadowEffect/>
+                </Image.Effect>
+            </Image>
         </Grid>
         
         <Border Style="{DynamicResource borderMenu}"
