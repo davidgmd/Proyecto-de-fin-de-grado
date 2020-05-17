@@ -27,17 +27,34 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="13"/>
+
+            <Style.Triggers>
+                <Trigger Property ="IsMouseOver" Value="True">
+                    <Setter Property= "Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
         <Style x:Key="licenciaImagen" TargetType="Image">
             <Setter Property="Height" Value="50"/>
             <Setter Property="Source" Value="/images/licencia.png" />
+            <Style.Triggers>
+                <Trigger  Property="Image.IsMouseOver" Value="True">
+                    <Setter Property="Image.Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
         <Style x:Key="licenciaTextBlock" TargetType="TextBlock" BasedOn="{StaticResource creditos}">
             <Setter Property="FontStyle" Value="Italic"/>
             <Setter Property="Foreground" Value="Gray"/>
             <Setter Property="FontSize" Value="10"/>
+
+            <Style.Triggers>
+                <Trigger Property ="IsMouseOver" Value="True">
+                    <Setter Property= "Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
         <!-- Opciones de la ventana de menuPrincipal -->
