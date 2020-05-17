@@ -18,8 +18,11 @@
     <None Remove="images\icons\icons8-escudopregunta.png" />
     <None Remove="images\icons\icons8-lock.png" />
     <None Remove="images\icons\icons8-options.png" />
+    <None Remove="images\icons\icons8-salir.png" />
+    <None Remove="images\icons\icons8-salir2.png" />
     <None Remove="images\icons\warhammer.jpg" />
     <None Remove="images\licencia.png" />
+    <None Remove="images\warhammer-removebg.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,8 +39,11 @@
     <Resource Include="images\icons\icons8-escudopregunta.png" />
     <Resource Include="images\icons\icons8-lock.png" />
     <Resource Include="images\icons\icons8-options.png" />
+    <Resource Include="images\icons\icons8-salir.png" />
+    <Resource Include="images\icons\icons8-salir2.png" />
     <Resource Include="images\icons\warhammer.jpg" />
     <Resource Include="images\licencia.png" />
+    <Resource Include="images\icons\warhammer-removebg.png" />
   </ItemGroup>
 
 </Project>

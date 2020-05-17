@@ -64,6 +64,12 @@ namespace WpfApp2
             menuPrincipal ventanaPrincipal = new menuPrincipal();
 
             ventanaPrincipal.Show();
+            this.Hide();
+        }
+
+        private void exitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

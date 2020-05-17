@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:WpfApp2.View"
         mc:Ignorable="d"
         Title="menuPrincipal" Height="600" Width="800"
-        WindowStartupLocation="CenterScreen">
-        
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize">
 
     <Window.Resources>
         <Style x:Key="comboBoxCampaigne" TargetType="ComboBox">
@@ -22,6 +23,25 @@
 
         <Style x:Key="iconCampaigne" TargetType="Image">
             <Setter Property="Stretch" Value="Uniform"/>
+        </Style>
+
+        <Style x:Key="botonSalirMP" TargetType="Button" BasedOn="{StaticResource botonSalir}">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Margin" Value="0 0 5 0"/>
+        </Style>
+
+        <Style x:Key="buttonComboBox" TargetType="Button">
+            <Setter Property="Width" Value="30"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+        </Style>
+
+        <Style x:Key="addComboBox" TargetType="Button" BasedOn="{StaticResource buttonComboBox}">
+            <Setter Property="Background" Value="ForestGreen"/>
+        </Style>
+
+        <Style x:Key="dropComboBox" TargetType="Button" BasedOn="{StaticResource buttonComboBox}">
+            <Setter Property="Background" Value="Red"/>
         </Style>
     </Window.Resources>
 
@@ -47,20 +67,21 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
+            <Grid   Grid.ColumnSpan="2">
             <TextBlock Style="{DynamicResource Encabezado}" 
                        Text="Seleccionar campaña"
                        x:Name="tituloCampana"/>
+                <Button Style="{DynamicResource botonSalirMP}"
+                        Click="exitButton_Click">
+                    <Image Source="/images/icons/icons8-salir.png"/>
+                </Button>
+            </Grid>
 
             <StackPanel Orientation="Horizontal"
                         Grid.Row="1"
                         HorizontalAlignment="Center">
 
-                <Button
-                        Width="30"
-                        Height="30"  
-                        Background="ForestGreen"
-                        BorderBrush="Transparent"
-                        >
+                <Button Style="{DynamicResource addComboBox}">
                     <Image Source="/images/icons/iconoMas.png"/>
                 </Button>
 
@@ -79,12 +100,7 @@
                     </ComboBoxItem>
                 </ComboBox>
 
-                <Button Width="30"
-                        Height="30"
-                        VerticalAlignment="Center"
-                        Margin="0 0 5 0"
-                        Background="Red"
-                        BorderBrush="Transparent">
+                <Button Style="{DynamicResource dropComboBox}">
                     <Image Source="/images/icons/iconoMenos.png"/>
                 </Button>
 

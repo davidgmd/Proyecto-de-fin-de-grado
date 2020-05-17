@@ -47,13 +47,19 @@ namespace WpfApp2.View
                     break;
 
                 case "Warhammer":
-                    this.iconoCampaigne.Source = new BitmapImage(new Uri("/images/icons/warhammer.jpg", UriKind.Relative));
+                    this.iconoCampaigne.Source = new BitmapImage(new Uri("/images/icons/warhammer-removebg.png", UriKind.Relative));
                     break;
 
                 default:
                     MessageBox.Show(content.Text);
                     break;
             }
+        }
+
+        private void exitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            System.Environment.Exit(0);
         }
     }
 }

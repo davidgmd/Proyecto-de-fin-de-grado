@@ -7,7 +7,9 @@
         Title="MainWindow"
         Height="691" 
         Width="1229"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize">
 
     <Window.Resources>
         <Style x:Key="titulo" TargetType="TextBlock" BasedOn="{StaticResource Encabezado}">
@@ -30,7 +32,12 @@
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="TextAlignment" Value="Center"/>
         </Style>
-        
+
+        <Style x:Key="botonSalirInicio" TargetType="Button" BasedOn="{StaticResource botonSalir}">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Margin" Value="0 0 10 0"/>
+        </Style>
         
     </Window.Resources>
     
@@ -41,7 +48,13 @@
         </Grid.RowDefinitions>
         
         <StackPanel>
-            <TextBlock Style="{DynamicResource titulo}" x:Name="titulo" Text='Bienvenido a "el escriba del DJ"'/>
+            <Grid>
+                <TextBlock Style="{DynamicResource titulo}" x:Name="titulo" Text='Bienvenido a "el escriba del DJ"'/>
+                <Button Style="{DynamicResource botonSalirInicio}"                
+                    Click="exitButton_Click">
+                    <Image Source="/images/icons/icons8-salir2.png"/>
+                </Button>
+            </Grid>
             <Image Style="{DynamicResource imagenTitulo}"/>
 
             <TextBlock Style="{DynamicResource narracion}"><Italic>Una vez llegais a la mansión de vuestro familiar, ya fallecido, observais el estado de la casa, 
