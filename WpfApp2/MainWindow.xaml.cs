@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp2.View;
@@ -78,6 +79,13 @@ namespace WpfApp2
             string url = "http://creativecommons.org/licenses/by-nc-sa/4.0/";
             url = url.Replace("&", "^&");
             Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+        }
+
+        private void Credits_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Creditos ventana = new Creditos();
+
+            ventana.Show();
         }
     }
 }

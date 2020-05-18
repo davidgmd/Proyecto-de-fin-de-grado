@@ -155,7 +155,9 @@
                        Mouse.MouseDown="Image_MouseDown"/>
             <Image Style="{DynamicResource licenciaImagen}"
                   Mouse.MouseDown="Image_MouseDown"/>
-            <TextBlock Text="Creditos" Style="{DynamicResource creditos}"/>
+            <TextBlock Text="Creditos" 
+                       Style="{DynamicResource creditos}"
+                       Mouse.MouseDown="Credits_MouseDown"/>
         </StackPanel>
     </Grid>
 </Window>
