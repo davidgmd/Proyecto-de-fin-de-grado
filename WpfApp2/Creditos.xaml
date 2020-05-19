@@ -15,6 +15,7 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="5"/>
+            <Setter Property="FontSize" Value="16"/>
         </Style>
 
         <Style x:Key="cargo" TargetType="TextBlock" BasedOn="{StaticResource estiloBase}">
@@ -44,22 +45,20 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <TextBlock Text="Este proyecto es un trabajo para la universidad a distancia UNED, como tal la universidad es libre de modificar estos creditos en todo apartado que así le concierna"
-                   Style="{DynamicResource descripcionCategoria}"
-                   Grid.ColumnSpan="2"/>
+                   Style="{DynamicResource descripcionCategoria}"/>
         <TextBlock Text="Dirección"
                    Style="{DynamicResource categoria}"
-                   Grid.Row="1"
-                   Grid.ColumnSpan="2"/>
+                   Grid.Row="1"/>
         <TextBlock Text="Creado por:"
                    Style="{DynamicResource cargo}"
                    Grid.Row="2"/>
@@ -67,12 +66,9 @@
                    Style="{DynamicResource persona}"
                    Grid.Row="2"
                    Grid.Column="1"/>
-        <TextBlock Text="Director del TFG:"
-                   Style="{DynamicResource cargo}"
-                   Grid.Row="3"/>
-        <TextBlock Text="-"
-                   Style="{DynamicResource persona}"
-                   Grid.Row="2"
-                   Grid.Column="1"/>
+        <TextBlock x:Name="creditos"
+                   Style="{DynamicResource estiloBase}"
+                   Grid.Row="3"
+                   Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

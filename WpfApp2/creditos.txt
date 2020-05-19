@@ -1,0 +1,9 @@
+Este programa es un proyecto para la universidad a distancia UNED, como tal la universidad puede modificar, añadir o eliminar 
+parte de estos créditos en lo directamente relacionado con ella.
+				
+				Dirección
+			Creador: David Pinedo Solano
+			Director del TFG:
+			Departamento de la Universidad:
+			Co-Director del TFG:
+

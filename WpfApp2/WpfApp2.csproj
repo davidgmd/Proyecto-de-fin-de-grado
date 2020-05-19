@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="creditos.txt" />
     <None Remove="images\asistente.jpg" />
     <None Remove="images\Calendar.jpg" />
     <None Remove="images\icons8-calendar.png" />
@@ -26,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="creditos.txt" />
     <Resource Include="images\asistente.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
