@@ -1,9 +1,29 @@
-Este programa es un proyecto para la universidad a distancia UNED, como tal la universidad puede modificar, a馻dir o eliminar 
-parte de estos cr閐itos en lo directamente relacionado con ella.
+锘縀ste programa es un proyecto para la universidad a distancia UNED, como tal la universidad puede modificar, a帽adir o eliminar 
+parte de estos creditos en lo que les afecte de forma directa.
 				
-				Direcci髇
-			Creador: David Pinedo Solano
-			Director del TFG:
-			Departamento de la Universidad:
-			Co-Director del TFG:
+					- Direcci贸n -
+				Creador: David Pinedo Solano
+				Director del TFG:	
+				Co-Director del TFG:
+				Departamento de la Universidad:
+
+- Los siguientes iconos han sido tomados de la pagina icon8 siendo los derechos de uso, distribuci贸n, explotaci贸n exclusivos de la empresa propietaria -
+				Iconos del menu principal (Calendario, Recursos, Tirada, Opciones)
+
+- Las siguientes imagenes pertenecen de forma exclusiva a sus respectivos creadores -
+				Imagen de Login (Francisco de Agora en el programa, Obtenida de la
+				usuaria de DevianArt "Atypicalgamergirl")
+
+- Los siguientes mencionados son marcas registradas y a ellos pertenecen tanto las imagenes relacionadas, como los nombres registrados -
+				Wizard of the Coast: Dungeons and Dragons 3.5 (nombre y logo D&D 3.5)
+				Games Workshop: Warhammer (nombre y logo)
+
+					BetaTesters
+				Daniel Acevedo (DaniFlow)
+
+- Agradecimiento especial a Mi Familia por su apoyo y a StackOverFlow por su ingesta cantidad de informaci贸n llegando a ser superior a la proporcionada 
+por la propia Microsoft -
+
+El resto de elementos pertenecen a la misma licencia que este software siendo por tantos libres de ser modificados, redistribuidos, etc siempre y cuando
+no se le de un uso comercial y se cite y mantenga la autor铆a.
 

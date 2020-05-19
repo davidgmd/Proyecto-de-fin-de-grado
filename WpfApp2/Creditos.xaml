@@ -17,58 +17,12 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="FontSize" Value="16"/>
         </Style>
-
-        <Style x:Key="cargo" TargetType="TextBlock" BasedOn="{StaticResource estiloBase}">
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-        </Style>
-
-        <Style x:Key="persona" TargetType="TextBlock" BasedOn="{StaticResource estiloBase}">
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-        </Style>
-
-        <Style x:Key="baseCategoria" TargetType="TextBlock" BasedOn="{StaticResource estiloBase}">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
-
-        <Style x:Key="descripcionCategoria" TargetType="TextBlock" BasedOn="{StaticResource baseCategoria}">
-            <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="FontSize" Value="16"/>
-        </Style>
-
-        <Style x:Key="categoria" TargetType="TextBlock" BasedOn="{StaticResource baseCategoria}">
-            <Setter Property="TextDecorations" Value="Underline"/>
-            <Setter Property="FontSize" Value="15"/>
-        </Style>
-    </Window.Resources> 
+   
+    </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <TextBlock Text="Este proyecto es un trabajo para la universidad a distancia UNED, como tal la universidad es libre de modificar estos creditos en todo apartado que así le concierna"
-                   Style="{DynamicResource descripcionCategoria}"/>
-        <TextBlock Text="Dirección"
-                   Style="{DynamicResource categoria}"
-                   Grid.Row="1"/>
-        <TextBlock Text="Creado por:"
-                   Style="{DynamicResource cargo}"
-                   Grid.Row="2"/>
-        <TextBlock Text="David Pinedo Solano"
-                   Style="{DynamicResource persona}"
-                   Grid.Row="2"
-                   Grid.Column="1"/>
-        <TextBlock x:Name="creditos"
-                   Style="{DynamicResource estiloBase}"
-                   Grid.Row="3"
-                   Grid.ColumnSpan="2"/>
+        <ScrollViewer>
+            <TextBlock x:Name="creditos"
+                   Style="{DynamicResource estiloBase}"/>
+        </ScrollViewer>
     </Grid>
 </Window>
