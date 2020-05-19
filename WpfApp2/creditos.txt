@@ -18,7 +18,7 @@ parte de estos creditos en lo que les afecte de forma directa.
 				Wizard of the Coast: Dungeons and Dragons 3.5 (nombre y logo D&D 3.5)
 				Games Workshop: Warhammer (nombre y logo)
 
-					BetaTesters
+					- BetaTesters -
 				Daniel Acevedo (DaniFlow)
 
 - Agradecimiento especial a Mi Familia por su apoyo y a StackOverFlow por su ingesta cantidad de información llegando a ser superior a la proporcionada 

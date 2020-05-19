@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -16,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp2.Classes;
 using WpfApp2.View;
 
 namespace WpfApp2
@@ -25,13 +27,22 @@ namespace WpfApp2
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static JObject datosusuario;
+
+        public static JObject DatosUsuario
+        {
+            get { return datosusuario; }
+            set { datosusuario = value; }
+        }
+
         public MainWindow()
         {
             this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.9);
             this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.9);
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            InitializeComponent();
-        }
+            InitializeComponent();         
+
+    }
 
         private void userTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -64,6 +75,13 @@ namespace WpfApp2
         private void login_Click(object sender, RoutedEventArgs e)
         {
             menuPrincipal ventanaPrincipal = new menuPrincipal();
+
+            Usuario usuario = new Usuario();
+            
+            usuario.NombreUsuario = this.userText.Text;
+            usuario.Password = this.passwordText.Password;
+            usuario.datosUsuario = new DatosUsuario() { nombreUsuario = usuario.NombreUsuario };
+            datosusuario = JObject.FromObject(usuario.datosUsuario);
 
             ventanaPrincipal.Show();
             this.Hide();

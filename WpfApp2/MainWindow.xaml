@@ -95,7 +95,8 @@
                            Grid.Column = "0">Contraseña</TextBlock>
 
                 <PasswordBox Grid.Row = "1" 
-                             Grid.Column = "1"/>
+                             Grid.Column = "1"
+                             x:Name="passwordText"/>
 
                 <Grid x:Name="gridRegistro" Grid.Row="2" 
                       Grid.Column="1"
