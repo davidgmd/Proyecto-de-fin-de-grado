@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-
-namespace WpfApp2.Classes
+﻿namespace ElEscribaDelDJ.Classes
 {
     class RecursosCampana
     {

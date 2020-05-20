@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace WpfApp2.Classes
+namespace ElEscribaDelDJ.Classes
 {
-    class Campaña
+    class Campaign
     {
 		private string nombre;
 		private string descripcion;
 		private List<RecursosCampana> listarecursos;
-
-		public List<RecursosCampana> RecursosCampana
+     
+        public List<RecursosCampana> RecursosCampana
 		{
 			get { return listarecursos; }
 			set { listarecursos = value; }

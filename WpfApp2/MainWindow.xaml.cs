@@ -1,26 +1,13 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Markup;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Media.TextFormatting;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using WpfApp2.Classes;
-using WpfApp2.View;
+using ElEscribaDelDJ.Classes;
+using ElEscribaDelDJ.View;
+using Newtonsoft.Json.Linq;
 
-namespace WpfApp2
+namespace ElEscribaDelDJ
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -69,22 +56,29 @@ namespace WpfApp2
 
         private void registrarse_Click(object sender, RoutedEventArgs e)
         {
+
+            //CrearCredenciales
             
         }
 
         private void login_Click(object sender, RoutedEventArgs e)
         {
+            //Declaraciones
+            Usuario usuario = new Usuario();
+
+            //Asignar los valores de usuario
+            usuario.NombreUsuario = this.userText.Text;
+            usuario.Clave = Encriptacion(this.passwordText.Password);
+            usuario.ListCampaignes = new List<Campaign>();
+
+            //ComprobarCredenciales (usuario.NombreUsuario, usuario.Clave)
+
+            //Asignamos la sesión
+            sesionusuario = JObject.FromObject(usuario);
+
+            GitHub prueba = new GitHub();
+
             menuPrincipal ventanaPrincipal = new menuPrincipal();
-
-            //Usuario usuario = new Usuario();
-
-            //usuario.NombreUsuario = this.userText.Text;
-            //usuario.Password = this.passwordText.Password;
-            //usuario.datosUsuario = new DatosUsuario() { nombreUsuario = usuario.NombreUsuario };
-            DatosUsuario datosusuario = new DatosUsuario();
-            datosusuario.nombreUsuario = this.userText.Text;
-            sesionusuario = JObject.FromObject(datosusuario);
-
             ventanaPrincipal.Show();
             this.Hide();
         }
@@ -106,6 +100,19 @@ namespace WpfApp2
             Creditos ventana = new Creditos();
 
             ventana.Show();
+        }
+
+        private string Encriptacion(string inputString)
+        {
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(inputString);
+            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+            String hash = System.Text.Encoding.ASCII.GetString(data);
+            return hash;
+        }
+
+        private Boolean CrearCredenciales()
+        {
+            return false;
         }
     }
 }
