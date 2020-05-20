@@ -8,14 +8,13 @@ namespace WpfApp2.Classes
     {
 		private string nombre;
 		private string descripcion;
-		private RecursosCampana recursoscampana;
+		private List<RecursosCampana> listarecursos;
 
-		public RecursosCampana RecursosCampana
+		public List<RecursosCampana> RecursosCampana
 		{
-			get { return recursoscampana; }
-			set { recursoscampana = value; }
+			get { return listarecursos; }
+			set { listarecursos = value; }
 		}
-
 
 		public string Descripcion
 		{
@@ -23,13 +22,11 @@ namespace WpfApp2.Classes
 			set { descripcion = value; }
 		}
 
-
 		public string NombreCampaña
 		{
 			get { return nombre; }
 			set { nombre = value; }
 		}
-
 
     }
 }

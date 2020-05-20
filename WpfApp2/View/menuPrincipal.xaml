@@ -87,16 +87,25 @@
 
                 <ComboBox Style="{DynamicResource comboBoxCampaigne}"
                             x:Name="campaigneComboBox"
-                            Text="Si no tiene ninguna creada, marque Nueva Campaña"
+                            Text="Si no va a usar una de las ya creadas, puede crearla con +"
                             SelectionChanged="CampaigneComboBox_SelectionChanged">
-                    <ComboBoxItem>
-                        <TextBlock Text="Nueva campaña"/>
-                    </ComboBoxItem>
                     <ComboBoxItem>
                         <TextBlock Text="D&amp;D 3.5"/>
                     </ComboBoxItem>
                     <ComboBoxItem>
                         <TextBlock Text="Warhammer"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="Mundo Tinieblas"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="Leyenda los 5 anillos (3ª edición)"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="Hitos"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="Fate"/>
                     </ComboBoxItem>
                 </ComboBox>
 

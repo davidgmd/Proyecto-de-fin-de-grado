@@ -27,12 +27,12 @@ namespace WpfApp2
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static JObject datosusuario;
+        private static JObject sesionusuario;
 
-        public static JObject DatosUsuario
+        public static JObject SesionUsuario
         {
-            get { return datosusuario; }
-            set { datosusuario = value; }
+            get { return sesionusuario; }
+            set { sesionusuario = value; }
         }
 
         public MainWindow()
@@ -76,12 +76,14 @@ namespace WpfApp2
         {
             menuPrincipal ventanaPrincipal = new menuPrincipal();
 
-            Usuario usuario = new Usuario();
-            
-            usuario.NombreUsuario = this.userText.Text;
-            usuario.Password = this.passwordText.Password;
-            usuario.datosUsuario = new DatosUsuario() { nombreUsuario = usuario.NombreUsuario };
-            datosusuario = JObject.FromObject(usuario.datosUsuario);
+            //Usuario usuario = new Usuario();
+
+            //usuario.NombreUsuario = this.userText.Text;
+            //usuario.Password = this.passwordText.Password;
+            //usuario.datosUsuario = new DatosUsuario() { nombreUsuario = usuario.NombreUsuario };
+            DatosUsuario datosusuario = new DatosUsuario();
+            datosusuario.nombreUsuario = this.userText.Text;
+            sesionusuario = JObject.FromObject(datosusuario);
 
             ventanaPrincipal.Show();
             this.Hide();
