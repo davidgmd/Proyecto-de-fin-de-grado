@@ -66,31 +66,28 @@ namespace ElEscribaDelDJ.Classes
 
             encriptar.Decrypt(bytes2, encriptar.AesKey, encriptar.AesIv);
 
-            this.credenciales = new Credentials(encriptar.Decrypt(bytes2, encriptar.AesKey, encriptar.AesIv));  
+            this.credenciales = new Credentials(encriptar.Decrypt(bytes2, encriptar.AesKey, encriptar.AesIv));
+            this.cliente.Credentials = credenciales;
             this.repositorio = cliente.Repository.Get("davidgmd", "Proyecto-de-fin-de-grado").Result;
         }
 
-        public async void CrearCredenciales(string nombre, string clave)
+        public async Task CrearCredenciales(string nombre, string clave)
         {
-            this.cliente.Credentials = credenciales;
-            this.usuario = await this.cliente.User.Get("davidgmd");          
-            var repositorio = cliente.Repository.Get("davidgmd", "Proyecto-de-fin-de-grado");
-
-
             try {
+                // create file
                 var existingFile = await cliente.Repository.Content.GetAllContentsByRef(this.repositorio.Id, nombre + ".json", "master");
                 System.Windows.MessageBox.Show("Error el usuario ya existe");
                 return;
             }
             catch (Octokit.NotFoundException)
-            {
-                // create file
+            {                             
                 var createChangeSet = await cliente.Repository.Content.CreateFile(
-                                                repositorio.Id,
+                                                this.repositorio.Id,
                                                 nombre + ".json",
                                                 new CreateFileRequest("File creation",
                                                                       MainWindow.SesionUsuario.ToString(),
                                                                       "master"));
+                return;
             }
             
 
@@ -102,22 +99,25 @@ namespace ElEscribaDelDJ.Classes
             var cadena = this.usuario.Bio;
         }
 
-        public async void ComprobarCredenciales(string nombre, string clave)
+        public async Task ComprobarCredenciales(string nombre, string clave)
         {
             try
             {
                 var existingFile = await cliente.Repository.Content.GetAllContentsByRef(this.repositorio.Id, nombre + ".json", "master");
                 existingFile.ToString();
-
-                var request = new SearchCodeRequest(clave)
+                Usuario usuario = JsonConvert.DeserializeObject<Usuario>(existingFile[0].Content);
+                if (usuario.Clave.Equals(clave))
                 {
-                    FileName = nombre + ".json"
-                };
-                var result = await this.cliente.Search.SearchCode(request);
+                    System.Windows.MessageBox.Show("Datos introducidos correctamente");
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("Usuario o contraseña incorrecta");
+                }
             }
             catch (Octokit.NotFoundException)
-            { 
-                
+            {
+                System.Windows.MessageBox.Show("Error el usuario no existe");
             }
         }
 

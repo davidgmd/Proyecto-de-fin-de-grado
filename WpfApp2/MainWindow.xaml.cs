@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using ElEscribaDelDJ.Classes;
@@ -61,7 +62,7 @@ namespace ElEscribaDelDJ
             
         }
 
-        private void login_Click(object sender, RoutedEventArgs e)
+        private async void login_Click(object sender, RoutedEventArgs e)
         {
             //Declaraciones
             Usuario usuario = new Usuario();
@@ -71,17 +72,14 @@ namespace ElEscribaDelDJ
             usuario.Clave = Encriptacion(this.passwordText.Password);
             usuario.ListCampaignes = new List<Campaign>();
 
-            //ComprobarCredenciales (usuario.NombreUsuario, usuario.Clave)
+            await this.ComprobarCredenciales (usuario.NombreUsuario, usuario.Clave);
 
             //Asignamos la sesión
             SesionUsuario = JObject.FromObject(usuario);
-
-            GitHub prueba = new GitHub();
-            prueba.CrearCredenciales(usuario.NombreUsuario, usuario.Clave);
-
+           
             menuPrincipal ventanaPrincipal = new menuPrincipal();
             ventanaPrincipal.Show();
-            this.Hide();
+            this.Hide(); 
         }
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
@@ -111,9 +109,16 @@ namespace ElEscribaDelDJ
             return hash;
         }
 
-        private Boolean CrearCredenciales()
+        private async void CrearCredenciales()
         {
-            return false;
+            GitHub prueba = new GitHub();
+            //await prueba.CrearCredenciales(usuario.NombreUsuario, usuario.Clave);
+        }
+
+        private async Task ComprobarCredenciales(string nombreusuario, string clave)
+        {
+            GitHub prueba = new GitHub();
+            await prueba.ComprobarCredenciales(nombreusuario, clave);
         }
     }
 }
