@@ -74,9 +74,10 @@ namespace ElEscribaDelDJ
             //ComprobarCredenciales (usuario.NombreUsuario, usuario.Clave)
 
             //Asignamos la sesión
-            sesionusuario = JObject.FromObject(usuario);
+            SesionUsuario = JObject.FromObject(usuario);
 
             GitHub prueba = new GitHub();
+            prueba.CrearCredenciales(usuario.NombreUsuario, usuario.Clave);
 
             menuPrincipal ventanaPrincipal = new menuPrincipal();
             ventanaPrincipal.Show();
