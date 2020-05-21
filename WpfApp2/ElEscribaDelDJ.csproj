@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Classes\Keys\encriptkeys.txt" />
     <None Remove="creditos.txt" />
+    <None Remove="gitcredentials.txt" />
     <None Remove="images\asistente.jpg" />
     <None Remove="images\Calendar.jpg" />
     <None Remove="images\icons8-calendar.png" />
@@ -33,6 +35,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Classes\Keys\encriptkeys.txt" />
+    <Resource Include="gitcredentials.txt" />
     <Resource Include="creditos.txt" />
     <Resource Include="images\asistente.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
