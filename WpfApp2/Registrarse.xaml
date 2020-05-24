@@ -33,7 +33,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
@@ -67,6 +67,7 @@
                     <TextBlock x:Name="ErrorUser"
                                Text="Introduzca el nombre del usuario"
                                Margin="10"
+                               TextWrapping="WrapWithOverflow"
                                Style="{DynamicResource ErrorUsuario}"/>
                 </StackPanel>
 

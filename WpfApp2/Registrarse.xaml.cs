@@ -47,21 +47,21 @@ namespace ElEscribaDelDJ
 
         private void userText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var regExp = new Regex("[a-zA-Z0-9]*$");
+            var regExp = new Regex("^[a-zA-Z][a-zA-Z0-9]*$");
             if (userText.Text == "")
             {
                 this.MarcarIncorrecto(ImgUser, ErrorUser, "Introduzca el nombre de usuario");
             }
             else 
             {
-                if (regExp.IsMatch("[a-zA-Z0-9]*$"))
+                if (regExp.IsMatch(userText.Text))
                 {
-                    ImgUser.Visibility = Visibility.Collapsed;
-                    ErrorUser.Visibility = Visibility.Collapsed;
+                    ImgUser.Visibility = Visibility.Hidden;
+                    ErrorUser.Visibility = Visibility.Hidden;
                 }
                 else
                 {
-                    this.MarcarIncorrecto(ImgUser, ErrorUser, "El nombre de usuario debe empezar por letras y no usar signos especiales");
+                    this.MarcarIncorrecto(ImgUser, ErrorUser, "El nombre de usuario debe empezar \n por letras y no usar signos especiales");
                 }    
             }           
         }
