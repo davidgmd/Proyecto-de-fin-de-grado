@@ -2,24 +2,24 @@
 parte de estos creditos en lo que les afecte de forma directa.
 				
 					- Dirección -
-				Creador: David Pinedo Solano
-				Director del TFG:	
-				Co-Director del TFG:
-				Departamento de la Universidad:
+				*Creador: David Pinedo Solano
+				*Director del TFG:	
+				*Co-Director del TFG:
+				*Departamento de la Universidad:
 
 - Los siguientes iconos han sido tomados de la pagina icon8 siendo los derechos de uso, distribución, explotación exclusivos de la empresa propietaria -
 				Iconos del menu principal (Calendario, Recursos, Tirada, Opciones)
 
 - Las siguientes imagenes pertenecen de forma exclusiva a sus respectivos creadores -
-				Imagen de Login (Francisco de Agora en el programa, Obtenida de la
-				usuaria de DevianArt "Atypicalgamergirl")
+				*Imagen de Login (Francisco de Agora en el programa) 
+				Obtenida de: DevianArt		Artista: Tina Duncan ("Atypicalgamergirl" en DevianArt))
 
 - Los siguientes mencionados son marcas registradas y a ellos pertenecen tanto las imagenes relacionadas, como los nombres registrados -
-				Wizard of the Coast: Dungeons and Dragons 3.5 (nombre y logo D&D 3.5)
-				Games Workshop: Warhammer (nombre y logo)
+				*Wizard of the Coast: Dungeons and Dragons 3.5 (nombre y logo D&D 3.5)
+				*Games Workshop: Warhammer (nombre y logo)
 
 					- BetaTesters -
-				Daniel Acevedo (DaniFlow)
+				*Daniel Acevedo (DaniFlow)
 
 - Agradecimiento especial a Mi Familia por su apoyo y a StackOverFlow por su ingesta cantidad de información llegando a ser superior a la proporcionada 
 por la propia Microsoft -
