@@ -68,6 +68,7 @@ namespace ElEscribaDelDJ
         {
             Registrarse ventanaRegistro = new Registrarse();
             ventanaRegistro.Show();
+            this.Hide();
         }
 
         private async void login_Click(object sender, RoutedEventArgs e)
@@ -100,6 +101,7 @@ namespace ElEscribaDelDJ
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            System.Environment.Exit(0);
         }
 
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)

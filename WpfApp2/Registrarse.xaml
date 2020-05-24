@@ -6,11 +6,16 @@
         xmlns:local="clr-namespace:ElEscribaDelDJ"
         mc:Ignorable="d"
         Title="Registrarse" Height="450" Width="800"
-        Background="Black">
+        Background="Black"
+        Closed="Window_Closed">
 
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Width" Value="200"/>
         </Style>
 
         <Style x:Key="Titulo" TargetType="TextBlock" BasedOn="{StaticResource Encabezado}">
@@ -28,8 +33,7 @@
         <TextBlock Style="{DynamicResource Titulo}" 
                 Text="Registro de usuario"
                 Margin="20"/>
-            <Grid HorizontalAlignment="Center"
-                  Name = "gridRegistro">
+            <Grid HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -54,7 +58,6 @@
                            Grid.Column="1"
                            Margin="10"
                            Grid.Row="0"
-                           Width="200"
                            LostFocus="User_LostFocus"
                            TextChanged="userText_TextChanged"/>
                 <StackPanel Orientation="Horizontal"
@@ -75,21 +78,47 @@
                            Margin="10"
                            Grid.Column="0"
                            Grid.Row="1"/>
-                <TextBox Grid.Column="1"
+                <PasswordBox Grid.Column="1"
                            Grid.Row="1"
+                             Name="PasswordBoxText"
+                           PasswordChanged="PasswordBox_PasswordChange"
                          Margin="10"/>
-                <Image Grid.Column="2"
-                           Grid.Row="1"/>
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="2"
+                            Grid.Row="1">
+                    <Image Name="ImgPassword"
+                           Source="/images/icons/icons8-incorrecto.png"
+                           Height="20"
+                           Margin="10"/>
+                    <TextBlock x:Name="ErrorPassword"
+                               Text="Introduzca una contraseña"
+                               Margin="10"
+                               TextWrapping="WrapWithOverflow"
+                               Style="{DynamicResource ErrorUsuario}"/>
+                </StackPanel>
                 
                 <TextBlock Text="Repetir Contraseña"
                            Grid.Column="0"
                            Grid.Row="2"
                            Margin="10"/>
-                <TextBox Grid.Column="1"
+                <PasswordBox Grid.Column="1"
+                             Name="PasswordBox2"
+                             PasswordChanged="PasswordBox2_PasswordChanged"
                            Grid.Row="2"
                          Margin="10"/>
-                <Image Grid.Column="2"
-                           Grid.Row="2"/>
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="2"
+                            Grid.Row="2">
+                    <Image Name="ImgPassword2"
+                           Source="/images/icons/icons8-incorrecto.png"
+                           Height="20"
+                           Margin="10"/>
+                    <TextBlock x:Name="ErrorPassword2"
+                               Text="Debe coincidir con el campo anterior"
+                               Margin="10"
+                               TextWrapping="WrapWithOverflow"
+                               Style="{DynamicResource ErrorUsuario}"/>
+                </StackPanel>
                 
                 <TextBlock Text="Correo"
                            Grid.Column="0"
@@ -98,8 +127,19 @@
                 <TextBox Grid.Column="1"
                            Grid.Row="3"
                          Margin="10"/>
-                <Image Grid.Column="2"
-                           Grid.Row="3"/>
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="2"
+                            Grid.Row="3">
+                    <Image Name="ImgCorreo"
+                           Source="/images/icons/icons8-incorrecto.png"
+                           Height="20"
+                           Margin="10"/>
+                    <TextBlock x:Name="ErrorCorreo"
+                               Text="Introduzca un correo por favor"
+                               Margin="10"
+                               TextWrapping="WrapWithOverflow"
+                               Style="{DynamicResource ErrorUsuario}"/>
+                </StackPanel>
                 
                 <TextBlock Text="Repetir Correo"
                            Grid.Column="0"
@@ -108,8 +148,19 @@
                 <TextBox Grid.Column="1"
                            Grid.Row="4"
                          Margin="10"/>
-                <Image Grid.Column="2"
-                           Grid.Row="4"/>
+                <StackPanel Orientation="Horizontal"
+                            Grid.Column="2"
+                            Grid.Row="4">
+                    <Image Name="ImgCorreo2"
+                           Source="/images/icons/icons8-incorrecto.png"
+                           Height="20"
+                           Margin="10"/>
+                    <TextBlock x:Name="ErrorCorreo2"
+                               Text="Debe coincidir con el campo anterior"
+                               Margin="10"
+                               TextWrapping="WrapWithOverflow"
+                               Style="{DynamicResource ErrorUsuario}"/>
+                </StackPanel>
                 
                 <Button Name="AceptarButton"
                         Content="Aceptar"
@@ -119,7 +170,8 @@
                 <Button Content="Cancelar"
                         Grid.Column="1"
                         Grid.Row="5"
-                        Margin="10"/>
+                        Margin="10"
+                        Click="Cancel_Click"/>
             </Grid>
         </StackPanel>
     </Grid>

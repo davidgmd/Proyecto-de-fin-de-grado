@@ -47,7 +47,7 @@ namespace ElEscribaDelDJ
 
         private void userText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var regExp = new Regex("^[a-zA-Z][a-zA-Z0-9]*$");
+            var regExp = new Regex("^[a-zA-Z]\\S*$");
             if (userText.Text == "")
             {
                 this.MarcarIncorrecto(ImgUser, ErrorUser, "Introduzca el nombre de usuario");
@@ -61,7 +61,7 @@ namespace ElEscribaDelDJ
                 }
                 else
                 {
-                    this.MarcarIncorrecto(ImgUser, ErrorUser, "El nombre de usuario debe empezar \n por letras y no usar signos especiales");
+                    this.MarcarIncorrecto(ImgUser, ErrorUser, "El nombre de usuario debe empezar \n por letras y sin espacios");
                 }    
             }           
         }
@@ -82,6 +82,62 @@ namespace ElEscribaDelDJ
             elementoimagen.Source = new BitmapImage(new Uri("/images/icons/icons8-incorrecto.png", UriKind.Relative));
             elementotexto.Text = texto;
             elementotexto.Foreground = Brushes.Red;
+        }
+
+        private void PasswordBox_PasswordChange(object sender, RoutedEventArgs e)
+        {
+            var regExp = new Regex("^\\S+$");
+            if (PasswordBoxText.Password == "")
+            {
+                this.MarcarIncorrecto(ImgPassword, ErrorPassword, "Introduzca la contraseña");
+                lista.Remove(ImgPassword);
+            }
+            else
+            {
+                if (regExp.IsMatch(PasswordBoxText.Password))
+                {
+                    this.MarcarCorrecto(ImgPassword, ErrorPassword, "Contraseña valida");
+                    lista.Add(ImgPassword);
+                }
+                else
+                {
+                    this.MarcarIncorrecto(ImgPassword, ErrorPassword, "La contraseña no puede contener \n espacios");
+                    lista.Remove(ImgPassword);
+                }
+            }
+        }
+
+        private void PasswordBox2_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (PasswordBox2.Password == "")
+            {
+                this.MarcarIncorrecto(ImgPassword2, ErrorPassword2, "Introduzca la contraseña");
+                lista.Remove(ImgPassword2);
+            }
+            else
+            {
+                if (PasswordBox2.Password.Equals(PasswordBoxText.Password))
+                {
+                    this.MarcarCorrecto(ImgPassword2, ErrorPassword2, "Coinciden las contraseñas");
+                    lista.Add(ImgPassword2);
+                }
+                else
+                {
+                    this.MarcarIncorrecto(ImgPassword2, ErrorPassword2, "La contraseñas no coinciden");
+                    lista.Remove(ImgPassword2);
+                }
+            }
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {            
+            this.Close();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            MainWindow ventana = new MainWindow();
+            ventana.Show();
         }
     }
 }
