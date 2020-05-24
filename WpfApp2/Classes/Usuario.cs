@@ -5,8 +5,15 @@ namespace ElEscribaDelDJ.Classes
     class Usuario
     {
         private string nombre;
-        private string clave;
+        private string clave;      
         private List<Campaign> listacampaigne;
+        private string correoelectronico;
+
+        public string Correo
+        {
+            get { return correoelectronico; }
+            set { correoelectronico = value; }
+        }
 
         public List<Campaign> ListCampaignes
         {

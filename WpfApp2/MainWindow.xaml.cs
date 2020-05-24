@@ -17,6 +17,15 @@ namespace ElEscribaDelDJ
     {
         private static JObject sesionusuario;
 
+        private static GitHub github;
+
+        public static GitHub gitHub
+        {
+            get { return github; }
+            set { github = value; }
+        }
+
+
         public static JObject SesionUsuario
         {
             get { return sesionusuario; }
@@ -28,9 +37,9 @@ namespace ElEscribaDelDJ
             this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.9);
             this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.9);
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            InitializeComponent();         
-
-    }
+            InitializeComponent();
+            MainWindow.gitHub = GitHub.GithubInstancia;
+        }
 
         private void userTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -57,9 +66,8 @@ namespace ElEscribaDelDJ
 
         private void registrarse_Click(object sender, RoutedEventArgs e)
         {
-
-            //CrearCredenciales
-            
+            Registrarse ventanaRegistro = new Registrarse();
+            ventanaRegistro.Show();
         }
 
         private async void login_Click(object sender, RoutedEventArgs e)
@@ -72,14 +80,21 @@ namespace ElEscribaDelDJ
             usuario.Clave = Encriptacion(this.passwordText.Password);
             usuario.ListCampaignes = new List<Campaign>();
 
-            await this.ComprobarCredenciales (usuario.NombreUsuario, usuario.Clave);
+            if (await this.ComprobarCredenciales (usuario.NombreUsuario, usuario.Clave))
+            {
+                //Asignamos la sesión
+                SesionUsuario = JObject.FromObject(usuario);
 
-            //Asignamos la sesión
-            SesionUsuario = JObject.FromObject(usuario);
-           
-            menuPrincipal ventanaPrincipal = new menuPrincipal();
-            ventanaPrincipal.Show();
-            this.Hide(); 
+                menuPrincipal ventanaPrincipal = new menuPrincipal();
+                ventanaPrincipal.Show();
+                this.Hide();
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Usuario o contraseña incorrecta");
+            }
+
+            
         }
 
         private void exitButton_Click(object sender, RoutedEventArgs e)
@@ -109,16 +124,16 @@ namespace ElEscribaDelDJ
             return hash;
         }
 
-        private async void CrearCredenciales()
+        private async void CrearCredenciales(string nombreusuario, string clave)
         {
-            GitHub prueba = new GitHub();
-            //await prueba.CrearCredenciales(usuario.NombreUsuario, usuario.Clave);
+            await MainWindow.github.CrearCredenciales(nombreusuario, clave);
         }
 
-        private async Task ComprobarCredenciales(string nombreusuario, string clave)
+        private async Task<Boolean> ComprobarCredenciales(string nombreusuario, string clave)
         {
-            GitHub prueba = new GitHub();
-            await prueba.ComprobarCredenciales(nombreusuario, clave);
+            //Comprobamos las credenciales online
+            var respuesta = await MainWindow.github.ComprobarCredenciales(nombreusuario, clave);
+            return respuesta;
         }
     }
 }

@@ -9,12 +9,26 @@ using System.Windows.Interop;
 
 namespace ElEscribaDelDJ.Classes
 {
-    class GitHub
+    public sealed class GitHub
     {
         private GitHubClient cliente;
         private Credentials credenciales;
         private Repository repositorio;
         private User usuario;
+        private int fileexist;
+        private readonly static GitHub githubInstancia = new GitHub();
+
+        public static GitHub GithubInstancia 
+        {
+            get { return githubInstancia; }
+        }
+
+        public int FileExist
+        {
+            get { return fileexist; }
+            set { fileexist = value; }
+        }
+
 
         public User Usuario
         {
@@ -41,7 +55,8 @@ namespace ElEscribaDelDJ.Classes
             set { cliente = value; }
         }
 
-        public GitHub()
+
+        private GitHub()
         {
             this.cliente = new GitHubClient(new ProductHeaderValue(System.Diagnostics.Process.GetCurrentProcess().ProcessName));
 
@@ -75,49 +90,45 @@ namespace ElEscribaDelDJ.Classes
         {
             try {
                 // create file
-                var existingFile = await cliente.Repository.Content.GetAllContentsByRef(this.repositorio.Id, nombre + ".json", "master");
-                System.Windows.MessageBox.Show("Error el usuario ya existe");
-                return;
+                if (await UsuarioExiste(nombre) == true)
+                {
+                    System.Windows.MessageBox.Show("Error el usuario ya existe");
+                    return;
+                }
             }
             catch (Octokit.NotFoundException)
             {                             
                 var createChangeSet = await cliente.Repository.Content.CreateFile(
                                                 this.repositorio.Id,
-                                                nombre + ".json",
+                                                "Usuarios/" + nombre + ".json",
                                                 new CreateFileRequest("File creation",
                                                                       MainWindow.SesionUsuario.ToString(),
                                                                       "master"));
                 return;
             }
-            
-
-            var request = new SearchCodeRequest("Clave")
-            {
-                FileName = nombre + ".json"
-            };
-            var result = await this.cliente.Search.SearchCode(request);
-            var cadena = this.usuario.Bio;
         }
 
-        public async Task ComprobarCredenciales(string nombre, string clave)
+        public async Task<Boolean> ComprobarCredenciales(string nombre, string clave)
         {
             try
             {
-                var existingFile = await cliente.Repository.Content.GetAllContentsByRef(this.repositorio.Id, nombre + ".json", "master");
-                existingFile.ToString();
-                Usuario usuario = JsonConvert.DeserializeObject<Usuario>(existingFile[0].Content);
-                if (usuario.Clave.Equals(clave))
+                if (await UsuarioExiste(nombre) == true)
                 {
-                    System.Windows.MessageBox.Show("Datos introducidos correctamente");
+                    var existingFile = await cliente.Repository.Content.GetAllContentsByRef(this.repositorio.Id, "Usuarios/" + nombre + ".json", "master");
+                    existingFile.ToString();
+                    Usuario usuario = JsonConvert.DeserializeObject<Usuario>(existingFile[0].Content);
+                    if (usuario.Clave.Equals(clave))
+                    {
+                        System.Windows.MessageBox.Show("Datos introducidos correctamente");
+                        return true;
+                    }
+                    return false;
                 }
-                else
-                {
-                    System.Windows.MessageBox.Show("Usuario o contraseña incorrecta");
-                }
+                return false;
             }
             catch (Octokit.NotFoundException)
             {
-                System.Windows.MessageBox.Show("Error el usuario no existe");
+                return false;
             }
         }
 
@@ -125,19 +136,36 @@ namespace ElEscribaDelDJ.Classes
         {
             try
             {
-                var existingFile = await cliente.Repository.Content.GetAllContentsByRef(this.repositorio.Id, nombre + ".json", "master");
-                var updateChangeSet = await cliente.Repository.Content.UpdateFile(
+                if (await UsuarioExiste(nombre) == true) 
+                {
+                    var existingFile = await cliente.Repository.Content.GetAllContentsByRef(this.repositorio.Id, "Usuarios/" + nombre + ".json", "master");
+                    var updateChangeSet = await cliente.Repository.Content.UpdateFile(
                                                 repositorio.Id,
                                                 nombre + ".json",
                                                 new UpdateFileRequest("File update",
                                                                       MainWindow.SesionUsuario.ToString(),
                                                                       existingFile.First().Sha,
                                                                       "master"));
+                }
             }
             catch (Octokit.NotFoundException)
             {
-
+                System.Windows.MessageBox.Show("Error el fichero no existe");
+                return;
             }
         }
+
+        public async Task<Boolean> UsuarioExiste(String nombre)
+        {
+            try {
+                var existingFile = await cliente.Repository.Content.GetAllContentsByRef(this.repositorio.Id, "Usuarios/" + nombre + ".json", "master");
+                return true;
+            }
+            catch (Octokit.NotFoundException)
+            {
+                return false;
+            }
+
+        }        
     }
 }
