@@ -27,10 +27,10 @@ namespace ElEscribaDelDJ.Classes
         public Email()
         {
             // SMTP server address
-            this.servidor = new SmtpServer("smtp.emailarchitect.net");
+            this.servidor = new SmtpServer("smtp.gmail.com");
             // User and password for ESMTP authentication
             this.servidor.User = "davidpinedosolano@gmail.com";
-            this.servidor.Password = "mausillon26";
+            this.servidor.Password = "xkulzzobqldewgdj";
             // If your SMTP server uses 587 port
             // oServer.Port = 587;
 
@@ -39,10 +39,10 @@ namespace ElEscribaDelDJ.Classes
             // oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
 
             this.clienteSmtp = new SmtpClient();
-            this.servidor.Port = 25;
+            this.servidor.Port = 465;
         }
 
-        private void sendEmail(string correoDestino, string motivoMensaje, string mensaje)
+        public Boolean sendEmail(string correoDestino, string motivoMensaje, string mensaje)
         {
             try
             {
@@ -60,13 +60,16 @@ namespace ElEscribaDelDJ.Classes
 
                 // Most mordern SMTP servers require SSL/TLS connection now.
                 // ConnectTryTLS means if server supports SSL/TLS, SSL/TLS will be used automatically.
-                this.servidor.ConnectType = SmtpConnectType.ConnectTryTLS;
+                //this.servidor.ConnectType = SmtpConnectType.ConnectTryTLS;
+                this.servidor.ConnectType = SmtpConnectType.ConnectSSLAuto;
 
                 this.clienteSmtp.SendMail(this.servidor, oMail);
+                return true;
             }
             catch (Exception ep)
             {
                 //Error en el mensaje
+                return false;
             }
         }
     }

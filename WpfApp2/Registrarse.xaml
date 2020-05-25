@@ -171,7 +171,8 @@
                         Content="Aceptar"
                         Grid.Row="5"
                         Margin="10"
-                        IsEnabled="False"/>
+                        IsEnabled="False"
+                        Click="AceptarButton_Click"/>
                 <Button Content="Cancelar"
                         Grid.Column="1"
                         Grid.Row="5"
@@ -180,12 +181,15 @@
             </Grid>
             <StackPanel HorizontalAlignment="Center"
                         Visibility="Hidden"
+                        Name="introducirCodigo"
                         Margin="10">
                 <TextBlock Text="Introducir código enviado al correo"
                            />
-                <TextBox Margin="2"/>
+                <TextBox Margin="2"
+                         Name="codigoTextBox"/>
                 <Button Content="Introducir código"
-                        Margin="5"/>
+                        Margin="5"
+                        Click="introducirButton_Click"/>
             </StackPanel>
         </StackPanel>
     </Grid>

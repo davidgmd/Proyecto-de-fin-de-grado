@@ -20,6 +20,7 @@ namespace ElEscribaDelDJ
     public partial class Registrarse : Window
     {
         private List<Object> lista = new List<Object>();
+        private string codigo;
 
         public Registrarse()
         {
@@ -218,6 +219,55 @@ namespace ElEscribaDelDJ
             if (!lista.Contains(elementoimagen))
             {
                 lista.Add(elementoimagen);
+            }
+        }
+
+        private void AceptarButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.codigo = this.generarcodigo();
+            Email emailRegistro = new Email();       
+            var exito = emailRegistro.sendEmail(CorreoTextBox.Text, "Usuario registrado con este correo en el escriba del dj", "Se ha solicitado" +
+                $" registrarse con este correo por parte del usuario {userText.Text} debe introducir en el programa" +
+                $" el código de registro {codigo}");
+            if (exito)
+            {
+                System.Windows.MessageBox.Show($"Se ha enviado un correo a la dirección introducida {CorreoTextBox.Text} Revise el" +
+                    $" correo para ver su código de registro el cual tendra que introducir, si no lo encuentra mire en la carpeta" +
+                    $" de 'Spam' o 'Correo no deseado'");
+                this.introducirCodigo.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("El envio a la dirección de correo ha fallado, revise que su conexión a internet " +
+                    " funciona Correctamente y la dirección de correo introducida");
+            }
+        }
+
+        private string generarcodigo()
+        {
+            StringBuilder builder = new StringBuilder();
+            Randomizar random = new Randomizar(4, 6);
+            int longitud = random.Longitud;
+
+            for (int i = 0; i < longitud; i++)
+            {          
+                builder.Append(random.LetraAlAzar());
+                builder.Append(random.NumeroAlAzar());              
+            }
+
+            return builder.ToString();
+        }
+
+        private void introducirButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (codigoTextBox.Text.Equals(codigo))
+            {
+
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("El código introducido es incorrecto, revise el correo, si pulsa en aceptar de nuevo " +
+                    "se le reenviara otro correo con otro código");
             }
         }
     }
