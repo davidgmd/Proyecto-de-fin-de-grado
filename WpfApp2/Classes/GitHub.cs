@@ -88,22 +88,19 @@ namespace ElEscribaDelDJ.Classes
 
         public async Task CrearCredenciales(string nombre, string clave)
         {
-            try {
-                // create file
-                if (await UsuarioExiste(nombre) == true)
-                {
-                    System.Windows.MessageBox.Show("Error el usuario ya existe");
-                    return;
-                }
+            if (await UsuarioExiste(nombre) == true)
+            {
+                System.Windows.MessageBox.Show("Error el usuario ya existe");
+                return;
             }
-            catch (Octokit.NotFoundException)
-            {                             
+            else
+            {
                 var createChangeSet = await cliente.Repository.Content.CreateFile(
-                                                this.repositorio.Id,
-                                                "Usuarios/" + nombre + ".json",
-                                                new CreateFileRequest("File creation",
-                                                                      MainWindow.SesionUsuario.ToString(),
-                                                                      "master"));
+                            this.repositorio.Id,
+                            "Usuarios/" + nombre + ".json",
+                            new CreateFileRequest("File creation",
+                                                    MainWindow.SesionUsuario.ToString(),
+                                                    "master"));
                 return;
             }
         }

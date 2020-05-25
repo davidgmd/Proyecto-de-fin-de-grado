@@ -126,11 +126,6 @@ namespace ElEscribaDelDJ
             return hash;
         }
 
-        private async void CrearCredenciales(string nombreusuario, string clave)
-        {
-            await MainWindow.github.CrearCredenciales(nombreusuario, clave);
-        }
-
         private async Task<Boolean> ComprobarCredenciales(string nombreusuario, string clave)
         {
             //Comprobamos las credenciales online

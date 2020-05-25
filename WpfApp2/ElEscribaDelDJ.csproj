@@ -63,4 +63,8 @@
     <Resource Include="images\icons\warhammer-removebg.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Usuarios\" />
+  </ItemGroup>
+
 </Project>

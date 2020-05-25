@@ -1,16 +1,14 @@
 ﻿using ElEscribaDelDJ.Classes;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ElEscribaDelDJ
 {
@@ -135,7 +133,7 @@ namespace ElEscribaDelDJ
             {
                 if (regExp.IsMatch(CorreoTextBox.Text))
                 {
-                    this.MarcarCorrecto(ImgCorreo, ErrorCorreo, "Contraseña valida");
+                    this.MarcarCorrecto(ImgCorreo, ErrorCorreo, "Correo Valido");
                     anadirLista(ImgCorreo);
                 }
                 else
@@ -262,13 +260,40 @@ namespace ElEscribaDelDJ
         {
             if (codigoTextBox.Text.Equals(codigo))
             {
-
+                CrearCredenciales(userText.Text, PasswordBoxText.Password);
+                System.Windows.MessageBox.Show("usuario creado con exito");
+                this.Close();
             }
             else
             {
                 System.Windows.MessageBox.Show("El código introducido es incorrecto, revise el correo, si pulsa en aceptar de nuevo " +
                     "se le reenviara otro correo con otro código");
             }
+        }
+
+        private async void CrearCredenciales(string nombreusuario, string clave)
+        {
+            Usuario usuario = new Usuario();
+            usuario.NombreUsuario = userText.Text;
+            usuario.Clave = PasswordBoxText.Password;
+            usuario.Correo = CorreoTextBox.Text;
+            usuario.Clave = Encriptacion(PasswordBoxText.Password);
+
+            MainWindow.SesionUsuario = JObject.FromObject(usuario);
+            await MainWindow.gitHub.CrearCredenciales(nombreusuario, clave);
+
+            var localDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\"));
+            //cambiar a .user al finalizar las pruebas
+            var path = localDirectory + "\\Usuarios\\" + usuario.NombreUsuario + ".json";
+            System.IO.File.WriteAllText(path, MainWindow.SesionUsuario.ToString());
+        }
+
+        private string Encriptacion(string inputString)
+        {
+            byte[] data = System.Text.Encoding.ASCII.GetBytes(inputString);
+            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
+            String hash = System.Text.Encoding.ASCII.GetString(data);
+            return hash;
         }
     }
 }
