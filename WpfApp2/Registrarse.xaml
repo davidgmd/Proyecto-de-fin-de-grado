@@ -25,6 +25,7 @@
         <Style x:Key="ErrorUsuario" TargetType="TextBlock">
             <Setter Property="Foreground" Value="Red" />
             <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Visibility" Value="Hidden"/>
         </Style>
     </Window.Resources>
     
@@ -125,6 +126,8 @@
                            Grid.Row="3"
                            Margin="10"/>
                 <TextBox Grid.Column="1"
+                         Name="CorreoTextBox"
+                         TextChanged="CorreoTextBox_TextChanged"
                            Grid.Row="3"
                          Margin="10"/>
                 <StackPanel Orientation="Horizontal"
@@ -146,6 +149,8 @@
                            Grid.Row="4"
                            Margin="10"/>
                 <TextBox Grid.Column="1"
+                         Name="CorreoTextBox2"
+                         TextChanged="CorreoTextBox2_TextChanged"
                            Grid.Row="4"
                          Margin="10"/>
                 <StackPanel Orientation="Horizontal"

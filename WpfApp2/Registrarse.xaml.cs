@@ -105,6 +105,8 @@ namespace ElEscribaDelDJ
                     lista.Remove(ImgPassword);
                 }
             }
+            RoutedEventArgs es = new RoutedEventArgs();
+            PasswordBox2_PasswordChanged(this, es);
         }
 
         private void PasswordBox2_PasswordChanged(object sender, RoutedEventArgs e)
@@ -138,6 +140,53 @@ namespace ElEscribaDelDJ
         {
             MainWindow ventana = new MainWindow();
             ventana.Show();
+        }
+
+        private void CorreoTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var regExp = new Regex("^\\S+@\\S+\\.\\S+$");
+            if (CorreoTextBox.Text == "")
+            {
+                this.MarcarIncorrecto(ImgCorreo, ErrorCorreo, "Introduzca el correo");
+                lista.Remove(ImgCorreo);
+            }
+            else
+            {
+                if (regExp.IsMatch(CorreoTextBox.Text))
+                {
+                    this.MarcarCorrecto(ImgCorreo, ErrorCorreo, "Contraseña valida");
+                    lista.Add(ImgCorreo);
+                }
+                else
+                {
+                    this.MarcarIncorrecto(ImgCorreo, ErrorCorreo, "La contraseña no puede contener \n espacios y debe tener @ y .es \n Por ejemplo @hotmail.com");
+                    lista.Remove(ImgCorreo);
+                }
+            }
+
+            CorreoTextBox2_TextChanged(sender, e);
+        }
+
+        private void CorreoTextBox2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (CorreoTextBox2.Text == "")
+            {
+                this.MarcarIncorrecto(ImgCorreo2, ErrorCorreo2, "Introduzca el correo");
+                lista.Remove(ImgCorreo2);
+            }
+            else
+            {
+                if (CorreoTextBox2.Text.Equals(CorreoTextBox.Text))
+                {
+                    this.MarcarCorrecto(ImgCorreo2, ErrorCorreo2, "Coinciden los correos");
+                    lista.Add(ImgCorreo2);
+                }
+                else
+                {
+                    this.MarcarIncorrecto(ImgCorreo2, ErrorCorreo2, "Los correos no coinciden");
+                    lista.Remove(ImgCorreo2);
+                }
+            }
         }
     }
 }
