@@ -36,11 +36,11 @@ namespace ElEscribaDelDJ.View
             {
                 case "D&D 3.5":
                     
-                    this.iconoCampaigne.Source = new BitmapImage(new Uri("/images/icons/D&D.png", UriKind.Relative));
+                    this.iconoCampaigne.Source = new BitmapImage(new Uri("/Images/icons/D&D.png", UriKind.Relative));
                     break;
 
                 case "Warhammer":
-                    this.iconoCampaigne.Source = new BitmapImage(new Uri("/images/icons/warhammer-removebg.png", UriKind.Relative));
+                    this.iconoCampaigne.Source = new BitmapImage(new Uri("/Images/icons/warhammer-removebg.png", UriKind.Relative));
                     break;
 
                 default:

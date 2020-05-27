@@ -48,8 +48,18 @@ namespace ElEscribaDelDJ
 
             //Indicamos que va a haber un diccionario de recursos y su dirección
             ResourceDictionary dict = new ResourceDictionary();
-            //cambiar a .user al finalizar las pruebas
-            var path = RecursosAplicacion.DireccionBase + "\\Idiomas\\EN\\" + "LoginEN.xaml";
+            //Según el idioma cargamos uno u otro
+            var path = RecursosAplicacion.DireccionBase + "\\Idiomas\\ES\\" + "Login.xaml";
+
+            if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
+            {
+                path = RecursosAplicacion.DireccionBase + "\\Idiomas\\ES\\" + "Login.xaml";
+            }
+            else
+            {
+                path = RecursosAplicacion.DireccionBase + "\\Idiomas\\EN\\" + "Login.xaml";
+            }
+            
             dict.Source = new Uri(path, UriKind.Absolute);
             this.Resources.MergedDictionaries.Add(dict);
         }

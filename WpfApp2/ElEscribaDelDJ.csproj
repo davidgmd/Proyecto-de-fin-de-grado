@@ -12,28 +12,32 @@
     <None Remove="creditos.txt" />
     <None Remove="emailcredentials.txt" />
     <None Remove="gitcredentials.txt" />
-    <None Remove="images\asistente.jpg" />
-    <None Remove="images\Calendar.jpg" />
-    <None Remove="images\icons8-calendar.png" />
-    <None Remove="images\icons\D&amp;D.png" />
-    <None Remove="images\icons\iconoMas.png" />
-    <None Remove="images\icons\iconoMenos.png" />
-    <None Remove="images\icons\icons8-books.png" />
-    <None Remove="images\icons\icons8-dices.png" />
-    <None Remove="images\icons\icons8-escudopregunta.png" />
-    <None Remove="images\icons\icons8-incorrecto.png" />
-    <None Remove="images\icons\icons8-lock.png" />
-    <None Remove="images\icons\icons8-options.png" />
-    <None Remove="images\icons\icons8-salir.png" />
-    <None Remove="images\icons\icons8-salir2.png" />
-    <None Remove="images\icons\icons8-verificado.png" />
-    <None Remove="images\icons\warhammer.jpg" />
-    <None Remove="images\licencia.png" />
-    <None Remove="images\warhammer-removebg.png" />
+    <None Remove="Images\asistente.jpg" />
+    <None Remove="Images\Calendar.jpg" />
+    <None Remove="Images\icons8-calendar.png" />
+    <None Remove="Images\icons\D&amp;D.png" />
+    <None Remove="Images\icons\english.png" />
+    <None Remove="Images\icons\iconoMas.png" />
+    <None Remove="Images\icons\iconoMenos.png" />
+    <None Remove="Images\icons\icons8-books.png" />
+    <None Remove="Images\icons\icons8-dices.png" />
+    <None Remove="Images\icons\icons8-escudopregunta.png" />
+    <None Remove="Images\icons\icons8-incorrecto.png" />
+    <None Remove="Images\icons\icons8-lock.png" />
+    <None Remove="Images\icons\icons8-options.png" />
+    <None Remove="Images\icons\icons8-salir.png" />
+    <None Remove="Images\icons\icons8-salir2.png" />
+    <None Remove="Images\icons\icons8-verificado.png" />
+    <None Remove="Images\icons\spanish.png" />
+    <None Remove="Images\icons\warhammer.jpg" />
+    <None Remove="Images\licencia.png" />
+    <None Remove="Images\warhammer-removebg.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Page Remove="Idiomas\ES\SignUpES.xaml" />
+    <Page Remove="Idiomas\EN\Login.xaml" />
+    <Page Remove="Idiomas\ES\Login.xaml" />
+    <Page Remove="Idiomas\ES\SignUp.xaml" />
     <Page Remove="Idiomas\IdiomasLogin.xaml" />
     <Page Remove="Idiomas\LoginEN.xaml" />
     <Page Remove="Idiomas\LoginES.xaml" />
@@ -41,13 +45,13 @@
 
   <ItemGroup>
     <Resource Include="emailcredentials.txt" />
-    <Resource Include="Idiomas\EN\LoginEN.xaml">
+    <Resource Include="Idiomas\EN\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Resource>
-    <Resource Include="Idiomas\ES\SignUpES.xaml">
+    <Resource Include="Idiomas\ES\SignUp.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Resource>
-    <Resource Include="Idiomas\ES\LoginES.xaml" />
+    <Resource Include="Idiomas\ES\Login.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -60,30 +64,59 @@
     <Resource Include="Classes\Keys\encriptkeys.txt" />
     <Resource Include="gitcredentials.txt" />
     <Resource Include="creditos.txt" />
-    <Resource Include="images\asistente.jpg">
+    <Resource Include="Images\asistente.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="images\Calendar.jpg" />
-    <Resource Include="images\icons\D&amp;D.png" />
-    <Resource Include="images\icons\iconoMas.png" />
-    <Resource Include="images\icons\iconoMenos.png" />
-    <Resource Include="images\icons\icons8-books.png" />
-    <Resource Include="images\icons\icons8-calendar.png" />
-    <Resource Include="images\icons\icons8-dices.png" />
-    <Resource Include="images\icons\icons8-escudopregunta.png" />
-    <Resource Include="images\icons\icons8-incorrecto.png" />
-    <Resource Include="images\icons\icons8-lock.png" />
-    <Resource Include="images\icons\icons8-options.png" />
-    <Resource Include="images\icons\icons8-salir.png" />
-    <Resource Include="images\icons\icons8-salir2.png" />
-    <Resource Include="images\icons\icons8-verificado.png" />
-    <Resource Include="images\icons\warhammer.jpg" />
-    <Resource Include="images\licencia.png" />
-    <Resource Include="images\icons\warhammer-removebg.png" />
+    <Resource Include="Images\Calendar.jpg" />
+    <Resource Include="Images\icons\D&amp;D.png" />
+    <Resource Include="Images\icons\english.png" />
+    <Resource Include="Images\icons\iconoMas.png" />
+    <Resource Include="Images\icons\iconoMenos.png" />
+    <Resource Include="Images\icons\icons8-books.png" />
+    <Resource Include="Images\icons\icons8-calendar.png" />
+    <Resource Include="Images\icons\icons8-dices.png" />
+    <Resource Include="Images\icons\icons8-escudopregunta.png" />
+    <Resource Include="Images\icons\icons8-incorrecto.png" />
+    <Resource Include="Images\icons\icons8-lock.png" />
+    <Resource Include="Images\icons\icons8-options.png" />
+    <Resource Include="Images\icons\icons8-salir.png" />
+    <Resource Include="Images\icons\icons8-salir2.png" />
+    <Resource Include="Images\icons\icons8-verificado.png" />
+    <Resource Include="Images\icons\spanish.png" />
+    <Resource Include="Images\icons\warhammer.jpg" />
+    <Resource Include="Images\licencia.png" />
+    <Resource Include="Images\icons\warhammer-removebg.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Usuarios\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="ConfiguracionAplicacion.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ConfiguracionAplicacion.settings</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ConfiguracionAplicacion.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ConfiguracionAplicacion.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -23,6 +23,7 @@
         <Style x:Key="Checkers" TargetType="Image">
             <Setter Property="Height" Value="20"/>
             <Setter Property="Margin" Value="10"/>
+            <Setter Property="Source" Value="Images/icons/icons8-incorrecto.png"/>
         </Style>
 
         <Style x:Key="Titulo" TargetType="TextBlock" BasedOn="{StaticResource Encabezado}">
@@ -98,8 +99,7 @@
                 <StackPanel Orientation="Horizontal"
                             Grid.Column="2"
                             Grid.Row="0">
-                    <Image Name="ImgUser"
-                           Source="/images/icons/icons8-incorrecto.png"
+                    <Image Name="ImgUser"                           
                            Style="{DynamicResource Checkers}"/>
                     <TextBlock x:Name="ErrorUser"
                                Text="Introduzca el nombre del usuario"                              
@@ -119,7 +119,6 @@
                             Grid.Column="2"
                             Grid.Row="1">
                     <Image Name="ImgPassword"
-                           Source="/images/icons/icons8-incorrecto.png"
                            Style="{DynamicResource Checkers}"/>
                     <TextBlock x:Name="ErrorPassword"
                                Text="Introduzca una contraseña"
@@ -139,7 +138,6 @@
                             Grid.Column="2"
                             Grid.Row="2">
                     <Image Name="ImgPassword2"
-                           Source="/images/icons/icons8-incorrecto.png"
                            Style="{DynamicResource Checkers}"/>
                     <TextBlock x:Name="ErrorPassword2"
                                Text="Debe coincidir con el campo anterior"
@@ -159,7 +157,6 @@
                             Grid.Column="2"
                             Grid.Row="3">
                     <Image Name="ImgCorreo"
-                           Source="/images/icons/icons8-incorrecto.png"
                            Style="{DynamicResource Checkers}"/>
                     <TextBlock x:Name="ErrorCorreo"
                                Text="Introduzca un correo por favor"
@@ -179,7 +176,6 @@
                             Grid.Column="2"
                             Grid.Row="4">
                     <Image Name="ImgCorreo2"
-                           Source="/images/icons/icons8-incorrecto.png"
                            Style="{DynamicResource Checkers}"/>
                     <TextBlock x:Name="ErrorCorreo2"
                                Text="Debe coincidir con el campo anterior"

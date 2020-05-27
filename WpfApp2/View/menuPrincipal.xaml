@@ -22,6 +22,7 @@
 
         <Style x:Key="iconCampaigne" TargetType="Image">
             <Setter Property="Stretch" Value="Uniform"/>
+            <Setter Property="Source" Value="/Images/icons/icons8-escudopregunta.png"/>
         </Style>
 
         <Style x:Key="botonSalirMP" TargetType="Button" BasedOn="{StaticResource botonSalir}">
@@ -116,8 +117,7 @@
             
             <Image Style="{DynamicResource iconCampaigne}"
                     Grid.Row="2"
-                    x:Name="iconoCampaigne"
-                    Source="/images/icons/icons8-escudopregunta.png">
+                    x:Name="iconoCampaigne">
                 <Image.Effect>
                     <DropShadowEffect/>
                 </Image.Effect>

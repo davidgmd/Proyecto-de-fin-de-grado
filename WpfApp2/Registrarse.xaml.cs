@@ -176,7 +176,7 @@ namespace ElEscribaDelDJ
         {
             elementoimagen.Visibility = Visibility.Visible;
             elementotexto.Visibility = Visibility.Visible;
-            elementoimagen.Source = new BitmapImage(new Uri("/images/icons/icons8-verificado.png", UriKind.Relative));
+            elementoimagen.Source = new BitmapImage(new Uri("Images/icons/icons8-verificado.png", UriKind.Relative));
             elementotexto.Text = texto;
             elementotexto.Foreground = Brushes.Green;
         }
@@ -185,7 +185,7 @@ namespace ElEscribaDelDJ
         {
             elementoimagen.Visibility = Visibility.Visible;
             elementotexto.Visibility = Visibility.Visible;
-            elementoimagen.Source = new BitmapImage(new Uri("/images/icons/icons8-incorrecto.png", UriKind.Relative));
+            elementoimagen.Source = new BitmapImage(new Uri("Images/icons/icons8-incorrecto.png", UriKind.Relative));
             elementotexto.Text = texto;
             elementotexto.Foreground = Brushes.Red;
         }

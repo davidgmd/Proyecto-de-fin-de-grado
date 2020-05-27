@@ -19,6 +19,12 @@
                 <Setter Property="Foreground" Value="White"/>
             </Style>
 
+            <Style x:Key="botonSalirInicio" TargetType="Button" BasedOn="{StaticResource botonSalir}">
+                <Setter Property="Height" Value="50"/>
+                <Setter Property="Width" Value="50"/>
+                <Setter Property="Margin" Value="0 0 10 0"/>
+            </Style>
+
             <Style x:Key="tipoBase" TargetType="TextBlock">
                 <Setter Property="Foreground" Value="White"/>
                 <Setter Property="Margin" Value="10"/>
@@ -26,7 +32,7 @@
 
             <Style x:Key="imagenTitulo" TargetType="Image">
                 <Setter Property="Height" Value="200"/>
-                <Setter Property="Source" Value="/images/asistente.jpg" />
+                <Setter Property="Source" Value="/Images/asistente.jpg" />
             </Style>
 
             <Style x:Key="narracion" TargetType="TextBlock" BasedOn="{StaticResource tipoBase}">
@@ -40,14 +46,22 @@
                 <Setter Property="FontStyle" Value="Normal"/>
             </Style>
 
-            <Style x:Key="botonSalirInicio" TargetType="Button" BasedOn="{StaticResource botonSalir}">
-                <Setter Property="Height" Value="50"/>
-                <Setter Property="Width" Value="50"/>
-                <Setter Property="Margin" Value="0 0 10 0"/>
+            <Style x:Key="ImagenIdioma" TargetType="Image">
+                <Setter Property="Height" Value="45"/>
+                <Setter Property="Stretch" Value="UniformToFill"/>
+                <Setter Property="Margin" Value="0"/>
+            </Style>
+
+            <Style x:Key="IdiomaES" TargetType="Image" BasedOn="{StaticResource ImagenIdioma}">
+                <Setter Property="Source" Value="/Images/icons/spanish.png"/>
+            </Style>
+
+            <Style x:Key="IdiomaEN" TargetType="Image" BasedOn="{StaticResource ImagenIdioma}">
+                <Setter Property="Source" Value="/Images/icons/english.png"/>
             </Style>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Idiomas/ES/LoginES.xaml"/>
+                <ResourceDictionary Source="Idiomas/ES/Login.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
@@ -85,7 +99,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <TextBlock x:Name="userTextBlock" 
@@ -114,15 +128,15 @@
 
                 <Grid x:Name="gridRegistro" Grid.Row="2" 
                       Grid.Column="1"
-                      Margin="10">
+                      Margin="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <Button Grid.Row="1" 
@@ -162,6 +176,28 @@
                     </StackPanel>
                 </Grid>
             </Grid>
+
+            <StackPanel Orientation="Horizontal"
+                    x:Name="ElegirIdioma"
+                        HorizontalAlignment="Center">
+                <StackPanel x:Name="IdiomaES"
+                            Margin="0 0 10 0">
+                    <Image x:Name="Spain"
+                           Style="{DynamicResource IdiomaES}"/>
+                    <TextBlock Text="Español"
+                               Margin="0"
+                               Style="{DynamicResource tipoBase}"/>
+                </StackPanel>
+
+                <StackPanel x:Name="IdiomaEN" >
+                    <Image x:Name="English"
+                           Style="{DynamicResource IdiomaEN}"/>
+                    <TextBlock Text="English"
+                               Margin="0"
+                           Style="{DynamicResource tipoBase}"/>
+                </StackPanel>
+
+            </StackPanel>
         </StackPanel>
 
         <StackPanel VerticalAlignment="Bottom"
