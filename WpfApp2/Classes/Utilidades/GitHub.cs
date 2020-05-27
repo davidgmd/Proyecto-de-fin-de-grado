@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+using Newtonsoft.Json;
 using Octokit;
 using System;
 using System.IO;
@@ -62,14 +63,12 @@ namespace ElEscribaDelDJ.Classes
 
             //Se leen las claves de desencriptación del fichero encriptkeys
             AESencription encriptar = new AESencription();
-            var localDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\"));
             //cambiar a .user al finalizar las pruebas
-            string path = localDirectory + "\\Classes\\Keys\\encriptkeys.txt";
+            string path = RecursosAplicacion.DireccionBase + "\\Classes\\Keys\\encriptkeys.txt";
             encriptar = JsonConvert.DeserializeObject<AESencription>(File.ReadAllText(path));
 
-            localDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\"));
            //cambiar a .user al finalizar las pruebas
-            path = localDirectory + "gitcredentials.txt";
+            path = RecursosAplicacion.DireccionBase + "gitcredentials.txt";
 
             //Encriptar las credenciales
             //var plaintText = System.IO.File.ReadAllText(path);

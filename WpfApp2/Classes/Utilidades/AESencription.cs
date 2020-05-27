@@ -32,26 +32,6 @@ namespace ElEscribaDelDJ.Classes
 
         public AESencription()
         {
-            /*try
-            {
-                // Create Aes that generates a new key and initialization vector (IV).    
-                // Same key must be used in encryption and decryption    
-                using (AesManaged aes = new AesManaged())
-                {
-                    // Encrypt string 
-                    var localDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\"));
-                    string path = localDirectory + "\\Classes\\Keys\\encriptkeys.user";
-                    this.aeskey = aes.Key;
-                    this.AesIv = aes.IV;
-                    JObject claves = JObject.FromObject(this);
-                    System.IO.File.WriteAllText(path, claves.ToString());
-                }
-            }
-            catch (Exception exp)
-            {
-                Console.WriteLine(exp.Message);
-            }*/
-
         }
 
 

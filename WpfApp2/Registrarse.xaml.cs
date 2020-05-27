@@ -1,4 +1,5 @@
 ﻿using ElEscribaDelDJ.Classes;
+using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -273,18 +274,19 @@ namespace ElEscribaDelDJ
 
         private async void CrearCredenciales(string nombreusuario, string clave)
         {
+            //creamos los datos del usuario y ciframos la contraseña y el correo con sha256 por motivos de seguridad
             Usuario usuario = new Usuario();
             usuario.NombreUsuario = userText.Text;
             usuario.Clave = PasswordBoxText.Password;
-            usuario.Correo = CorreoTextBox.Text;
+            usuario.Correo = Encriptacion(CorreoTextBox.Text);
             usuario.Clave = Encriptacion(PasswordBoxText.Password);
 
+            //guardamos en la sesión el usuario y creamos las credenciales en git
             MainWindow.SesionUsuario = JObject.FromObject(usuario);
             await MainWindow.gitHub.CrearCredenciales(nombreusuario, clave);
 
-            var localDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\"));
             //cambiar a .user al finalizar las pruebas
-            var path = localDirectory + "\\Usuarios\\" + usuario.NombreUsuario + ".json";
+            var path = RecursosAplicacion.DireccionBase + "\\Usuarios\\" + usuario.NombreUsuario + ".json";
             System.IO.File.WriteAllText(path, MainWindow.SesionUsuario.ToString());
         }
 

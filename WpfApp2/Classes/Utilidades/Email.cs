@@ -1,6 +1,8 @@
 ﻿using EASendMail;
+using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace ElEscribaDelDJ.Classes
@@ -10,6 +12,14 @@ namespace ElEscribaDelDJ.Classes
 
         private SmtpServer servidor;
         private SmtpClient  clienteSmtp;
+        private string[] configuracionemail;
+
+        public string[] ConfiguracionEmail
+        {
+            get { return configuracionemail; }
+            set { configuracionemail = value; }
+        }
+
 
         public SmtpClient  ClienteSmtp
         {
@@ -26,11 +36,17 @@ namespace ElEscribaDelDJ.Classes
 
         public Email()
         {
+            //cambiar a .user al finalizar las pruebas, para que no se suba al repositorio
+            //Se leen todos los datos linea por linea del fichero
+            var path = RecursosAplicacion.DireccionBase + "emailcredentials.txt";
+            this.ConfiguracionEmail = File.ReadAllLines(path, Encoding.UTF8);
+
+            //configuramos los datos del correo
             // SMTP server address
-            this.servidor = new SmtpServer("smtp.gmail.com");
+            this.servidor = new SmtpServer(this.ConfiguracionEmail[0]);
             // User and password for ESMTP authentication
-            this.servidor.User = "davidpinedosolano@gmail.com";
-            this.servidor.Password = "xkulzzobqldewgdj";
+            this.servidor.User = this.ConfiguracionEmail[1];
+            this.servidor.Password = this.ConfiguracionEmail[2];
             // If your SMTP server uses 587 port
             // oServer.Port = 587;
 
@@ -49,7 +65,7 @@ namespace ElEscribaDelDJ.Classes
                 SmtpMail oMail = new SmtpMail("TryIt");
 
                 // Set sender email address, please change it to yours
-                oMail.From = "davidpinedosolano@gmail.com";
+                oMail.From = this.ConfiguracionEmail[1];
                 // Set recipient email address, please change it to yours
                 oMail.To = correoDestino;
 
@@ -66,7 +82,7 @@ namespace ElEscribaDelDJ.Classes
                 this.clienteSmtp.SendMail(this.servidor, oMail);
                 return true;
             }
-            catch (Exception ep)
+            catch (Exception)
             {
                 //Error en el mensaje
                 return false;

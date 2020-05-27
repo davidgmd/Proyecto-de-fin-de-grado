@@ -14,7 +14,6 @@
 
     <Window.Resources>
         <ResourceDictionary>
-
             <Style x:Key="titulo" TargetType="TextBlock" BasedOn="{StaticResource Encabezado}">
                 <Setter Property="Margin" Value="20"/>
                 <Setter Property="Foreground" Value="White"/>
@@ -48,7 +47,7 @@
             </Style>
 
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Idiomas/LoginES.xaml"/>
+                <ResourceDictionary Source="Idiomas/ES/LoginES.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

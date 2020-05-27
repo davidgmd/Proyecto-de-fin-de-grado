@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Reflection;
-using System.Resources;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using ElEscribaDelDJ.Classes;
+using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using ElEscribaDelDJ.View;
 using Newtonsoft.Json.Linq;
 
@@ -21,6 +19,7 @@ namespace ElEscribaDelDJ
         private static JObject sesionusuario;
 
         private static GitHub github;
+
 
         public static GitHub gitHub
         {
@@ -36,15 +35,21 @@ namespace ElEscribaDelDJ
 
         public MainWindow()
         {
+            //Modificamos la posición de la pantalla y su alto y ancho para que sean un 90% del tamaño de la pantalla
             this.Height = (System.Windows.SystemParameters.PrimaryScreenHeight * 0.9);
             this.Width = (System.Windows.SystemParameters.PrimaryScreenWidth * 0.9);
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            //Se crean los componentes
             InitializeComponent();
+
+            //Creamos la sesión de github que se va a mantener por toda la aplicación
             MainWindow.gitHub = GitHub.GithubInstancia;
+
+            //Indicamos que va a haber un diccionario de recursos y su dirección
             ResourceDictionary dict = new ResourceDictionary();
-            var localDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\"));
             //cambiar a .user al finalizar las pruebas
-            var path = localDirectory + "\\Idiomas\\" + "LoginEN.xaml";
+            var path = RecursosAplicacion.DireccionBase + "\\Idiomas\\EN\\" + "LoginEN.xaml";
             dict.Source = new Uri(path, UriKind.Absolute);
             this.Resources.MergedDictionaries.Add(dict);
         }
