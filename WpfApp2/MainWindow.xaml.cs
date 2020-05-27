@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -17,9 +18,22 @@ namespace ElEscribaDelDJ
     public partial class MainWindow : Window
     {
         private static JObject sesionusuario;
-
         private static GitHub github;
+        private ResourceDictionary idioma = new ResourceDictionary();
+        private string[] valoresinicialesconf;
 
+        public string[] ValoresInicialesConfiguracion
+        {
+            get { return valoresinicialesconf; }
+            set { valoresinicialesconf = value; }
+        }
+
+
+        public ResourceDictionary Idioma
+        {
+            get { return idioma; }
+            set { idioma = value; }
+        }
 
         public static GitHub gitHub
         {
@@ -46,8 +60,41 @@ namespace ElEscribaDelDJ
             //Creamos la sesión de github que se va a mantener por toda la aplicación
             MainWindow.gitHub = GitHub.GithubInstancia;
 
-            //Indicamos que va a haber un diccionario de recursos y su dirección
-            ResourceDictionary dict = new ResourceDictionary();
+            //Leemos la configuracion inicial
+            this.ConfiguracionInicial();
+
+            //Indicamos que va a haber un diccionario de recursos y su dirección        
+            this.DefinirIdioma();
+        }
+
+        private void ConfiguracionInicial()
+        {
+            this.valoresinicialesconf = System.IO.File.ReadAllLines(RecursosAplicacion.DireccionBase + "Settings.ini");
+            int i = 0;
+            foreach (string cadenainicial in this.valoresinicialesconf)
+            {      
+                var cadenaresultante = cadenainicial.Split(':');
+                this.valoresinicialesconf[i] = cadenaresultante[1].Trim().ToString();
+                i += 1;
+            }
+
+            Regex.Replace(this.valoresinicialesconf[1], @"\s+", "");
+
+            ConfiguracionAplicacion.Default.Idioma = this.valoresinicialesconf[0];            
+            ConfiguracionAplicacion.Default.RecordarUsuario = Convert.ToBoolean(this.valoresinicialesconf[1].Trim());
+            ConfiguracionAplicacion.Default.RecordarLogin = Convert.ToBoolean(this.valoresinicialesconf[2].Trim());
+        }
+
+        private void GuardarConfiguracion()
+        {
+            this.valoresinicialesconf[0] = "Language:" + ConfiguracionAplicacion.Default.Idioma;
+            this.valoresinicialesconf[1] = "RememberUser:" + ConfiguracionAplicacion.Default.RecordarUsuario.ToString();
+            this.valoresinicialesconf[2] = "RememberLogin:" + ConfiguracionAplicacion.Default.RecordarLogin.ToString();
+            System.IO.File.WriteAllLines(RecursosAplicacion.DireccionBase + "Settings.ini", this.valoresinicialesconf);
+        }
+
+        private void DefinirIdioma()
+        {
             //Según el idioma cargamos uno u otro
             var path = RecursosAplicacion.DireccionBase + "\\Idiomas\\ES\\" + "Login.xaml";
 
@@ -59,9 +106,9 @@ namespace ElEscribaDelDJ
             {
                 path = RecursosAplicacion.DireccionBase + "\\Idiomas\\EN\\" + "Login.xaml";
             }
-            
-            dict.Source = new Uri(path, UriKind.Absolute);
-            this.Resources.MergedDictionaries.Add(dict);
+
+            this.idioma.Source = new Uri(path, UriKind.Absolute);
+            this.Resources.MergedDictionaries.Add(this.idioma);
         }
 
         private void userTextBox_GotFocus(object sender, RoutedEventArgs e)
@@ -90,7 +137,7 @@ namespace ElEscribaDelDJ
 
         private void ComprobarCambios(string password, string username)
         {
-            if (password != "" && username != "")
+            if (password != "" && username != "" && username != this.FindResource("UserText").ToString())
             {
                 loginButton.IsEnabled = true;
             }
@@ -189,18 +236,16 @@ namespace ElEscribaDelDJ
 
         private void IdiomaEN_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ConfiguracionAplicacion.Default.Idioma = "EN";          
-            MainWindow ventana = new MainWindow();
-            ventana.Show();
-            this.Close();
+            ConfiguracionAplicacion.Default.Idioma = "EN";
+            DefinirIdioma();
+            GuardarConfiguracion();
         }
 
         private void IdiomaES_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ConfiguracionAplicacion.Default.Idioma = "ES";
-            MainWindow ventana = new MainWindow();
-            ventana.Show();
-            this.Close();
+            DefinirIdioma();
+            GuardarConfiguracion();
         }
     }
 }

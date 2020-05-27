@@ -21,7 +21,7 @@ parte de estos creditos en lo que les afecte de forma directa.
 					- BetaTesters -
 				*Daniel Acevedo (DaniFlow)
 
-- Agradecimiento especial a Mi Familia por su apoyo y a StackOverFlow por su ingesta cantidad de información llegando a ser superior a la proporcionada 
+- Agradecimiento especial a Mi Familia por su apoyo y a StackOverFlow por su ingente cantidad de información llegando a ser superior a la proporcionada 
 por la propia Microsoft -
 
 El resto de elementos pertenecen a la misma licencia que este software siendo por tantos libres de ser modificados, redistribuidos, etc siempre y cuando

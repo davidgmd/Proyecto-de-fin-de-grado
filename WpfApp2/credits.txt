@@ -7,23 +7,23 @@ affects them directly.
 				*Co-Director of TFG:
 				*Department associated to the TFG:
 
-- The next icons were taken from the webpage icons8, so they are own the copyright for use, distribution, and exploitation -
-				Iconos del menu principal (Calendario, Recursos, Tirada, Opciones)
+- The following icons were taken from the webpage icons8, so they are own the copyright for use, distribution, and exploitation -
+				Icons of the main menu (Calendar, Resources, Roll, Options)
 
-- Las siguientes imagenes pertenecen de forma exclusiva a sus respectivos creadores -
-				*Imagen de Login (Francisco de Agora en el programa) 
-				Obtenida de: DevianArt	Artista: Tina Duncan ("Atypicalgamergirl" en DevianArt))
+- The following images are owned exclusively by their respective authors -
+				*Login Image (Francisco de Agora how is called in the Application) 
+				Got from: DevianArt	Artist: Tina Duncan ("Atypicalgamergirl" in DevianArt))
 
-- Los siguientes mencionados son marcas registradas y a ellos pertenecen tanto las imagenes relacionadas, como los nombres registrados -
-				*Wizard of the Coast: Dungeons and Dragons 3.5 (nombre y logo D&D 3.5)
-				*Games Workshop: Warhammer (nombre y logo)
+- The following mentions are registered marks and the relational messages are they own, as well the registered names associated with this images -
+				*Wizard of the Coast: Dungeons and Dragons 3.5 (name and logo D&D 3.5)
+				*Games Workshop: Warhammer (name and logo)
 
 					- BetaTesters -
 				*Daniel Acevedo (DaniFlow)
 
-- Agradecimiento especial a Mi Familia por su apoyo y a StackOverFlow por su ingesta cantidad de información llegando a ser superior a la proporcionada 
-por la propia Microsoft -
+- Special Thanks to my family for their support and StackOverFlow for its huge amount of information sometimes even bigger than the
+Microsoft official info -
 
-El resto de elementos pertenecen a la misma licencia que este software siendo por tantos libres de ser modificados, redistribuidos, etc siempre y cuando
-no se le de un uso comercial y se cite y mantenga la autoría.
+The rest of elements have the same copyright than this software being free to modify, redistribute, etc. While they are not used for
+commercial use.
 
