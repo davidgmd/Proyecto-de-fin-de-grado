@@ -115,7 +115,6 @@ namespace ElEscribaDelDJ.Classes
                     Usuario usuario = JsonConvert.DeserializeObject<Usuario>(existingFile[0].Content);
                     if (usuario.Clave.Equals(clave))
                     {
-                        System.Windows.MessageBox.Show("Datos introducidos correctamente");
                         return true;
                     }
                     return false;

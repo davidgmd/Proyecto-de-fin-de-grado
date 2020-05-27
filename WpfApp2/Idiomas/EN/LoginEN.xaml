@@ -16,4 +16,8 @@
     <system:String x:Key="LoginButton">Login</system:String>
     <system:String x:Key="License">This product is under the license:</system:String>
     <system:String x:Key="Credits">Credits</system:String>
+
+    <!-- Los mensajes de error y de aceptación -->
+    <system:String x:Key="ErrorUser">Wrong Password or UserName</system:String>
+    <system:String x:Key="RightLogin">Login Sucesfull</system:String>
 </ResourceDictionary>

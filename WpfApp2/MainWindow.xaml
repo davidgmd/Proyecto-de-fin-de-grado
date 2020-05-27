@@ -98,7 +98,8 @@
                          Grid.Row = "0" 
                          Grid.Column = "1" 
                          Text="{DynamicResource UserText}"                       
-                         GotFocus="userTextBox_GotFocus" 
+                         GotFocus="userTextBox_GotFocus"
+                         TextChanged="userText_TextChanged"
                          LostFocus="userTextBox_LostFocus"/>
 
                 <TextBlock Foreground="White"  
@@ -108,6 +109,7 @@
 
                 <PasswordBox Grid.Row = "1" 
                              Grid.Column = "1"
+                             PasswordChanged="passwordText_PasswordChanged"
                              x:Name="passwordText"/>
 
                 <Grid x:Name="gridRegistro" Grid.Row="2" 

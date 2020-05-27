@@ -65,16 +65,36 @@ namespace ElEscribaDelDJ
             }
         }
 
+        private void userText_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (this.passwordText is object)
+            {
+                ComprobarCambios(passwordText.Password, userText.Text);
+            }                 
+        }
+
+        private void passwordText_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            ComprobarCambios(passwordText.Password, userText.Text);
+        }
+
+        private void ComprobarCambios(string password, string username)
+        {
+            if (password != "" && username != "")
+            {
+                loginButton.IsEnabled = true;
+            }
+            else
+            {
+                loginButton.IsEnabled = false;
+            }
+        }
+
         private void userTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             if (this.userText.Text == "")
             {
                 this.userText.Text = this.FindResource("UserText").ToString();
-                this.loginButton.IsEnabled = false;
-            }
-            else
-            {
-                this.loginButton.IsEnabled = true;
             }
         }
 
@@ -100,16 +120,17 @@ namespace ElEscribaDelDJ
                 //Asignamos la sesión
                 SesionUsuario = JObject.FromObject(usuario);
 
+                System.Windows.MessageBox.Show(this.FindResource("RightLogin").ToString());
+
+                //mostramos la ventana del menu
                 menuPrincipal ventanaPrincipal = new menuPrincipal();
                 ventanaPrincipal.Show();
                 this.Hide();
             }
             else
             {
-                System.Windows.MessageBox.Show("Usuario o contraseña incorrecta");
-            }
-
-            
+                System.Windows.MessageBox.Show(this.FindResource("ErrorUser").ToString());
+            }    
         }
 
         private void exitButton_Click(object sender, RoutedEventArgs e)

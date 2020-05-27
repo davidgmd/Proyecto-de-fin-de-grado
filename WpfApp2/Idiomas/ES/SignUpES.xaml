@@ -16,8 +16,4 @@
     <system:String x:Key="LoginButton">Login:</system:String>
     <system:String x:Key="License">Este producto esta bajo la licencia</system:String>
     <system:String x:Key="Credits">Creditos</system:String>
-    
-    <!-- Los mensajes de error y de aceptación -->
-    <system:String x:Key="ErrorUser">Usuario o Contraseña Incorrecta</system:String>
-    <system:String x:Key="RightLogin">Datos Introducidos Correctamente</system:String>
 </ResourceDictionary>
