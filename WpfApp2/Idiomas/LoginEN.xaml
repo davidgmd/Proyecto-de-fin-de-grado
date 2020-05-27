@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ElEscribaDelDJ"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    
+    <system:String x:Key="Title">Welcome to "The Master's Scribe"</system:String>
+    <system:String x:Key="Narration">Once you arrive at the mansion of your deceased familiar, you observe the shape of the whitish mansion, there are multiples humidity stains, but still looks like it would be in a good shape, after some fixes, but now, maybe is not the better time to think about expense, and you are more worried about the rumors you have been hearing about the house, without any more time to think about it. A advance age man appears, clean his glasses, then look at you and says:</system:String>
+    <system:String x:Key="Dialog">- You must be the new Master of the house, Let me introduce myself my name is Francisco de Agora, Who are you?</system:String>
+    <system:String x:Key="User">User:</system:String>
+    <system:String x:Key="UserText">Put your user name</system:String>
+    <system:String x:Key="Password">Password:</system:String>
+    <system:String x:Key="CheckUser">Remember User:</system:String>
+    <system:String x:Key="CheckLogin">Remember Login:</system:String>
+    <system:String x:Key="RegisterButton">Sign up</system:String>
+    <system:String x:Key="LoginButton">Login</system:String>
+    <system:String x:Key="License">This product is under the license:</system:String>
+    <system:String x:Key="Credits">Credits</system:String>
+</ResourceDictionary>

@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ElEscribaDelDJ"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    
+    <system:String x:Key="Title">Bienvenido a "el escriba del DJ"</system:String>
+    <system:String x:Key="Narration">Una vez llegais a la mansión de vuestro familiar, ya fallecido, observais el estado de la casa la mansión de madera de color blanquecino, con multiples manchas de humedad, todavía se conserva bastante bien, pero necesitaría algunos arreglos, aunque quizas, ahora no es el mejor momento para pensar en gastos y os preocupa más los rumores que habeís escuchado sobre la casa, sin tiempo a seguir con vuestros pensamientos, un hombre de edad avanzada aparece, limpia sus gafas, os mira y os dice:</system:String>
+    <system:String x:Key="Dialog">- Usted debe ser el nuevo señor, me presento mi nombre es Francisco de Agora, ¿Vos sois?</system:String>
+    <system:String x:Key="User">Usuario:</system:String>
+    <system:String x:Key="UserText">Introduzca el nombre de usuario:</system:String>
+    <system:String x:Key="Password">Contraseña:</system:String>
+    <system:String x:Key="CheckUser">Recordar Usuario:</system:String>
+    <system:String x:Key="CheckLogin">Recordar Login:</system:String>
+    <system:String x:Key="RegisterButton">Registrarse:</system:String>
+    <system:String x:Key="LoginButton">Login:</system:String>
+    <system:String x:Key="License">Este producto esta bajo la licencia</system:String>
+    <system:String x:Key="Credits">Creditos</system:String>
+</ResourceDictionary>

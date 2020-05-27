@@ -32,6 +32,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Idiomas\IdiomasLogin.xaml" />
+    <Page Remove="Idiomas\LoginEN.xaml" />
+    <Page Remove="Idiomas\LoginES.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Idiomas\LoginEN.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Idiomas\LoginES.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EASendMail" Version="7.7.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Octokit" Version="0.47.0" />

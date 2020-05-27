@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        
         <Style x:Key="pantallaInicio" TargetType="Grid">
             <Setter Property="Background" Value="Black" />
         </Style>
@@ -127,6 +126,5 @@
         <Style x:Key="iconMenu" TargetType="Image">
             <Setter Property="Height" Value="50"/>
         </Style>
-        
     </Application.Resources>
 </Application>

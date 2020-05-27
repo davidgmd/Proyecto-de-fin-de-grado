@@ -10,30 +10,64 @@
         Closed="Window_Closed">
 
     <Window.Resources>
-        <Style TargetType="TextBlock">
+        <Style x:Key="EstilobaseTextBlock" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="10"/>
         </Style>
 
-        <Style TargetType="TextBox">
+        <Style x:Key="EstilobaseTextBox" TargetType="TextBox">
             <Setter Property="Width" Value="200"/>
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <Style x:Key="Checkers" TargetType="Image">
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Margin" Value="10"/>
         </Style>
 
         <Style x:Key="Titulo" TargetType="TextBlock" BasedOn="{StaticResource Encabezado}">
             <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="20"/>
         </Style>
 
         <Style x:Key="ErrorUsuario" TargetType="TextBlock">
             <Setter Property="Foreground" Value="Red" />
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Visibility" Value="Hidden"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+        </Style>
+
+        <Style x:Key="BotonesRegistro" TargetType="Button">
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+
+        <Style x:Key="BotonAceptar" TargetType="Button" BasedOn="{StaticResource BotonesRegistro}">
+            <Setter Property="IsEnabled" Value="False"/>
+        </Style>
+
+        <Style x:Key="PanelCodigo" TargetType="StackPanel">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Visibility" Value="Hidden"/>
+        </Style>
+
+        <Style x:Key="EncabezadoCodigo" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style x:Key="TextoCodigo" TargetType="TextBox">
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+
+        <Style x:Key="BotonCodigo" TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
         </Style>
     </Window.Resources>
     
     <Grid>
         <StackPanel>
         <TextBlock Style="{DynamicResource Titulo}" 
-                Text="Registro de usuario"
-                Margin="20"/>
+                Text="Registro de usuario"/>
             <Grid HorizontalAlignment="Center"
                   x:Name="CamposRegistro">
                 <Grid.ColumnDefinitions>
@@ -52,12 +86,12 @@
                 </Grid.RowDefinitions>
                 
                 <TextBlock Text="Nombre de usuario"
-                           Margin="10"
+                           Style="{DynamicResource EstilobaseTextBlock}"
                            Grid.Column="0"
                            Grid.Row="0"/>
                 <TextBox   Name="userText" 
                            Grid.Column="1"
-                           Margin="10"
+                           Style="{DynamicResource EstilobaseTextBox}"
                            Grid.Row="0"
                            LostFocus="User_LostFocus"
                            TextChanged="userText_TextChanged"/>
@@ -66,17 +100,14 @@
                             Grid.Row="0">
                     <Image Name="ImgUser"
                            Source="/images/icons/icons8-incorrecto.png"
-                           Height="20"
-                           Margin="10"/>
+                           Style="{DynamicResource Checkers}"/>
                     <TextBlock x:Name="ErrorUser"
-                               Text="Introduzca el nombre del usuario"
-                               Margin="10"
-                               TextWrapping="WrapWithOverflow"
+                               Text="Introduzca el nombre del usuario"                              
                                Style="{DynamicResource ErrorUsuario}"/>
                 </StackPanel>
 
                     <TextBlock Text="Contraseña"
-                           Margin="10"
+                           Style="{DynamicResource EstilobaseTextBlock}"
                            Grid.Column="0"
                            Grid.Row="1"/>
                 <PasswordBox Grid.Column="1"
@@ -89,19 +120,16 @@
                             Grid.Row="1">
                     <Image Name="ImgPassword"
                            Source="/images/icons/icons8-incorrecto.png"
-                           Height="20"
-                           Margin="10"/>
+                           Style="{DynamicResource Checkers}"/>
                     <TextBlock x:Name="ErrorPassword"
                                Text="Introduzca una contraseña"
-                               Margin="10"
-                               TextWrapping="WrapWithOverflow"
                                Style="{DynamicResource ErrorUsuario}"/>
                 </StackPanel>
                 
                 <TextBlock Text="Repetir Contraseña"
                            Grid.Column="0"
                            Grid.Row="2"
-                           Margin="10"/>
+                           Style="{DynamicResource EstilobaseTextBlock}"/>
                 <PasswordBox Grid.Column="1"
                              Name="PasswordBox2"
                              PasswordChanged="PasswordBox2_PasswordChanged"
@@ -112,83 +140,73 @@
                             Grid.Row="2">
                     <Image Name="ImgPassword2"
                            Source="/images/icons/icons8-incorrecto.png"
-                           Height="20"
-                           Margin="10"/>
+                           Style="{DynamicResource Checkers}"/>
                     <TextBlock x:Name="ErrorPassword2"
                                Text="Debe coincidir con el campo anterior"
-                               Margin="10"
-                               TextWrapping="WrapWithOverflow"
                                Style="{DynamicResource ErrorUsuario}"/>
                 </StackPanel>
                 
                 <TextBlock Text="Correo"
                            Grid.Column="0"
                            Grid.Row="3"
-                           Margin="10"/>
+                           Style="{DynamicResource EstilobaseTextBlock}"/>
                 <TextBox Grid.Column="1"
                          Name="CorreoTextBox"
                          TextChanged="CorreoTextBox_TextChanged"
-                           Grid.Row="3"
-                         Margin="10"/>
+                         Grid.Row="3"
+                         Style="{DynamicResource EstilobaseTextBox}"/>
                 <StackPanel Orientation="Horizontal"
                             Grid.Column="2"
                             Grid.Row="3">
                     <Image Name="ImgCorreo"
                            Source="/images/icons/icons8-incorrecto.png"
-                           Height="20"
-                           Margin="10"/>
+                           Style="{DynamicResource Checkers}"/>
                     <TextBlock x:Name="ErrorCorreo"
                                Text="Introduzca un correo por favor"
-                               Margin="10"
-                               TextWrapping="WrapWithOverflow"
                                Style="{DynamicResource ErrorUsuario}"/>
                 </StackPanel>
                 
                 <TextBlock Text="Repetir Correo"
                            Grid.Column="0"
                            Grid.Row="4"
-                           Margin="10"/>
+                           Style="{DynamicResource EstilobaseTextBlock}"/>
                 <TextBox Grid.Column="1"
                          Name="CorreoTextBox2"
                          TextChanged="CorreoTextBox2_TextChanged"
-                           Grid.Row="4"
-                         Margin="10"/>
+                         Grid.Row="4"
+                         Style="{DynamicResource EstilobaseTextBox}"/>
                 <StackPanel Orientation="Horizontal"
                             Grid.Column="2"
                             Grid.Row="4">
                     <Image Name="ImgCorreo2"
                            Source="/images/icons/icons8-incorrecto.png"
-                           Height="20"
-                           Margin="10"/>
+                           Style="{DynamicResource Checkers}"/>
                     <TextBlock x:Name="ErrorCorreo2"
                                Text="Debe coincidir con el campo anterior"
-                               Margin="10"
-                               TextWrapping="WrapWithOverflow"
                                Style="{DynamicResource ErrorUsuario}"/>
                 </StackPanel>
                 
                 <Button Name="AceptarButton"
                         Content="Aceptar"
                         Grid.Row="5"
-                        Margin="10"
-                        IsEnabled="False"
+                        Style="{DynamicResource BotonAceptar}"
                         Click="AceptarButton_Click"/>
                 <Button Content="Cancelar"
                         Grid.Column="1"
                         Grid.Row="5"
-                        Margin="10"
+                        Style="{DynamicResource BotonesRegistro}"
                         Click="Cancel_Click"/>
             </Grid>
+            
             <StackPanel HorizontalAlignment="Center"
-                        Visibility="Hidden"
-                        Name="introducirCodigo"
-                        Margin="10">
+                        Style="{DynamicResource PanelCodigo}"
+                        Name="introducirCodigo">
                 <TextBlock Text="Introducir código enviado al correo"
-                           />
-                <TextBox Margin="2"
+                           Style="{DynamicResource EncabezadoCodigo}"/>
+                <TextBox Style="{DynamicResource TextoCodigo}"
                          Name="codigoTextBox"/>
                 <Button Content="Introducir código"
-                        Margin="5"
+                        Style="{DynamicResource BotonCodigo}"
                         Click="introducirButton_Click"/>
             </StackPanel>
         </StackPanel>

@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Resources;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -25,7 +28,6 @@ namespace ElEscribaDelDJ
             set { github = value; }
         }
 
-
         public static JObject SesionUsuario
         {
             get { return sesionusuario; }
@@ -39,11 +41,18 @@ namespace ElEscribaDelDJ
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
             MainWindow.gitHub = GitHub.GithubInstancia;
+            ResourceDictionary dict = new ResourceDictionary();
+            var localDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\"));
+            //cambiar a .user al finalizar las pruebas
+            var path = localDirectory + "\\Idiomas\\" + "LoginEN.xaml";
+            dict.Source = new Uri(path, UriKind.Absolute);
+            this.Resources.MergedDictionaries.Add(dict);
         }
 
         private void userTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (this.userText.Text == "Introduzca su nombre de usuario")
+            var prueba = this.FindResource("UserText").ToString();
+            if (this.userText.Text.Equals(prueba))
             {
                 this.userText.SelectionStart = 0;
                 this.userText.SelectionLength = this.userText.Text.Length;
@@ -55,7 +64,7 @@ namespace ElEscribaDelDJ
         {
             if (this.userText.Text == "")
             {
-                this.userText.Text = "Introduzca su nombre de usuario";
+                this.userText.Text = this.FindResource("UserText").ToString();
                 this.loginButton.IsEnabled = false;
             }
             else

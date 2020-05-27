@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:system="clr-namespace:System;assembly=System.Runtime"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="691" 
@@ -12,36 +13,49 @@
         ResizeMode="NoResize">
 
     <Window.Resources>
-        <Style x:Key="titulo" TargetType="TextBlock" BasedOn="{StaticResource Encabezado}">
-            <Setter Property="Margin" Value="20"/>
-            <Setter Property="Foreground" Value="White"/>
-        </Style>
+        <ResourceDictionary>
 
-        <Style x:Key="tipoBase" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Margin" Value="10"/>
-        </Style>
+            <Style x:Key="titulo" TargetType="TextBlock" BasedOn="{StaticResource Encabezado}">
+                <Setter Property="Margin" Value="20"/>
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
 
-        <Style x:Key="imagenTitulo" TargetType="Image">
-            <Setter Property="Height" Value="200"/>
-            <Setter Property="Source" Value="/images/asistente.jpg" />
-        </Style>
+            <Style x:Key="tipoBase" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Margin" Value="10"/>
+            </Style>
 
-        <Style x:Key="narracion" TargetType="TextBlock" BasedOn="{StaticResource tipoBase}">
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="TextAlignment" Value="Center"/>
-        </Style>
+            <Style x:Key="imagenTitulo" TargetType="Image">
+                <Setter Property="Height" Value="200"/>
+                <Setter Property="Source" Value="/images/asistente.jpg" />
+            </Style>
 
-        <Style x:Key="botonSalirInicio" TargetType="Button" BasedOn="{StaticResource botonSalir}">
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="Width" Value="50"/>
-            <Setter Property="Margin" Value="0 0 10 0"/>
-        </Style>
+            <Style x:Key="narracion" TargetType="TextBlock" BasedOn="{StaticResource tipoBase}">
+                <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="TextAlignment" Value="Center"/>
+                <Setter Property="FontStyle" Value="Italic"/>
+            </Style>
+
+            <Style x:Key="Dialogo" TargetType="TextBlock" BasedOn="{StaticResource narracion}">
+                <Setter Property="FontStyle" Value="Normal"/>
+            </Style>
+
+            <Style x:Key="botonSalirInicio" TargetType="Button" BasedOn="{StaticResource botonSalir}">
+                <Setter Property="Height" Value="50"/>
+                <Setter Property="Width" Value="50"/>
+                <Setter Property="Margin" Value="0 0 10 0"/>
+            </Style>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Idiomas/LoginES.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
 
     </Window.Resources>
 
-    <Grid Style="{DynamicResource pantallaInicio}">
+    <Grid Style="{DynamicResource pantallaInicio}"
+          x:Name="Login">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -49,7 +63,7 @@
 
         <StackPanel>
             <Grid>
-                <TextBlock Style="{DynamicResource titulo}" x:Name="titulo" Text='Bienvenido a "el escriba del DJ"'/>
+                <TextBlock Style="{DynamicResource titulo}" x:Name="titulo" Text="{DynamicResource Title}"/>
                 <Button Style="{DynamicResource botonSalirInicio}"                
                     Click="exitButton_Click">
                     <Image Source="/images/icons/icons8-salir2.png"/>
@@ -57,14 +71,11 @@
             </Grid>
             <Image Style="{DynamicResource imagenTitulo}"/>
 
-            <TextBlock Style="{DynamicResource narracion}"><Italic>Una vez llegais a la mansión de vuestro familiar, ya fallecido, observais el estado de la casa, 
-                la mansión de madera de color blanquecino, con multiples manchas de humedad, todavía se conserva bastante bien, pero necesitaría algunos arreglos, 
-                aunque quizas, ahora no es el mejor momento para pensar en gastos y os preocupa más los rumores que habeís escuchado sobre la casa, 
-                sin tiempo a seguir con vuestros pensamientos, un hombre de edad avanzada aparece, limpia sus gafas,  
-                os mira y os dice:</Italic> 
-                
-                <LineBreak/><LineBreak/> - Usted debe ser el nuevo señor, me presento mi nombre es Francisco de Agora, 
-                ¿Vos sois?</TextBlock>
+            <TextBlock Style="{DynamicResource narracion}"
+                       Text="{DynamicResource Narration}" />
+
+            <TextBlock Text="{DynamicResource Dialog}"
+                       Style="{DynamicResource Dialogo}"/>
 
             <Grid x:Name="bloqueRegistro" Margin="10" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
@@ -79,20 +90,22 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock x:Name="userTextBlock" 
-                           Foreground="White" 
+                           Foreground="White"
+                           Text="{DynamicResource User}"
                            Grid.Row = "0" 
-                           Grid.Column = "0">Usuario</TextBlock>
+                           Grid.Column = "0"/>
 
                 <TextBox x:Name="userText"  
                          Grid.Row = "0" 
                          Grid.Column = "1" 
-                         Text="Introduzca su nombre de usuario"                       
+                         Text="{DynamicResource UserText}"                       
                          GotFocus="userTextBox_GotFocus" 
                          LostFocus="userTextBox_LostFocus"/>
 
                 <TextBlock Foreground="White"  
                            Grid.Row = "1" 
-                           Grid.Column = "0">Contraseña</TextBlock>
+                           Text = "{DynamicResource Password}"
+                           Grid.Column = "0"/>
 
                 <PasswordBox Grid.Row = "1" 
                              Grid.Column = "1"
@@ -112,7 +125,7 @@
                     </Grid.RowDefinitions>
 
                     <Button Grid.Row="1" 
-                            Content="Registrarse" 
+                            Content="{DynamicResource RegisterButton}" 
                             Margin="0,0,5,0"
                             Click="registrarse_Click" Height="20" VerticalAlignment="Top">
                         <Button.Resources>
@@ -122,7 +135,9 @@
                         </Button.Resources>
                     </Button>
 
-                    <Button x:Name="loginButton" IsEnabled="False" Content="Login"
+                    <Button x:Name="loginButton" 
+                            IsEnabled="False" 
+                            Content="{DynamicResource LoginButton}"
                             Grid.Column="1"
                             Grid.Row="1" Click="login_Click">
                         <Button.Resources>
@@ -135,14 +150,14 @@
                     <StackPanel Orientation="Horizontal"
                                 Margin="2">
                         <CheckBox Margin="0,0,2,0"/>
-                        <TextBlock Foreground="White" Text="Recordar usuario"/>
+                        <TextBlock Foreground="White" Text="{DynamicResource CheckUser}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal"
                                 Margin="2"
                                 Grid.Column="1">
                         <CheckBox Margin="2,0,2,0"/>
-                        <TextBlock Foreground="White" Text="Recordar login"/>
+                        <TextBlock Foreground="White" Text="{DynamicResource CheckLogin}"/>
                     </StackPanel>
                 </Grid>
             </Grid>
@@ -151,12 +166,12 @@
         <StackPanel VerticalAlignment="Bottom"
                     Grid.Row="1"
                     Margin="0,0,0,10">
-            <TextBlock Text="Este producto esta bajo la licencia" 
+            <TextBlock Text="{DynamicResource License}" 
                        Style="{DynamicResource licenciaTextBlock}"
                        Mouse.MouseDown="Image_MouseDown"/>
             <Image Style="{DynamicResource licenciaImagen}"
                   Mouse.MouseDown="Image_MouseDown"/>
-            <TextBlock Text="Creditos" 
+            <TextBlock Text="{DynamicResource Credits}" 
                        Style="{DynamicResource creditos}"
                        Mouse.MouseDown="Credits_MouseDown"/>
         </StackPanel>
