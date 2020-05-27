@@ -10,6 +10,7 @@
   <ItemGroup>
     <None Remove="Classes\Keys\encriptkeys.txt" />
     <None Remove="creditos.txt" />
+    <None Remove="credits.txt" />
     <None Remove="emailcredentials.txt" />
     <None Remove="gitcredentials.txt" />
     <None Remove="Images\asistente.jpg" />
@@ -44,6 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="credits.txt" />
     <Resource Include="emailcredentials.txt" />
     <Resource Include="Idiomas\EN\Login.xaml">
       <Generator>MSBuild:Compile</Generator>

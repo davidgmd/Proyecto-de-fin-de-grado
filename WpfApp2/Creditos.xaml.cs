@@ -10,17 +10,17 @@ namespace ElEscribaDelDJ
     /// </summary>
     public partial class Creditos : Window
     {
-        public Creditos()
+        public Creditos(string archivocreditos)
         {
             InitializeComponent();
-            ReadFile();
+            ReadFile(archivocreditos);
         }
 
         public string FileText { get; set; }
-        public void ReadFile()
+        public void ReadFile(string archivocreditos)
         {
             var localDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\"));
-            string path = localDirectory + "creditos.txt";
+            string path = localDirectory + archivocreditos;
             FileText = File.ReadAllText(path);
             this.creditos.Text = FileText;
         }

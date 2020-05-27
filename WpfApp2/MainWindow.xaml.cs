@@ -158,8 +158,17 @@ namespace ElEscribaDelDJ
 
         private void Credits_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Creditos ventana = new Creditos();
+            string archivo;
+            if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
+            {
+                archivo = "creditos.txt";
+            }
+            else 
+            {
+                archivo = "credits.txt";
+            }
 
+            Creditos ventana = new Creditos(archivo);
             ventana.Show();
         }
 
@@ -176,6 +185,22 @@ namespace ElEscribaDelDJ
             //Comprobamos las credenciales online
             var respuesta = await MainWindow.github.ComprobarCredenciales(nombreusuario, clave);
             return respuesta;
+        }
+
+        private void IdiomaEN_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ConfiguracionAplicacion.Default.Idioma = "EN";          
+            MainWindow ventana = new MainWindow();
+            ventana.Show();
+            this.Close();
+        }
+
+        private void IdiomaES_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ConfiguracionAplicacion.Default.Idioma = "ES";
+            MainWindow ventana = new MainWindow();
+            ventana.Show();
+            this.Close();
         }
     }
 }

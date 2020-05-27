@@ -10,65 +10,20 @@
         Width="1229"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Background="Black">
 
     <Window.Resources>
         <ResourceDictionary>
-            <Style x:Key="titulo" TargetType="TextBlock" BasedOn="{StaticResource Encabezado}">
-                <Setter Property="Margin" Value="20"/>
-                <Setter Property="Foreground" Value="White"/>
-            </Style>
-
-            <Style x:Key="botonSalirInicio" TargetType="Button" BasedOn="{StaticResource botonSalir}">
-                <Setter Property="Height" Value="50"/>
-                <Setter Property="Width" Value="50"/>
-                <Setter Property="Margin" Value="0 0 10 0"/>
-            </Style>
-
-            <Style x:Key="tipoBase" TargetType="TextBlock">
-                <Setter Property="Foreground" Value="White"/>
-                <Setter Property="Margin" Value="10"/>
-            </Style>
-
-            <Style x:Key="imagenTitulo" TargetType="Image">
-                <Setter Property="Height" Value="200"/>
-                <Setter Property="Source" Value="/Images/asistente.jpg" />
-            </Style>
-
-            <Style x:Key="narracion" TargetType="TextBlock" BasedOn="{StaticResource tipoBase}">
-                <Setter Property="TextWrapping" Value="Wrap"/>
-                <Setter Property="FontSize" Value="18"/>
-                <Setter Property="TextAlignment" Value="Center"/>
-                <Setter Property="FontStyle" Value="Italic"/>
-            </Style>
-
-            <Style x:Key="Dialogo" TargetType="TextBlock" BasedOn="{StaticResource narracion}">
-                <Setter Property="FontStyle" Value="Normal"/>
-            </Style>
-
-            <Style x:Key="ImagenIdioma" TargetType="Image">
-                <Setter Property="Height" Value="45"/>
-                <Setter Property="Stretch" Value="UniformToFill"/>
-                <Setter Property="Margin" Value="0"/>
-            </Style>
-
-            <Style x:Key="IdiomaES" TargetType="Image" BasedOn="{StaticResource ImagenIdioma}">
-                <Setter Property="Source" Value="/Images/icons/spanish.png"/>
-            </Style>
-
-            <Style x:Key="IdiomaEN" TargetType="Image" BasedOn="{StaticResource ImagenIdioma}">
-                <Setter Property="Source" Value="/Images/icons/english.png"/>
-            </Style>
-
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Login.xaml"/>
                 <ResourceDictionary Source="Idiomas/ES/Login.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 
     </Window.Resources>
 
-    <Grid Style="{DynamicResource pantallaInicio}"
-          x:Name="Login">
+    <Grid x:Name="Login">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -181,6 +136,7 @@
                     x:Name="ElegirIdioma"
                         HorizontalAlignment="Center">
                 <StackPanel x:Name="IdiomaES"
+                            MouseDown="IdiomaES_MouseDown"
                             Margin="0 0 10 0">
                     <Image x:Name="Spain"
                            Style="{DynamicResource IdiomaES}"/>
@@ -189,7 +145,8 @@
                                Style="{DynamicResource tipoBase}"/>
                 </StackPanel>
 
-                <StackPanel x:Name="IdiomaEN" >
+                <StackPanel x:Name="IdiomaEN" 
+                            MouseDown="IdiomaEN_MouseDown">
                     <Image x:Name="English"
                            Style="{DynamicResource IdiomaEN}"/>
                     <TextBlock Text="English"

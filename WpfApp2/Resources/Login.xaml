@@ -1,0 +1,84 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ElEscribaDelDJ.Resources">
+
+    <Style x:Key="titulo" TargetType="TextBlock" BasedOn="{StaticResource Encabezado}">
+        <Setter Property="Margin" Value="20"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style x:Key="botonSalirInicio" TargetType="Button" BasedOn="{StaticResource botonSalir}">
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Margin" Value="0 0 10 0"/>
+    </Style>
+
+    <Style x:Key="tipoBase" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <Style x:Key="imagenTitulo" TargetType="Image">
+        <Setter Property="Height" Value="200"/>
+        <Setter Property="Source" Value="/Images/asistente.jpg" />
+    </Style>
+
+    <Style x:Key="narracion" TargetType="TextBlock" BasedOn="{StaticResource tipoBase}">
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+    </Style>
+
+    <Style x:Key="Dialogo" TargetType="TextBlock" BasedOn="{StaticResource narracion}">
+        <Setter Property="FontStyle" Value="Normal"/>
+    </Style>
+
+    <Style x:Key="ImagenIdioma" TargetType="Image">
+        <Setter Property="Height" Value="45"/>
+        <Setter Property="Stretch" Value="UniformToFill"/>
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+
+    <Style x:Key="IdiomaES" TargetType="Image" BasedOn="{StaticResource ImagenIdioma}">
+        <Setter Property="Source" Value="/Images/icons/spanish.png"/>
+    </Style>
+
+    <Style x:Key="IdiomaEN" TargetType="Image" BasedOn="{StaticResource ImagenIdioma}">
+        <Setter Property="Source" Value="/Images/icons/english.png"/>
+    </Style>
+
+    <Style x:Key="creditos" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="13"/>
+
+        <Style.Triggers>
+            <Trigger Property ="IsMouseOver" Value="True">
+                <Setter Property= "Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="licenciaImagen" TargetType="Image">
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Source" Value="/images/licencia.png" />
+        <Style.Triggers>
+            <Trigger  Property="Image.IsMouseOver" Value="True">
+                <Setter Property="Image.Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="licenciaTextBlock" TargetType="TextBlock" BasedOn="{StaticResource creditos}">
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="FontSize" Value="10"/>
+
+        <Style.Triggers>
+            <Trigger Property ="IsMouseOver" Value="True">
+                <Setter Property= "Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>
