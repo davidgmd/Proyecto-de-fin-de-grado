@@ -24,6 +24,7 @@ namespace ElEscribaDelDJ
         public Registrarse()
         {
             InitializeComponent();
+            ConfiguracionPagina.DefinirIdioma(this, "SignUp.xaml");
         }
 
         private async void User_LostFocus(object sender, RoutedEventArgs e)
@@ -33,12 +34,12 @@ namespace ElEscribaDelDJ
             {
                 if (await MainWindow.gitHub.UsuarioExiste(this.userText.Text) == false)
                 {
-                    this.MarcarCorrecto(ImgUser, ErrorUser, "Nombre de usuario disponible");
+                    this.MarcarCorrecto(ImgUser, ErrorUser, this.FindResource("UserNameAvaible").ToString());
                     anadirLista(ImgUser);    
                 }
                 else
                 {
-                    this.MarcarIncorrecto(ImgUser, ErrorUser, "Ya existe alguien con ese usuario");
+                    this.MarcarIncorrecto(ImgUser, ErrorUser, this.FindResource("UserAlreadyExist").ToString());
                     lista.Remove(ImgUser);
                 }
             }
@@ -50,7 +51,7 @@ namespace ElEscribaDelDJ
             var regExp = new Regex("^[a-zA-Z]\\S*$");
             if (userText.Text == "")
             {
-                this.MarcarIncorrecto(ImgUser, ErrorUser, "Introduzca el nombre de usuario");
+                this.MarcarIncorrecto(ImgUser, ErrorUser, this.FindResource("UserEmpty").ToString());
             }
             else 
             {
@@ -59,11 +60,11 @@ namespace ElEscribaDelDJ
                     ImgUser.Visibility = Visibility.Hidden;
                     ErrorUser.Visibility = Visibility.Visible;
                     ErrorUser.Foreground = Brushes.White;
-                    ErrorUser.Text = "Cuando haya terminado de escribir el usuario \n pulse en el siguiente campo para comprobar \n la disponibilidad";
+                    ErrorUser.Text = this.FindResource("UserNameChanged").ToString();
                 }
                 else
                 {
-                    this.MarcarIncorrecto(ImgUser, ErrorUser, "El nombre de usuario debe empezar \n por letras y sin espacios");
+                    this.MarcarIncorrecto(ImgUser, ErrorUser, this.FindResource("RulesForUser").ToString());
                 }    
             }
 
@@ -76,19 +77,19 @@ namespace ElEscribaDelDJ
             var regExp = new Regex("^\\S+$");
             if (PasswordBoxText.Password == "")
             {
-                this.MarcarIncorrecto(ImgPassword, ErrorPassword, "Introduzca la contraseña");
+                this.MarcarIncorrecto(ImgPassword, ErrorPassword, this.FindResource("PasswordEmpty").ToString());
                 lista.Remove(ImgPassword);
             }
             else
             {
                 if (regExp.IsMatch(PasswordBoxText.Password))
                 {
-                    this.MarcarCorrecto(ImgPassword, ErrorPassword, "Contraseña valida");
+                    this.MarcarCorrecto(ImgPassword, ErrorPassword, this.FindResource("ValidPassword").ToString());
                     anadirLista(ImgPassword);
                 }
                 else
                 {
-                    this.MarcarIncorrecto(ImgPassword, ErrorPassword, "La contraseña no puede contener \n espacios");
+                    this.MarcarIncorrecto(ImgPassword, ErrorPassword, this.FindResource("RulesForPasword").ToString());
                     lista.Remove(ImgPassword);
                 }
             }
@@ -101,19 +102,19 @@ namespace ElEscribaDelDJ
         {
             if (PasswordBox2.Password == "")
             {
-                this.MarcarIncorrecto(ImgPassword2, ErrorPassword2, "Introduzca la contraseña");
+                this.MarcarIncorrecto(ImgPassword2, ErrorPassword2, this.FindResource("PasswordEmpty").ToString());
                 lista.Remove(ImgPassword2);
             }
             else
             {
                 if (PasswordBox2.Password.Equals(PasswordBoxText.Password))
                 {
-                    this.MarcarCorrecto(ImgPassword2, ErrorPassword2, "Coinciden las contraseñas");
+                    this.MarcarCorrecto(ImgPassword2, ErrorPassword2, this.FindResource("ValidRepeatPassword").ToString());
                     anadirLista(ImgPassword2);
                 }
                 else
                 {
-                    this.MarcarIncorrecto(ImgPassword2, ErrorPassword2, "La contraseñas no coinciden");
+                    this.MarcarIncorrecto(ImgPassword2, ErrorPassword2, this.FindResource("PasswordUnMatch").ToString());
                     lista.Remove(ImgPassword2);
                 }
             }
@@ -127,19 +128,19 @@ namespace ElEscribaDelDJ
             var regExp = new Regex("^\\S+@\\S+\\.\\S+$");
             if (CorreoTextBox.Text == "")
             {
-                this.MarcarIncorrecto(ImgCorreo, ErrorCorreo, "Introduzca el correo");
+                this.MarcarIncorrecto(ImgCorreo, ErrorCorreo, this.FindResource("EmailEmpty").ToString());
                 lista.Remove(ImgCorreo);
             }
             else
             {
                 if (regExp.IsMatch(CorreoTextBox.Text))
                 {
-                    this.MarcarCorrecto(ImgCorreo, ErrorCorreo, "Correo Valido");
+                    this.MarcarCorrecto(ImgCorreo, ErrorCorreo, this.FindResource("ValidEmail").ToString());
                     anadirLista(ImgCorreo);
                 }
                 else
                 {
-                    this.MarcarIncorrecto(ImgCorreo, ErrorCorreo, "La contraseña no puede contener \n espacios y debe tener @ y .es \n Por ejemplo @hotmail.com");
+                    this.MarcarIncorrecto(ImgCorreo, ErrorCorreo, this.FindResource("RulesForEmail").ToString());
                     lista.Remove(ImgCorreo);
                 }
             }
@@ -152,19 +153,19 @@ namespace ElEscribaDelDJ
         {
             if (CorreoTextBox2.Text == "")
             {
-                this.MarcarIncorrecto(ImgCorreo2, ErrorCorreo2, "Introduzca el correo");
+                this.MarcarIncorrecto(ImgCorreo2, ErrorCorreo2, this.FindResource("EmailEmpty").ToString());
                 lista.Remove(ImgCorreo2);
             }
             else
             {
                 if (CorreoTextBox2.Text.Equals(CorreoTextBox.Text))
                 {
-                    this.MarcarCorrecto(ImgCorreo2, ErrorCorreo2, "Coinciden los correos");
+                    this.MarcarCorrecto(ImgCorreo2, ErrorCorreo2, this.FindResource("ValidRepeatEmail").ToString());
                     anadirLista(ImgCorreo2);
                 }
                 else
                 {
-                    this.MarcarIncorrecto(ImgCorreo2, ErrorCorreo2, "Los correos no coinciden");
+                    this.MarcarIncorrecto(ImgCorreo2, ErrorCorreo2, this.FindResource("EmailUnMatch").ToString());
                     lista.Remove(ImgCorreo2);
                 }
             }

@@ -3,17 +3,45 @@
                     xmlns:local="clr-namespace:ElEscribaDelDJ"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
 
+    <system:String x:Key="WindowTitle">Registro de usuario</system:String>
+    <system:String x:Key="UserName">Nombre de usuario</system:String>
+    <system:String x:Key="UserNameChanged">Cuando haya terminado de escribir el usuario \n pulse en el siguiente campo para comprobar \n la disponibilidad</system:String>
+    <system:String x:Key="Password">Contraseña</system:String>
+    <system:String x:Key="PasswordRepeat">Repetir Contraseña</system:String>
+    <system:String x:Key="Email">Correo</system:String>
+    <system:String x:Key="EmailRepeat">Repetir Correo</system:String>
+    <system:String x:Key="AceptButton">Aceptar</system:String>
+    <system:String x:Key="CancelButton">Cancelar</system:String>
+    <system:String x:Key="CodeText">Introduzca él código enviado al correo</system:String>
+    <system:String x:Key="CodeButton">Introducir código</system:String>
+    <system:String x:Key="UserSignUp">Usuario registrado con este correo en el escriba del dj", "Se ha solicitado" +
+                $" registrarse con este correo por parte del usuario {userText.Text} debe introducir en el programa" +
+                $" el código de registro {codigo}</system:String>
     
-    <system:String x:Key="Title">Bienvenido a "el escriba del DJ"</system:String>
-    <system:String x:Key="Narration">Una vez llegais a la mansión de vuestro familiar, ya fallecido, observais el estado de la casa la mansión de madera de color blanquecino, con multiples manchas de humedad, todavía se conserva bastante bien, pero necesitaría algunos arreglos, aunque quizas, ahora no es el mejor momento para pensar en gastos y os preocupa más los rumores que habeís escuchado sobre la casa, sin tiempo a seguir con vuestros pensamientos, un hombre de edad avanzada aparece, limpia sus gafas, os mira y os dice:</system:String>
-    <system:String x:Key="Dialog">- Usted debe ser el nuevo señor, me presento mi nombre es Francisco de Agora, ¿Vos sois?</system:String>
-    <system:String x:Key="User">Usuario:</system:String>
-    <system:String x:Key="UserText">Introduzca el nombre de usuario:</system:String>
-    <system:String x:Key="Password">Contraseña:</system:String>
-    <system:String x:Key="CheckUser">Recordar Usuario:</system:String>
-    <system:String x:Key="CheckLogin">Recordar Login:</system:String>
-    <system:String x:Key="RegisterButton">Registrarse:</system:String>
-    <system:String x:Key="LoginButton">Login:</system:String>
-    <system:String x:Key="License">Este producto esta bajo la licencia</system:String>
-    <system:String x:Key="Credits">Creditos</system:String>
+    <!-- Mensajes de Confirmación-->
+    <system:String x:Key="UserNameAvaible">Nombre de usuario disponible</system:String>
+    <system:String x:Key="ValidPassword">Contraseña valida</system:String>
+    <system:String x:Key="ValidRepeatPassword">Coinciden las contraseñas</system:String>
+    <system:String x:Key="ValidEmail">Correo valido</system:String>
+    <system:String x:Key="ValidRepeatEmail">Coinciden los correos</system:String>
+    <system:String x:Key="UserSignUpSucessfull">Se ha enviado un correo a la dirección introducida {CorreoTextBox.Text} Revise el" +
+                    $" correo para ver su código de registro el cual tendra que introducir, si no lo encuentra mire en la carpeta" +
+                    $" de 'Spam' o 'Correo no deseado'</system:String>
+    <system:String x:Key="CorrectCode">Usuario creado con exito</system:String>
+    
+    <!-- Mensajes de Error -->
+    <system:String x:Key="UserAlreadyExist">Ya existe alguien con ese usuario</system:String>
+    <system:String x:Key="UserEmpty">Introduzca el nombre de usuario</system:String>
+    <system:String x:Key="PasswordEmpty">El campo contraseña no puede quedarse en blanco</system:String>
+    <system:String x:Key="RulesForUser">El nombre de usuario debe empezar \n por letras y sin espacios</system:String>
+    <system:String x:Key="RulesForPasword">La contraseña no puede contener \n espacios</system:String>
+    <system:String x:Key="PasswordUnMatch">Las contraseñas no coinciden</system:String>
+    <system:String x:Key="EmailEmpty">El campo email no puede estar en blanco</system:String>
+    <system:String x:Key="RulesForEmail">La contraseña no puede contener \n espacios y debe tener @ y .es \n Por ejemplo @hotmail.com</system:String>
+    <system:String x:Key="EmailUnMatch">Los correos no coinciden</system:String>
+    <system:String x:Key="ÙserSignUpFailed">El envio a la dirección de correo ha fallado, revise que su conexión a internet " +
+                    " funciona Correctamente y la dirección de correo introducida</system:String>
+    <system:String x:Key="WrongCode">El código introducido es incorrecto, revise el correo, si pulsa en aceptar de nuevo " +
+                    "se le reenviara otro correo con otro código</system:String>
+    
 </ResourceDictionary>

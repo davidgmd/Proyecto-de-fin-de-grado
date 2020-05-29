@@ -10,65 +10,18 @@
         Closed="Window_Closed">
 
     <Window.Resources>
-        <Style x:Key="EstilobaseTextBlock" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Margin" Value="10"/>
-        </Style>
-
-        <Style x:Key="EstilobaseTextBox" TargetType="TextBox">
-            <Setter Property="Width" Value="200"/>
-            <Setter Property="Margin" Value="10"/>
-        </Style>
-
-        <Style x:Key="Checkers" TargetType="Image">
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="Source" Value="Images/icons/icons8-incorrecto.png"/>
-        </Style>
-
-        <Style x:Key="Titulo" TargetType="TextBlock" BasedOn="{StaticResource Encabezado}">
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Margin" Value="20"/>
-        </Style>
-
-        <Style x:Key="ErrorUsuario" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Red" />
-            <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Visibility" Value="Hidden"/>
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
-        </Style>
-
-        <Style x:Key="BotonesRegistro" TargetType="Button">
-            <Setter Property="Margin" Value="10"/>
-        </Style>
-
-        <Style x:Key="BotonAceptar" TargetType="Button" BasedOn="{StaticResource BotonesRegistro}">
-            <Setter Property="IsEnabled" Value="False"/>
-        </Style>
-
-        <Style x:Key="PanelCodigo" TargetType="StackPanel">
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="Visibility" Value="Hidden"/>
-        </Style>
-
-        <Style x:Key="EncabezadoCodigo" TargetType="TextBlock">
-            <Setter Property="Foreground" Value="White"/>
-        </Style>
-
-        <Style x:Key="TextoCodigo" TargetType="TextBox">
-            <Setter Property="Margin" Value="2"/>
-        </Style>
-
-        <Style x:Key="BotonCodigo" TargetType="Button">
-            <Setter Property="Margin" Value="5"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Registro.xaml"/>
+                <ResourceDictionary Source="Idiomas/ES/SignUp.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     
     <Grid>
         <StackPanel>
         <TextBlock Style="{DynamicResource Titulo}" 
-                Text="Registro de usuario"/>
+                Text="{DynamicResource WindowTitle}"/>
             <Grid HorizontalAlignment="Center"
                   x:Name="CamposRegistro">
                 <Grid.ColumnDefinitions>
@@ -86,7 +39,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 
-                <TextBlock Text="Nombre de usuario"
+                <TextBlock Text="{DynamicResource UserName}"
                            Style="{DynamicResource EstilobaseTextBlock}"
                            Grid.Column="0"
                            Grid.Row="0"/>
@@ -106,7 +59,7 @@
                                Style="{DynamicResource ErrorUsuario}"/>
                 </StackPanel>
 
-                    <TextBlock Text="Contraseña"
+                    <TextBlock Text="{DynamicResource Password}"
                            Style="{DynamicResource EstilobaseTextBlock}"
                            Grid.Column="0"
                            Grid.Row="1"/>
@@ -125,7 +78,7 @@
                                Style="{DynamicResource ErrorUsuario}"/>
                 </StackPanel>
                 
-                <TextBlock Text="Repetir Contraseña"
+                <TextBlock Text="{DynamicResource PasswordRepeat}"
                            Grid.Column="0"
                            Grid.Row="2"
                            Style="{DynamicResource EstilobaseTextBlock}"/>
@@ -144,7 +97,7 @@
                                Style="{DynamicResource ErrorUsuario}"/>
                 </StackPanel>
                 
-                <TextBlock Text="Correo"
+                <TextBlock Text="{DynamicResource Email}"
                            Grid.Column="0"
                            Grid.Row="3"
                            Style="{DynamicResource EstilobaseTextBlock}"/>
@@ -163,7 +116,7 @@
                                Style="{DynamicResource ErrorUsuario}"/>
                 </StackPanel>
                 
-                <TextBlock Text="Repetir Correo"
+                <TextBlock Text="{DynamicResource EmailRepeat}"
                            Grid.Column="0"
                            Grid.Row="4"
                            Style="{DynamicResource EstilobaseTextBlock}"/>
@@ -183,11 +136,11 @@
                 </StackPanel>
                 
                 <Button Name="AceptarButton"
-                        Content="Aceptar"
+                        Content="{DynamicResource AceptButton}"
                         Grid.Row="5"
                         Style="{DynamicResource BotonAceptar}"
                         Click="AceptarButton_Click"/>
-                <Button Content="Cancelar"
+                <Button Content="{DynamicResource CancelButton}"
                         Grid.Column="1"
                         Grid.Row="5"
                         Style="{DynamicResource BotonesRegistro}"

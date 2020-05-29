@@ -19,20 +19,13 @@ namespace ElEscribaDelDJ
     {
         private static JObject sesionusuario;
         private static GitHub github;
-        private ResourceDictionary idioma = new ResourceDictionary();
+
         private string[] valoresinicialesconf;
 
         public string[] ValoresInicialesConfiguracion
         {
             get { return valoresinicialesconf; }
             set { valoresinicialesconf = value; }
-        }
-
-
-        public ResourceDictionary Idioma
-        {
-            get { return idioma; }
-            set { idioma = value; }
         }
 
         public static GitHub gitHub
@@ -64,7 +57,7 @@ namespace ElEscribaDelDJ
             this.ConfiguracionInicial();
 
             //Indicamos que va a haber un diccionario de recursos y su dirección        
-            this.DefinirIdioma();
+            ConfiguracionPagina.DefinirIdioma(this, "Login.xaml");
         }
 
         private void ConfiguracionInicial()
@@ -91,24 +84,6 @@ namespace ElEscribaDelDJ
             this.valoresinicialesconf[1] = "RememberUser:" + ConfiguracionAplicacion.Default.RecordarUsuario.ToString();
             this.valoresinicialesconf[2] = "RememberLogin:" + ConfiguracionAplicacion.Default.RecordarLogin.ToString();
             System.IO.File.WriteAllLines(RecursosAplicacion.DireccionBase + "Settings.ini", this.valoresinicialesconf);
-        }
-
-        private void DefinirIdioma()
-        {
-            //Según el idioma cargamos uno u otro
-            var path = RecursosAplicacion.DireccionBase + "\\Idiomas\\ES\\" + "Login.xaml";
-
-            if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
-            {
-                path = RecursosAplicacion.DireccionBase + "\\Idiomas\\ES\\" + "Login.xaml";
-            }
-            else
-            {
-                path = RecursosAplicacion.DireccionBase + "\\Idiomas\\EN\\" + "Login.xaml";
-            }
-
-            this.idioma.Source = new Uri(path, UriKind.Absolute);
-            this.Resources.MergedDictionaries.Add(this.idioma);
         }
 
         private void userTextBox_GotFocus(object sender, RoutedEventArgs e)
@@ -237,14 +212,14 @@ namespace ElEscribaDelDJ
         private void IdiomaEN_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ConfiguracionAplicacion.Default.Idioma = "EN";
-            DefinirIdioma();
+            ConfiguracionPagina.DefinirIdioma(this, "Login.xaml");
             GuardarConfiguracion();
         }
 
         private void IdiomaES_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ConfiguracionAplicacion.Default.Idioma = "ES";
-            DefinirIdioma();
+            ConfiguracionPagina.DefinirIdioma(this, "Login.xaml");
             GuardarConfiguracion();
         }
     }

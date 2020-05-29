@@ -1,0 +1,47 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ElEscribaDelDJ"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:String x:Key="WindowTitle">User SignUp</system:String>
+    <system:String x:Key="UserName">User Name</system:String>
+    <system:String x:Key="UserNameChanged">When you have finish writing the new user name press any other textbox to check the user name availability</system:String>
+    <system:String x:Key="Password">Password</system:String>
+    <system:String x:Key="PasswordRepeat">Password Repeat</system:String>
+    <system:String x:Key="Email">Email</system:String>
+    <system:String x:Key="EmailRepeat">Email Repeat</system:String>
+    <system:String x:Key="AceptButton">Acept</system:String>
+    <system:String x:Key="CancelButton">Cancel</system:String>
+    <system:String x:Key="CodeText">Input the code sended to your email account</system:String>
+    <system:String x:Key="CodeButton">Input code</system:String>
+    <system:String x:Key="UserSignUp">Usuario registrado con este correo en el escriba del dj", "Se ha solicitado" +
+                $" registrarse con este correo por parte del usuario {userText.Text} debe introducir en el programa" +
+                $" el código de registro {codigo}</system:String>
+    
+    <!-- Mensajes de Confirmación-->
+    <system:String x:Key="UserNameAvaible">User name avaible</system:String>
+    <system:String x:Key="ValidPassword">Valid Password</system:String>
+    <system:String x:Key="ValidRepeatPassword">Passwords Match</system:String>
+    <system:String x:Key="ValidEmail">Valid Email</system:String>
+    <system:String x:Key="ValidRepeatEmail">Emails Match</system:String>
+    <system:String x:Key="UserSignUpSucessfull">One email have been sended to {CorreoTextBox.Text} Check the mail" +
+                    $" inbox to see your code which you should put in the code textbox, if you don't find it check the email" +
+                    $" 'Spam' folder</system:String>
+    <system:String x:Key="CorrectCode">User created sucessfull</system:String>
+    
+    <!-- Mensajes de Error -->
+    <system:String x:Key="UserAlreadyExist">That UserName Already Exist</system:String>
+    <system:String x:Key="UserEmpty">The user name can't be empty</system:String>
+    <system:String x:Key="PasswordEmpty">The Password can't be empty</system:String>
+    <system:String x:Key="RulesForUser">The username must begin \n with a character and can't have spaces between characters</system:String>
+    <system:String x:Key="RulesForPasword">The password can't have any \n space</system:String>
+    <system:String x:Key="PasswordUnMatch">The passwords doesn't match</system:String>
+    <system:String x:Key="EmailEmpty">The Email can't be empty</system:String>
+    <system:String x:Key="RulesForEmail">The email can't containt any \n space and must have one @ and one . \n Example name@hotmail.com</system:String>
+    <system:String x:Key="EmailUnMatch">The emails doesn't match</system:String>
+    <system:String x:Key="ÙserSignUpFailed">The send have fail, check your internet conection " +
+                    " and the email direction in the textbox</system:String>
+    <system:String x:Key="WrongCode">Incorrect code, check your email, if you pulse in accept again " +
+                    "another email will be sended to your email direction</system:String>
+    
+</ResourceDictionary>

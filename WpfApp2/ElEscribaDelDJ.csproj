@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <Page Remove="Idiomas\EN\Login.xaml" />
+    <Page Remove="Idiomas\EN\SignUp.xaml" />
     <Page Remove="Idiomas\ES\Login.xaml" />
     <Page Remove="Idiomas\ES\SignUp.xaml" />
     <Page Remove="Idiomas\IdiomasLogin.xaml" />
@@ -48,6 +49,10 @@
     <Resource Include="credits.txt" />
     <Resource Include="emailcredentials.txt" />
     <Resource Include="Idiomas\EN\Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Resource>
+    <Resource Include="Idiomas\EN\SignUp.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Resource>
     <Resource Include="Idiomas\ES\SignUp.xaml">
