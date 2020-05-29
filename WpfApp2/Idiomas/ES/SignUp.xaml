@@ -5,7 +5,7 @@
 
     <system:String x:Key="WindowTitle">Registro de usuario</system:String>
     <system:String x:Key="UserName">Nombre de usuario</system:String>
-    <system:String x:Key="UserNameChanged">Cuando haya terminado de escribir el usuario \n pulse en el siguiente campo para comprobar \n la disponibilidad</system:String>
+    <system:String x:Key="UserNameChanged">Cuando haya terminado de escribir el usuario pulse en el siguiente campo para comprobar la disponibilidad</system:String>
     <system:String x:Key="Password">Contraseña</system:String>
     <system:String x:Key="PasswordRepeat">Repetir Contraseña</system:String>
     <system:String x:Key="Email">Correo</system:String>
@@ -14,9 +14,10 @@
     <system:String x:Key="CancelButton">Cancelar</system:String>
     <system:String x:Key="CodeText">Introduzca él código enviado al correo</system:String>
     <system:String x:Key="CodeButton">Introducir código</system:String>
-    <system:String x:Key="UserSignUp">Usuario registrado con este correo en el escriba del dj", "Se ha solicitado" +
-                $" registrarse con este correo por parte del usuario {userText.Text} debe introducir en el programa" +
-                $" el código de registro {codigo}</system:String>
+    
+    <!-- Parte encargada del correo !-->
+    <system:String x:Key="EmailSubject">Alta de usuario en el Escriba del DJ</system:String>
+    <system:String x:Key="EmailMessage">Se ha solicitado el registro del usuario {0} para ello introduzca el código de registro {1}</system:String>
     
     <!-- Mensajes de Confirmación-->
     <system:String x:Key="UserNameAvaible">Nombre de usuario disponible</system:String>
@@ -24,24 +25,20 @@
     <system:String x:Key="ValidRepeatPassword">Coinciden las contraseñas</system:String>
     <system:String x:Key="ValidEmail">Correo valido</system:String>
     <system:String x:Key="ValidRepeatEmail">Coinciden los correos</system:String>
-    <system:String x:Key="UserSignUpSucessfull">Se ha enviado un correo a la dirección introducida {CorreoTextBox.Text} Revise el" +
-                    $" correo para ver su código de registro el cual tendra que introducir, si no lo encuentra mire en la carpeta" +
-                    $" de 'Spam' o 'Correo no deseado'</system:String>
-    <system:String x:Key="CorrectCode">Usuario creado con exito</system:String>
+    <system:String x:Key="UserSignUpSucessfull">Se ha enviado un correo a la dirección introducida {0} Revise el correo para ver su código de registro el cual tendra que introducir, si no lo encuentra mire en la carpeta de 'Spam' o 'Correo no deseado'</system:String>
+    <system:String x:Key="RightCode">Usuario creado con exito</system:String>
     
     <!-- Mensajes de Error -->
     <system:String x:Key="UserAlreadyExist">Ya existe alguien con ese usuario</system:String>
     <system:String x:Key="UserEmpty">Introduzca el nombre de usuario</system:String>
     <system:String x:Key="PasswordEmpty">El campo contraseña no puede quedarse en blanco</system:String>
-    <system:String x:Key="RulesForUser">El nombre de usuario debe empezar \n por letras y sin espacios</system:String>
-    <system:String x:Key="RulesForPasword">La contraseña no puede contener \n espacios</system:String>
+    <system:String x:Key="RulesForUser">El nombre de usuario debe empezar por letras y sin espacios</system:String>
+    <system:String x:Key="RulesForPasword">La contraseña no puede contener espacios</system:String>
     <system:String x:Key="PasswordUnMatch">Las contraseñas no coinciden</system:String>
     <system:String x:Key="EmailEmpty">El campo email no puede estar en blanco</system:String>
-    <system:String x:Key="RulesForEmail">La contraseña no puede contener \n espacios y debe tener @ y .es \n Por ejemplo @hotmail.com</system:String>
+    <system:String x:Key="RulesForEmail">La contraseña no puede contener espacios y debe tener @ y .es Por ejemplo @hotmail.com</system:String>
     <system:String x:Key="EmailUnMatch">Los correos no coinciden</system:String>
-    <system:String x:Key="ÙserSignUpFailed">El envio a la dirección de correo ha fallado, revise que su conexión a internet " +
-                    " funciona Correctamente y la dirección de correo introducida</system:String>
-    <system:String x:Key="WrongCode">El código introducido es incorrecto, revise el correo, si pulsa en aceptar de nuevo " +
-                    "se le reenviara otro correo con otro código</system:String>
+    <system:String x:Key="UserSignUpFailed">El envio a la dirección de correo ha fallado, revise que su conexión a internet funciona Correctamente y la dirección de correo introducida {0}</system:String>
+    <system:String x:Key="WrongCode">El código introducido es incorrecto, revise el correo, si pulsa en aceptar de nuevo se le reenviara otro correo con otro código</system:String>
     
 </ResourceDictionary>

@@ -58,7 +58,7 @@ namespace ElEscribaDelDJ.Classes
             this.servidor.Port = 465;
         }
 
-        public Boolean sendEmail(string correoDestino, string motivoMensaje, string mensaje)
+        public Boolean SendEmail(string correoDestino, string motivoMensaje, string mensaje)
         {
             try
             {
@@ -79,6 +79,8 @@ namespace ElEscribaDelDJ.Classes
                 //this.servidor.ConnectType = SmtpConnectType.ConnectTryTLS;
                 this.servidor.ConnectType = SmtpConnectType.ConnectSSLAuto;
 
+                //La funcion de testeo no funciona adecuadamente, esta parte es imposible testear sin servidor
+                //this.clienteSmtp.TestRecipients(null, oMail);
                 this.clienteSmtp.SendMail(this.servidor, oMail);
                 return true;
             }

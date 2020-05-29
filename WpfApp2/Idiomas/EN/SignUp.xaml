@@ -14,34 +14,31 @@
     <system:String x:Key="CancelButton">Cancel</system:String>
     <system:String x:Key="CodeText">Input the code sended to your email account</system:String>
     <system:String x:Key="CodeButton">Input code</system:String>
-    <system:String x:Key="UserSignUp">Usuario registrado con este correo en el escriba del dj", "Se ha solicitado" +
-                $" registrarse con este correo por parte del usuario {userText.Text} debe introducir en el programa" +
-                $" el código de registro {codigo}</system:String>
     
+    <!-- Parte encargada del correo !-->
+    <system:String x:Key="EmailSubject">User sign up to the Master's Scrib</system:String>
+    <system:String x:Key="EmailMessage">The user {0} has requested the sign up in the Master's Scribe, to proceed introduce this code {1} in the application</system:String>
+
     <!-- Mensajes de Confirmación-->
     <system:String x:Key="UserNameAvaible">User name avaible</system:String>
     <system:String x:Key="ValidPassword">Valid Password</system:String>
     <system:String x:Key="ValidRepeatPassword">Passwords Match</system:String>
     <system:String x:Key="ValidEmail">Valid Email</system:String>
     <system:String x:Key="ValidRepeatEmail">Emails Match</system:String>
-    <system:String x:Key="UserSignUpSucessfull">One email have been sended to {CorreoTextBox.Text} Check the mail" +
-                    $" inbox to see your code which you should put in the code textbox, if you don't find it check the email" +
-                    $" 'Spam' folder</system:String>
-    <system:String x:Key="CorrectCode">User created sucessfull</system:String>
+    <system:String x:Key="UserSignUpSucessfull">One email have been sended to {0} Check the mail inbox to see your code which you should put in the code textbox, if you don't find it, check the email Spam folder</system:String>
+    <system:String x:Key="RightCode">User created sucessfully</system:String>
     
     <!-- Mensajes de Error -->
     <system:String x:Key="UserAlreadyExist">That UserName Already Exist</system:String>
     <system:String x:Key="UserEmpty">The user name can't be empty</system:String>
     <system:String x:Key="PasswordEmpty">The Password can't be empty</system:String>
-    <system:String x:Key="RulesForUser">The username must begin \n with a character and can't have spaces between characters</system:String>
-    <system:String x:Key="RulesForPasword">The password can't have any \n space</system:String>
+    <system:String x:Key="RulesForUser">The username must begin with a character and can't have spaces between characters</system:String>
+    <system:String x:Key="RulesForPasword">The password can't have any space</system:String>
     <system:String x:Key="PasswordUnMatch">The passwords doesn't match</system:String>
     <system:String x:Key="EmailEmpty">The Email can't be empty</system:String>
-    <system:String x:Key="RulesForEmail">The email can't containt any \n space and must have one @ and one . \n Example name@hotmail.com</system:String>
+    <system:String x:Key="RulesForEmail">The email can't containt any space and must have one @ and one . Example name@hotmail.com</system:String>
     <system:String x:Key="EmailUnMatch">The emails doesn't match</system:String>
-    <system:String x:Key="ÙserSignUpFailed">The send have fail, check your internet conection " +
-                    " and the email direction in the textbox</system:String>
-    <system:String x:Key="WrongCode">Incorrect code, check your email, if you pulse in accept again " +
-                    "another email will be sended to your email direction</system:String>
+    <system:String x:Key="UserSignUpFailed">The send have fail, check your internet conection and the email direction {0} in the textbox</system:String>
+    <system:String x:Key="WrongCode">Wrong code, check your email, if you press again the accept button, another email will be sended to your email direction</system:String>
     
 </ResourceDictionary>

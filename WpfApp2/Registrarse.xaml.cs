@@ -46,7 +46,7 @@ namespace ElEscribaDelDJ
             HabilitarBoton();
         }
 
-        private void userText_TextChanged(object sender, TextChangedEventArgs e)
+        private void UserText_TextChanged(object sender, TextChangedEventArgs e)
         {
             var regExp = new Regex("^[a-zA-Z]\\S*$");
             if (userText.Text == "")
@@ -226,20 +226,15 @@ namespace ElEscribaDelDJ
         {
             this.codigo = this.generarcodigo();
             Email emailRegistro = new Email();       
-            var exito = emailRegistro.sendEmail(CorreoTextBox.Text, "Usuario registrado con este correo en el escriba del dj", "Se ha solicitado" +
-                $" registrarse con este correo por parte del usuario {userText.Text} debe introducir en el programa" +
-                $" el código de registro {codigo}");
+            var exito = emailRegistro.SendEmail(CorreoTextBox.Text, this.FindResource("EmailSubject").ToString(), string.Format(this.FindResource("EmailMessage").ToString(), this.userText.Text, codigo));
             if (exito)
             {
-                System.Windows.MessageBox.Show($"Se ha enviado un correo a la dirección introducida {CorreoTextBox.Text} Revise el" +
-                    $" correo para ver su código de registro el cual tendra que introducir, si no lo encuentra mire en la carpeta" +
-                    $" de 'Spam' o 'Correo no deseado'");
+                System.Windows.MessageBox.Show(string.Format(this.FindResource("UserSignUpSucessfull").ToString(), this.CorreoTextBox.Text));
                 this.introducirCodigo.Visibility = Visibility.Visible;
             }
             else
             {
-                System.Windows.MessageBox.Show("El envio a la dirección de correo ha fallado, revise que su conexión a internet " +
-                    " funciona Correctamente y la dirección de correo introducida");
+                System.Windows.MessageBox.Show(string.Format(this.FindResource("UserSignUpFailed").ToString(), this.CorreoTextBox.Text));
             }
         }
 
@@ -263,13 +258,12 @@ namespace ElEscribaDelDJ
             if (codigoTextBox.Text.Equals(codigo))
             {
                 CrearCredenciales(userText.Text, PasswordBoxText.Password);
-                System.Windows.MessageBox.Show("usuario creado con exito");
+                System.Windows.MessageBox.Show(this.FindResource("RightCode").ToString());
                 this.Close();
             }
             else
             {
-                System.Windows.MessageBox.Show("El código introducido es incorrecto, revise el correo, si pulsa en aceptar de nuevo " +
-                    "se le reenviara otro correo con otro código");
+                System.Windows.MessageBox.Show(this.FindResource("WrongCode").ToString());
             }
         }
 

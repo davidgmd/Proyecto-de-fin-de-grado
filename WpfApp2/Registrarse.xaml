@@ -48,7 +48,7 @@
                            Style="{DynamicResource EstilobaseTextBox}"
                            Grid.Row="0"
                            LostFocus="User_LostFocus"
-                           TextChanged="userText_TextChanged"/>
+                           TextChanged="UserText_TextChanged"/>
                 <StackPanel Orientation="Horizontal"
                             Grid.Column="2"
                             Grid.Row="0">
