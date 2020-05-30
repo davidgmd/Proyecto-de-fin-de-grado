@@ -119,25 +119,30 @@
 
                     <StackPanel Orientation="Horizontal"
                                 Margin="2">
-                        <CheckBox Margin="0,0,2,0"/>
+                        <CheckBox Margin="0,0,2,0"
+                                  x:Name="RememberUserCheck"
+                                  Checked="RememberUserCheck_Checked"
+                                  Unchecked="RememberUserCheck_Unchecked"/>
                         <TextBlock Foreground="White" Text="{DynamicResource CheckUser}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal"
                                 Margin="2"
                                 Grid.Column="1">
-                        <CheckBox Margin="2,0,2,0"/>
+                        <CheckBox Margin="2,0,2,0"
+                                  x:Name="RememberLoginCheck"
+                                  Checked="RememberLoginCheck_Checked"
+                                  Unchecked="RememberLoginCheck_Unchecked"/>
                         <TextBlock Foreground="White" Text="{DynamicResource CheckLogin}"/>
                     </StackPanel>
                 </Grid>
             </Grid>
 
-            <StackPanel Orientation="Horizontal"
-                    x:Name="ElegirIdioma"
-                        HorizontalAlignment="Center">
+            <StackPanel Style="{DynamicResource SeccionIdiomas}"
+                    x:Name="ElegirIdioma">
                 <StackPanel x:Name="IdiomaES"
-                            MouseDown="IdiomaES_MouseDown"
-                            Margin="0 0 10 0">
+                            Style="{DynamicResource CajaIdioma}"
+                            MouseDown="IdiomaES_MouseDown">
                     <Image x:Name="Spain"
                            Style="{DynamicResource IdiomaES}"/>
                     <TextBlock Text="Español"
@@ -146,6 +151,7 @@
                 </StackPanel>
 
                 <StackPanel x:Name="IdiomaEN" 
+                            Style="{DynamicResource CajaIdioma}"
                             MouseDown="IdiomaEN_MouseDown">
                     <Image x:Name="English"
                            Style="{DynamicResource IdiomaEN}"/>
@@ -153,7 +159,6 @@
                                Margin="0"
                            Style="{DynamicResource tipoBase}"/>
                 </StackPanel>
-
             </StackPanel>
         </StackPanel>
 

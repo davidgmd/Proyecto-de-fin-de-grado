@@ -10,8 +10,8 @@
     <system:String x:Key="User">User:</system:String>
     <system:String x:Key="UserText">Put your user name</system:String>
     <system:String x:Key="Password">Password:</system:String>
-    <system:String x:Key="CheckUser">Remember User:</system:String>
-    <system:String x:Key="CheckLogin">Remember Login:</system:String>
+    <system:String x:Key="CheckUser">Remember User</system:String>
+    <system:String x:Key="CheckLogin">Remember Login</system:String>
     <system:String x:Key="RegisterButton">Sign up</system:String>
     <system:String x:Key="LoginButton">Login</system:String>
     <system:String x:Key="License">This product is under the license:</system:String>

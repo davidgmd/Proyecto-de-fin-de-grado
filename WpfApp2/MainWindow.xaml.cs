@@ -19,6 +19,7 @@ namespace ElEscribaDelDJ
     {
         private static JObject sesionusuario;
         private static GitHub github;
+        private string passwordlog = "";
 
         private string[] valoresinicialesconf;
 
@@ -55,9 +56,35 @@ namespace ElEscribaDelDJ
 
             //Leemos la configuracion inicial
             this.ConfiguracionInicial();
+            if (ConfiguracionAplicacion.Default.RecordarUsuario || ConfiguracionAplicacion.Default.RecordarLogin)
+                this.LoginInicial();
 
             //Indicamos que va a haber un diccionario de recursos y su dirección        
             ConfiguracionPagina.DefinirIdioma(this, "Login.xaml");
+        }
+
+        private void LoginInicial()
+        {
+            if (ConfiguracionAplicacion.Default.RecordarUsuario)
+            {
+                this.RememberUserCheck.IsChecked = true;
+                string[] ultimologin = Logs.LeerLog("login", "Login exitoso", this.FindResource("ErrorUser").ToString());
+                if (ultimologin != null)
+                {
+                    this.userText.Text = ultimologin[0];
+                }
+            }
+            else
+            {
+                this.RememberLoginCheck.IsChecked = true;
+                string[] ultimologin = Logs.LeerLog("login", "Login exitoso", this.FindResource("ErrorUser").ToString());
+                if (ultimologin != null)
+                {
+                    this.userText.Text = ultimologin[0];
+                    this.passwordText.Password = ultimologin[1];
+                    this.passwordlog = ultimologin[1];
+                }
+            }
         }
 
         private void ConfiguracionInicial()
@@ -144,8 +171,19 @@ namespace ElEscribaDelDJ
 
             //Asignar los valores de usuario
             usuario.NombreUsuario = this.userText.Text;
-            usuario.Clave = Encriptacion(this.passwordText.Password);
+            
+            if (!this.passwordlog.Equals("") && this.passwordText.Password.Equals(passwordlog))
+            {
+                usuario.Clave = this.passwordlog;
+            }
+            else
+            {
+                usuario.Clave = Encriptacion(this.passwordText.Password);
+            }
+            
             usuario.ListCampaignes = new List<Campaign>();
+
+            string[] campos = { usuario.NombreUsuario, usuario.Clave };
 
             if (await this.ComprobarCredenciales (usuario.NombreUsuario, usuario.Clave))
             {
@@ -153,6 +191,7 @@ namespace ElEscribaDelDJ
                 SesionUsuario = JObject.FromObject(usuario);
 
                 System.Windows.MessageBox.Show(this.FindResource("RightLogin").ToString());
+                Logs.GenerarLog("Intento de login", campos, "login", "Login exitoso");
 
                 //mostramos la ventana del menu
                 menuPrincipal ventanaPrincipal = new menuPrincipal();
@@ -162,6 +201,7 @@ namespace ElEscribaDelDJ
             else
             {
                 System.Windows.MessageBox.Show(this.FindResource("ErrorUser").ToString());
+                Logs.GenerarLog("Intento de login", campos, "login", this.FindResource("ErrorUser").ToString());
             }    
         }
 
@@ -220,6 +260,38 @@ namespace ElEscribaDelDJ
         {
             ConfiguracionAplicacion.Default.Idioma = "ES";
             ConfiguracionPagina.DefinirIdioma(this, "Login.xaml");
+            GuardarConfiguracion();
+        }
+
+        private void RememberUserCheck_Checked(object sender, RoutedEventArgs e)
+        {
+            ConfiguracionAplicacion.Default.RecordarUsuario = true;
+            if (this.RememberLoginCheck.IsChecked == true)
+            {
+                this.RememberLoginCheck.IsChecked = false;                
+            }
+            GuardarConfiguracion();
+        }
+
+        private void RememberUserCheck_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ConfiguracionAplicacion.Default.RecordarUsuario = false;
+            GuardarConfiguracion();
+        }
+
+        private void RememberLoginCheck_Checked(object sender, RoutedEventArgs e)
+        {
+            ConfiguracionAplicacion.Default.RecordarLogin = true;
+            if (this.RememberUserCheck.IsChecked == true)
+            {
+                this.RememberUserCheck.IsChecked = false;
+            }
+            GuardarConfiguracion();
+        }
+
+        private void RememberLoginCheck_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ConfiguracionAplicacion.Default.RecordarLogin = false;
             GuardarConfiguracion();
         }
     }

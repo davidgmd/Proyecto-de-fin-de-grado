@@ -10,8 +10,8 @@
     <system:String x:Key="User">Usuario:</system:String>
     <system:String x:Key="UserText">Introduzca el nombre de usuario:</system:String>
     <system:String x:Key="Password">Contraseña:</system:String>
-    <system:String x:Key="CheckUser">Recordar Usuario:</system:String>
-    <system:String x:Key="CheckLogin">Recordar Login:</system:String>
+    <system:String x:Key="CheckUser">Recordar Usuario</system:String>
+    <system:String x:Key="CheckLogin">Recordar Login</system:String>
     <system:String x:Key="RegisterButton">Registrarse</system:String>
     <system:String x:Key="LoginButton">Login</system:String>
     <system:String x:Key="License">Este producto esta bajo la licencia</system:String>

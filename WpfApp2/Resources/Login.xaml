@@ -34,6 +34,20 @@
         <Setter Property="FontStyle" Value="Normal"/>
     </Style>
 
+    <Style x:Key="SeccionIdiomas" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="CajaIdioma" TargetType="StackPanel">
+        <Setter Property="Margin" Value="0 0 10 0"/>
+        <Style.Triggers>
+            <Trigger Property ="IsMouseOver" Value="True">
+                <Setter Property= "Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="ImagenIdioma" TargetType="Image">
         <Setter Property="Height" Value="45"/>
         <Setter Property="Stretch" Value="UniformToFill"/>
