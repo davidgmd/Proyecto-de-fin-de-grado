@@ -77,6 +77,18 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
         {
             List<String> campos = new List<String>();
             string linea;
+
+            if (!File.Exists(RecursosAplicacion.DireccionBase + "Logs\\" + nombrearchivo + ".log"))
+            {
+                File.Create(RecursosAplicacion.DireccionBase + "Logs\\" + nombrearchivo + ".log");
+                return null;
+            }
+
+            
+            if (File.ReadAllText(RecursosAplicacion.DireccionBase + "Logs\\" + nombrearchivo + ".log").Trim().Equals(""))
+            {
+                return null;
+            }
             using (StreamReader sr = new StreamReader(RecursosAplicacion.DireccionBase + "Logs\\" + nombrearchivo + ".log"))
             {
                 while ((linea = sr.ReadLine()) != null)
