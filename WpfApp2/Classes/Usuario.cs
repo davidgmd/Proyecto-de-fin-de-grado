@@ -6,7 +6,7 @@ namespace ElEscribaDelDJ.Classes
     {
         private string nombre;
         private string clave;      
-        private List<Campaign> listacampaigne;
+        private List<Campana> listacampaigne;
         private string correoelectronico;
 
         public string Correo
@@ -15,7 +15,7 @@ namespace ElEscribaDelDJ.Classes
             set { correoelectronico = value; }
         }
 
-        public List<Campaign> ListCampaignes
+        public List<Campana> ListCampaignes
         {
             get { return listacampaigne; }
             set { listacampaigne = value; }

@@ -2,13 +2,20 @@
 
 namespace ElEscribaDelDJ.Classes
 {
-    class Campaign
+    class Campana
     {
 		private string nombre;
 		private string descripcion;
-		private List<RecursosCampana> listarecursos;
-     
-        public List<RecursosCampana> RecursosCampana
+        private string imagen;
+        private List<RecursosCampana> listarecursos;
+
+		public string DireccionImagen
+		{
+			get { return imagen; }
+			set { imagen = value; }
+		}
+
+		public List<RecursosCampana> RecursosCampana
 		{
 			get { return listarecursos; }
 			set { listarecursos = value; }

@@ -10,85 +10,51 @@
         ResizeMode="NoResize">
 
     <Window.Resources>
-        <Style x:Key="comboBoxCampaigne" TargetType="ComboBox">
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="IsEditable" Value="True"/>
-            <Setter Property="IsReadOnly" Value="True"/>
-            <Setter Property="Focusable" Value="True"/>
-            <Setter Property="FontSize" Value="15"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
-
-        <Style x:Key="iconCampaigne" TargetType="Image">
-            <Setter Property="Stretch" Value="Uniform"/>
-            <Setter Property="Source" Value="/Images/icons/icons8-escudopregunta.png"/>
-        </Style>
-
-        <Style x:Key="botonSalirMP" TargetType="Button" BasedOn="{StaticResource botonSalir}">
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Margin" Value="0 0 5 0"/>
-        </Style>
-
-        <Style x:Key="buttonComboBox" TargetType="Button">
-            <Setter Property="Width" Value="30"/>
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-        </Style>
-
-        <Style x:Key="addComboBox" TargetType="Button" BasedOn="{StaticResource buttonComboBox}">
-            <Setter Property="Background" Value="ForestGreen"/>
-        </Style>
-
-        <Style x:Key="dropComboBox" TargetType="Button" BasedOn="{StaticResource buttonComboBox}">
-            <Setter Property="Background" Value="Red"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/View/MenuPrincipal.xaml"/>
+                <ResourceDictionary Source="../Idiomas/ES/MainMenu.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
 
-    <Grid x:Name="gridBase" Background="Silver">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+<Grid x:Name="gridBase"
+          Background="Silver">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <Grid Grid.ColumnSpan="2"
-              Margin="10"
-              Grid.Row="0">
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <Grid   Grid.ColumnSpan="2">
+    
+    <StackPanel>
+        <Grid>
             <TextBlock Style="{DynamicResource Encabezado}" 
-                       Text="Seleccionar campaña"
-                       x:Name="tituloCampana"/>
+                    Text="{DynamicResource Title}"
+                    x:Name="tituloCampana"/>
+
                 <Button Style="{DynamicResource botonSalirMP}"
                         Click="exitButton_Click">
-                    <Image Source="/images/icons/icons8-salir.png"/>
+                    <Image Style="{DynamicResource ImagenBotonSalir}"/>
                 </Button>
-            </Grid>
+            
+        </Grid>
+        
+            <TextBlock Style="{DynamicResource DescripcionUso}" 
+                       Text="{DynamicResource HowToUse}"
+                       Grid.Row="1"/>
 
-            <StackPanel Orientation="Horizontal"
-                        Grid.Row="1"
-                        HorizontalAlignment="Center">
+            <StackPanel Style="{DynamicResource CampanaStackPanel}">
 
                 <Button Style="{DynamicResource addComboBox}">
-                    <Image Source="/images/icons/iconoMas.png"/>
+                    <Image Style="{DynamicResource ImagenAddComboBox}"/>
                 </Button>
 
+                <!-- Le falta cambiar la funcionalidad inicial y al cambiar a este y el resto de stackpanels-->
                 <ComboBox Style="{DynamicResource comboBoxCampaigne}"
-                            x:Name="campaigneComboBox"
-                            Text="Si no va a usar una de las ya creadas, puede crearla con +"
-                            SelectionChanged="CampaigneComboBox_SelectionChanged">
+                        x:Name="campaigneComboBox"
+                        Text="{DynamicResource CampaignList}"
+                        SelectionChanged="CampaigneComboBox_SelectionChanged">
                     <ComboBoxItem>
                         <TextBlock Text="D&amp;D 3.5"/>
                     </ComboBoxItem>
@@ -110,88 +76,134 @@
                 </ComboBox>
 
                 <Button Style="{DynamicResource dropComboBox}">
-                    <Image Source="/images/icons/iconoMenos.png"/>
+                    <Image Style="{DynamicResource ImagendropComboBox}"/>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Style="{DynamicResource StackPanelOculto}">
+                <Button Style="{DynamicResource addComboBox}">
+                    <Image Style="{DynamicResource ImagenAddComboBox}"/>
                 </Button>
 
+                <ComboBox Style="{DynamicResource comboBoxCampaigne}"
+                        x:Name="escenarioComboBox"
+                        Text="{DynamicResource CampaignScenario}"
+                        SelectionChanged="CampaigneComboBox_SelectionChanged">
+                </ComboBox>
+
+                <Button Style="{DynamicResource dropComboBox}">
+                    <Image Style="{DynamicResource ImagendropComboBox}"/>
+                </Button>
             </StackPanel>
-            
+
+            <StackPanel Style="{DynamicResource StackPanelOculto}">
+                <Button Style="{DynamicResource addComboBox}">
+                    <Image Style="{DynamicResource ImagenAddComboBox}"/>
+                </Button>
+
+                <ComboBox Style="{DynamicResource comboBoxCampaigne}"
+                        x:Name="aventuraComboBox"
+                        Text="{DynamicResource ScenarioAdventure}"
+                        SelectionChanged="CampaigneComboBox_SelectionChanged">
+                </ComboBox>
+
+                <Button Style="{DynamicResource dropComboBox}">
+                    <Image Style="{DynamicResource ImagendropComboBox}"/>
+                </Button>
+            </StackPanel>
+    </StackPanel>
+
+        <Grid Grid.Row="1"
+              x:Name="ImageGrid">
             <Image Style="{DynamicResource iconCampaigne}"
-                    Grid.Row="2"
+                    Grid.Row="3"
                     x:Name="iconoCampaigne">
                 <Image.Effect>
                     <DropShadowEffect/>
                 </Image.Effect>
             </Image>
         </Grid>
-        
-        <Border Style="{DynamicResource borderMenu}"
-                Grid.Row="1">
-            <Button Style="{DynamicResource botonMenu}"
-                    x:Name="botonCalendario">
-                <StackPanel>
-                    <TextBlock Style="{DynamicResource textoGridMenu}" 
-                               Text="Calendario" >
-                        <TextBlock.Effect>
-                            <DropShadowEffect RenderingBias="Quality"/>
-                        </TextBlock.Effect>
-                    </TextBlock>
-                    <Image Style="{DynamicResource noVisible}" Source="/images/icons/icons8-calendar.png"/>
-                    <Image Style="{DynamicResource visibleInicio}" Source="/images/icons/icons8-lock.png" />
-                </StackPanel>
-            </Button>
-        </Border>
 
-        <Border Style="{DynamicResource borderMenu}"
-                Grid.Row="1"
-                Grid.Column="1">
-            <Button Style="{DynamicResource botonMenu}"
-                    x:Name="botonRecursos">
-                <StackPanel>
-                    <TextBlock Style="{DynamicResource textoGridMenu}" 
-                               Text="Recursos Partidas" >
-                        <TextBlock.Effect>
-                            <DropShadowEffect RenderingBias="Quality"/>
-                        </TextBlock.Effect>
-                    </TextBlock>
-                    <Image Style="{DynamicResource noVisible}" Source="/images/icons/icons8-books.png"/>
-                    <Image Style="{DynamicResource visibleInicio}" Source="/images/icons/icons8-lock.png" />
-                </StackPanel>
-            </Button>
-        </Border>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Border Style="{DynamicResource borderMenu}"
-                Grid.Row="2">
-            <Button Style="{DynamicResource botonMenu}"
-                    x:Name="botonTirador">
-                <StackPanel>
-                    <TextBlock Style="{DynamicResource textoGridMenu}" 
-                               Text="Tirador de dados" >
-                        <TextBlock.Effect>
-                            <DropShadowEffect RenderingBias="Quality"/>
-                        </TextBlock.Effect>
-                    </TextBlock>
-                    <Image Style="{DynamicResource noVisible}" Source="/images/icons/icons8-dices.png"/>
-                    <Image Style="{DynamicResource visibleInicio}" Source="/images/icons/icons8-lock.png" />
-                </StackPanel>
-            </Button>
-        </Border>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <Border Style="{DynamicResource borderMenu}"
-                Grid.Row="2"
-                Grid.Column="1">
-            <Button Style="{DynamicResource botonMenu}"
-                    x:Name="botonOpciones">
-                <StackPanel>
-                    <TextBlock Style="{DynamicResource textoGridMenu}" 
-                               Text="Opciones" >
-                        <TextBlock.Effect>
-                            <DropShadowEffect RenderingBias="Quality"/>
-                        </TextBlock.Effect>
-                    </TextBlock>
-                    <Image Style="{DynamicResource noVisible}" Source="/images/icons/icons8-options.png"/>
-                    <Image Style="{DynamicResource visibleInicio}" Source="/images/icons/icons8-lock.png" />
-                </StackPanel>
-            </Button>
-        </Border>
+            <Border Style="{DynamicResource borderMenu}"
+                    Grid.Row="0">
+                <Button Style="{DynamicResource botonMenu}"
+                        x:Name="botonCalendario">
+                    <StackPanel>
+                        <TextBlock Style="{DynamicResource textoGridMenu}" 
+                                   Text="{DynamicResource Calendar}" >
+                            <TextBlock.Effect>
+                                <DropShadowEffect RenderingBias="Quality"/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <Image Style="{DynamicResource noVisible}" Source="/images/icons/icons8-calendar.png"/>
+                        <Image Style="{DynamicResource visibleInicio}" Source="/images/icons/icons8-lock.png" />
+                    </StackPanel>
+                </Button>
+            </Border>
+
+            <Border Style="{DynamicResource borderMenu}"
+                    Grid.Row="0"
+                    Grid.Column="1">
+                <Button Style="{DynamicResource botonMenu}"
+                        x:Name="botonRecursos">
+                    <StackPanel>
+                        <TextBlock Style="{DynamicResource textoGridMenu}" 
+                                   Text="{DynamicResource CampaignResources}" >
+                            <TextBlock.Effect>
+                                <DropShadowEffect RenderingBias="Quality"/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <Image Style="{DynamicResource noVisible}" Source="/images/icons/icons8-books.png"/>
+                        <Image Style="{DynamicResource visibleInicio}" Source="/images/icons/icons8-lock.png" />
+                    </StackPanel>
+                </Button>
+            </Border>
+
+            <Border Style="{DynamicResource borderMenu}"
+                    Grid.Row="1">
+                <Button Style="{DynamicResource botonMenu}"
+                        x:Name="botonTirador">
+                    <StackPanel>
+                        <TextBlock Style="{DynamicResource textoGridMenu}" 
+                                   Text="{DynamicResource Roll}" >
+                            <TextBlock.Effect>
+                                <DropShadowEffect RenderingBias="Quality"/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <Image Style="{DynamicResource noVisible}" Source="/images/icons/icons8-dices.png"/>
+                        <Image Style="{DynamicResource visibleInicio}" Source="/images/icons/icons8-lock.png" />
+                    </StackPanel>
+                </Button>
+            </Border>
+
+            <Border Style="{DynamicResource borderMenu}"
+                    Grid.Row="1"
+                    Grid.Column="1">
+                <Button Style="{DynamicResource botonMenu}"
+                        x:Name="botonOpciones">
+                    <StackPanel>
+                        <TextBlock Style="{DynamicResource textoGridMenu}" 
+                                   Text="{DynamicResource Options}" >
+                            <TextBlock.Effect>
+                                <DropShadowEffect RenderingBias="Quality"/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <Image Style="{DynamicResource noVisible}" Source="/images/icons/icons8-options.png"/>
+                        <Image Style="{DynamicResource visibleInicio}" Source="/images/icons/icons8-lock.png" />
+                    </StackPanel>
+                </Button>
+            </Border>
+        </Grid>
     </Grid>
 </Window>

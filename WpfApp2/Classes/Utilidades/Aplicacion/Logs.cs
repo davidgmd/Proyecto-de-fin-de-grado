@@ -117,6 +117,10 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
                         Logs.camposlog = campos.ToArray();
                         return Logs.camposlog;
                     }
+                    else
+                    {
+                        return null;
+                    }
                 }
 
                 return null;

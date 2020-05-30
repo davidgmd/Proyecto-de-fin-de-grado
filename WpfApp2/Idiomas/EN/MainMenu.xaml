@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:String x:Key="Title">Select Campaign</system:String>
+    <system:String x:Key="HowToUse">You can create new ones, with the + button, Once you chose a campaign, select the scenario or make a new one, Finally choose the adventure for that scenario or make a new one</system:String>
+    <system:String x:Key="CampaignList">List of Campaigns</system:String>
+    <system:String x:Key="CampaignScenario">Campaign Scenario</system:String>
+    <system:String x:Key="ScenarioAdventure">Scenario Adventure</system:String>
+    
+    <!-- Botonera -->
+    <system:String x:Key="Calendar">Calendar</system:String>
+    <system:String x:Key="CampaignResources">Campaign Resources</system:String>
+    <system:String x:Key="Roll">Dice roller</system:String>
+    <system:String x:Key="Options">Options</system:String>
+
+    <!-- Los mensajes de error y de aceptación -->
+</ResourceDictionary>

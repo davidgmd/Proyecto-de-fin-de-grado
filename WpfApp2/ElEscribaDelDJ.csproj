@@ -96,6 +96,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Images\User\" />
     <Folder Include="Usuarios\" />
   </ItemGroup>
 
@@ -124,6 +125,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>ConfiguracionAplicacion.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Idiomas\EN\MainMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

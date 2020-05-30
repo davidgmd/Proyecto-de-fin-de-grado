@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -13,6 +14,7 @@ namespace ElEscribaDelDJ.View
         public menuPrincipal()
         {
             InitializeComponent();
+            ConfiguracionPagina.DefinirIdioma(this, "MainMenu");
         }
 
         private void CampaigneComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

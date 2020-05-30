@@ -60,7 +60,7 @@ namespace ElEscribaDelDJ
                 this.LoginInicial();
 
             //Indicamos que va a haber un diccionario de recursos y su dirección        
-            ConfiguracionPagina.DefinirIdioma(this, "Login.xaml");
+            ConfiguracionPagina.DefinirIdioma(this, "Login");
         }
 
         private void LoginInicial()
@@ -181,7 +181,7 @@ namespace ElEscribaDelDJ
                 usuario.Clave = Encriptacion(this.passwordText.Password);
             }
             
-            usuario.ListCampaignes = new List<Campaign>();
+            usuario.ListCampaignes = new List<Campana>();
 
             string[] campos = { usuario.NombreUsuario, usuario.Clave };
 
