@@ -24,7 +24,7 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
 
-    <Style x:Key="comboBoxCampaigne" TargetType="ComboBox">
+    <Style x:Key="comboBoxCampaign" TargetType="ComboBox">
         <Setter Property="Margin" Value="10"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="IsEditable" Value="True"/>

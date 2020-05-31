@@ -2,11 +2,11 @@
 
 namespace ElEscribaDelDJ.Classes
 {
-    class Usuario
+    public class Usuario
     {
         private string nombre;
         private string clave;      
-        private List<Campana> listacampaigne;
+        private List<Campana> listacampaign = new List<Campana>();
         private string correoelectronico;
 
         public string Correo
@@ -15,10 +15,10 @@ namespace ElEscribaDelDJ.Classes
             set { correoelectronico = value; }
         }
 
-        public List<Campana> ListCampaignes
+        public List<Campana> ListCampaigns
         {
-            get { return listacampaigne; }
-            set { listacampaigne = value; }
+            get { return listacampaign; }
+            set { listacampaign = value; }
         }
 
         public string NombreUsuario

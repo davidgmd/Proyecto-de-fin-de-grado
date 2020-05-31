@@ -1,7 +1,14 @@
-﻿using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+﻿using ElEscribaDelDJ.Classes;
+using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media.Imaging;
 
 namespace ElEscribaDelDJ.View
@@ -11,10 +18,36 @@ namespace ElEscribaDelDJ.View
     /// </summary>
     public partial class menuPrincipal : Window
     {
+        private List<Campana> listacampana = new List<Campana>();
+        private ObservableCollection<Campana> nombres = new ObservableCollection<Campana>();
+
+        public ObservableCollection<Campana> Nombres
+        {
+            get { return nombres; }
+            set { nombres = value; }
+        }
+
+        public List<Campana> ListaCampanas
+        {
+            get { return listacampana; }
+            set { listacampana = value; }
+        }
+
+
         public menuPrincipal()
         {
             InitializeComponent();
             ConfiguracionPagina.DefinirIdioma(this, "MainMenu");
+
+            this.listacampana.AddRange(MainWindow.DatosUsuario.ListCampaigns);
+
+            foreach (Campana item in this.listacampana)
+            {
+                this.nombres.Add(item);
+            }
+
+            campaignComboBox.ItemsSource = this.nombres;
+            
         }
 
         private void CampaigneComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -29,24 +62,21 @@ namespace ElEscribaDelDJ.View
                 Application.Current.Resources["noVisible"] = Application.Current.Resources["iconMenu"];
             } 
 
-            var item = (ComboBoxItem)this.campaigneComboBox.SelectedValue;
-            var content = (TextBlock)item.Content;
+            var item = this.campaignComboBox.SelectedIndex;
 
-            this.tituloCampana.Text = content.Text.Trim();
-
-            switch (content.Text.Trim())
+            switch (item)
             {
-                case "D&D 3.5":
+                case 0:
                     
                     this.iconoCampaigne.Source = new BitmapImage(new Uri("/Images/icons/D&D.png", UriKind.Relative));
                     break;
 
-                case "Warhammer":
+                case 1:
                     this.iconoCampaigne.Source = new BitmapImage(new Uri("/Images/icons/warhammer-removebg.png", UriKind.Relative));
                     break;
 
                 default:
-                    MessageBox.Show(content.Text);
+                    MessageBox.Show("Otro");
                     break;
             }
         }

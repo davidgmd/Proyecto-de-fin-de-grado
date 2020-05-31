@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
@@ -8,6 +9,7 @@ using System.Windows.Input;
 using ElEscribaDelDJ.Classes;
 using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using ElEscribaDelDJ.View;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace ElEscribaDelDJ
@@ -20,8 +22,15 @@ namespace ElEscribaDelDJ
         private static JObject sesionusuario;
         private static GitHub github;
         private string passwordlog = "";
-
         private string[] valoresinicialesconf;
+        private static Usuario datosusuario;
+
+        public static Usuario DatosUsuario
+        {
+            get { return datosusuario; }
+            set { datosusuario = value; }
+        }
+
 
         public string[] ValoresInicialesConfiguracion
         {
@@ -181,7 +190,18 @@ namespace ElEscribaDelDJ
                 usuario.Clave = Encriptacion(this.passwordText.Password);
             }
             
-            usuario.ListCampaignes = new List<Campana>();
+            if(File.Exists(RecursosAplicacion.DireccionBase + "\\Usuarios\\" + usuario.NombreUsuario + ".json"))
+            {
+                string datosusuario = File.ReadAllText(RecursosAplicacion.DireccionBase + "\\Usuarios\\" + usuario.NombreUsuario + ".json");
+                Usuario usuario1 = JsonConvert.DeserializeObject<Usuario>(datosusuario);
+                usuario.ListCampaigns = usuario1.ListCampaigns;
+            }
+            else
+            {
+                usuario.ListCampaigns = new List<Campana>();
+                anadirelementosiniciales(usuario.ListCampaigns);
+            }
+            
 
             string[] campos = { usuario.NombreUsuario, usuario.Clave };
 
@@ -189,6 +209,7 @@ namespace ElEscribaDelDJ
             {
                 //Asignamos la sesión
                 SesionUsuario = JObject.FromObject(usuario);
+                MainWindow.datosusuario = usuario;
 
                 System.Windows.MessageBox.Show(this.FindResource("RightLogin").ToString());
                 Logs.GenerarLog("Intento de login", campos, "login", "Login exitoso");
@@ -293,6 +314,21 @@ namespace ElEscribaDelDJ
         {
             ConfiguracionAplicacion.Default.RecordarLogin = false;
             GuardarConfiguracion();
+        }
+
+        private void anadirelementosiniciales(List<Campana> listacampana)
+        {
+            Campana campana = new Campana();
+            campana.NombreCampana = "D&D 3.5";
+            campana.Descripcion = "Elemento creado como base para aventuras de Dungeons and dragons 3.5";
+            campana.DireccionImagen = "/Images/icons/D&D.png";
+            listacampana.Add(campana);
+
+            campana = new Campana();
+            campana.NombreCampana = "Warhammer 2ª edición";
+            campana.Descripcion = "Elemento creado como base para aventuras de Warhammer 2ª edición";
+            campana.DireccionImagen = "/Images/icons/warhammer-removebg.png";
+            listacampana.Add(campana);
         }
     }
 }

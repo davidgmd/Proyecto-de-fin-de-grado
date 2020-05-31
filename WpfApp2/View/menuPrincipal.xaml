@@ -51,28 +51,25 @@
                 </Button>
 
                 <!-- Le falta cambiar la funcionalidad inicial y al cambiar a este y el resto de stackpanels-->
-                <ComboBox Style="{DynamicResource comboBoxCampaigne}"
-                        x:Name="campaigneComboBox"
-                        Text="{DynamicResource CampaignList}"
+                <ComboBox Style="{DynamicResource comboBoxCampaign}"
+                        x:Name="campaignComboBox"
+                        Text="{DynamicResource CampaignList}"                 
+                        ItemsSource="{Binding Path=Nombres}"
+                        SelectedValue="{Binding Path=NombreCampana, Mode=TwoWay}"
+                        SelectedValuePath="Value"
                         SelectionChanged="CampaigneComboBox_SelectionChanged">
-                    <ComboBoxItem>
-                        <TextBlock Text="D&amp;D 3.5"/>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <TextBlock Text="Warhammer"/>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <TextBlock Text="Mundo Tinieblas"/>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <TextBlock Text="Leyenda los 5 anillos (3ª edición)"/>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <TextBlock Text="Hitos"/>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <TextBlock Text="Fate"/>
-                    </ComboBoxItem>
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0}&#x0a;{1}">
+                                        <Binding Path="NombreCampana"/>
+                                        <Binding Path="Descripcion"/>
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
                 </ComboBox>
 
                 <Button Style="{DynamicResource dropComboBox}">
