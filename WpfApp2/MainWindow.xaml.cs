@@ -65,6 +65,9 @@ namespace ElEscribaDelDJ
 
             //Leemos la configuracion inicial
             this.ConfiguracionInicial();
+
+            //Comprobamos si esta activada la casilla de recordar usuario o login
+            //En caso afirmativo cargamos los datos y marcamos la casilla correspondiente
             if (ConfiguracionAplicacion.Default.RecordarUsuario || ConfiguracionAplicacion.Default.RecordarLogin)
                 this.LoginInicial();
 
@@ -72,6 +75,9 @@ namespace ElEscribaDelDJ
             ConfiguracionPagina.DefinirIdioma(this, "Login");
         }
 
+        //Se ejecuta si hay que recordarusuario o login, marca el que sea, y lee el login buscando el ultimo
+        //login, una vez encontrado, añade el nombre de usuario y/o la contraseña y la información suficiente
+        //para que sepamos que no hay que volver a cifrar la contraseña
         private void LoginInicial()
         {
             if (ConfiguracionAplicacion.Default.RecordarUsuario)
@@ -96,6 +102,7 @@ namespace ElEscribaDelDJ
             }
         }
 
+        //Lee la configuración inicial
         private void ConfiguracionInicial()
         {
             this.valoresinicialesconf = System.IO.File.ReadAllLines(RecursosAplicacion.DireccionBase + "Settings.ini");
@@ -114,6 +121,8 @@ namespace ElEscribaDelDJ
             ConfiguracionAplicacion.Default.RecordarLogin = Convert.ToBoolean(this.valoresinicialesconf[2].Trim());
         }
 
+        //Cuando se marca alguna de las casillas se llama a esta función para guardar el cambio en la 
+        //configuracion inicial .ini
         private void GuardarConfiguracion()
         {
             this.valoresinicialesconf[0] = "Language:" + ConfiguracionAplicacion.Default.Idioma;
@@ -122,6 +131,7 @@ namespace ElEscribaDelDJ
             System.IO.File.WriteAllLines(RecursosAplicacion.DireccionBase + "Settings.ini", this.valoresinicialesconf);
         }
 
+        //Si el campo usuario obtiene el foco selecciona el texto inicial y lo borra, esto simula un placeholder
         private void userTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             var prueba = this.FindResource("UserText").ToString();
@@ -133,6 +143,7 @@ namespace ElEscribaDelDJ
             }
         }
 
+        //Si se cambia el texto comprueba si hay algo en el campo password en caso afirmativo se deslboquea el boton login
         private void userText_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             if (this.passwordText is object)
@@ -141,11 +152,22 @@ namespace ElEscribaDelDJ
             }                 
         }
 
+        //Si el texto de usuario pierde el foco comprueba si es vacio para advertir de que debe tener algún valor
+        private void userTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (this.userText.Text == "")
+            {
+                this.userText.Text = this.FindResource("UserText").ToString();
+            }
+        }
+
+        //lo mismo que usuario pero al reves si el campo usuario no esta vacio, se desbloquea login 
         private void passwordText_PasswordChanged(object sender, RoutedEventArgs e)
         {
             ComprobarCambios(passwordText.Password, userText.Text);
         }
 
+        //Funcion que comprueba los campos que no sean vacios y que no sea el texto inicial
         private void ComprobarCambios(string password, string username)
         {
             if (password != "" && username != "" && username != this.FindResource("UserText").ToString())
@@ -156,16 +178,9 @@ namespace ElEscribaDelDJ
             {
                 loginButton.IsEnabled = false;
             }
-        }
+        }     
 
-        private void userTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (this.userText.Text == "")
-            {
-                this.userText.Text = this.FindResource("UserText").ToString();
-            }
-        }
-
+        //Funcion que llama a la ventana de registro
         private void registrarse_Click(object sender, RoutedEventArgs e)
         {
             Registrarse ventanaRegistro = new Registrarse();
@@ -173,6 +188,7 @@ namespace ElEscribaDelDJ
             this.Hide();
         }
 
+        //Funcion de login
         private async void login_Click(object sender, RoutedEventArgs e)
         {
             //Declaraciones
@@ -226,12 +242,14 @@ namespace ElEscribaDelDJ
             }    
         }
 
+        //Boton salir
         private void exitButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
             System.Environment.Exit(0);
         }
 
+        //Si pulsamos en la imagen de los creditos nos llega a la información de la licencia
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             string url = "http://creativecommons.org/licenses/by-nc-sa/4.0/";
@@ -239,6 +257,7 @@ namespace ElEscribaDelDJ
             Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
         }
 
+        //Si pulsamos en creditos nos muestra credits o creditos según idioma
         private void Credits_MouseDown(object sender, MouseButtonEventArgs e)
         {
             string archivo;
@@ -255,6 +274,7 @@ namespace ElEscribaDelDJ
             ventana.Show();
         }
 
+        //Encripta la clave y el correo
         private string Encriptacion(string inputString)
         {
             byte[] data = System.Text.Encoding.ASCII.GetBytes(inputString);
@@ -263,6 +283,7 @@ namespace ElEscribaDelDJ
             return hash;
         }
 
+        //Metodo que cuando se intenta loguear comprueba que el usuario existe en github
         private async Task<Boolean> ComprobarCredenciales(string nombreusuario, string clave)
         {
             //Comprobamos las credenciales online
@@ -270,6 +291,7 @@ namespace ElEscribaDelDJ
             return respuesta;
         }
 
+        //Funcion que cambia el idioma a ingles al pulsar el stackpanel y guarda el cambio de conf
         private void IdiomaEN_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ConfiguracionAplicacion.Default.Idioma = "EN";
@@ -277,6 +299,7 @@ namespace ElEscribaDelDJ
             GuardarConfiguracion();
         }
 
+        //Funcion que cambia el idioma a español al pulsar el stackpanel y guarda el cambio de conf
         private void IdiomaES_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ConfiguracionAplicacion.Default.Idioma = "ES";
@@ -284,6 +307,7 @@ namespace ElEscribaDelDJ
             GuardarConfiguracion();
         }
 
+        //Si se marca la casilla de recordar usuario, desmarca la otra y guarda la conf
         private void RememberUserCheck_Checked(object sender, RoutedEventArgs e)
         {
             ConfiguracionAplicacion.Default.RecordarUsuario = true;
@@ -294,12 +318,14 @@ namespace ElEscribaDelDJ
             GuardarConfiguracion();
         }
 
+        //Si es desmarcada recordar usuario cambia la conf
         private void RememberUserCheck_Unchecked(object sender, RoutedEventArgs e)
         {
             ConfiguracionAplicacion.Default.RecordarUsuario = false;
             GuardarConfiguracion();
         }
 
+        //Si es marcada recordar login desmarca la otra y guarda conf
         private void RememberLoginCheck_Checked(object sender, RoutedEventArgs e)
         {
             ConfiguracionAplicacion.Default.RecordarLogin = true;
@@ -310,12 +336,14 @@ namespace ElEscribaDelDJ
             GuardarConfiguracion();
         }
 
+        //Si es desmarcado recordar login guarda la conf
         private void RememberLoginCheck_Unchecked(object sender, RoutedEventArgs e)
         {
             ConfiguracionAplicacion.Default.RecordarLogin = false;
             GuardarConfiguracion();
         }
 
+        //Funcion que inicializa los campos de campaña
         private void anadirelementosiniciales(List<Campana> listacampana)
         {
             Campana campana = new Campana();
