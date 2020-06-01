@@ -24,10 +24,31 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
 
+    <!-- Plantilla para mostrar nombre y descripción pero al seleccionar solo se vea el nombre-->
+    <ControlTemplate x:Key="SimpleTemplate">
+        <StackPanel>
+            <TextBlock Text="{Binding NombreCampana}" />
+        </StackPanel>
+    </ControlTemplate>
+    <ControlTemplate x:Key="ExtendedTemplate">
+        <StackPanel>
+            <TextBlock Text="{Binding NombreCampana}" />
+            <TextBlock Text="{Binding Descripcion}" />
+        </StackPanel>
+    </ControlTemplate>
+    <DataTemplate x:Key="CustomerTemplate">
+        <Control x:Name="theControl" Focusable="False" Template="{StaticResource ExtendedTemplate}" />
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ComboBoxItem}}, Path=IsSelected}" Value="{x:Null}">
+                <Setter TargetName="theControl" Property="Template" Value="{StaticResource SimpleTemplate}" />
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+    <!-- El combobox-->
     <Style x:Key="comboBoxCampaign" TargetType="ComboBox">
         <Setter Property="Margin" Value="10"/>
         <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="IsEditable" Value="True"/>
         <Setter Property="IsReadOnly" Value="True"/>
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="FontSize" Value="15"/>

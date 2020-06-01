@@ -46,7 +46,10 @@ namespace ElEscribaDelDJ.View
                 this.nombres.Add(item);
             }
 
-            campaignComboBox.ItemsSource = this.nombres;
+            DataContext = this;
+            if (this.campaignComboBox.HasItems)
+            this.campaignComboBox.SelectedIndex = 0;
+            //campaignComboBox.ItemsSource = this.nombres;
             
         }
 
@@ -60,7 +63,7 @@ namespace ElEscribaDelDJ.View
             {
                 Application.Current.Resources["visibleInicio"] = Application.Current.Resources["noVisible"];
                 Application.Current.Resources["noVisible"] = Application.Current.Resources["iconMenu"];
-            } 
+            }
 
             var item = this.campaignComboBox.SelectedIndex;
 

@@ -52,26 +52,11 @@
 
                 <!-- Le falta cambiar la funcionalidad inicial y al cambiar a este y el resto de stackpanels-->
                 <ComboBox Style="{DynamicResource comboBoxCampaign}"
-                        x:Name="campaignComboBox"
-                        Text="{DynamicResource CampaignList}"                 
+                        x:Name="campaignComboBox"                
                         ItemsSource="{Binding Path=Nombres}"
-                        SelectedValue="{Binding Path=NombreCampana, Mode=TwoWay}"
-                        SelectedValuePath="Value"
-                        SelectionChanged="CampaigneComboBox_SelectionChanged">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock>
-                                <TextBlock.Text>
-                                    <MultiBinding StringFormat="{}{0}&#x0a;{1}">
-                                        <Binding Path="NombreCampana"/>
-                                        <Binding Path="Descripcion"/>
-                                    </MultiBinding>
-                                </TextBlock.Text>
-                            </TextBlock>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-
+                        ItemTemplate="{StaticResource CustomerTemplate}"
+                        SelectionChanged="CampaigneComboBox_SelectionChanged"/>
+                    
                 <Button Style="{DynamicResource dropComboBox}">
                     <Image Style="{DynamicResource ImagendropComboBox}"/>
                 </Button>
