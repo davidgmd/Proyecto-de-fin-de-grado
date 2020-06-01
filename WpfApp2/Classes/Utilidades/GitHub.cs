@@ -154,6 +154,7 @@ namespace ElEscribaDelDJ.Classes
         {
             try {
                 var existingFile = await cliente.Repository.Content.GetAllContentsByRef(this.repositorio.Id, "Usuarios/" + nombre + ".json", "master");
+                //el contenido del archivo existingFile.First().Content
                 return true;
             }
             catch (Octokit.NotFoundException)
