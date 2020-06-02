@@ -55,6 +55,7 @@
                         x:Name="campaignComboBox"                
                         ItemsSource="{Binding Path=Nombres}"
                         ItemTemplate="{StaticResource CustomerTemplate}"
+                        Loaded="campaignComboBox_Loaded"
                         SelectionChanged="CampaigneComboBox_SelectionChanged"/>
                     
                 <Button Style="{DynamicResource dropComboBox}">
@@ -62,14 +63,15 @@
                 </Button>
             </StackPanel>
 
-            <StackPanel Style="{DynamicResource StackPanelOculto}">
+            <StackPanel Style="{DynamicResource StackPanelOculto}"
+                        x:Name="StackPanelEscenario">
                 <Button Style="{DynamicResource addComboBox}">
                     <Image Style="{DynamicResource ImagenAddComboBox}"/>
                 </Button>
 
-                <ComboBox Style="{DynamicResource comboBoxCampaigne}"
-                        x:Name="escenarioComboBox"
+                <ComboBox Style="{DynamicResource comboBoxCampaigne}"                    
                         Text="{DynamicResource CampaignScenario}"
+                        x:Name="EscenarioComboBox"
                         SelectionChanged="CampaigneComboBox_SelectionChanged">
                 </ComboBox>
 
@@ -78,14 +80,15 @@
                 </Button>
             </StackPanel>
 
-            <StackPanel Style="{DynamicResource StackPanelOculto}">
+            <StackPanel Style="{DynamicResource StackPanelOculto}"
+                        x:Name="StackPanelAventura">
                 <Button Style="{DynamicResource addComboBox}">
                     <Image Style="{DynamicResource ImagenAddComboBox}"/>
                 </Button>
 
-                <ComboBox Style="{DynamicResource comboBoxCampaigne}"
-                        x:Name="aventuraComboBox"
+                <ComboBox Style="{DynamicResource comboBoxCampaigne}"                     
                         Text="{DynamicResource ScenarioAdventure}"
+                         x:Name="AventuraComboBox"
                         SelectionChanged="CampaigneComboBox_SelectionChanged">
                 </ComboBox>
 

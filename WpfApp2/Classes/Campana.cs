@@ -4,18 +4,26 @@ namespace ElEscribaDelDJ.Classes
 {
     public class Campana
     {
-		private string nombre;
-		private string descripcion;
+		protected string nombre;
+		protected string descripcion;
         private string imagen;
-        private List<RecursosCampana> listarecursos = new List<RecursosCampana>();
+        protected List<Recursos> listarecursos = new List<Recursos>();
+        protected List<EscenarioCampana> listaescenarios;
 
-		public string DireccionImagen
+        public List<EscenarioCampana> ListaEscenarios
+        {
+            get { return listaescenarios; }
+            set { listaescenarios = value; }
+        }
+
+
+        public string DireccionImagen
 		{
 			get { return imagen; }
 			set { imagen = value; }
 		}
 
-		public List<RecursosCampana> RecursosCampana
+		public List<Recursos> RecursosCampana
 		{
 			get { return listarecursos; }
 			set { listarecursos = value; }
@@ -27,7 +35,7 @@ namespace ElEscribaDelDJ.Classes
 			set { descripcion = value; }
 		}
 
-		public string NombreCampana
+		public string Nombre
 		{
 			get { return nombre; }
 			set { nombre = value; }

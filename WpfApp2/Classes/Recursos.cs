@@ -1,6 +1,6 @@
 ﻿namespace ElEscribaDelDJ.Classes
 {
-    public class RecursosCampana
+    public class Recursos
     {
 		private string nombrerecurso;
 		private string direccionrecurso;

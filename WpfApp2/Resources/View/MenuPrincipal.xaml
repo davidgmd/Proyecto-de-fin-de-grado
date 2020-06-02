@@ -27,12 +27,12 @@
     <!-- Plantilla para mostrar nombre y descripción pero al seleccionar solo se vea el nombre-->
     <ControlTemplate x:Key="SimpleTemplate">
         <StackPanel>
-            <TextBlock Text="{Binding NombreCampana}" />
+            <TextBlock Text="{Binding Nombre}" />
         </StackPanel>
     </ControlTemplate>
     <ControlTemplate x:Key="ExtendedTemplate">
         <StackPanel>
-            <TextBlock Text="{Binding NombreCampana}" />
+            <TextBlock Text="{Binding Nombre}" />
             <TextBlock Text="{Binding Descripcion}" />
         </StackPanel>
     </ControlTemplate>

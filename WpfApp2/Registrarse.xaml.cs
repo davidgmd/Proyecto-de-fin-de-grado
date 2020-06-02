@@ -290,13 +290,13 @@ namespace ElEscribaDelDJ
         private void anadirelementosiniciales(List<Campana> listacampana)
         {
             Campana campana = new Campana();
-            campana.NombreCampana = "D&D 3.5";
+            campana.Nombre = "D&D 3.5";
             campana.Descripcion = "Elemento creado como base para aventuras de Dungeons and dragons 3.5";
             campana.DireccionImagen = "/Images/icons/D&D.png";
             listacampana.Add(campana);
 
             campana = new Campana();
-            campana.NombreCampana = "Warhammer 2ª edición";
+            campana.Nombre = "Warhammer 2ª edición";
             campana.Descripcion = "Elemento creado como base para aventuras de Warhammer 2ª edición";
             campana.DireccionImagen = "/Images/icons/warhammer-removebg.png";
             listacampana.Add(campana);

@@ -63,16 +63,6 @@ namespace ElEscribaDelDJ.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] D_D {
-            get {
-                object obj = ResourceManager.GetObject("D_D", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Byte[].
-        /// </summary>
         internal static byte[] english {
             get {
                 object obj = ResourceManager.GetObject("english", resourceCulture);

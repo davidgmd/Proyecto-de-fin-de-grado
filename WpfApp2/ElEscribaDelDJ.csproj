@@ -17,6 +17,7 @@
     <None Remove="Images\Calendar.jpg" />
     <None Remove="Images\icons8-calendar.png" />
     <None Remove="Images\icons\D&amp;D.png" />
+    <None Remove="images\icons\D&amp;D2.png" />
     <None Remove="Images\icons\english.png" />
     <None Remove="Images\icons\iconoMas.png" />
     <None Remove="Images\icons\iconoMenos.png" />
@@ -76,6 +77,7 @@
     </Resource>
     <Resource Include="Images\Calendar.jpg" />
     <Resource Include="Images\icons\D&amp;D.png" />
+    <Resource Include="images\icons\D&amp;D2.png" />
     <Resource Include="Images\icons\english.png" />
     <Resource Include="Images\icons\iconoMas.png" />
     <Resource Include="Images\icons\iconoMenos.png" />

@@ -4,9 +4,8 @@ using System.Text;
 
 namespace ElEscribaDelDJ.Classes
 {
-    public class Aventura
-    {
-        private string nombreaventura;
+    public class Aventura:EscenarioCampana
+    {        
         private int numeroaventura;
 
         public int NumeroAventura
@@ -14,12 +13,5 @@ namespace ElEscribaDelDJ.Classes
             get { return numeroaventura; }
             set { numeroaventura = value; }
         }
-
-        public string NombreAventura
-        {
-            get { return nombreaventura; }
-            set { nombreaventura = value; }
-        }
-
     }
 }
