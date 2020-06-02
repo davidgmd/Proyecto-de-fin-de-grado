@@ -68,21 +68,26 @@ namespace ElEscribaDelDJ.View
                 Application.Current.Resources["noVisible"] = Application.Current.Resources["iconMenu"];
             }
 
-            string direccioncompleta = RecursosAplicacion.DireccionBase + nombres[this.campaignComboBox.SelectedIndex].DireccionImagen;
-            if (File.Exists(direccioncompleta))
+            var nombrecampana = nombres[campaignComboBox.SelectedIndex].Nombre;
+            string direccioncompletaimagen = RecursosAplicacion.DireccionBase + nombres[this.campaignComboBox.SelectedIndex].DireccionImagen;
+            string carpeta = RecursosAplicacion.ImagenUsuario + $"\\{RecursosAplicacion.SesionUsuario.NombreUsuario}\\{nombrecampana}\\icon\\";
+            string fichero = Regex.Replace(direccioncompletaimagen, "...+\\/|\\+", "");
+            string direccionueva = carpeta + fichero;
+            
+            if (File.Exists(direccioncompletaimagen))
             {
-                this.iconoCampaigne.Source = new BitmapImage(new Uri(nombres[this.campaignComboBox.SelectedIndex].DireccionImagen, UriKind.Relative));
+                this.iconoCampaigne.Source = new BitmapImage(new Uri(direccioncompletaimagen, UriKind.Absolute));
                 string a = "a";
             }      
             else
-            {
-                string fichero = Regex.Replace(direccioncompleta, "...+\\/|\\+", "");
-                MessageBox.Show($"no se encuentra el fichero {fichero} en la ruta {direccioncompleta} por favor seleccione la nueva ruta del fichero");
+            {           
+                MessageBox.Show($"no se encuentra el fichero {fichero} en la ruta {direccioncompletaimagen} por favor seleccione la nueva ruta del fichero");
                 SelectorArchivos nuevoarchivo = new SelectorArchivos();
-                string direccionnueva = nuevoarchivo.SeleccionImagen();
-                if (!(direccionnueva is null))                   
-                    File.Move(direccionnueva, direccioncompleta, true);
-                    this.iconoCampaigne.Source = new BitmapImage(new Uri(direccioncompleta, UriKind.Absolute));
+                string direccionarchivo = nuevoarchivo.SeleccionImagen();
+                if (!(direccionarchivo is null))                                   
+                    System.IO.Directory.CreateDirectory(carpeta);
+                    File.Copy(direccionarchivo, direccionueva, true);
+                    this.iconoCampaigne.Source = new BitmapImage(new Uri(direccionueva, UriKind.Absolute));
             }
 
             this.StackPanelEscenario.Visibility = Visibility.Visible;
