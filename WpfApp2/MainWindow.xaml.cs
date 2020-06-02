@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using ElEscribaDelDJ.Classes;
+using ElEscribaDelDJ.Classes.Utilidades;
 using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using ElEscribaDelDJ.View;
 using Newtonsoft.Json;
@@ -19,35 +20,19 @@ namespace ElEscribaDelDJ
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static JObject sesionusuario;
         private static GitHub github;
         private string passwordlog = "";
         private string[] valoresinicialesconf;
-        private static Usuario datosusuario;
-
-        public static Usuario DatosUsuario
-        {
-            get { return datosusuario; }
-            set { datosusuario = value; }
-        }
-
 
         public string[] ValoresInicialesConfiguracion
         {
             get { return valoresinicialesconf; }
             set { valoresinicialesconf = value; }
         }
-
         public static GitHub gitHub
         {
             get { return github; }
             set { github = value; }
-        }
-
-        public static JObject SesionUsuario
-        {
-            get { return sesionusuario; }
-            set { sesionusuario = value; }
         }
 
         public MainWindow()
@@ -197,6 +182,7 @@ namespace ElEscribaDelDJ
             //Asignar los valores de usuario
             usuario.NombreUsuario = this.userText.Text;
             
+            //Comprueba si es uan contraseña recuperada en caso afirmativo la usa, en caso contrario la cifra
             if (!this.passwordlog.Equals("") && this.passwordText.Password.Equals(passwordlog))
             {
                 usuario.Clave = this.passwordlog;
@@ -205,28 +191,27 @@ namespace ElEscribaDelDJ
             {
                 usuario.Clave = Encriptacion(this.passwordText.Password);
             }
-            
-            if(File.Exists(RecursosAplicacion.DireccionBase + "\\Usuarios\\" + usuario.NombreUsuario + ".json"))
-            {
-                string datosusuario = File.ReadAllText(RecursosAplicacion.DireccionBase + "\\Usuarios\\" + usuario.NombreUsuario + ".json");
-                Usuario usuario1 = JsonConvert.DeserializeObject<Usuario>(datosusuario);
-                usuario.ListCampaigns = usuario1.ListCampaigns;
-            }
-            else
-            {
-                usuario.ListCampaigns = new List<Campana>();
-                anadirelementosiniciales(usuario.ListCampaigns);
-            }
-            
-
+                             
+            //Campos necesarios para el log
             string[] campos = { usuario.NombreUsuario, usuario.Clave };
 
             if (await this.ComprobarCredenciales (usuario.NombreUsuario, usuario.Clave))
             {
                 //Asignamos la sesión
-                SesionUsuario = JObject.FromObject(usuario);
-                MainWindow.datosusuario = usuario;
+                if (File.Exists(RecursosAplicacion.DireccionBase + "\\Usuarios\\" + usuario.NombreUsuario + ".json"))
+                {            
+                    Usuario usuario1 = JsonUtils.DeJsonAUserObject(GestionArchivos.LeerArchivo("Usuarios", usuario.NombreUsuario), new Usuario());
+                    RecursosAplicacion.SesionUsuario = usuario1;
+                }
+                else
+                {
+                    //recuperamos los datos del usuario
+                    usuario = await GitHub.GithubInstancia.RecuperarDatosUsuario(usuario.NombreUsuario);
+                    GestionArchivos.EscribirArchivo("Usuarios", usuario.NombreUsuario, JsonUtils.DeUserAJsonObject(usuario).ToString());
+                    RecursosAplicacion.SesionUsuario = usuario;
+                }
 
+                //generamos el log como exitoso
                 System.Windows.MessageBox.Show(this.FindResource("RightLogin").ToString());
                 Logs.GenerarLog("Intento de login", campos, "login", "Login exitoso");
 
@@ -237,6 +222,7 @@ namespace ElEscribaDelDJ
             }
             else
             {
+                //generamos el log como erroneo
                 System.Windows.MessageBox.Show(this.FindResource("ErrorUser").ToString());
                 Logs.GenerarLog("Intento de login", campos, "login", this.FindResource("ErrorUser").ToString());
             }    
@@ -341,22 +327,6 @@ namespace ElEscribaDelDJ
         {
             ConfiguracionAplicacion.Default.RecordarLogin = false;
             GuardarConfiguracion();
-        }
-
-        //Funcion que inicializa los campos de campaña
-        private void anadirelementosiniciales(List<Campana> listacampana)
-        {
-            Campana campana = new Campana();
-            campana.NombreCampana = "D&D 3.5";
-            campana.Descripcion = "Elemento creado como base para aventuras de Dungeons and dragons 3.5";
-            campana.DireccionImagen = "/Images/icons/D&D.png";
-            listacampana.Add(campana);
-
-            campana = new Campana();
-            campana.NombreCampana = "Warhammer 2ª edición";
-            campana.Descripcion = "Elemento creado como base para aventuras de Warhammer 2ª edición";
-            campana.DireccionImagen = "/Images/icons/warhammer-removebg.png";
-            listacampana.Add(campana);
         }
     }
 }

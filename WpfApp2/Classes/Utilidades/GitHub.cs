@@ -1,5 +1,7 @@
-﻿using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+﻿using ElEscribaDelDJ.Classes.Utilidades;
+using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Octokit;
 using System;
 using System.IO;
@@ -85,7 +87,7 @@ namespace ElEscribaDelDJ.Classes
             this.repositorio = cliente.Repository.Get("davidgmd", "Proyecto-de-fin-de-grado").Result;
         }
 
-        public async Task CrearCredenciales(string nombre, string clave)
+        public async Task CrearCredenciales(string nombre, string clave, JObject json)
         {
             if (await UsuarioExiste(nombre) == true)
             {
@@ -98,7 +100,7 @@ namespace ElEscribaDelDJ.Classes
                             this.repositorio.Id,
                             "Usuarios/" + nombre + ".json",
                             new CreateFileRequest("File creation",
-                                                    MainWindow.SesionUsuario.ToString(),
+                                                    json.ToString(),
                                                     "master"));
                 return;
             }
@@ -112,7 +114,7 @@ namespace ElEscribaDelDJ.Classes
                 {
                     var existingFile = await cliente.Repository.Content.GetAllContentsByRef(this.repositorio.Id, "Usuarios/" + nombre + ".json", "master");
                     existingFile.ToString();
-                    Usuario usuario = JsonConvert.DeserializeObject<Usuario>(existingFile[0].Content);
+                    Usuario usuario = JsonUtils.DeJsonAUserObject(existingFile[0].Content, new Usuario());
                     if (usuario.Clave.Equals(clave))
                     {
                         return true;
@@ -127,7 +129,7 @@ namespace ElEscribaDelDJ.Classes
             }
         }
 
-        public async void ActualizarCredenciales(string nombre, string clave)
+        public async void ActualizarCredenciales(string nombre, string clave, Usuario usuario)
         {
             try
             {
@@ -138,7 +140,7 @@ namespace ElEscribaDelDJ.Classes
                                                 repositorio.Id,
                                                 nombre + ".json",
                                                 new UpdateFileRequest("File update",
-                                                                      MainWindow.SesionUsuario.ToString(),
+                                                                      JsonUtils.DeUserAJsonObject(usuario).ToString(),
                                                                       existingFile.First().Sha,
                                                                       "master"));
                 }
@@ -161,7 +163,21 @@ namespace ElEscribaDelDJ.Classes
             {
                 return false;
             }
+        }
 
-        }        
+        public async Task<Usuario> RecuperarDatosUsuario(String nombre)
+        {
+            try
+            {
+                var existingFile = await cliente.Repository.Content.GetAllContentsByRef(this.repositorio.Id, "Usuarios/" + nombre + ".json", "master");
+                
+                //devuelve el usuario del repositorio github como objecto de la clase Usuario 
+                return JsonUtils.DeJsonAUserObject(existingFile.First().Content.ToString(), new Usuario());
+            }
+            catch (Octokit.NotFoundException)
+            {
+                return null;
+            }
+        }
     }
 }

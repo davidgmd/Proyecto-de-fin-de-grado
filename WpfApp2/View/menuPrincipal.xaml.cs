@@ -39,8 +39,6 @@ namespace ElEscribaDelDJ.View
             InitializeComponent();
             ConfiguracionPagina.DefinirIdioma(this, "MainMenu");
 
-            this.listacampana.AddRange(MainWindow.DatosUsuario.ListCampaigns);
-
             foreach (Campana item in this.listacampana)
             {
                 this.nombres.Add(item);

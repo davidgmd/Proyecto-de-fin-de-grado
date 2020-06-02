@@ -1,4 +1,5 @@
 ﻿using ElEscribaDelDJ.Classes;
+using ElEscribaDelDJ.Classes.Utilidades;
 using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using Newtonsoft.Json.Linq;
 using System;
@@ -24,7 +25,7 @@ namespace ElEscribaDelDJ
         public Registrarse()
         {
             InitializeComponent();
-            ConfiguracionPagina.DefinirIdioma(this, "SignUp.xaml");
+            ConfiguracionPagina.DefinirIdioma(this, "SignUp");
         }
 
         private async void User_LostFocus(object sender, RoutedEventArgs e)
@@ -275,14 +276,30 @@ namespace ElEscribaDelDJ
             usuario.Clave = PasswordBoxText.Password;
             usuario.Correo = Encriptacion(CorreoTextBox.Text);
             usuario.Clave = Encriptacion(PasswordBoxText.Password);
+            usuario.ListCampaigns = new List<Campana>();
+            anadirelementosiniciales(usuario.ListCampaigns);
 
             //guardamos en la sesión el usuario y creamos las credenciales en git
-            MainWindow.SesionUsuario = JObject.FromObject(usuario);
-            await MainWindow.gitHub.CrearCredenciales(nombreusuario, clave);
+            await MainWindow.gitHub.CrearCredenciales(nombreusuario, clave, JsonUtils.DeUserAJsonObject(usuario));
 
             //cambiar a .user al finalizar las pruebas
-            var path = RecursosAplicacion.DireccionBase + "\\Usuarios\\" + usuario.NombreUsuario + ".json";
-            System.IO.File.WriteAllText(path, MainWindow.SesionUsuario.ToString());
+            GestionArchivos.EscribirArchivo("Usuarios", usuario.NombreUsuario, JsonUtils.DeUserAJsonObject(usuario).ToString());
+        }
+
+        //Funcion que inicializa los campos de campaña
+        private void anadirelementosiniciales(List<Campana> listacampana)
+        {
+            Campana campana = new Campana();
+            campana.NombreCampana = "D&D 3.5";
+            campana.Descripcion = "Elemento creado como base para aventuras de Dungeons and dragons 3.5";
+            campana.DireccionImagen = "/Images/icons/D&D.png";
+            listacampana.Add(campana);
+
+            campana = new Campana();
+            campana.NombreCampana = "Warhammer 2ª edición";
+            campana.Descripcion = "Elemento creado como base para aventuras de Warhammer 2ª edición";
+            campana.DireccionImagen = "/Images/icons/warhammer-removebg.png";
+            listacampana.Add(campana);
         }
 
         private string Encriptacion(string inputString)

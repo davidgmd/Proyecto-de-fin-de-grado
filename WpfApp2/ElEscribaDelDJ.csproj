@@ -97,7 +97,6 @@
 
   <ItemGroup>
     <Folder Include="Images\User\" />
-    <Folder Include="Usuarios\" />
   </ItemGroup>
 
   <ItemGroup>

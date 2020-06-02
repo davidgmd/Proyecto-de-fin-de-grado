@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Octokit;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ElEscribaDelDJ.Classes
 {
@@ -32,6 +35,5 @@ namespace ElEscribaDelDJ.Classes
             get { return clave; }
             set { clave = value; }
         }
-
     }
 }
