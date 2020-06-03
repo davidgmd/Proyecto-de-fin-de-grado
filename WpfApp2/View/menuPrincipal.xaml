@@ -53,7 +53,7 @@
                 <!-- Le falta cambiar la funcionalidad inicial y al cambiar a este y el resto de stackpanels-->
                 <ComboBox Style="{DynamicResource comboBoxCampaign}"
                         x:Name="campaignComboBox"                
-                        ItemsSource="{Binding Path=Nombres}"
+                        ItemsSource="{Binding Path=Campanas}"
                         ItemTemplate="{StaticResource CustomerTemplate}"
                         Loaded="campaignComboBox_Loaded"
                         SelectionChanged="CampaigneComboBox_SelectionChanged"/>
@@ -69,10 +69,10 @@
                     <Image Style="{DynamicResource ImagenAddComboBox}"/>
                 </Button>
 
-                <ComboBox Style="{DynamicResource comboBoxCampaigne}"                    
-                        Text="{DynamicResource CampaignScenario}"
+                <ComboBox Style="{DynamicResource comboBoxCampaign}"                    
+                        ItemsSource="{Binding Path=Escenarios}"  
                         x:Name="EscenarioComboBox"
-                        SelectionChanged="CampaigneComboBox_SelectionChanged">
+                        SelectionChanged="EscenarioComboBox_SelectionChanged">
                 </ComboBox>
 
                 <Button Style="{DynamicResource dropComboBox}">
@@ -86,8 +86,8 @@
                     <Image Style="{DynamicResource ImagenAddComboBox}"/>
                 </Button>
 
-                <ComboBox Style="{DynamicResource comboBoxCampaigne}"                     
-                        Text="{DynamicResource ScenarioAdventure}"
+                <ComboBox Style="{DynamicResource comboBoxCampaign}"                     
+                        ItemsSource="{Binding Path=Aventuras}"
                          x:Name="AventuraComboBox"
                         SelectionChanged="CampaigneComboBox_SelectionChanged">
                 </ComboBox>

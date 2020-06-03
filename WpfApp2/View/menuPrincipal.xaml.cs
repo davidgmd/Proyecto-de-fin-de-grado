@@ -22,12 +22,28 @@ namespace ElEscribaDelDJ.View
     public partial class menuPrincipal : Window
     {
         private List<Campana> listacampana = new List<Campana>();
-        private ObservableCollection<Campana> nombres = new ObservableCollection<Campana>();
+        private ObservableCollection<Campana> campanas = new ObservableCollection<Campana>();
+        private ObservableCollection<EscenarioCampana> escenarios = new ObservableCollection<EscenarioCampana>();
+        private ObservableCollection<Aventura> aventuras = new ObservableCollection<Aventura>();
 
-        public ObservableCollection<Campana> Nombres
+        public ObservableCollection<Aventura> Aventuras
         {
-            get { return nombres; }
-            set { nombres = value; }
+            get { return aventuras; }
+            set { aventuras = value; }
+        }
+
+
+        public ObservableCollection<EscenarioCampana> Escenarios
+        {
+            get { return escenarios; }
+            set { escenarios = value; }
+        }
+
+
+        public ObservableCollection<Campana> Campanas
+        {
+            get { return campanas; }
+            set { campanas = value; }
         }
 
         public List<Campana> ListaCampanas
@@ -44,9 +60,10 @@ namespace ElEscribaDelDJ.View
 
             this.listacampana.AddRange(RecursosAplicacion.SesionUsuario.ListCampaigns);
 
+            //Tras añadir todas las aventuras, vamos añadiendo todas las campañas y de cada campaña sus aventuras
             foreach (Campana item in this.listacampana)
             {
-                this.nombres.Add(item);
+                this.campanas.Add(item);               
             }
 
             DataContext = this;
@@ -68,8 +85,8 @@ namespace ElEscribaDelDJ.View
                 Application.Current.Resources["noVisible"] = Application.Current.Resources["iconMenu"];
             }
 
-            var nombrecampana = nombres[campaignComboBox.SelectedIndex].Nombre;
-            string direccioncompletaimagen = RecursosAplicacion.DireccionBase + nombres[this.campaignComboBox.SelectedIndex].DireccionImagen;
+            var nombrecampana = Campanas[campaignComboBox.SelectedIndex].Nombre;
+            string direccioncompletaimagen = RecursosAplicacion.DireccionBase + Campanas[this.campaignComboBox.SelectedIndex].DireccionImagen;
             string carpeta = RecursosAplicacion.ImagenUsuario + $"\\{RecursosAplicacion.SesionUsuario.NombreUsuario}\\{nombrecampana}\\icon\\";
             string fichero = Regex.Replace(direccioncompletaimagen, "...+\\/|\\+", "");
             string direccionueva = carpeta + fichero;
@@ -77,7 +94,6 @@ namespace ElEscribaDelDJ.View
             if (File.Exists(direccioncompletaimagen))
             {
                 this.iconoCampaigne.Source = new BitmapImage(new Uri(direccioncompletaimagen, UriKind.Absolute));
-                string a = "a";
             }      
             else
             {           
@@ -88,6 +104,11 @@ namespace ElEscribaDelDJ.View
                     System.IO.Directory.CreateDirectory(carpeta);
                     File.Copy(direccionarchivo, direccionueva, true);
                     this.iconoCampaigne.Source = new BitmapImage(new Uri(direccionueva, UriKind.Absolute));
+            }
+
+            foreach (EscenarioCampana escenario in Campanas[campaignComboBox.SelectedIndex].ListaEscenarios)
+            {
+                this.escenarios.Add(escenario);            
             }
 
             this.StackPanelEscenario.Visibility = Visibility.Visible;
@@ -106,6 +127,17 @@ namespace ElEscribaDelDJ.View
         {
             if (this.campaignComboBox.HasItems)
                 this.campaignComboBox.SelectedIndex = 0;
+        }
+
+        private void EscenarioComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (Aventura aventura in Escenarios[campaignComboBox.SelectedIndex].ListaAventuras)
+            {
+                this.aventuras.Add(aventura);
+            }
+            this.AventuraComboBox.Visibility = Visibility;
+            if (this.AventuraComboBox.HasItems)
+                this.AventuraComboBox.SelectedIndex = 0;
         }
     }
 }

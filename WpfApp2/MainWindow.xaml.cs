@@ -238,7 +238,13 @@ namespace ElEscribaDelDJ
         //Si pulsamos en la imagen de los creditos nos llega a la información de la licencia
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            //La direccion por defecto
             string url = "http://creativecommons.org/licenses/by-nc-sa/4.0/";
+
+            //para español
+            if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
+                url = "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es";
+            
             url = url.Replace("&", "^&");
             Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
         }
@@ -281,7 +287,7 @@ namespace ElEscribaDelDJ
         private void IdiomaEN_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ConfiguracionAplicacion.Default.Idioma = "EN";
-            ConfiguracionPagina.DefinirIdioma(this, "Login.xaml");
+            ConfiguracionPagina.DefinirIdioma(this, "Login");
             GuardarConfiguracion();
         }
 
@@ -289,7 +295,7 @@ namespace ElEscribaDelDJ
         private void IdiomaES_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ConfiguracionAplicacion.Default.Idioma = "ES";
-            ConfiguracionPagina.DefinirIdioma(this, "Login.xaml");
+            ConfiguracionPagina.DefinirIdioma(this, "Login");
             GuardarConfiguracion();
         }
 

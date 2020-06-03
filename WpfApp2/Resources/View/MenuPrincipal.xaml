@@ -24,16 +24,27 @@
         <Setter Property="HorizontalAlignment" Value="Center"/>
     </Style>
 
+    <Style x:Key="NombreComboBox" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+    <Style x:Key="DescripcionComboBox" TargetType="TextBlock">
+        <Setter Property="FontStyle" Value="Italic"/>
+    </Style>
+
     <!-- Plantilla para mostrar nombre y descripción pero al seleccionar solo se vea el nombre-->
     <ControlTemplate x:Key="SimpleTemplate">
         <StackPanel>
-            <TextBlock Text="{Binding Nombre}" />
+            <TextBlock Text="{Binding Nombre}"
+                       Style="{DynamicResource NombreComboBox}"/>
         </StackPanel>
     </ControlTemplate>
     <ControlTemplate x:Key="ExtendedTemplate">
         <StackPanel>
-            <TextBlock Text="{Binding Nombre}" />
-            <TextBlock Text="{Binding Descripcion}" />
+            <TextBlock Text="{Binding Nombre, StringFormat={}- {0}}" 
+                       Style="{DynamicResource NombreComboBox}"/>
+            <TextBlock Text="{Binding Descripcion}"
+                       Style="{DynamicResource DescripcionComboBox}"/>
         </StackPanel>
     </ControlTemplate>
     <DataTemplate x:Key="CustomerTemplate">
