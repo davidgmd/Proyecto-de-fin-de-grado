@@ -32,13 +32,11 @@ namespace ElEscribaDelDJ.View
             set { aventuras = value; }
         }
 
-
         public ObservableCollection<EscenarioCampana> Escenarios
         {
             get { return escenarios; }
             set { escenarios = value; }
         }
-
 
         public ObservableCollection<Campana> Campanas
         {
@@ -51,7 +49,6 @@ namespace ElEscribaDelDJ.View
             get { return listacampana; }
             set { listacampana = value; }
         }
-
 
         public menuPrincipal()
         {
@@ -106,6 +103,7 @@ namespace ElEscribaDelDJ.View
                     this.iconoCampaigne.Source = new BitmapImage(new Uri(direccionueva, UriKind.Absolute));
             }
 
+            this.escenarios.Clear();
             foreach (EscenarioCampana escenario in Campanas[campaignComboBox.SelectedIndex].ListaEscenarios)
             {
                 this.escenarios.Add(escenario);            
@@ -131,6 +129,7 @@ namespace ElEscribaDelDJ.View
 
         private void EscenarioComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            this.aventuras.Clear();
             foreach (Aventura aventura in Escenarios[campaignComboBox.SelectedIndex].ListaAventuras)
             {
                 this.aventuras.Add(aventura);
