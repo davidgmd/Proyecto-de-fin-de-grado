@@ -40,5 +40,4 @@
     <system:String x:Key="EmailUnMatch">Los correos no coinciden</system:String>
     <system:String x:Key="UserSignUpFailed">El envio a la dirección de correo ha fallado, revise que su conexión a internet funciona Correctamente y la dirección de correo introducida {0}</system:String>
     <system:String x:Key="WrongCode">El código introducido es incorrecto, revise el correo, si pulsa en aceptar de nuevo se le reenviara otro correo con otro código</system:String>
-    
 </ResourceDictionary>

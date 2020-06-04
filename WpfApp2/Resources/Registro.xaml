@@ -56,5 +56,4 @@
     <Style x:Key="BotonCodigo" TargetType="Button">
         <Setter Property="Margin" Value="5"/>
     </Style>
-
 </ResourceDictionary>

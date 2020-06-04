@@ -12,8 +12,9 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
         private static string direccionbase = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\"));
         private static Usuario sesionusuario;
         private static JObject userjobject;
-        public static readonly string idiomas = direccionbase + "\\Idiomas\\";
-        public static readonly string recursos = direccionbase + "\\Resources\\";
+        public static readonly string Idiomas = direccionbase + "\\Idiomas\\";
+        public static readonly string Recursos = direccionbase + "\\Resources\\";
+        public static readonly string Usuarios = direccionbase + "\\Usuarios\\";
         public static readonly string ImagenIcono = direccionbase + "\\Images\\icons\\";
         public static readonly string ImagenUsuario = direccionbase + $"\\Images\\User\\";
 

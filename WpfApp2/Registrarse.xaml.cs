@@ -192,6 +192,14 @@ namespace ElEscribaDelDJ
             elementotexto.Foreground = Brushes.Red;
         }
 
+        private void anadirLista(Image elementoimagen)
+        {
+            if (!lista.Contains(elementoimagen))
+            {
+                lista.Add(elementoimagen);
+            }
+        }
+
         private void HabilitarBoton()
         {
             if (lista.Count.Equals(CamposRegistro.RowDefinitions.Count - 1))
@@ -207,20 +215,6 @@ namespace ElEscribaDelDJ
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            MainWindow ventana = new MainWindow();
-            ventana.Show();
-        }
-
-        private void anadirLista(Image elementoimagen)
-        {
-            if (!lista.Contains(elementoimagen))
-            {
-                lista.Add(elementoimagen);
-            }
         }
 
         private void AceptarButton_Click(object sender, RoutedEventArgs e)
@@ -289,17 +283,29 @@ namespace ElEscribaDelDJ
         //Funcion que inicializa los campos de campaña
         private void anadirelementosiniciales(List<Campana> listacampana)
         {
-            Campana campana = new Campana();
-            campana.Nombre = "D&D 3.5";
-            campana.Descripcion = "Elemento creado como base para aventuras de Dungeons and dragons 3.5";
-            campana.DireccionImagen = "/Images/icons/D&D.png";
-            listacampana.Add(campana);
+            //valores iniciales según idioma.
+            if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
+            {
+                Campana campana = new Campana(){ Nombre = "D&D3.5", Descripcion = "Elemento base para las aventuras de D&D 3.5", DireccionImagen = "/Images/icons/D&D.png" };
+                listacampana.Add(campana);
+            }
+            else
+            {
+                Campana campana = new Campana() { Nombre = "D&D3.5", Descripcion = "Base element for D&D 3.5 adventures", DireccionImagen = "/Images/icons/D&D.png" };
+                listacampana.Add(campana);
+            }
 
-            campana = new Campana();
-            campana.Nombre = "Warhammer 2ª edición";
-            campana.Descripcion = "Elemento creado como base para aventuras de Warhammer 2ª edición";
-            campana.DireccionImagen = "/Images/icons/warhammer-removebg.png";
-            listacampana.Add(campana);
+            //valores iniciales según idioma.
+            if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
+            {
+                Campana campana = new Campana() { Nombre = "Warhammer 2ª edición", Descripcion = "Elemento base para las aventuras de warhammer 2º edición", DireccionImagen = "/Images/icons/warhammer-removebg.png" };
+                listacampana.Add(campana);
+            }
+            else
+            {
+                Campana campana = new Campana() { Nombre = "Warhammer 2ª edition", Descripcion = "Base element for warhammer 2º edition adventures", DireccionImagen = "/Images/icons/warhammer-removebg.png" };
+                listacampana.Add(campana);
+            }
         }
 
         private string Encriptacion(string inputString)
@@ -308,6 +314,12 @@ namespace ElEscribaDelDJ
             data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
             String hash = System.Text.Encoding.ASCII.GetString(data);
             return hash;
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            MainWindow ventana = new MainWindow();
+            ventana.Show();
         }
     }
 }

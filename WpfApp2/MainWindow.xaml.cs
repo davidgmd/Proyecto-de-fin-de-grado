@@ -87,13 +87,13 @@ namespace ElEscribaDelDJ
             }
         }
 
-        //Lee la configuración inicial
+        // Lee la configuración inicial
         private void ConfiguracionInicial()
         {
             this.valoresinicialesconf = System.IO.File.ReadAllLines(RecursosAplicacion.DireccionBase + "Settings.ini");
             int i = 0;
             foreach (string cadenainicial in this.valoresinicialesconf)
-            {      
+            {
                 var cadenaresultante = cadenainicial.Split(':');
                 this.valoresinicialesconf[i] = cadenaresultante[1].Trim().ToString();
                 i += 1;
@@ -101,7 +101,7 @@ namespace ElEscribaDelDJ
 
             Regex.Replace(this.valoresinicialesconf[1], @"\s+", "");
 
-            ConfiguracionAplicacion.Default.Idioma = this.valoresinicialesconf[0];            
+            ConfiguracionAplicacion.Default.Idioma = this.valoresinicialesconf[0];
             ConfiguracionAplicacion.Default.RecordarUsuario = Convert.ToBoolean(this.valoresinicialesconf[1].Trim());
             ConfiguracionAplicacion.Default.RecordarLogin = Convert.ToBoolean(this.valoresinicialesconf[2].Trim());
         }
@@ -116,7 +116,14 @@ namespace ElEscribaDelDJ
             System.IO.File.WriteAllLines(RecursosAplicacion.DireccionBase + "Settings.ini", this.valoresinicialesconf);
         }
 
-        //Si el campo usuario obtiene el foco selecciona el texto inicial y lo borra, esto simula un placeholder
+        // Boton salir
+        private void exitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            System.Environment.Exit(0);
+        }
+
+        // Si el campo usuario obtiene el foco selecciona el texto inicial y lo borra, esto simula un placeholder
         private void userTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             var prueba = this.FindResource("UserText").ToString();
@@ -128,16 +135,16 @@ namespace ElEscribaDelDJ
             }
         }
 
-        //Si se cambia el texto comprueba si hay algo en el campo password en caso afirmativo se deslboquea el boton login
+        // Si se cambia el texto comprueba si hay algo en el campo password en caso afirmativo se deslboquea el boton login
         private void userText_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             if (this.passwordText is object)
             {
                 ComprobarCambios(passwordText.Password, userText.Text);
-            }                 
+            }
         }
 
-        //Si el texto de usuario pierde el foco comprueba si es vacio para advertir de que debe tener algún valor
+        // Si el texto de usuario pierde el foco comprueba si es vacio para advertir de que debe tener algún valor
         private void userTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             if (this.userText.Text == "")
@@ -146,13 +153,13 @@ namespace ElEscribaDelDJ
             }
         }
 
-        //lo mismo que usuario pero al reves si el campo usuario no esta vacio, se desbloquea login 
+        // Lo mismo que usuario pero al reves si el campo usuario no esta vacio, se desbloquea login 
         private void passwordText_PasswordChanged(object sender, RoutedEventArgs e)
         {
             ComprobarCambios(passwordText.Password, userText.Text);
         }
 
-        //Funcion que comprueba los campos que no sean vacios y que no sea el texto inicial
+        // Funcion que comprueba los campos que no sean vacios y que no sea el texto inicial
         private void ComprobarCambios(string password, string username)
         {
             if (password != "" && username != "" && username != this.FindResource("UserText").ToString())
@@ -163,9 +170,45 @@ namespace ElEscribaDelDJ
             {
                 loginButton.IsEnabled = false;
             }
-        }     
+        }
 
-        //Funcion que llama a la ventana de registro
+        // Si se marca la casilla de recordar usuario, desmarca la otra y guarda la conf
+        private void RememberUserCheck_Checked(object sender, RoutedEventArgs e)
+        {
+            ConfiguracionAplicacion.Default.RecordarUsuario = true;
+            if (this.RememberLoginCheck.IsChecked == true)
+            {
+                this.RememberLoginCheck.IsChecked = false;
+            }
+            GuardarConfiguracion();
+        }
+
+        // Si es desmarcada recordar usuario cambia la conf
+        private void RememberUserCheck_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ConfiguracionAplicacion.Default.RecordarUsuario = false;
+            GuardarConfiguracion();
+        }
+
+        // Si es marcada recordar login desmarca la otra y guarda conf
+        private void RememberLoginCheck_Checked(object sender, RoutedEventArgs e)
+        {
+            ConfiguracionAplicacion.Default.RecordarLogin = true;
+            if (this.RememberUserCheck.IsChecked == true)
+            {
+                this.RememberUserCheck.IsChecked = false;
+            }
+            GuardarConfiguracion();
+        }
+
+        // Si es desmarcado recordar login guarda la conf
+        private void RememberLoginCheck_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ConfiguracionAplicacion.Default.RecordarLogin = false;
+            GuardarConfiguracion();
+        }
+
+        // Funcion que llama a la ventana de registro
         private void registrarse_Click(object sender, RoutedEventArgs e)
         {
             Registrarse ventanaRegistro = new Registrarse();
@@ -173,7 +216,7 @@ namespace ElEscribaDelDJ
             this.Hide();
         }
 
-        //Funcion de login
+        // Funcion de login
         private async void login_Click(object sender, RoutedEventArgs e)
         {
             //Declaraciones
@@ -181,8 +224,8 @@ namespace ElEscribaDelDJ
 
             //Asignar los valores de usuario
             usuario.NombreUsuario = this.userText.Text;
-            
-            //Comprueba si es uan contraseña recuperada en caso afirmativo la usa, en caso contrario la cifra
+
+            //Comprueba si es una contraseña recuperada en caso afirmativo la usa, en caso contrario la cifra
             if (!this.passwordlog.Equals("") && this.passwordText.Password.Equals(passwordlog))
             {
                 usuario.Clave = this.passwordlog;
@@ -191,15 +234,15 @@ namespace ElEscribaDelDJ
             {
                 usuario.Clave = Encriptacion(this.passwordText.Password);
             }
-                             
+
             //Campos necesarios para el log
             string[] campos = { usuario.NombreUsuario, usuario.Clave };
 
-            if (await this.ComprobarCredenciales (usuario.NombreUsuario, usuario.Clave))
+            if (await this.ComprobarCredenciales(usuario.NombreUsuario, usuario.Clave))
             {
                 //Asignamos la sesión
                 if (File.Exists(RecursosAplicacion.DireccionBase + "\\Usuarios\\" + usuario.NombreUsuario + ".json"))
-                {            
+                {
                     Usuario usuario1 = JsonUtils.DeJsonAUserObject(GestionArchivos.LeerArchivo("Usuarios", usuario.NombreUsuario), new Usuario());
                     RecursosAplicacion.SesionUsuario = usuario1;
                 }
@@ -207,7 +250,8 @@ namespace ElEscribaDelDJ
                 {
                     //recuperamos los datos del usuario
                     usuario = await GitHub.GithubInstancia.RecuperarDatosUsuario(usuario.NombreUsuario);
-                    GestionArchivos.EscribirArchivo("Usuarios", usuario.NombreUsuario, JsonUtils.DeUserAJsonObject(usuario).ToString());
+                    if (!File.Exists(RecursosAplicacion.Usuarios + usuario.NombreUsuario + ".json"))
+                        GestionArchivos.EscribirArchivo("Usuarios", usuario.NombreUsuario, JsonUtils.DeUserAJsonObject(usuario).ToString());
                     RecursosAplicacion.SesionUsuario = usuario;
                 }
 
@@ -225,17 +269,26 @@ namespace ElEscribaDelDJ
                 //generamos el log como erroneo
                 System.Windows.MessageBox.Show(this.FindResource("ErrorUser").ToString());
                 Logs.GenerarLog("Intento de login", campos, "login", this.FindResource("ErrorUser").ToString());
-            }    
+            }
         }
 
-        //Boton salir
-        private void exitButton_Click(object sender, RoutedEventArgs e)
+        // Funcion que cambia el idioma a ingles al pulsar el stackpanel y guarda el cambio de conf
+        private void IdiomaEN_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            this.Close();
-            System.Environment.Exit(0);
+            ConfiguracionAplicacion.Default.Idioma = "EN";
+            ConfiguracionPagina.DefinirIdioma(this, "Login");
+            GuardarConfiguracion();
         }
 
-        //Si pulsamos en la imagen de los creditos nos llega a la información de la licencia
+        // Funcion que cambia el idioma a español al pulsar el stackpanel y guarda el cambio de conf
+        private void IdiomaES_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ConfiguracionAplicacion.Default.Idioma = "ES";
+            ConfiguracionPagina.DefinirIdioma(this, "Login");
+            GuardarConfiguracion();
+        }
+
+        // Si pulsamos en la imagen de los creditos nos llega a la información de la licencia
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             //La direccion por defecto
@@ -244,12 +297,12 @@ namespace ElEscribaDelDJ
             //para español
             if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
                 url = "https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es";
-            
+
             url = url.Replace("&", "^&");
             Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
         }
 
-        //Si pulsamos en creditos nos muestra credits o creditos según idioma
+        // Si pulsamos en creditos nos muestra credits o creditos según idioma
         private void Credits_MouseDown(object sender, MouseButtonEventArgs e)
         {
             string archivo;
@@ -257,7 +310,7 @@ namespace ElEscribaDelDJ
             {
                 archivo = "creditos.txt";
             }
-            else 
+            else
             {
                 archivo = "credits.txt";
             }
@@ -266,7 +319,7 @@ namespace ElEscribaDelDJ
             ventana.Show();
         }
 
-        //Encripta la clave y el correo
+        // Encripta la clave y el correo
         private string Encriptacion(string inputString)
         {
             byte[] data = System.Text.Encoding.ASCII.GetBytes(inputString);
@@ -275,64 +328,12 @@ namespace ElEscribaDelDJ
             return hash;
         }
 
-        //Metodo que cuando se intenta loguear comprueba que el usuario existe en github
+        // Metodo que cuando se intenta loguear comprueba que el usuario existe en github
         private async Task<Boolean> ComprobarCredenciales(string nombreusuario, string clave)
         {
             //Comprobamos las credenciales online
             var respuesta = await MainWindow.github.ComprobarCredenciales(nombreusuario, clave);
             return respuesta;
-        }
-
-        //Funcion que cambia el idioma a ingles al pulsar el stackpanel y guarda el cambio de conf
-        private void IdiomaEN_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            ConfiguracionAplicacion.Default.Idioma = "EN";
-            ConfiguracionPagina.DefinirIdioma(this, "Login");
-            GuardarConfiguracion();
-        }
-
-        //Funcion que cambia el idioma a español al pulsar el stackpanel y guarda el cambio de conf
-        private void IdiomaES_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            ConfiguracionAplicacion.Default.Idioma = "ES";
-            ConfiguracionPagina.DefinirIdioma(this, "Login");
-            GuardarConfiguracion();
-        }
-
-        //Si se marca la casilla de recordar usuario, desmarca la otra y guarda la conf
-        private void RememberUserCheck_Checked(object sender, RoutedEventArgs e)
-        {
-            ConfiguracionAplicacion.Default.RecordarUsuario = true;
-            if (this.RememberLoginCheck.IsChecked == true)
-            {
-                this.RememberLoginCheck.IsChecked = false;                
-            }
-            GuardarConfiguracion();
-        }
-
-        //Si es desmarcada recordar usuario cambia la conf
-        private void RememberUserCheck_Unchecked(object sender, RoutedEventArgs e)
-        {
-            ConfiguracionAplicacion.Default.RecordarUsuario = false;
-            GuardarConfiguracion();
-        }
-
-        //Si es marcada recordar login desmarca la otra y guarda conf
-        private void RememberLoginCheck_Checked(object sender, RoutedEventArgs e)
-        {
-            ConfiguracionAplicacion.Default.RecordarLogin = true;
-            if (this.RememberUserCheck.IsChecked == true)
-            {
-                this.RememberUserCheck.IsChecked = false;
-            }
-            GuardarConfiguracion();
-        }
-
-        //Si es desmarcado recordar login guarda la conf
-        private void RememberLoginCheck_Unchecked(object sender, RoutedEventArgs e)
-        {
-            ConfiguracionAplicacion.Default.RecordarLogin = false;
-            GuardarConfiguracion();
         }
     }
 }
