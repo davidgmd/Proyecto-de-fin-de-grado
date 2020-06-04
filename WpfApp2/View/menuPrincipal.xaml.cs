@@ -185,5 +185,11 @@ namespace ElEscribaDelDJ.View
             if (this.AventuraComboBox.HasItems)
                 this.AventuraComboBox.SelectedIndex = 0;
         }
+
+        private void CampaignAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            AnadirElemento ventanapopup = new AnadirElemento();
+            ventanapopup.Show();
+        }
     }
 }

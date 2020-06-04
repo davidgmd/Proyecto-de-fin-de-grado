@@ -46,7 +46,9 @@
 
             <StackPanel Style="{DynamicResource CampanaStackPanel}">
 
-                <Button Style="{DynamicResource addComboBox}">
+                <Button Style="{DynamicResource addComboBox}"
+                        x:Name="CampaignAddButton"
+                        Click="CampaignAddButton_Click">
                     <Image Style="{DynamicResource ImagenAddComboBox}"/>
                 </Button>
 

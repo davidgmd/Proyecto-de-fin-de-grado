@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:ElEscribaDelDJ"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
 
-    
+    <system:String x:Key="WindowTitle">The Master's Scribe</system:String>
     <system:String x:Key="Title">Welcome to "The Master's Scribe"</system:String>
     <system:String x:Key="Narration">Once you arrive at the mansion of your deceased familiar, you observe the shape of the whitish mansion, there are multiples humidity stains, but still looks like it would be in a good shape, after some fixes, but now, maybe is not the better time to think about expense, and you are more worried about the rumors you have been hearing about the house, without any more time to think about it. A advance age man appears, clean his glasses, and then he looks at you and says:</system:String>
     <system:String x:Key="Dialog">- You must be the new Master of the house, Let me introduce myself my name is Francisco de Agora, Who are you?</system:String>

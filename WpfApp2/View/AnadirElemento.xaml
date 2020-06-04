@@ -1,0 +1,62 @@
+﻿<Window x:Class="ElEscribaDelDJ.View.AnadirElemento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElEscribaDelDJ.View"
+        mc:Ignorable="d"
+        Title="AnadirCampana" Height="260" Width="500"
+        WindowStartupLocation="CenterScreen"
+        Opacity="0.75"        
+        Background="WhiteSmoke">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0"
+                    Height="Auto"
+                    Margin="0 5 0 0">
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 10"
+                        Height="Auto">
+                <TextBlock Text="Nombre Campana"
+                           FontWeight="SemiBold"
+                           Width="120"
+                           Margin="10 0 20 0"/>
+                <TextBox Width="300" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 10"
+                        Height="Auto">
+                <TextBlock Text="Descripcion Campana"
+                           FontWeight="SemiBold"
+                           Width="120"
+                           Margin="10 0 20 0"/>
+                <TextBox Width="300"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="0 0 0 10"
+                        Height="Auto">
+                <TextBlock Text="Imagen Campana"
+                           FontWeight="SemiBold"
+                           Width="120"
+                           Margin="10 0 20 0"/>
+                <Button Content="Seleccionar archivo"
+                        Name="SeleccionarImagen"
+                        Click="SeleccionarImagen_Click"/>
+            </StackPanel>
+        </StackPanel>
+        <Grid Grid.Row="1"
+              Name="ImageGrid">
+        <Image x:Name="ImagenElegida"
+               Width="{Binding ActualWidth, ElementName=ImageGrid}"/>
+        </Grid>
+        <Button Content="Aceptar"
+                Grid.Row="2"
+                VerticalAlignment="Bottom"
+                Margin="0 10 0 0"/>
+    </Grid>
+</Window>
