@@ -33,7 +33,7 @@
     <system:String x:Key="UserEmpty">Introduzca el nombre de usuario</system:String>
     <system:String x:Key="PasswordEmpty">El campo contraseña no puede quedarse en blanco</system:String>
     <system:String x:Key="RulesForUser">El nombre de usuario debe empezar por letras y sin espacios</system:String>
-    <system:String x:Key="RulesForPasword">La contraseña no puede contener espacios</system:String>
+    <system:String x:Key="RulesForPasword">La contraseña no puede contener espacios ni caracteres especiales como -</system:String>
     <system:String x:Key="PasswordUnMatch">Las contraseñas no coinciden</system:String>
     <system:String x:Key="EmailEmpty">El campo email no puede estar en blanco</system:String>
     <system:String x:Key="RulesForEmail">La contraseña no puede contener espacios y debe tener @ y .es Por ejemplo @hotmail.com</system:String>

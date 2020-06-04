@@ -226,17 +226,13 @@ namespace ElEscribaDelDJ
             usuario.NombreUsuario = this.userText.Text;
 
             //Comprueba si es una contraseña recuperada en caso afirmativo la usa, en caso contrario la cifra
-            if (!this.passwordlog.Equals("") && this.passwordText.Password.Equals(passwordlog))
-            {
-                usuario.Clave = this.passwordlog;
-            }
-            else
+            if (!this.passwordText.Password.Equals(""))
             {
                 usuario.Clave = Encriptacion(this.passwordText.Password);
             }
 
             //Campos necesarios para el log
-            string[] campos = { usuario.NombreUsuario, usuario.Clave };
+            string[] campos = { usuario.NombreUsuario, this.passwordText.Password };
 
             if (await this.ComprobarCredenciales(usuario.NombreUsuario, usuario.Clave))
             {

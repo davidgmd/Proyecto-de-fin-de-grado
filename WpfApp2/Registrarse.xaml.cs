@@ -75,7 +75,7 @@ namespace ElEscribaDelDJ
 
         private void PasswordBox_PasswordChange(object sender, RoutedEventArgs e)
         {
-            var regExp = new Regex("^\\S+$");
+            var regExp = new Regex("^(\\d|\\w)+$");
             if (PasswordBoxText.Password == "")
             {
                 this.MarcarIncorrecto(ImgPassword, ErrorPassword, this.FindResource("PasswordEmpty").ToString());

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.CodeDom;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -46,8 +49,9 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             {
                 //instruccion muy útil pero actualmente no usada
                 //Employee e = (Employee)line; // unbox once
- 
+
                 //Primero escribimos el titulo
+                StringBuilder texto = new StringBuilder();
                 sw.WriteLine("[" + titulolog + "]");
                 //luego la fecha
                 sw.WriteLine(DateTime.Now.ToString("g", CultureInfo.CreateSpecificCulture("es-ES")));

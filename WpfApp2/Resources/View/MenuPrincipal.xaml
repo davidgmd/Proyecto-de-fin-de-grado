@@ -60,9 +60,11 @@
     <Style x:Key="comboBoxCampaign" TargetType="ComboBox">
         <Setter Property="Margin" Value="10"/>
         <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="IsReadOnly" Value="True"/>
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="FontSize" Value="15"/>
+        <Setter Property="IsTextSearchCaseSensitive" Value="True"/>
+        <Setter Property="IsTextSearchCaseSensitive" Value="False"/>
+        <Setter Property="IsEditable" Value="True"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="Height" Value="Auto"/>
     </Style>
@@ -94,9 +96,80 @@
         <Setter Property="Source" Value="../../Images/icons/iconoMenos.png"/>
     </Style>
 
-    <Style x:Key="iconCampaigne" TargetType="Image">
+    <Style x:Key="iconCampaign" TargetType="Image">
         <Setter Property="Width" Value="{Binding ActualWidth, ElementName=ImageGrid}"/>
         <Setter Property="Source" Value="/Images/icons/icons8-escudopregunta.png"/>
         <Setter Property="Margin" Value="10"/>
+    </Style>
+   
+    <!-- Los botones -->
+    <!-- Borde deshabilitado para el menu principal-->
+    <Style x:Key="borderMenu" TargetType="Border">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+    <!-- Borde habilitado para el menu principal-->
+    <Style x:Key="borderMenuEnabled" TargetType="Border" BasedOn="{StaticResource borderMenu}">
+        <Setter Property="BorderBrush" Value="#FF512424"/>
+    </Style>
+
+    <!-- Boton deshabilitado-->
+    <Style x:Key="botonMenu" TargetType="Button">
+        <Setter Property="IsEnabled" Value="False"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Background="{TemplateBinding Background}">
+                        <ContentPresenter x:Name="MyContentPresenter" 
+                                          Content="{TemplateBinding Content}"
+                                          HorizontalAlignment="Center" 
+                                          VerticalAlignment="Center"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="#FF4B4B4B"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Boton habilitado-->
+    <Style x:Key="botonMenuEnabled" TargetType="Button">
+        <Setter Property="Background" Value="GhostWhite"/>
+        <Setter Property="Background" Value="#CC553636"/>
+        <Setter Property="IsEnabled" Value="True"/>
+    </Style>
+
+    <Style x:Key="visibleInicio" TargetType="Image">
+        <Setter Property="Visibility" Value="Visible"/>
+        <Setter Property="Height" Value="50"/>
+    </Style>
+
+    <Style x:Key="noVisible" TargetType="Image">
+        <Setter Property="Visibility" Value="Collapsed"/>
+    </Style>
+
+    <!-- Texto de los menus-->
+    <Style x:Key="textoGridMenu" TargetType="TextBlock">
+        <!-- #FF853737-->
+        <Setter Property="Foreground" Value="#FF870505"/>
+        <Setter Property="FontFamily" Value="Arial"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="Gray" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="iconMenu" TargetType="Image">
+        <Setter Property="Height" Value="50"/>
     </Style>
 </ResourceDictionary>

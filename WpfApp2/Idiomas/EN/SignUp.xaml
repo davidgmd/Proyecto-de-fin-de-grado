@@ -33,7 +33,7 @@
     <system:String x:Key="UserEmpty">The user name can't be empty</system:String>
     <system:String x:Key="PasswordEmpty">The Password can't be empty</system:String>
     <system:String x:Key="RulesForUser">The username must begin with a character and can't have spaces between characters</system:String>
-    <system:String x:Key="RulesForPasword">The password can't have any space</system:String>
+    <system:String x:Key="RulesForPasword">The password can't have any space or special character as -</system:String>
     <system:String x:Key="PasswordUnMatch">The passwords doesn't match</system:String>
     <system:String x:Key="EmailEmpty">The Email can't be empty</system:String>
     <system:String x:Key="RulesForEmail">The email can't containt any space and must have one @ and one . Example name@hotmail.com</system:String>

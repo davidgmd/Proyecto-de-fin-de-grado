@@ -55,6 +55,8 @@
                         x:Name="campaignComboBox"                
                         ItemsSource="{Binding Path=Campanas}"
                         ItemTemplate="{StaticResource CustomerTemplate}"
+                        TextSearch.TextPath="Nombre"
+                        Text="{Binding SelectedItemText, Mode=TwoWay}"
                         Loaded="campaignComboBox_Loaded"
                         SelectionChanged="CampaigneComboBox_SelectionChanged"/>
                     
@@ -100,16 +102,17 @@
 
         <Grid Grid.Row="1"
               x:Name="ImageGrid">
-            <Image Style="{DynamicResource iconCampaigne}"
+            <Image Style="{DynamicResource iconCampaign}"
                     Grid.Row="3"
-                    x:Name="iconoCampaigne">
+                    x:Name="iconoCampaign">
                 <Image.Effect>
                     <DropShadowEffect/>
                 </Image.Effect>
             </Image>
         </Grid>
 
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2"
+              x:Name="GridBotonera">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -120,7 +123,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Border Style="{DynamicResource borderMenu}"
+            <Border Style="{DynamicResource borderMenu}"                  
                     Grid.Row="0">
                 <Button Style="{DynamicResource botonMenu}"
                         x:Name="botonCalendario">
