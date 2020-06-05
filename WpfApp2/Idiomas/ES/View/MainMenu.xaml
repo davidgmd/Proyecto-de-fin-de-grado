@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
 
+    <system:String x:Key="WindowTitle">Menu Principal</system:String>
     <system:String x:Key="Title">Seleccionar Campaña</system:String>
     <system:String x:Key="HowToUse">Puede crear nuevas campañas o modificarlas con el botón +, Una vez elegida la campaña, elija el escenario de campaña o cree uno nuevo, Por último elija una aventura para ese escenario o cree una nueva</system:String>
     <system:String x:Key="CampaignList">Listado de Campañas</system:String>
