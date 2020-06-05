@@ -29,7 +29,7 @@
                            Margin="10 0 20 0"/>
                 <TextBox Width="300"
                          x:Name="NombreTextBox"
-                         Text="{Binding Path=Campana.Nombre}"/>
+                         Text="{Binding Path=Campana.Nombre, Mode=OneWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="0 0 0 10"
@@ -40,7 +40,7 @@
                            Margin="10 0 20 0"/>
                 <TextBox Width="300"
                          x:Name="DescripcionTextBox"
-                         Text="{Binding Path=Campana.Descripcion}"/>
+                         Text="{Binding Path=Campana.Descripcion, Mode=OneWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="0 0 0 10"
@@ -57,14 +57,16 @@
         <Grid Grid.Row="1"
               Name="ImageGrid">
         <Image x:Name="ImagenElegida"
-               Source="{Binding Path=Campana.DireccionImagen}"/>
+               Source="{Binding Path=Campana.DireccionImagen, Mode=OneWay}"/>
         </Grid>
         <StackPanel Orientation="Horizontal"
                     Grid.Row="2"
                     Margin="0 10 0 0"
                     HorizontalAlignment="Center">
             <Button Content="Añadir"
+                    x:Name="BotonAnadir"
                     Width="100"
+                    Click="BotonAnadir_Click"
                     Margin="0 0 10 0"/>
             <Button Content="Modificar"
                     x:Name="BotonModificar"

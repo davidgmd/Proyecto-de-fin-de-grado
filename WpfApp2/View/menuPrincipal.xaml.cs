@@ -109,9 +109,7 @@ namespace ElEscribaDelDJ.View
             {
                 CambiarEstilos(estilosbase);
                 this.iconoCampaign.Source = new BitmapImage(new Uri("/Images/icons/icons8-escudopregunta.png", UriKind.Relative));
-            }
-
-                     
+            }                   
         }
 
         //modifica los estilos base por activados o viceversa
@@ -133,7 +131,7 @@ namespace ElEscribaDelDJ.View
         {           
             var nombrecampana = Campanas[campaignComboBox.SelectedIndex].Nombre;
             string direccioncompletaimagen;
-            if (Campanas[this.campaignComboBox.SelectedIndex].DireccionImagen.Contains(":/"))
+            if (Campanas[this.campaignComboBox.SelectedIndex].DireccionImagen.Contains(":\\"))
             {
                 direccioncompletaimagen = Campanas[this.campaignComboBox.SelectedIndex].DireccionImagen;
             }
@@ -143,7 +141,7 @@ namespace ElEscribaDelDJ.View
             }
             
             string carpeta = RecursosAplicacion.ImagenUsuario + $"\\{RecursosAplicacion.SesionUsuario.NombreUsuario}\\{nombrecampana}\\icon\\";
-            string fichero = Regex.Replace(direccioncompletaimagen, "...+\\/|\\+", "");
+            string fichero = Path.GetFileName(direccioncompletaimagen);
             string direccionueva = carpeta + fichero;
 
             if (File.Exists(direccioncompletaimagen))
@@ -152,7 +150,7 @@ namespace ElEscribaDelDJ.View
             }
             else
             {
-                MessageBox.Show($"no se encuentra el fichero {fichero} en la ruta {direccioncompletaimagen} por favor seleccione la nueva ruta del fichero");
+                MessageBox.Show($"No se encuentra el fichero {fichero} en la ruta {direccioncompletaimagen} por favor seleccione la nueva ruta del fichero");
                 SelectorArchivos nuevoarchivo = new SelectorArchivos();
                 string direccionarchivo = nuevoarchivo.SeleccionImagen();
                 if (!(direccionarchivo is null))
@@ -206,11 +204,29 @@ namespace ElEscribaDelDJ.View
 
         private void CampaignAddButton_Click(object sender, RoutedEventArgs e)
         {
+            var cantidad = this.campaignComboBox.Items.Count;
             AnadirElemento ventanapopup = new AnadirElemento(this.campanas[this.campaignComboBox.SelectedIndex], this.campanas);
-            ventanapopup.ShowDialog();
+            this.Hide();
+            ventanapopup.ShowDialog();         
             //refresca los datos tal como la ventana es cerrada
             while (ventanapopup.IsActive) { }
+            this.Show();
             CollectionViewSource.GetDefaultView(this.campanas).Refresh();
+            if (cantidad != this.campaignComboBox.Items.Count)
+            {
+                this.campaignComboBox.SelectedIndex = cantidad;
+            }
+            else
+            {
+                if (Campanas[this.campaignComboBox.SelectedIndex].DireccionImagen.Contains(":\\"))
+                {
+                    this.iconoCampaign.Source = new BitmapImage(new Uri(this.campanas[this.campaignComboBox.SelectedIndex].DireccionImagen, UriKind.Absolute));
+                }
+                else
+                {
+                    this.iconoCampaign.Source = new BitmapImage(new Uri(this.campanas[this.campaignComboBox.SelectedIndex].DireccionImagen, UriKind.Relative));
+                }
+            }          
         }
     }
 }

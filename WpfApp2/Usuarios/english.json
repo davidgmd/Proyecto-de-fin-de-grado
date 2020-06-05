@@ -3,10 +3,10 @@
   "ListCampaigns": [
     {
       "ListaEscenarios": [],
-      "DireccionImagen": "file:///C:/Users/K_H_S/Pictures/comisaria mona.jpg",
+      "DireccionImagen": "C:\\Users\\David2\\source\\repos\\davidgmd\\Proyecto-de-fin-de-grado\\WpfApp2\\\\Images\\User\\\\english\\D&D3.5a\\icon\\D&D.png",
       "RecursosCampana": [],
-      "Descripcion": "Base element for D&D 3.5 adventures",
-      "Nombre": "D&D3.5"
+      "Descripcion": "Base element for D&D3.5 adventuresa",
+      "Nombre": "D&D3.5a"
     },
     {
       "ListaEscenarios": [],
@@ -14,6 +14,48 @@
       "RecursosCampana": [],
       "Descripcion": "Base element for warhammer 2º edition adventures",
       "Nombre": "Warhammer 2ª edition"
+    },
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "C:\\Users\\David2\\source\\repos\\davidgmd\\Proyecto-de-fin-de-grado\\WpfApp2\\\\Images\\User\\\\english\\D&D4\\icon\\Moulan badass.jpg",
+      "RecursosCampana": [],
+      "Descripcion": "D&D4",
+      "Nombre": "D&D4"
+    },
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "C:\\Users\\David2\\source\\repos\\davidgmd\\Proyecto-de-fin-de-grado\\WpfApp2\\\\Images\\User\\\\english\\asd\\icon\\circe smiling.png",
+      "RecursosCampana": [],
+      "Descripcion": "asd",
+      "Nombre": "asd"
+    },
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "/Images/icons/icons8-escudopregunta.png",
+      "RecursosCampana": [],
+      "Descripcion": "a",
+      "Nombre": "a"
+    },
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "C:\\Users\\David2\\source\\repos\\davidgmd\\Proyecto-de-fin-de-grado\\WpfApp2\\\\Images\\User\\\\english\\b\\icon\\Zero escape trilogy.jpg",
+      "RecursosCampana": [],
+      "Descripcion": "b",
+      "Nombre": "b"
+    },
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "C:\\Users\\David2\\source\\repos\\davidgmd\\Proyecto-de-fin-de-grado\\WpfApp2\\\\Images\\User\\\\english\\modificado c\\icon\\Sherlock funny.png",
+      "RecursosCampana": [],
+      "Descripcion": "casd",
+      "Nombre": "modificado c"
+    },
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "/Images/icons/icons8-escudopregunta.png",
+      "RecursosCampana": [],
+      "Descripcion": "a",
+      "Nombre": "modificado a"
     }
   ],
   "NombreUsuario": "english",

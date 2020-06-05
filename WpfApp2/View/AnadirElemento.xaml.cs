@@ -25,6 +25,7 @@ namespace ElEscribaDelDJ.View
     {
         private Campana campana = new Campana();
         private ObservableCollection<Campana> observable = new ObservableCollection<Campana>();
+        private SelectorArchivos archivo;
         private string direccionimagen;
 
         public ObservableCollection<Campana> Observable
@@ -52,8 +53,9 @@ namespace ElEscribaDelDJ.View
 
         private void SeleccionarImagen_Click(object sender, RoutedEventArgs e)
         {
-            SelectorArchivos archivo = new SelectorArchivos();
+            this.archivo = new SelectorArchivos();
             this.direccionimagen = archivo.SeleccionImagen();
+            if (direccionimagen != null)
             ImagenElegida.Source = new BitmapImage(new Uri(direccionimagen, UriKind.Absolute));
         }
 
@@ -66,16 +68,44 @@ namespace ElEscribaDelDJ.View
                     campana1.Nombre = this.NombreTextBox.Text;
                     campana1.Descripcion = this.DescripcionTextBox.Text;
                     if (!(this.direccionimagen is null))
-                        campana.DireccionImagen = this.direccionimagen;                  
+                    {
+                        string direccion = this.archivo.MoverImagen(campana1.Nombre, this.direccionimagen);
+                        campana.DireccionImagen = direccion;
+                    }                                      
                 }
             }
 
             RecursosAplicacion.SesionUsuario.ListCampaigns = this.observable.ToList<Campana>();
             GestionArchivos.EscribirUsuarioLocal();
+
+            this.Close();
         }
 
         private void BotonCancelar_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+        private void BotonAnadir_Click(object sender, RoutedEventArgs e)
+        {
+            Campana campana1 = new Campana();
+            campana1.Nombre = NombreTextBox.Text;
+            campana1.Descripcion = DescripcionTextBox.Text;
+            if (!(this.direccionimagen is null))
+            {
+                string direccion = this.archivo.MoverImagen(campana1.Nombre, this.direccionimagen);
+                campana1.DireccionImagen = direccion;
+            }
+            else
+            {
+                campana1.DireccionImagen = "/Images/icons/icons8-escudopregunta.png";
+            }
+            
+            observable.Add(campana1);
+
+            RecursosAplicacion.SesionUsuario.ListCampaigns = this.observable.ToList<Campana>();
+            GestionArchivos.EscribirUsuarioLocal();
+
             this.Close();
         }
     }

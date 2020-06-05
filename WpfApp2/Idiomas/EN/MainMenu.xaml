@@ -3,7 +3,7 @@
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
 
     <system:String x:Key="Title">Select Campaign</system:String>
-    <system:String x:Key="HowToUse">You can create new ones, with the + button, Once you chose a campaign, select the scenario or make a new one, Finally choose the adventure for that scenario or make a new one</system:String>
+    <system:String x:Key="HowToUse">You can create new ones or modify them, with the + button, Once you chose a campaign, select the scenario or make a new one, Finally choose the adventure for that scenario or make a new one</system:String>
     <system:String x:Key="CampaignList">List of Campaigns</system:String>
     <system:String x:Key="CampaignScenario">Campaign Scenario</system:String>
     <system:String x:Key="ScenarioAdventure">Scenario Adventure</system:String>
