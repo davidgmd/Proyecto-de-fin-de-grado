@@ -3,7 +3,7 @@
   "ListCampaigns": [
     {
       "ListaEscenarios": [],
-      "DireccionImagen": "/Images/icons/D&D.png",
+      "DireccionImagen": "file:///C:/Users/K_H_S/Pictures/comisaria mona.jpg",
       "RecursosCampana": [],
       "Descripcion": "Base element for D&D 3.5 adventures",
       "Nombre": "D&D3.5"

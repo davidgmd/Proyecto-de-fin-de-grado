@@ -1,7 +1,10 @@
-﻿using Microsoft.Win32;
+﻿using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace ElEscribaDelDJ.Classes.Utilidades
 {
@@ -24,6 +27,18 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             {
                 return null;
             }
+        }
+
+        public string MoverImagen(string nombrecampana, string direccionarchivo)
+        {
+            string carpeta = RecursosAplicacion.ImagenUsuario + $"\\{RecursosAplicacion.SesionUsuario.NombreUsuario}\\{nombrecampana}\\icon\\";
+            string fichero = Regex.Replace(direccionarchivo, "...+\\/|\\+", "");
+            string direccionueva = carpeta + fichero;
+
+            System.IO.Directory.CreateDirectory(carpeta);
+            File.Copy(direccionarchivo, direccionueva, true);
+            return direccionueva;
+
         }
     }
 }

@@ -9,6 +9,7 @@
         WindowStartupLocation="CenterScreen"
         Opacity="0.75"        
         Background="WhiteSmoke">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -26,7 +27,9 @@
                            FontWeight="SemiBold"
                            Width="120"
                            Margin="10 0 20 0"/>
-                <TextBox Width="300" />
+                <TextBox Width="300"
+                         x:Name="NombreTextBox"
+                         Text="{Binding Path=Campana.Nombre}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="0 0 0 10"
@@ -35,7 +38,9 @@
                            FontWeight="SemiBold"
                            Width="120"
                            Margin="10 0 20 0"/>
-                <TextBox Width="300"/>
+                <TextBox Width="300"
+                         x:Name="DescripcionTextBox"
+                         Text="{Binding Path=Campana.Descripcion}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="0 0 0 10"
@@ -52,11 +57,23 @@
         <Grid Grid.Row="1"
               Name="ImageGrid">
         <Image x:Name="ImagenElegida"
-               Width="{Binding ActualWidth, ElementName=ImageGrid}"/>
+               Source="{Binding Path=Campana.DireccionImagen}"/>
         </Grid>
-        <Button Content="Aceptar"
-                Grid.Row="2"
-                VerticalAlignment="Bottom"
-                Margin="0 10 0 0"/>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="2"
+                    Margin="0 10 0 0"
+                    HorizontalAlignment="Center">
+            <Button Content="Añadir"
+                    Width="100"
+                    Margin="0 0 10 0"/>
+            <Button Content="Modificar"
+                    x:Name="BotonModificar"
+                    Margin="0 0 10 0"
+                    Width="100" Click="Modificar_Click"/>
+            <Button Content="Cancelar"
+                    x:Name="BotonCancelar"
+                    Click="BotonCancelar_Click"
+                    Width="100"/>
+        </StackPanel>
     </Grid>
 </Window>

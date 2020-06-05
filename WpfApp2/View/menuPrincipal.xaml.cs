@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -131,7 +132,16 @@ namespace ElEscribaDelDJ.View
         private void SeleccionarCampana()
         {           
             var nombrecampana = Campanas[campaignComboBox.SelectedIndex].Nombre;
-            string direccioncompletaimagen = RecursosAplicacion.DireccionBase + Campanas[this.campaignComboBox.SelectedIndex].DireccionImagen;
+            string direccioncompletaimagen;
+            if (Campanas[this.campaignComboBox.SelectedIndex].DireccionImagen.Contains(":/"))
+            {
+                direccioncompletaimagen = Campanas[this.campaignComboBox.SelectedIndex].DireccionImagen;
+            }
+            else
+            {
+                direccioncompletaimagen = RecursosAplicacion.DireccionBase + Campanas[this.campaignComboBox.SelectedIndex].DireccionImagen;
+            }
+            
             string carpeta = RecursosAplicacion.ImagenUsuario + $"\\{RecursosAplicacion.SesionUsuario.NombreUsuario}\\{nombrecampana}\\icon\\";
             string fichero = Regex.Replace(direccioncompletaimagen, "...+\\/|\\+", "");
             string direccionueva = carpeta + fichero;
@@ -146,9 +156,17 @@ namespace ElEscribaDelDJ.View
                 SelectorArchivos nuevoarchivo = new SelectorArchivos();
                 string direccionarchivo = nuevoarchivo.SeleccionImagen();
                 if (!(direccionarchivo is null))
-                    System.IO.Directory.CreateDirectory(carpeta);
-                File.Copy(direccionarchivo, direccionueva, true);
-                this.iconoCampaign.Source = new BitmapImage(new Uri(direccionueva, UriKind.Absolute));
+                {
+                    direccionueva = nuevoarchivo.MoverImagen(nombrecampana, direccionarchivo);
+                    this.iconoCampaign.Source = new BitmapImage(new Uri(direccionueva, UriKind.Absolute));
+                    RecursosAplicacion.SesionUsuario.ListCampaigns[campaignComboBox.SelectedIndex].DireccionImagen = direccionueva;
+                    GestionArchivos.EscribirUsuarioLocal();
+                }
+                else
+                {
+                    this.iconoCampaign.Source = new BitmapImage(new Uri("/Images/icons/icons8-escudopregunta.png", UriKind.Relative));
+                }
+                    
             }
 
             this.escenarios.Clear();
@@ -188,8 +206,11 @@ namespace ElEscribaDelDJ.View
 
         private void CampaignAddButton_Click(object sender, RoutedEventArgs e)
         {
-            AnadirElemento ventanapopup = new AnadirElemento();
-            ventanapopup.Show();
+            AnadirElemento ventanapopup = new AnadirElemento(this.campanas[this.campaignComboBox.SelectedIndex], this.campanas);
+            ventanapopup.ShowDialog();
+            //refresca los datos tal como la ventana es cerrada
+            while (ventanapopup.IsActive) { }
+            CollectionViewSource.GetDefaultView(this.campanas).Refresh();
         }
     }
 }
