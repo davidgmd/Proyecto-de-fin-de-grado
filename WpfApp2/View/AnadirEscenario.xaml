@@ -1,80 +1,63 @@
-﻿<Window x:Class="ElEscribaDelDJ.View.AnadirElemento"
+﻿<Window x:Class="ElEscribaDelDJ.View.AnadirEscenario"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElEscribaDelDJ.View"
         mc:Ignorable="d"
-        Title="AnadirCampana" Height="260" Width="500"
+        Title="Anadir o Modificar Escenario" Height="Auto" Width="Auto"
         WindowStartupLocation="CenterScreen"
         Opacity="0.75"        
         Background="WhiteSmoke">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="100"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
+
         <StackPanel Grid.Row="0"
                     Height="Auto"
-                    Margin="0 5 0 0">
+                    Margin="0 5 10 0">
             <StackPanel Orientation="Horizontal"
                         Margin="0 0 0 10"
                         Height="Auto">
-                <TextBlock Text="Nombre Campana"
+                <TextBlock Text="Nombre Escenario"
                            FontWeight="SemiBold"
                            Width="120"
                            Margin="10 0 20 0"/>
                 <TextBox Width="300"
                          x:Name="NombreTextBox"
-                         Text="{Binding Path=Campana.Nombre, Mode=OneWay}"/>
+                         Text="{Binding Path=Escenario.Nombre, Mode=OneWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="0 0 0 10"
                         Height="Auto">
-                <TextBlock Text="Descripcion Campana"
+                <TextBlock Text="Descripcion Escenario"
                            FontWeight="SemiBold"
                            Width="120"
                            Margin="10 0 20 0"/>
                 <TextBox Width="300"
                          x:Name="DescripcionTextBox"
-                         Text="{Binding Path=Campana.Descripcion, Mode=OneWay}"/>
+                         Text="{Binding Path=Escenario.Descripcion, Mode=OneWay}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         Margin="0 0 0 10"
-                        Height="Auto">
-                <TextBlock Text="Imagen Campana"
-                           FontWeight="SemiBold"
-                           Width="120"
-                           Margin="10 0 20 0"/>
-                <Button Content="Seleccionar archivo"
-                        Name="SeleccionarImagen"
-                        Click="SeleccionarImagen_Click"/>
-            </StackPanel>
+                        Height="Auto"/>
         </StackPanel>
-        <Grid Grid.Row="1"
-              Name="ImageGrid">
-        <Image x:Name="ImagenElegida"
-               Source="{Binding Path=Campana.DireccionImagen, Mode=OneWay}"/>
-        </Grid>
         <StackPanel Orientation="Horizontal"
-                    Grid.Row="2"
-                    Margin="0 10 0 0"
+                    Grid.Row="1"
+                    Margin="0 10 0 10"
                     HorizontalAlignment="Center">
             <Button Content="Añadir"
                     x:Name="BotonAnadir"
-                    Width="100"
-                    Click="BotonAnadir_Click"
+                    Width="100"                   
                     Margin="0 0 10 0"/>
             <Button Content="Modificar"
                     x:Name="BotonModificar"
                     Margin="0 0 10 0"
-                    Width="100" Click="Modificar_Click"/>
+                    Width="100"/>
             <Button Content="Cancelar"
                     x:Name="BotonCancelar"
-                    Click="BotonCancelar_Click"
                     Width="100"/>
         </StackPanel>
     </Grid>

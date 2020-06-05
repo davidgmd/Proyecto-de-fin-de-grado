@@ -18,7 +18,18 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
         public static void DefinirIdioma(Window ventana, string nombreventana)
         {
             //Según el idioma cargamos uno u otro
-            var path = RecursosAplicacion.DireccionBase + "\\Idiomas\\" + ConfiguracionAplicacion.Default.Idioma + "\\" + nombreventana + ".xaml";
+            string path;
+            switch (nombreventana)
+            {
+                case ("MainMenu"):
+                    path = RecursosAplicacion.DireccionBase + "\\Idiomas\\" + ConfiguracionAplicacion.Default.Idioma + "\\View\\" + nombreventana + ".xaml";
+                    break;
+
+                default:
+                    path = RecursosAplicacion.DireccionBase + "\\Idiomas\\" + ConfiguracionAplicacion.Default.Idioma + "\\" + nombreventana + ".xaml";
+                    break;
+            }
+            
 
             idioma.Source = new Uri(path, UriKind.Absolute);
             ventana.Resources.MergedDictionaries.Add(idioma);

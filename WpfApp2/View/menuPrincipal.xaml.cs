@@ -205,7 +205,7 @@ namespace ElEscribaDelDJ.View
         private void CampaignAddButton_Click(object sender, RoutedEventArgs e)
         {
             var cantidad = this.campaignComboBox.Items.Count;
-            AnadirElemento ventanapopup = new AnadirElemento(this.campanas[this.campaignComboBox.SelectedIndex], this.campanas);
+            AnadirCampana ventanapopup = new AnadirCampana(this.campanas[this.campaignComboBox.SelectedIndex], this.campanas);
             this.Hide();
             ventanapopup.ShowDialog();         
             //refresca los datos tal como la ventana es cerrada

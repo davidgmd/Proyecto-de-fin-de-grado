@@ -13,7 +13,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Resources/View/MenuPrincipal.xaml"/>
-                <ResourceDictionary Source="../Idiomas/ES/MainMenu.xaml"/>
+                <ResourceDictionary Source="../Idiomas/ES/View/MainMenu.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>

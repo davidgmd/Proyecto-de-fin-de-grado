@@ -172,4 +172,13 @@
     <Style x:Key="iconMenu" TargetType="Image">
         <Setter Property="Height" Value="50"/>
     </Style>
+    
+    <!-- Pop Ups-->
+    
+    <!-- Campana -->
+    
+    <!-- Escenario -->
+    
+    <!-- Aventura -->
+    
 </ResourceDictionary>

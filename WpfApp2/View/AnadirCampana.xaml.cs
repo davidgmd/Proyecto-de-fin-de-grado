@@ -21,7 +21,7 @@ namespace ElEscribaDelDJ.View
     /// <summary>
     /// Lógica de interacción para AnadirCampana.xaml
     /// </summary>
-    public partial class AnadirElemento : Window
+    public partial class AnadirCampana : Window
     {
         private Campana campana = new Campana();
         private ObservableCollection<Campana> observable = new ObservableCollection<Campana>();
@@ -42,9 +42,11 @@ namespace ElEscribaDelDJ.View
         }
 
 
-        public AnadirElemento(Campana campana, ObservableCollection<Campana> campanas)
+        public AnadirCampana(Campana campana, ObservableCollection<Campana> campanas)
         {
             InitializeComponent();
+
+            ConfiguracionPagina.DefinirIdioma(this, "MainMenu");
             
             this.campana = campana;
             this.observable = campanas;

@@ -1,0 +1,76 @@
+﻿<Window x:Class="ElEscribaDelDJ.View.AnadirCampana"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElEscribaDelDJ.View"
+        mc:Ignorable="d"
+        Title="{DynamicResource CampanaTitle}" 
+        Height="260" Width="500"
+        WindowStartupLocation="CenterScreen"
+        Opacity="0.75"        
+        Background="WhiteSmoke">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/View/CampaignPopUp.xaml"/>
+                <ResourceDictionary Source="../Idiomas/ES/View/MainMenu.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Style="{DynamicResource StackPanelForm}">
+            <StackPanel Style="{DynamicResource StackPanelCamposForm}">
+                <TextBlock Text="{DynamicResource CampaignName}"
+                           Style="{DynamicResource TextBlockForm}"/>
+                <TextBox x:Name="NombreTextBox"
+                         Style="{DynamicResource TextBoxForm}"
+                         Text="{Binding Path=Campana.Nombre, Mode=OneWay}"/>
+            </StackPanel>
+            
+            <StackPanel Style="{DynamicResource StackPanelCamposForm}">
+                <TextBlock Text="{DynamicResource CampaignDescription}"
+                           Style="{DynamicResource TextBlockForm}"/>
+                <TextBox x:Name="DescripcionTextBox"
+                         Style="{DynamicResource TextBoxForm}"
+                         Text="{Binding Path=Campana.Descripcion, Mode=OneWay}"/>
+            </StackPanel>
+            
+            <StackPanel Style="{DynamicResource StackPanelCamposForm}">
+                <TextBlock Text="{DynamicResource CampaignImage}"
+                           Style="{DynamicResource TextBlockForm}"/>
+                <Button Content="{DynamicResource CampaignSelectImage}"
+                        Name="SeleccionarImagen"
+                        Click="SeleccionarImagen_Click"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <Grid Grid.Row="1"
+              Name="ImageGrid">
+        <Image x:Name="ImagenElegida"
+               Source="{Binding Path=Campana.DireccionImagen, Mode=OneWay}"/>
+        </Grid>
+        
+        <StackPanel Style="{DynamicResource StackPanelBotonera}">
+            <Button Content="{DynamicResource PopUpAddButton}"
+                    x:Name="BotonAnadir"
+                    Style="{DynamicResource BotonBotonera}"
+                    Click="BotonAnadir_Click"/>
+            <Button Content="{DynamicResource PopUpModifyButton}"
+                    x:Name="BotonModificar"
+                    Style="{DynamicResource BotonBotonera}"
+                    Click="Modificar_Click"/>
+            <Button Content="{DynamicResource PopUpCancelButton}"
+                    x:Name="BotonCancelar"
+                    Style="{DynamicResource BotonBotonera}"
+                    Click="BotonCancelar_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

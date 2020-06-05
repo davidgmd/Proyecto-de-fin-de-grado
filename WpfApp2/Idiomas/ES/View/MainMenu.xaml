@@ -15,4 +15,15 @@
     <system:String x:Key="Options">Opciones</system:String>
 
     <!-- Los mensajes de error y de aceptación -->
+
+    <!-- Pop ups-->
+    <system:String x:Key="PopUpAddButton">Añadir</system:String>
+    <system:String x:Key="PopUpModifyButton">Modificar</system:String>
+    <system:String x:Key="PopUpCancelButton">Cancelar</system:String>
+    <!-- Campaña -->
+    <system:String x:Key="CampanaTitle">Añadir o Modificar Campaña</system:String>
+    <system:String x:Key="CampaignName">Nombre Campaña</system:String>
+    <system:String x:Key="CampaignDescription">Descripción Campaña</system:String>
+    <system:String x:Key="CampaignImage">Imagen Campaña</system:String>
+    <system:String x:Key="CampaignSelectImage">Seleccionar Imagen</system:String>
 </ResourceDictionary>

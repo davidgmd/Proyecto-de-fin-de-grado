@@ -127,7 +127,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Idiomas\EN\MainMenu.xaml">
+    <Page Update="Idiomas\EN\View\MainMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
