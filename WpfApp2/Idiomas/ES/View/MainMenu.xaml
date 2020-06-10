@@ -27,4 +27,8 @@
     <system:String x:Key="CampaignDescription">Descripción Campaña</system:String>
     <system:String x:Key="CampaignImage">Imagen Campaña</system:String>
     <system:String x:Key="CampaignSelectImage">Seleccionar Imagen</system:String>
+    <!-- Escenario -->
+    <system:String x:Key="ScenaryTitle">Añadir o modificar Escenario</system:String>
+    <system:String x:Key="ScenaryName">Nombre de escenario</system:String>
+    <system:String x:Key="ScenaryDescription">Descripción de escenario</system:String>
 </ResourceDictionary>

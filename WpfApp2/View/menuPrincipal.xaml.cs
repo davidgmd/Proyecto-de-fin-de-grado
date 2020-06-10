@@ -29,6 +29,22 @@ namespace ElEscribaDelDJ.View
         private ObservableCollection<Aventura> aventuras = new ObservableCollection<Aventura>();
         private List<Style> estilosbase = new List<Style>();
         private List<Style> estilosactivados = new List<Style>();
+        private Campana camapanaseleccionada;
+        private EscenarioCampana escenarioseleccionado = null;
+
+        public EscenarioCampana EscenarioSeleccionado
+        {
+            get { return escenarioseleccionado; }
+            set { escenarioseleccionado = value; }
+        }
+
+
+        public Campana CampanaSeleccionada
+        {
+            get { return camapanaseleccionada; }
+            set { camapanaseleccionada = value; }
+        }
+
 
         public ObservableCollection<Aventura> Aventuras
         {
@@ -88,16 +104,6 @@ namespace ElEscribaDelDJ.View
 
         private void CampaigneComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var estilo = Application.Current.Resources["borderMenu"];
-            Application.Current.Resources["botonMenu"] = Application.Current.Resources["botonMenuEnabled"];
-
-            //cambia los respectivos iconos ocultando el por defecto
-            if (Application.Current.Resources["noVisible"] != Application.Current.Resources["iconMenu"])
-            {
-                Application.Current.Resources["visibleInicio"] = Application.Current.Resources["noVisible"];
-                Application.Current.Resources["noVisible"] = Application.Current.Resources["iconMenu"];
-            }
-
             //si se busca un elemento que no esta solo cambia el estilo, si existe lo busca y encuentra
             //para determinar que estilos usar enviamos una u otra lista de estilos
             if (campaignComboBox.SelectedIndex >= 0)
@@ -167,6 +173,8 @@ namespace ElEscribaDelDJ.View
                     
             }
 
+            this.CampanaSeleccionada = (Campana)this.campaignComboBox.SelectedItem;
+
             this.escenarios.Clear();
             foreach (EscenarioCampana escenario in Campanas[campaignComboBox.SelectedIndex].ListaEscenarios)
             {
@@ -205,7 +213,7 @@ namespace ElEscribaDelDJ.View
         private void CampaignAddButton_Click(object sender, RoutedEventArgs e)
         {
             var cantidad = this.campaignComboBox.Items.Count;
-            AnadirCampana ventanapopup = new AnadirCampana(this.campanas[this.campaignComboBox.SelectedIndex], this.campanas);
+            AnadirCampana ventanapopup = new AnadirCampana(CampanaSeleccionada, this.campanas);
             this.Hide();
             ventanapopup.ShowDialog();         
             //refresca los datos tal como la ventana es cerrada
@@ -220,13 +228,23 @@ namespace ElEscribaDelDJ.View
             {
                 if (Campanas[this.campaignComboBox.SelectedIndex].DireccionImagen.Contains(":\\"))
                 {
-                    this.iconoCampaign.Source = new BitmapImage(new Uri(this.campanas[this.campaignComboBox.SelectedIndex].DireccionImagen, UriKind.Absolute));
+                    this.iconoCampaign.Source = new BitmapImage(new Uri(CampanaSeleccionada.DireccionImagen, UriKind.Absolute));
                 }
                 else
                 {
-                    this.iconoCampaign.Source = new BitmapImage(new Uri(this.campanas[this.campaignComboBox.SelectedIndex].DireccionImagen, UriKind.Relative));
+                    this.iconoCampaign.Source = new BitmapImage(new Uri(CampanaSeleccionada.DireccionImagen, UriKind.Relative));
                 }
             }          
+        }
+
+        private void AddButtonEscenario_Click(object sender, RoutedEventArgs e)
+        {
+            AnadirEscenario escenario = new AnadirEscenario(CampanaSeleccionada,EscenarioSeleccionado);
+            this.Hide();
+            escenario.ShowDialog();
+            //refresca los datos tal como la ventana es cerrada
+            while (escenario.IsActive) { }
+            this.Show();
         }
     }
 }

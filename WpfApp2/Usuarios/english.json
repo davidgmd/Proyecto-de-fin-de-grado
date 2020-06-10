@@ -3,9 +3,9 @@
   "ListCampaigns": [
     {
       "ListaEscenarios": [],
-      "DireccionImagen": "C:\\Users\\David2\\source\\repos\\davidgmd\\Proyecto-de-fin-de-grado\\WpfApp2\\\\Images\\User\\\\english\\D&D3.5a\\icon\\D&D.png",
+      "DireccionImagen": "/Images/icons/D&D.png",
       "RecursosCampana": [],
-      "Descripcion": "Base element for D&D3.5 adventuresa",
+      "Descripcion": "Base element for D&D3.5 adventures",
       "Nombre": "D&D3.5"
     },
     {

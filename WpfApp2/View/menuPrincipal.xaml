@@ -69,7 +69,9 @@
 
             <StackPanel Style="{DynamicResource StackPanelOculto}"
                         x:Name="StackPanelEscenario">
-                <Button Style="{DynamicResource addComboBox}">
+                <Button Style="{DynamicResource addComboBox}"
+                        x:Name="AddButtonEscenario"
+                        Click="AddButtonEscenario_Click">
                     <Image Style="{DynamicResource ImagenAddComboBox}"/>
                 </Button>
 

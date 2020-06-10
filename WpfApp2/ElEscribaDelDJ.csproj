@@ -130,6 +130,9 @@
     <Page Update="Idiomas\EN\View\MainMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Resources\View\ScenaryPopUp.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 
 </Project>

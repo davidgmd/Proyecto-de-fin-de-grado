@@ -100,7 +100,7 @@ namespace ElEscribaDelDJ.View
             }
             else
             {
-                campana1.DireccionImagen = "/Images/icons/icons8-escudopregunta.png";
+                campana1.DireccionImagen = this.campana.DireccionImagen;
             }
             
             observable.Add(campana1);
