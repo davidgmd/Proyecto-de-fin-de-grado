@@ -37,8 +37,7 @@
                         Click="exitButton_Click">
                     <Image Style="{DynamicResource ImagenBotonSalir}"/>
                 </Button>
-            
-        </Grid>
+            </Grid>
         
             <TextBlock Style="{DynamicResource DescripcionUso}" 
                        Text="{DynamicResource HowToUse}"
@@ -75,7 +74,9 @@
                     <Image Style="{DynamicResource ImagenAddComboBox}"/>
                 </Button>
 
-                <ComboBox Style="{DynamicResource comboBoxCampaign}"                    
+                <ComboBox Style="{DynamicResource comboBoxCampaign}" 
+                        ItemTemplate="{StaticResource CustomerTemplate}"
+                        TextSearch.TextPath="Nombre"
                         ItemsSource="{Binding Path=Escenarios}"  
                         x:Name="EscenarioComboBox"
                         SelectionChanged="EscenarioComboBox_SelectionChanged">

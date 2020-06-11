@@ -31,24 +31,31 @@
                 <TextBlock Text="{DynamicResource ScenaryName}"
                            Style="{DynamicResource TextBlockForm}"/>
                 <TextBox Style="{DynamicResource TextBoxForm}"
-                         Text="{Binding Path=Escenario.Nombre, Mode=OneWay}"/>
+                         Text="{Binding Path=Escenario.Nombre, Mode=OneWay}"
+                         x:Name="TextBoxNombreEscenario"
+                         TextChanged="TextBoxNombreEscenario_TextChanged"/>
             </StackPanel>
             
             <StackPanel Style="{DynamicResource StackPanelCamposForm}">
                 <TextBlock Text="{DynamicResource ScenaryDescription}"
                            Style="{DynamicResource TextBlockForm}"/>
                 <TextBox Style="{DynamicResource TextBoxForm}"
-                         Text="{Binding Path=Escenario.Descripcion, Mode=OneWay}"/>
+                         Text="{Binding Path=Escenario.Descripcion, Mode=OneWay}"
+                         x:Name="TextBoxDescripcionEscenario"
+                         TextChanged="TextBoxDescripcionEscenario_TextChanged"/>
             </StackPanel>
         </StackPanel>
         
         <StackPanel Style="{DynamicResource StackPanelBotonera}">
             <Button Content="{DynamicResource PopUpAddButton}"
-                    Style="{DynamicResource BotonBotonera}"/>
+                    Style="{DynamicResource BotonBotonera}"
+                    x:Name="BotonAnadirEscenario"
+                    Click="AddEscenario_Click"/>
             <Button Content="{DynamicResource PopUpModifyButton}"
-                    Style="{DynamicResource BotonBotonera}"/>
+                    Style="{DynamicResource BotonBotonera}"        
+                    x:Name="BotonModificarEscenario"/>
             <Button Content="{DynamicResource PopUpCancelButton}"
-                    Style="{DynamicResource BotonBotonera}"/>
+                    Style="{DynamicResource BotonBotonera}" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </Window>

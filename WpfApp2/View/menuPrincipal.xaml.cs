@@ -200,14 +200,17 @@ namespace ElEscribaDelDJ.View
 
         private void EscenarioComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.aventuras.Clear();
-            foreach (Aventura aventura in Escenarios[campaignComboBox.SelectedIndex].ListaAventuras)
+            if (EscenarioComboBox.SelectedIndex > 0)
             {
-                this.aventuras.Add(aventura);
-            }
-            this.AventuraComboBox.Visibility = Visibility;
-            if (this.AventuraComboBox.HasItems)
-                this.AventuraComboBox.SelectedIndex = 0;
+                this.aventuras.Clear();
+                foreach (Aventura aventura in Escenarios[this.EscenarioComboBox.SelectedIndex].ListaAventuras)
+                {
+                    this.aventuras.Add(aventura);
+                }
+                this.AventuraComboBox.Visibility = Visibility;
+                if (this.AventuraComboBox.HasItems)
+                    this.AventuraComboBox.SelectedIndex = 0;
+            }        
         }
 
         private void CampaignAddButton_Click(object sender, RoutedEventArgs e)
@@ -239,12 +242,18 @@ namespace ElEscribaDelDJ.View
 
         private void AddButtonEscenario_Click(object sender, RoutedEventArgs e)
         {
-            AnadirEscenario escenario = new AnadirEscenario(CampanaSeleccionada,EscenarioSeleccionado);
+            var cantidad = this.EscenarioComboBox.Items.Count;
+            AnadirEscenario escenario = new AnadirEscenario(CampanaSeleccionada,EscenarioSeleccionado, this.escenarios);
             this.Hide();
             escenario.ShowDialog();
             //refresca los datos tal como la ventana es cerrada
             while (escenario.IsActive) { }
             this.Show();
+            CollectionViewSource.GetDefaultView(this.escenarios).Refresh();
+            if (cantidad != this.EscenarioComboBox.Items.Count)
+            {
+                this.EscenarioComboBox.SelectedIndex = cantidad;
+            }
         }
     }
 }
