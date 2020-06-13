@@ -10,7 +10,7 @@
         WindowState="Maximized">
 
     <Window.Resources>
-        <Style x:Key="estiloBase" TargetType="TextBlock">
+        <Style x:Key="FuenteCreditos" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Margin" Value="5"/>
@@ -23,8 +23,9 @@
     <Grid>
         <ScrollViewer>
             <TextBlock x:Name="creditos"
-                       Text="a"
-                   Style="{DynamicResource estiloBase}"/>
+                       Text="abc"
+                   Style="{DynamicResource FuenteCreditos}">
+            </TextBlock>
         </ScrollViewer>
     </Grid>
 </Window>
