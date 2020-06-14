@@ -2,32 +2,7 @@
   "Correo": "y?Hi????\t8\f?R??k+U?9g?U??sh\u0015?2^\u0006",
   "ListCampaigns": [
     {
-      "ListaEscenarios": [
-        {
-          "ListaAventuras": [],
-          "ListaEscenarios": [],
-          "DireccionImagen": null,
-          "RecursosCampana": [],
-          "Descripcion": "asd",
-          "Nombre": "asd"
-        },
-        {
-          "ListaAventuras": [],
-          "ListaEscenarios": [],
-          "DireccionImagen": null,
-          "RecursosCampana": [],
-          "Descripcion": "asd2",
-          "Nombre": "asd2"
-        },
-        {
-          "ListaAventuras": [],
-          "ListaEscenarios": [],
-          "DireccionImagen": null,
-          "RecursosCampana": [],
-          "Descripcion": "asd3",
-          "Nombre": "asd3"
-        }
-      ],
+      "ListaEscenarios": [],
       "DireccionImagen": "/Images/icons/D&D.png",
       "RecursosCampana": [],
       "Descripcion": "Base element for D&D3.5 adventures",
@@ -64,6 +39,20 @@
       "RecursosCampana": [],
       "Descripcion": "Base element for warhammer 2º edition adventures",
       "Nombre": "Warhammer 2ª edition"
+    },
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "/Images/icons/D&D.png",
+      "RecursosCampana": [],
+      "Descripcion": "Base element for D&D3.5 adventuresa",
+      "Nombre": "D&D3.5a"
+    },
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "/Images/icons/D&D.png",
+      "RecursosCampana": [],
+      "Descripcion": "Base element for D&D3.5 adventures",
+      "Nombre": "D&D3.5"
     }
   ],
   "NombreUsuario": "english",

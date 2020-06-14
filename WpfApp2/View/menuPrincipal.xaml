@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="{DynamicResource WindowTitle}" Height="600" Width="800"
+        Title="{DynamicResource WindowTitle}" Height="700" Width="800"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="NoResize">
@@ -43,6 +43,7 @@
                        Text="{DynamicResource HowToUse}"
                        Grid.Row="1"/>
 
+            <TextBlock Text="Campañas" HorizontalAlignment="Center" FontSize="16"/>
             <StackPanel Style="{DynamicResource CampanaStackPanel}">
 
                 <Button Style="{DynamicResource addComboBox}"
@@ -51,7 +52,7 @@
                     <Image Style="{DynamicResource ImagenAddComboBox}"/>
                 </Button>
 
-                <!-- Le falta cambiar la funcionalidad inicial y al cambiar a este y el resto de stackpanels-->
+                <!-- Le falta cambiar la funcionalidad inicial y al cambiar a este y el resto de stackpanels-->               
                 <ComboBox Style="{DynamicResource comboBoxCampaign}"
                         x:Name="campaignComboBox"                
                         ItemsSource="{Binding Path=Campanas}"
@@ -66,6 +67,7 @@
                 </Button>
             </StackPanel>
 
+            <TextBlock Text="Escenarios" HorizontalAlignment="Center" FontSize="16"/>
             <StackPanel Style="{DynamicResource StackPanelOculto}"
                         x:Name="StackPanelEscenario">
                 <Button Style="{DynamicResource addComboBox}"
@@ -87,6 +89,7 @@
                 </Button>
             </StackPanel>
 
+            <TextBlock Text="Aventuras" HorizontalAlignment="Center" FontSize="16"/>
             <StackPanel Style="{DynamicResource StackPanelOculto}"
                         x:Name="StackPanelAventura">
                 <Button Style="{DynamicResource addComboBox}">

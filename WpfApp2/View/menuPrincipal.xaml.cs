@@ -200,14 +200,15 @@ namespace ElEscribaDelDJ.View
 
         private void EscenarioComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (EscenarioComboBox.SelectedIndex > 0)
+            if (EscenarioComboBox.SelectedIndex >= 0)
             {
                 this.aventuras.Clear();
                 foreach (Aventura aventura in Escenarios[this.EscenarioComboBox.SelectedIndex].ListaAventuras)
                 {
                     this.aventuras.Add(aventura);
                 }
-                this.AventuraComboBox.Visibility = Visibility;
+
+                this.StackPanelAventura.Visibility = Visibility;
                 if (this.AventuraComboBox.HasItems)
                     this.AventuraComboBox.SelectedIndex = 0;
             }        
