@@ -102,13 +102,23 @@ namespace ElEscribaDelDJ.View
             {
                 campana1.DireccionImagen = this.campana.DireccionImagen;
             }
+
+            var iguales = observable.Where(c => c.Nombre.Equals(campana1.Nombre) && c.Descripcion.Equals(campana1.Descripcion));
+
+                //RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.Nombre.Equals(Campana.Nombre) && c.Descripcion.Equals(Campana.Descripcion)).ListaEscenarios.Add(escenario1);
+
+            if (!(iguales.Count() > 0))
+            {
+                observable.Add(campana1);
+                RecursosAplicacion.SesionUsuario.ListCampaigns = this.observable.ToList<Campana>();
+                GestionArchivos.EscribirUsuarioLocal();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Esta campaña ya existe, introduzca otro nombre de campaña o descripción");
+            }
             
-            observable.Add(campana1);
-
-            RecursosAplicacion.SesionUsuario.ListCampaigns = this.observable.ToList<Campana>();
-            GestionArchivos.EscribirUsuarioLocal();
-
-            this.Close();
         }
     }
 }

@@ -9,50 +9,11 @@
       "Nombre": "D&D3.5"
     },
     {
-      "ListaEscenarios": [
-        {
-          "ListaAventuras": [],
-          "ListaEscenarios": [],
-          "DireccionImagen": null,
-          "RecursosCampana": [],
-          "Descripcion": "Esto es una prueba",
-          "Nombre": "Prueba"
-        },
-        {
-          "ListaAventuras": [],
-          "ListaEscenarios": [],
-          "DireccionImagen": null,
-          "RecursosCampana": [],
-          "Descripcion": "Esto es una segunda prueba",
-          "Nombre": "Prueba2"
-        },
-        {
-          "ListaAventuras": [],
-          "ListaEscenarios": [],
-          "DireccionImagen": null,
-          "RecursosCampana": [],
-          "Descripcion": "Esta es la 3ª prueba",
-          "Nombre": "prueba3"
-        }
-      ],
+      "ListaEscenarios": [],
       "DireccionImagen": "/Images/icons/warhammer-removebg.png",
       "RecursosCampana": [],
       "Descripcion": "Base element for warhammer 2º edition adventures",
       "Nombre": "Warhammer 2ª edition"
-    },
-    {
-      "ListaEscenarios": [],
-      "DireccionImagen": "/Images/icons/D&D.png",
-      "RecursosCampana": [],
-      "Descripcion": "Base element for D&D3.5 adventuresa",
-      "Nombre": "D&D3.5a"
-    },
-    {
-      "ListaEscenarios": [],
-      "DireccionImagen": "/Images/icons/D&D.png",
-      "RecursosCampana": [],
-      "Descripcion": "Base element for D&D3.5 adventures",
-      "Nombre": "D&D3.5"
     }
   ],
   "NombreUsuario": "english",

@@ -5,8 +5,12 @@
     <system:String x:Key="WindowTitle">Menu Principal</system:String>
     <system:String x:Key="Title">Seleccionar Campaña</system:String>
     <system:String x:Key="HowToUse">Puede crear nuevas campañas o modificarlas con el botón +, Una vez elegida la campaña, elija el escenario de campaña o cree uno nuevo, Por último elija una aventura para ese escenario o cree una nueva</system:String>
+    <!-- Combobox -->
+    <system:String x:Key="CampaignTitle">Campañas</system:String>
     <system:String x:Key="CampaignList">Listado de Campañas</system:String>
+    <system:String x:Key="ScenarioTitle">Escenarios</system:String>
     <system:String x:Key="CampaignScenario">Escenario de campaña</system:String>
+    <system:String x:Key="AdventureTitle">Aventuras</system:String>
     <system:String x:Key="ScenarioAdventure">Aventura del escenario</system:String>
     
     <!-- Botonera -->
@@ -16,6 +20,18 @@
     <system:String x:Key="Options">Opciones</system:String>
 
     <!-- Los mensajes de error y de aceptación -->
+    <!-- Confirmación Campaña-->
+    <system:String x:Key="DeleteCampaignTitleMessageBox">Confirmación</system:String>
+    <system:String x:Key="DeleteCampaingMessageBox">¿Esta seguro de eliminar la campaña {0} ?, Esto hara que se eliminen también sus escenarios y aventuras</system:String>
+    <system:String x:Key="DeleteCampaingSucessfull">Campaña eliminada con exito</system:String>
+    <!-- Confirmación Escenario-->
+    <system:String x:Key="DeleteScenarioTitleMessageBox">Confirmación</system:String>
+    <system:String x:Key="DeleteScenarioMessageBox">¿Esta seguro de eliminar el escenario {0} ?, Esto hara que se eliminen también sus aventuras</system:String>
+    <system:String x:Key="DeleteScenarioSucessfull">Escenario eliminado con exito</system:String>
+    <!-- Confirmación Aventura-->
+    <system:String x:Key="DeleteAdventureTitleMessageBox">Confirmación</system:String>
+    <system:String x:Key="DeleteAdventureMessageBox">¿Esta seguro de eliminar la aventura {0} ?</system:String>
+    <system:String x:Key="DeleteAdventureSucessfull">Aventura eliminada con exito</system:String>
 
     <!-- Pop ups-->
     <system:String x:Key="PopUpAddButton">Añadir</system:String>

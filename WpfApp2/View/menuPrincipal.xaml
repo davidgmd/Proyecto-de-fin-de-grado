@@ -43,7 +43,8 @@
                        Text="{DynamicResource HowToUse}"
                        Grid.Row="1"/>
 
-            <TextBlock Text="Campañas" HorizontalAlignment="Center" FontSize="16"/>
+            <TextBlock Text="{DynamicResource CampaignTitle}"
+                       Style="{DynamicResource ComboBoxTitle}"/>
             <StackPanel Style="{DynamicResource CampanaStackPanel}">
 
                 <Button Style="{DynamicResource addComboBox}"
@@ -62,12 +63,15 @@
                         Loaded="campaignComboBox_Loaded"
                         SelectionChanged="CampaigneComboBox_SelectionChanged"/>
                     
-                <Button Style="{DynamicResource dropComboBox}">
+                <Button Style="{DynamicResource dropComboBox}"
+                        x:Name="BorrarCampana"
+                        Click="BorrarCampana_Click">
                     <Image Style="{DynamicResource ImagendropComboBox}"/>
                 </Button>
             </StackPanel>
 
-            <TextBlock Text="Escenarios" HorizontalAlignment="Center" FontSize="16"/>
+            <TextBlock Text="{DynamicResource ScenarioTitle}"
+                       Style="{DynamicResource ComboBoxTitle}"/>
             <StackPanel Style="{DynamicResource StackPanelOculto}"
                         x:Name="StackPanelEscenario">
                 <Button Style="{DynamicResource addComboBox}"
@@ -81,15 +85,19 @@
                         TextSearch.TextPath="Nombre"
                         ItemsSource="{Binding Path=Escenarios}"  
                         x:Name="EscenarioComboBox"
-                        SelectionChanged="EscenarioComboBox_SelectionChanged">
+                        SelectionChanged="EscenarioComboBox_SelectionChanged"
+                        SizeChanged="EscenarioComboBox_SizeChanged">
                 </ComboBox>
 
-                <Button Style="{DynamicResource dropComboBox}">
+                <Button Style="{DynamicResource dropComboBox}"
+                        x:Name="BorrarEscenario"
+                        Click="BorrarEscenario_Click">
                     <Image Style="{DynamicResource ImagendropComboBox}"/>
                 </Button>
             </StackPanel>
 
-            <TextBlock Text="Aventuras" HorizontalAlignment="Center" FontSize="16"/>
+            <TextBlock Text="{DynamicResource AdventureTitle}"
+                       Style="{DynamicResource ComboBoxTitle}"/>
             <StackPanel Style="{DynamicResource StackPanelOculto}"
                         x:Name="StackPanelAventura">
                 <Button Style="{DynamicResource addComboBox}">
@@ -97,12 +105,16 @@
                 </Button>
 
                 <ComboBox Style="{DynamicResource comboBoxCampaign}"                     
-                        ItemsSource="{Binding Path=Aventuras}"
-                         x:Name="AventuraComboBox"
-                        SelectionChanged="CampaigneComboBox_SelectionChanged">
+                        ItemTemplate="{StaticResource CustomerTemplate}"
+                        TextSearch.TextPath="Nombre"
+                        ItemsSource="{Binding Path=Aventuras}" 
+                        x:Name="AventuraComboBox"
+                        SizeChanged="AventuraComboBox_SizeChanged">
                 </ComboBox>
 
-                <Button Style="{DynamicResource dropComboBox}">
+                <Button Style="{DynamicResource dropComboBox}"
+                        x:Name="BorrarAventura"
+                        Click="BorrarAventura_Click">
                     <Image Style="{DynamicResource ImagendropComboBox}"/>
                 </Button>
             </StackPanel>

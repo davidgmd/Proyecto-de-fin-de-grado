@@ -29,7 +29,7 @@ namespace ElEscribaDelDJ.View
         private ObservableCollection<Aventura> aventuras = new ObservableCollection<Aventura>();
         private List<Style> estilosbase = new List<Style>();
         private List<Style> estilosactivados = new List<Style>();
-        private Campana camapanaseleccionada;
+        private Campana campanaseleccionada;
         private EscenarioCampana escenarioseleccionado = null;
 
         public EscenarioCampana EscenarioSeleccionado
@@ -41,8 +41,8 @@ namespace ElEscribaDelDJ.View
 
         public Campana CampanaSeleccionada
         {
-            get { return camapanaseleccionada; }
-            set { camapanaseleccionada = value; }
+            get { return campanaseleccionada; }
+            set { campanaseleccionada = value; }
         }
 
 
@@ -175,6 +175,15 @@ namespace ElEscribaDelDJ.View
 
             this.CampanaSeleccionada = (Campana)this.campaignComboBox.SelectedItem;
 
+            if (campaignComboBox.SelectedIndex > 1)
+            {
+                this.BorrarCampana.IsEnabled = true;
+            }
+            else
+            {
+                this.BorrarCampana.IsEnabled = false;
+            }
+
             this.escenarios.Clear();
             foreach (EscenarioCampana escenario in Campanas[campaignComboBox.SelectedIndex].ListaEscenarios)
             {
@@ -210,7 +219,7 @@ namespace ElEscribaDelDJ.View
 
                 this.StackPanelAventura.Visibility = Visibility;
                 if (this.AventuraComboBox.HasItems)
-                    this.AventuraComboBox.SelectedIndex = 0;
+                    this.AventuraComboBox.SelectedIndex = 0;   
             }        
         }
 
@@ -244,6 +253,7 @@ namespace ElEscribaDelDJ.View
         private void AddButtonEscenario_Click(object sender, RoutedEventArgs e)
         {
             var cantidad = this.EscenarioComboBox.Items.Count;
+            EscenarioSeleccionado = (EscenarioCampana)EscenarioComboBox.SelectedItem;
             AnadirEscenario escenario = new AnadirEscenario(CampanaSeleccionada,EscenarioSeleccionado, this.escenarios);
             this.Hide();
             escenario.ShowDialog();
@@ -254,6 +264,69 @@ namespace ElEscribaDelDJ.View
             if (cantidad != this.EscenarioComboBox.Items.Count)
             {
                 this.EscenarioComboBox.SelectedIndex = cantidad;
+            }
+        }
+
+        private void BorrarCampana_Click(object sender, RoutedEventArgs e)
+        {
+            var confirmacion = MessageBox.Show(string.Format(this.FindResource("DeleteCampaingMessageBox").ToString(), CampanaSeleccionada.Nombre), this.FindResource("DeleteCampaignTitleMessageBox").ToString(), MessageBoxButton.YesNo);
+            if (confirmacion == MessageBoxResult.Yes)
+            {
+                this.campanas.Remove((Campana)campaignComboBox.SelectedItem);
+                RecursosAplicacion.SesionUsuario.ListCampaigns = this.campanas.ToList<Campana>();
+                GestionArchivos.EscribirUsuarioLocal();
+                campaignComboBox.SelectedIndex = 0;
+                MessageBox.Show(this.FindResource("DeleteCampaingSucessfull").ToString());
+            }
+        }
+
+        private void BorrarEscenario_Click(object sender, RoutedEventArgs e)
+        {
+            var confirmacion = MessageBox.Show(string.Format(this.FindResource("DeleteScenarioMessageBox").ToString(), EscenarioComboBox.Text), this.FindResource("DeleteScenarioTitleMessageBox").ToString(), MessageBoxButton.YesNo);
+            if (confirmacion == MessageBoxResult.Yes)
+            {
+                this.escenarios.Remove((EscenarioCampana)EscenarioComboBox.SelectedItem);
+                var campana = (Campana)campaignComboBox.SelectedItem;
+                campana.ListaEscenarios = Escenarios.ToList<EscenarioCampana>();
+                GestionArchivos.EscribirUsuarioLocal();
+                MessageBox.Show(this.FindResource("DeleteScenarioSucessfull").ToString());
+            }
+        }
+
+        private void EscenarioComboBox_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (EscenarioComboBox.Items.Count > 0)
+            {
+                BorrarEscenario.IsEnabled = true;
+            }
+            else
+            {
+                BorrarEscenario.IsEnabled = false;
+            }
+        }
+
+        private void AventuraComboBox_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (AventuraComboBox.Items.Count > 0)
+            {
+                BorrarAventura.IsEnabled = true;
+            }
+            else
+            {
+                BorrarAventura.IsEnabled = false;
+            }
+        }
+
+        private void BorrarAventura_Click(object sender, RoutedEventArgs e)
+        {
+            var confirmacion = MessageBox.Show(string.Format(this.FindResource("DeleteAdventureMessageBox").ToString(), EscenarioComboBox.Text), this.FindResource("DeleteAdventureTitleMessageBox").ToString(), MessageBoxButton.YesNo);
+            if (confirmacion == MessageBoxResult.Yes)
+            {
+                this.aventuras.Remove((Aventura)AventuraComboBox.SelectedItem);
+                var escenario = (EscenarioCampana)EscenarioComboBox.SelectedItem;
+                escenario.ListaAventuras = Aventuras.ToList<Aventura>();
+                GestionArchivos.EscribirUsuarioLocal();
+                MessageBox.Show(this.FindResource("DeleteAdventureSucessfull").ToString());
             }
         }
     }

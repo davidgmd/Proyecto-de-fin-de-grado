@@ -53,7 +53,8 @@
                     Click="AddEscenario_Click"/>
             <Button Content="{DynamicResource PopUpModifyButton}"
                     Style="{DynamicResource BotonBotonera}"        
-                    x:Name="BotonModificarEscenario"/>
+                    x:Name="BotonModificarEscenario"
+                    Click="BotonModificarEscenario_Click"/>
             <Button Content="{DynamicResource PopUpCancelButton}"
                     Style="{DynamicResource BotonBotonera}" Click="Button_Click"/>
         </StackPanel>
