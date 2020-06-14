@@ -100,7 +100,9 @@
                        Style="{DynamicResource ComboBoxTitle}"/>
             <StackPanel Style="{DynamicResource StackPanelOculto}"
                         x:Name="StackPanelAventura">
-                <Button Style="{DynamicResource addComboBox}">
+                <Button Style="{DynamicResource addComboBox}"
+                        x:Name="AnadirAventura"
+                        Click="AnadirAventura_Click">
                     <Image Style="{DynamicResource ImagenAddComboBox}"/>
                 </Button>
 

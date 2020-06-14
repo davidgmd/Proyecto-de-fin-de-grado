@@ -305,6 +305,23 @@ namespace ElEscribaDelDJ.View
             }
         }
 
+        private void AnadirAventura_Click(object sender, RoutedEventArgs e)
+        {
+            var cantidad = this.AventuraComboBox.Items.Count;
+            var AventuraSeleccionada = (Aventura)AventuraComboBox.SelectedItem;
+            AnadirEscenario escenario = new AnadirEscenario(CampanaSeleccionada, EscenarioSeleccionado, this.escenarios);
+            this.Hide();
+            escenario.ShowDialog();
+            //refresca los datos tal como la ventana es cerrada
+            while (escenario.IsActive) { }
+            this.Show();
+            CollectionViewSource.GetDefaultView(this.escenarios).Refresh();
+            if (cantidad != this.EscenarioComboBox.Items.Count)
+            {
+                this.EscenarioComboBox.SelectedIndex = cantidad;
+            }
+        }
+
         private void AventuraComboBox_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (AventuraComboBox.Items.Count > 0)
@@ -328,6 +345,6 @@ namespace ElEscribaDelDJ.View
                 GestionArchivos.EscribirUsuarioLocal();
                 MessageBox.Show(this.FindResource("DeleteAdventureSucessfull").ToString());
             }
-        }
+        } 
     }
 }

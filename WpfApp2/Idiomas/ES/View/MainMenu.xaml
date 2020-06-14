@@ -47,4 +47,8 @@
     <system:String x:Key="ScenaryTitle">Añadir o modificar Escenario</system:String>
     <system:String x:Key="ScenaryName">Nombre de escenario</system:String>
     <system:String x:Key="ScenaryDescription">Descripción de escenario</system:String>
+    <!-- Aventura -->
+    <system:String x:Key="AdventureWindowTitle">Añadir o modificar aventura</system:String>
+    <system:String x:Key="AdventureName">Nombre Aventura</system:String>
+    <system:String x:Key="AdventureDescription">Descripción aventura</system:String>
 </ResourceDictionary>

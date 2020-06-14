@@ -1,0 +1,62 @@
+﻿<Window x:Class="ElEscribaDelDJ.View.AnadirAventura"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElEscribaDelDJ.View"
+        mc:Ignorable="d"
+        Title="{DynamicResource AdventureWindowTitle}"
+        WindowStartupLocation="CenterScreen"
+        SizeToContent="WidthAndHeight"
+        Opacity="0.75"        
+        Background="WhiteSmoke">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/View/AdventurePopUp.xaml"/>
+                <ResourceDictionary Source="../Idiomas/ES/View/MainMenu.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Style="{DynamicResource StackPanelForm}">
+            <StackPanel Style="{DynamicResource StackPanelCamposForm}">
+                <TextBlock Text="{DynamicResource AdventureName}"
+                           Style="{DynamicResource TextBlockForm}"/>
+                <TextBox Style="{DynamicResource TextBoxForm}"
+                         Text="{Binding Path=Adventure.Nombre, Mode=OneWay}"
+                         x:Name="TextBoxNombreAventura"
+                         TextChanged="TextBoxNombreAventura_TextChanged"/>
+            </StackPanel>
+            
+            <StackPanel Style="{DynamicResource StackPanelCamposForm}">
+                <TextBlock Text="{DynamicResource AdventureDescription}"
+                           Style="{DynamicResource TextBlockForm}"/>
+                <TextBox Style="{DynamicResource TextBoxForm}"
+                         Text="{Binding Path=Aventura.Descripcion, Mode=OneWay}"
+                         x:Name="TextBoxDescripcionAventura"
+                         TextChanged="TextBoxDescripcionAventura_TextChanged"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <StackPanel Style="{DynamicResource StackPanelBotonera}">
+            <Button Content="{DynamicResource PopUpAddButton}"
+                    Style="{DynamicResource BotonBotonera}"
+                    x:Name="BotonAnadirAventura"
+                    Click="AddAventura_Click"/>
+            <Button Content="{DynamicResource PopUpModifyButton}"
+                    Style="{DynamicResource BotonBotonera}"        
+                    x:Name="BotonModificarAventura"
+                    Click="BotonModificarAventura_Click"/>
+            <Button Content="{DynamicResource PopUpCancelButton}"
+                    Style="{DynamicResource BotonBotonera}" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

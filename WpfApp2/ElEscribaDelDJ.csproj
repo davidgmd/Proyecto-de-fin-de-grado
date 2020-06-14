@@ -33,7 +33,6 @@
     <None Remove="Images\icons\warhammer.jpg" />
     <None Remove="Images\licencia.png" />
     <None Remove="Images\warhammer-removebg.png" />
-    <None Remove="View\MainMenuBackground.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -94,7 +93,6 @@
     <Resource Include="Images\icons\warhammer.jpg" />
     <Resource Include="Images\licencia.png" />
     <Resource Include="Images\icons\warhammer-removebg.png" />
-    <Resource Include="View\MainMenuBackground.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -111,6 +109,9 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="View\AnadirAventura.xaml.cs">
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
 
@@ -132,7 +133,13 @@
     <Page Update="Idiomas\EN\View\MainMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Resources\View\AdventurePopUp.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Resources\View\ScenaryPopUp.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\AnadirAventura.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
