@@ -97,6 +97,10 @@
 
   <ItemGroup>
     <Folder Include="Images\User\" />
+    <Folder Include="View\Calendar\" />
+    <Folder Include="View\Resources\" />
+    <Folder Include="View\Roller\" />
+    <Folder Include="View\Options\" />
   </ItemGroup>
 
   <ItemGroup>
