@@ -58,23 +58,24 @@ namespace ElEscribaDelDJ.View
 
         private void AddAventura_Click(object sender, RoutedEventArgs e)
         {
-            /*EscenarioCampana escenario1 = new EscenarioCampana();
-            escenario1.Nombre = this.TextBoxNombreAventura.Text;
-            escenario1.Descripcion = this.TextBoxDescripcionAventura.Text;
+            Aventura aventura1 = new Aventura();
+            aventura1.Nombre = this.TextBoxNombreAventura.Text;
+            aventura1.Descripcion = this.TextBoxDescripcionAventura.Text;
 
-            var iguales = Campana.ListaEscenarios.Where(c => c.Nombre.Equals(escenario1.Nombre) && c.Descripcion.Equals(escenario1.Descripcion));
+            var iguales = Escenario.ListaAventuras.Where(c => c.Nombre.Equals(aventura1.Nombre) && c.Descripcion.Equals(aventura1.Descripcion));
 
             if (!(iguales.Count() > 0))
             {
-                observable.Add(escenario1);
-                RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.Nombre.Equals(Campana.Nombre) && c.Descripcion.Equals(Campana.Descripcion)).ListaEscenarios.Add(escenario1);
+                observable.Add(aventura1);
+                var lista_escenarios = RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.Nombre.Equals(Campana.Nombre) && c.Descripcion.Equals(Campana.Descripcion)).ListaEscenarios;
+                lista_escenarios.Find(c => c.Nombre.Equals(Escenario.Nombre) && c.Descripcion.Equals(Escenario.Descripcion)).ListaAventuras.Add(aventura1);
                 GestionArchivos.EscribirUsuarioLocal();
                 this.Close();
             }
             else
             {
                 MessageBox.Show("Este escenario ya existe, si desea modificar, seleccionelo y pulse en el + en caso contrario cambie el nombre y/o la descripción");
-            }   */         
+            }          
         }
 
         private void TextBoxNombreAventura_TextChanged(object sender, TextChangedEventArgs e)

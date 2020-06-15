@@ -31,7 +31,7 @@
                 <TextBlock Text="{DynamicResource AdventureName}"
                            Style="{DynamicResource TextBlockForm}"/>
                 <TextBox Style="{DynamicResource TextBoxForm}"
-                         Text="{Binding Path=Adventure.Nombre, Mode=OneWay}"
+                         Text="{Binding Path=Aventura.Nombre, Mode=OneWay}"
                          x:Name="TextBoxNombreAventura"
                          TextChanged="TextBoxNombreAventura_TextChanged"/>
             </StackPanel>
