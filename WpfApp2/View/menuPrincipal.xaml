@@ -59,6 +59,7 @@
                         ItemsSource="{Binding Path=Campanas}"
                         ItemTemplate="{StaticResource CustomerTemplate}"
                         TextSearch.TextPath="Nombre"
+                        IsSynchronizedWithCurrentItem="True"
                         Text="{Binding SelectedItemText, Mode=TwoWay}"
                         Loaded="campaignComboBox_Loaded"
                         SelectionChanged="CampaigneComboBox_SelectionChanged"/>

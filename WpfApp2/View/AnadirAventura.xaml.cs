@@ -46,7 +46,7 @@ namespace ElEscribaDelDJ.View
             this.Escenario = escenario;
             this.Campana = campana;
             this.Aventura = aventura;
-            this.observable = observable1;
+            this.Observable = observable1;
             DataContext = this;
 
             if (aventura is null)
@@ -107,25 +107,25 @@ namespace ElEscribaDelDJ.View
 
         private void BotonModificarAventura_Click(object sender, RoutedEventArgs e)
         {
-            /*EscenarioCampana escenario1 = new EscenarioCampana();
-            escenario1.Nombre = this.TextBoxNombreAventura.Text;
-            escenario1.Descripcion = this.TextBoxDescripcionAventura.Text;
+            Aventura aventura1 = new Aventura();
+            aventura1.Nombre = this.TextBoxNombreAventura.Text;
+            aventura1.Descripcion = this.TextBoxDescripcionAventura.Text;
 
-            var iguales = observable.Where(c => c.Nombre.Equals(Escenario.Nombre) && c.Descripcion.Equals(Escenario.Descripcion));
+            var iguales = Observable.Where(c => c.Nombre.Equals(Aventura.Nombre) && c.Descripcion.Equals(Aventura.Descripcion));
 
-            if ((iguales.Count() > 0))
+            if (iguales.Count() > 0)
             {
-                iguales.First().Nombre = escenario1.Nombre;
-                iguales.First().Descripcion = escenario1.Descripcion;
-
-                RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.Nombre.Equals(Campana.Nombre) && c.Descripcion.Equals(Campana.Descripcion)).ListaEscenarios = observable.ToList<EscenarioCampana>();
+                iguales.First().Nombre = aventura1.Nombre;
+                iguales.First().Descripcion = aventura1.Descripcion;
+                var lista_escenarios = RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.Nombre.Equals(Campana.Nombre) && c.Descripcion.Equals(Campana.Descripcion)).ListaEscenarios;
+                lista_escenarios.Find(c => c.Nombre.Equals(Escenario.Nombre) && c.Descripcion.Equals(Escenario.Descripcion)).ListaAventuras = observable.ToList<Aventura>();
                 GestionArchivos.EscribirUsuarioLocal();
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Este escenario no existe, si desea añadir, pulse en añadir");
-            }*/
+                MessageBox.Show("Este escenario no existe, si desea agregar, seleccionelo y pulse en el + en caso contrario cambie el nombre y/o la descripción");
+            }
         }
     }
 }

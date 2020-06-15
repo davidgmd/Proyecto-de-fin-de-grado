@@ -4,6 +4,7 @@ using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -51,8 +52,7 @@ namespace ElEscribaDelDJ.View
             set { escenarios = value; }
         }
 
-        public ObservableCollection<Campana> Campanas
-        {
+        public ObservableCollection<Campana> Campanas {
             get { return campanas; }
             set { campanas = value; }
         }
@@ -235,13 +235,19 @@ namespace ElEscribaDelDJ.View
         private void CampaignAddButton_Click(object sender, RoutedEventArgs e)
         {
             var cantidad = this.campaignComboBox.Items.Count;
+            var index = this.EscenarioComboBox.SelectedIndex;
+
             AnadirCampana ventanapopup = new AnadirCampana(CampanaSeleccionada, this.campanas);
             this.Hide();
             ventanapopup.ShowDialog();         
             //refresca los datos tal como la ventana es cerrada
             while (ventanapopup.IsActive) { }
             this.Show();
-            CollectionViewSource.GetDefaultView(this.campanas).Refresh();
+            CollectionViewSource.GetDefaultView(this.campanas).Refresh();  
+
+            this.campaignComboBox.SelectedIndex = -1;
+            this.campaignComboBox.SelectedIndex = index;
+
             if (cantidad != this.campaignComboBox.Items.Count)
             {
                 this.campaignComboBox.SelectedIndex = cantidad;
@@ -262,6 +268,7 @@ namespace ElEscribaDelDJ.View
         private void AddButtonEscenario_Click(object sender, RoutedEventArgs e)
         {
             var cantidad = this.EscenarioComboBox.Items.Count;
+            var index = this.EscenarioComboBox.SelectedIndex;
             EscenarioSeleccionado = (EscenarioCampana)EscenarioComboBox.SelectedItem;
             AnadirEscenario escenario = new AnadirEscenario(CampanaSeleccionada,EscenarioSeleccionado, this.escenarios);
             this.Hide();
@@ -270,6 +277,10 @@ namespace ElEscribaDelDJ.View
             while (escenario.IsActive) { }
             this.Show();
             CollectionViewSource.GetDefaultView(this.escenarios).Refresh();
+
+            this.EscenarioComboBox.SelectedIndex = -1;
+            this.EscenarioComboBox.SelectedIndex = index;
+
             if (cantidad != this.EscenarioComboBox.Items.Count)
             {
                 this.EscenarioComboBox.SelectedIndex = cantidad;
@@ -298,6 +309,7 @@ namespace ElEscribaDelDJ.View
                 var campana = (Campana)campaignComboBox.SelectedItem;
                 campana.ListaEscenarios = Escenarios.ToList<EscenarioCampana>();
                 GestionArchivos.EscribirUsuarioLocal();
+                Aventuras.Clear();
                 MessageBox.Show(this.FindResource("DeleteScenarioSucessfull").ToString());
             }
         }
@@ -317,15 +329,20 @@ namespace ElEscribaDelDJ.View
         private void AnadirAventura_Click(object sender, RoutedEventArgs e)
         {
             var cantidad = this.AventuraComboBox.Items.Count;
+            var index = this.AventuraComboBox.SelectedIndex;
             EscenarioSeleccionado = (EscenarioCampana)EscenarioComboBox.SelectedItem;
-            var AventuraSeleccionada = (Aventura)AventuraComboBox.SelectedItem;
+            Aventura AventuraSeleccionada = (Aventura)AventuraComboBox.SelectedItem;
             AnadirAventura aventura = new AnadirAventura(CampanaSeleccionada, EscenarioSeleccionado, AventuraSeleccionada, this.aventuras);
             this.Hide();
             aventura.ShowDialog();
             //refresca los datos tal como la ventana es cerrada
             while (aventura.IsActive) { }
             this.Show();
-            CollectionViewSource.GetDefaultView(this.aventuras).Refresh();
+
+            CollectionViewSource.GetDefaultView(Aventuras).Refresh();
+            this.AventuraComboBox.SelectedIndex = -1;
+            this.AventuraComboBox.SelectedIndex = index;
+
             if (cantidad != this.AventuraComboBox.Items.Count)
             {
                 this.AventuraComboBox.SelectedIndex = cantidad;
@@ -355,6 +372,6 @@ namespace ElEscribaDelDJ.View
                 GestionArchivos.EscribirUsuarioLocal();
                 MessageBox.Show(this.FindResource("DeleteAdventureSucessfull").ToString());
             }
-        } 
+        }
     }
 }
