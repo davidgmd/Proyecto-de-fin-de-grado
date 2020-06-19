@@ -33,6 +33,7 @@
     <None Remove="Images\icons\warhammer.jpg" />
     <None Remove="Images\licencia.png" />
     <None Remove="Images\warhammer-removebg.png" />
+    <None Remove="View\MainMenuBackground.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -93,6 +94,7 @@
     <Resource Include="Images\icons\warhammer.jpg" />
     <Resource Include="Images\licencia.png" />
     <Resource Include="Images\icons\warhammer-removebg.png" />
+    <Resource Include="View\MainMenuBackground.png" />
   </ItemGroup>
 
   <ItemGroup>
