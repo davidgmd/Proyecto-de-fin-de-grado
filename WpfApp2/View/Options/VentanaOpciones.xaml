@@ -39,7 +39,7 @@
                     x:Name="ElegirIdioma">
                 <StackPanel x:Name="IdiomaES"
                             Style="{DynamicResource CajaIdioma}"
-                            MouseDown="IdiomaES_MouseDown">
+                            >
                     <Image x:Name="Spain"
                            Style="{DynamicResource IdiomaES}"/>
                     <TextBlock Text="Español"
@@ -50,7 +50,7 @@
 
                 <StackPanel x:Name="IdiomaEN" 
                             Style="{DynamicResource CajaIdioma}"
-                            MouseDown="IdiomaEN_MouseDown">
+                            >
                     <Image x:Name="English"
                            Style="{DynamicResource IdiomaEN}"/>
                     <TextBlock Text="English"

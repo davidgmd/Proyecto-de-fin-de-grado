@@ -1,0 +1,237 @@
+﻿<Window x:Class="ElEscribaDelDJ.View.Roller.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElEscribaDelDJ.View.Roller"
+        mc:Ignorable="d"
+        Title="Lanzador de Dados"  
+        SizeToContent="WidthAndHeight"
+        Background="LightSlateGray">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Border Background="White" BorderBrush="Black" BorderThickness="2" Grid.Column="0">
+            <StackPanel >
+                <TextBlock TextAlignment="Center" Text="D4"/>
+                <Image Stretch="None" Source="\Images\icons\d4.png"/>
+                <TextBlock TextAlignment="Center" FontWeight="DemiBold" Text="Cantidad"/>
+                <TextBox Margin="5"/>
+            </StackPanel>
+            </Border>
+
+            <Border Background="White" BorderBrush="Black" BorderThickness="2" Grid.Column="1">
+                <StackPanel>
+                    <TextBlock TextAlignment="Center" Text="D6"/>
+                    <Image Stretch="None" Source="\Images\icons\d6.png"/>
+                    <TextBlock TextAlignment="Center" FontWeight="DemiBold" Text="Cantidad"/>
+                    <TextBox Margin="5"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="White" BorderBrush="Black" BorderThickness="2" Grid.Column="2">
+                <StackPanel>
+                    <TextBlock TextAlignment="Center" Text="D8"/>
+                    <Image Stretch="None" Source="\Images\icons\d8-2.png"/>
+                    <TextBlock TextAlignment="Center" FontWeight="DemiBold" Text="Cantidad"/>
+                    <TextBox Margin="5"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="White" BorderBrush="Black" BorderThickness="2" Grid.Column="3">
+                <StackPanel>
+                    <TextBlock TextAlignment="Center" Text="D10"/>
+                    <Image Stretch="None" Source="\Images\icons\d10.png"/>
+                    <TextBlock TextAlignment="Center" FontWeight="DemiBold" Text="Cantidad"/>
+                    <TextBox Margin="5"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="White" BorderBrush="Black" BorderThickness="2" Grid.Column="4">
+                <StackPanel>
+                    <TextBlock TextAlignment="Center" Text="D12"/>
+                    <Image Stretch="None" Source="\Images\icons\d12.png"/>
+                    <TextBlock TextAlignment="Center" FontWeight="DemiBold" Text="Cantidad"/>
+                    <TextBox Margin="5"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="White" BorderBrush="Black" BorderThickness="2" Grid.Column="5">
+                <StackPanel>
+                    <TextBlock TextAlignment="Center" Text="D20"/>
+                    <Image Stretch="None" Source="\Images\icons\d20.png"/>
+                    <TextBlock TextAlignment="Center" FontWeight="DemiBold" Text="Cantidad"/>
+                    <TextBox Margin="5"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="White" BorderBrush="Black" BorderThickness="2" Grid.Column="6">
+                <StackPanel>
+                    <TextBlock TextAlignment="Center" Text="D100"/>
+                    <Image Stretch="None" Source="\Images\icons\d100.png"/>
+                    <TextBlock TextAlignment="Center" FontWeight="DemiBold" Text="Cantidad"/>
+                    <TextBox Margin="5"/>
+                </StackPanel>
+            </Border>
+
+            <StackPanel Grid.Row="1"
+                        Margin="5">
+                <CheckBox Content="Dados explosivos"/>
+                <CheckBox Content="Los 1 restan exitos"/>
+                <TextBox Text="Bonificadores" Opacity="0.8"/>
+                <TextBox Text="Penalizador" Opacity="0.8"/>
+                <TextBox Text="Cantidad a superar" Opacity="0.8"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="5">
+                <CheckBox Content="Dados explosivos"/>
+                <CheckBox Content="Los 1 restan exitos"/>
+                <TextBox Text="Bonificadores"/>
+                <TextBox Text="Penalizador"/>
+                <TextBox Text="Cantidad a superar"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="5">
+                <CheckBox Content="Dados explosivos"/>
+                <CheckBox Content="Los 1 restan exitos"/>
+                <TextBox Text="Bonificadores"/>
+                <TextBox Text="Penalizador"/>
+                <TextBox Text="Cantidad a superar"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1"
+                        Grid.Column="3"
+                        Margin="5">
+                <CheckBox Content="Dados explosivos"/>
+                <CheckBox Content="Los 1 restan exitos"/>
+                <TextBox Text="Bonificadores"/>
+                <TextBox Text="Penalizador"/>
+                <TextBox Text="Cantidad a superar"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1"
+                        Grid.Column="4"
+                        Margin="5">
+                <CheckBox Content="Dados explosivos"/>
+                <CheckBox Content="Los 1 restan exitos"/>
+                <TextBox Text="Bonificadores"/>
+                <TextBox Text="Penalizador"/>
+                <TextBox Text="Cantidad a superar"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1"
+                        Grid.Column="5"
+                        Margin="5">
+                <CheckBox Content="Dados explosivos"/>
+                <CheckBox Content="Los 1 restan exitos"/>
+                <TextBox Text="Bonificadores"/>
+                <TextBox Text="Penalizador"/>
+                <TextBox Text="Cantidad a superar"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1"
+                        Grid.Column="6"
+                        Margin="5">
+                <CheckBox Content="Dados explosivos"/>
+                <CheckBox Content="Los 1 restan exitos"/>
+                <TextBox Text="Bonificadores"/>
+                <TextBox Text="Penalizador"/>
+                <TextBox Text="Cantidad a superar"/>
+            </StackPanel>
+
+            <Button Content="Lanzar"
+                    Grid.Row="2" 
+                    Grid.ColumnSpan="6" 
+                    Width="200"
+                    Margin="5"
+                    Opacity="0.8"
+                    HorizontalAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <WrapPanel Orientation="Horizontal">
+                <Border Height="50" Width="50" Margin="5">
+                    <Border.Background>
+                        <ImageBrush ImageSource="\Images\icons\d4.png"/>
+                    </Border.Background>
+                    <TextBlock TextWrapping="Wrap" Text="1" FontSize="24" Foreground="Green" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock.Effect>
+                            <DropShadowEffect RenderingBias="Quality"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Border>
+                <Border Height="50" Width="50" Margin="5">
+                    <Border.Background>
+                        <ImageBrush ImageSource="\Images\icons\d4.png"/>
+                    </Border.Background>
+                    <TextBlock TextWrapping="Wrap" Text="2" FontSize="24" Foreground="Green" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock.Effect>
+                            <DropShadowEffect RenderingBias="Quality"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Border>
+                <Border Height="50" Width="50" Margin="5">
+                    <Border.Background>
+                        <ImageBrush ImageSource="\Images\icons\d4.png"/>
+                    </Border.Background>
+                    <TextBlock TextWrapping="Wrap" Text="4" FontSize="24" Foreground="Green" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock.Effect>
+                            <DropShadowEffect RenderingBias="Quality"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Border>
+                <Border Height="50" Width="50" Margin="5">
+                    <Border.Background>
+                        <ImageBrush ImageSource="\Images\icons\d4.png"/>
+                    </Border.Background>
+                    <TextBlock TextWrapping="Wrap" Text="1" FontSize="24" Foreground="Green" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <TextBlock.Effect>
+                            <DropShadowEffect RenderingBias="Quality"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </Border>
+            </WrapPanel>
+
+            <Border BorderThickness="3" BorderBrush="Gray" Grid.Column="1" Margin="5">
+            <StackPanel Grid.Column="1" Background="Silver" Opacity="0.8">
+                
+                <TextBlock Text="Resumen de la tirada"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           TextDecorations="Underline"/>
+                <TextBlock Margin="10 0 0 0" Text="Total de la tirada: 20"/>
+                <TextBlock Margin="10 0 0 0" Text="Numero de exitos: 2"/>
+                
+            </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

@@ -235,7 +235,7 @@ namespace ElEscribaDelDJ.View
         private void CampaignAddButton_Click(object sender, RoutedEventArgs e)
         {
             var cantidad = this.campaignComboBox.Items.Count;
-            var index = this.EscenarioComboBox.SelectedIndex;
+            var index = this.campaignComboBox.SelectedIndex;
 
             AnadirCampana ventanapopup = new AnadirCampana(CampanaSeleccionada, this.campanas);
             this.Hide();
