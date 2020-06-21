@@ -63,24 +63,26 @@ namespace ElEscribaDelDJ.View
 
         private void Modificar_Click(object sender, RoutedEventArgs e)
         {
-            foreach (Campana campana1 in this.observable)
+            var resultado = Campana.ExisteCampanaObservable(campana, observable);
+            if (resultado != null)
             {
-                if (campana1.Nombre.Equals(this.campana.Nombre) && (campana1.Descripcion.Equals(this.campana.Descripcion)))
+                resultado.Nombre = this.NombreTextBox.Text;
+                resultado.Descripcion = this.DescripcionTextBox.Text;
+                if (!(this.direccionimagen is null))
                 {
-                    campana1.Nombre = this.NombreTextBox.Text;
-                    campana1.Descripcion = this.DescripcionTextBox.Text;
-                    if (!(this.direccionimagen is null))
-                    {
-                        string direccion = this.archivo.MoverImagen(campana1.Nombre, this.direccionimagen);
-                        campana.DireccionImagen = direccion;
-                    }                                      
+                    string direccion = this.archivo.MoverImagen(resultado.Nombre, this.direccionimagen);
+                    resultado.DireccionImagen = direccion;
                 }
+                RecursosAplicacion.SesionUsuario.ListCampaigns = this.observable.ToList<Campana>();
+                GestionArchivos.EscribirUsuarioLocal();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Esta intentado modificar una campaña que no existe");
             }
 
-            RecursosAplicacion.SesionUsuario.ListCampaigns = this.observable.ToList<Campana>();
-            GestionArchivos.EscribirUsuarioLocal();
-
-            this.Close();
+            
         }
 
         private void BotonCancelar_Click(object sender, RoutedEventArgs e)
@@ -103,11 +105,9 @@ namespace ElEscribaDelDJ.View
                 campana1.DireccionImagen = this.campana.DireccionImagen;
             }
 
-            var iguales = observable.Where(c => c.Nombre.Equals(campana1.Nombre) && c.Descripcion.Equals(campana1.Descripcion));
+            var iguales = campana.ExisteCampanaSesion(campana1);
 
-                //RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.Nombre.Equals(Campana.Nombre) && c.Descripcion.Equals(Campana.Descripcion)).ListaEscenarios.Add(escenario1);
-
-            if (!(iguales.Count() > 0))
+            if (!(iguales != null))
             {
                 observable.Add(campana1);
                 RecursosAplicacion.SesionUsuario.ListCampaigns = this.observable.ToList<Campana>();

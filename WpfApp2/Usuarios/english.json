@@ -51,6 +51,32 @@
       "RecursosCampana": [],
       "Descripcion": "Base element for warhammer 2º edition adventures",
       "Nombre": "Warhammer 2ª edition"
+    },
+    {
+      "ListaEscenarios": [
+        {
+          "ListaAventuras": [
+            {
+              "NumeroAventura": 0,
+              "ListaAventuras": [],
+              "ListaEscenarios": [],
+              "DireccionImagen": null,
+              "RecursosCampana": [],
+              "Descripcion": "adv",
+              "Nombre": "adv"
+            }
+          ],
+          "ListaEscenarios": [],
+          "DireccionImagen": null,
+          "RecursosCampana": [],
+          "Descripcion": "ads",
+          "Nombre": "asd"
+        }
+      ],
+      "DireccionImagen": "C:\\Users\\David2\\source\\repos\\davidgmd\\Proyecto-de-fin-de-grado\\WpfApp2\\\\Images\\User\\\\english\\Prueba23\\icon\\gwent D&D.png",
+      "RecursosCampana": [],
+      "Descripcion": "Descripcion prueba",
+      "Nombre": "Prueba23"
     }
   ],
   "NombreUsuario": "english",

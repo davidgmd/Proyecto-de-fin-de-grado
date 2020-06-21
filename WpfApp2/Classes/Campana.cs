@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace ElEscribaDelDJ.Classes
 {
@@ -40,5 +43,17 @@ namespace ElEscribaDelDJ.Classes
 			get { return nombre; }
 			set { nombre = value; }
 		}
-    }
+
+		public Campana ExisteCampanaSesion(Campana campana1)
+        {
+			var resultado = RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.nombre.Equals(campana1.nombre) && c.descripcion.Equals(campana1.descripcion));
+			return resultado;
+        }
+
+		public Campana ExisteCampanaObservable(Campana campana1, ObservableCollection<Campana> observable)
+		{
+			var resultado = observable.Where(c => c.nombre.Equals(campana1.nombre) && c.descripcion.Equals(campana1.descripcion));
+			return resultado.FirstOrDefault();
+		}
+	}
 }
