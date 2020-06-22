@@ -1,6 +1,7 @@
 ﻿using ElEscribaDelDJ.Classes;
 using ElEscribaDelDJ.Classes.Utilidades;
 using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+using ElEscribaDelDJ.View.Calendar;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -372,6 +373,12 @@ namespace ElEscribaDelDJ.View
                 GestionArchivos.EscribirUsuarioLocal();
                 MessageBox.Show(this.FindResource("DeleteAdventureSucessfull").ToString());
             }
+        }
+
+        private void botonCalendario_Click(object sender, RoutedEventArgs e)
+        {
+            Calendario ventanacalendario = new Calendario();
+            ventanacalendario.Show();
         }
     }
 }

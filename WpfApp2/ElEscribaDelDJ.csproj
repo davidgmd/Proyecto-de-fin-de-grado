@@ -18,6 +18,7 @@
     <None Remove="Images\icons8-calendar.png" />
     <None Remove="Images\icons\D&amp;D.png" />
     <None Remove="Images\icons\english.png" />
+    <None Remove="images\icons\googlecalendar.png" />
     <None Remove="Images\icons\iconoMas.png" />
     <None Remove="Images\icons\iconoMenos.png" />
     <None Remove="Images\icons\icons8-books.png" />
@@ -29,6 +30,7 @@
     <None Remove="Images\icons\icons8-salir.png" />
     <None Remove="Images\icons\icons8-salir2.png" />
     <None Remove="Images\icons\icons8-verificado.png" />
+    <None Remove="images\icons\outlook.png" />
     <None Remove="Images\icons\spanish.png" />
     <None Remove="Images\icons\warhammer.jpg" />
     <None Remove="Images\licencia.png" />
@@ -64,6 +66,7 @@
 
   <ItemGroup>
     <PackageReference Include="EASendMail" Version="7.7.0.1" />
+    <PackageReference Include="Google.Apis.Calendar.v3" Version="1.46.0.1984" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Octokit" Version="0.47.0" />
   </ItemGroup>
@@ -78,6 +81,7 @@
     <Resource Include="Images\Calendar.jpg" />
     <Resource Include="Images\icons\D&amp;D.png" />
     <Resource Include="Images\icons\english.png" />
+    <Resource Include="images\icons\googlecalendar.png" />
     <Resource Include="Images\icons\iconoMas.png" />
     <Resource Include="Images\icons\iconoMenos.png" />
     <Resource Include="Images\icons\icons8-books.png" />
@@ -90,6 +94,7 @@
     <Resource Include="Images\icons\icons8-salir.png" />
     <Resource Include="Images\icons\icons8-salir2.png" />
     <Resource Include="Images\icons\icons8-verificado.png" />
+    <Resource Include="images\icons\outlook.png" />
     <Resource Include="Images\icons\spanish.png" />
     <Resource Include="Images\icons\warhammer.jpg" />
     <Resource Include="Images\licencia.png" />
@@ -99,7 +104,6 @@
 
   <ItemGroup>
     <Folder Include="Images\User\" />
-    <Folder Include="View\Calendar\" />
     <Folder Include="View\Resources\" />
     <Folder Include="View\Roller\" />
     <Folder Include="View\Options\" />
