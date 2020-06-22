@@ -16,6 +16,14 @@ namespace ElEscribaDelDJ.Classes.Utilidades
     {
         string[] Scopes = { CalendarService.Scope.CalendarReadonly };
         string ApplicationName = "ElEscribaDelDJ";
+        private CalendarService service;
+
+        public CalendarService Service
+        {
+            get { return service; }
+            set { service = value; }
+        }
+
 
         public GoogleCalendar()
         {
@@ -37,12 +45,15 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             }
 
             // Create Google Calendar API service.
-            var service = new CalendarService(new BaseClientService.Initializer()
+            this.service = new CalendarService(new BaseClientService.Initializer()
             {
                 HttpClientInitializer = credential,
                 ApplicationName = ApplicationName,
-            });
+            });      
+        }
 
+        public Events GetEvents()
+        {
             // Define parameters of request.
             var calendarList = service.CalendarList.List().Execute();
             EventsResource.ListRequest request = service.Events.List("primary");
@@ -54,7 +65,12 @@ namespace ElEscribaDelDJ.Classes.Utilidades
 
             // List events.
             Events events = request.Execute();
-            var eventos = events.Items;
+            return events;
+            /*foreach (Event evento in events.Items)
+            {
+                evento.Summary;
+            }*/
+
             Console.WriteLine("Upcoming events:");
         }
     }
