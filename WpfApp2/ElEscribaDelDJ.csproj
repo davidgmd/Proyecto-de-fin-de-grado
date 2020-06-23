@@ -21,6 +21,7 @@
     <None Remove="images\icons\googlecalendar.png" />
     <None Remove="Images\icons\iconoMas.png" />
     <None Remove="Images\icons\iconoMenos.png" />
+    <None Remove="images\icons\icons8-actualizar.png" />
     <None Remove="Images\icons\icons8-books.png" />
     <None Remove="Images\icons\icons8-dices.png" />
     <None Remove="Images\icons\icons8-escudopregunta.png" />
@@ -83,6 +84,7 @@
     <Resource Include="images\icons\googlecalendar.png" />
     <Resource Include="Images\icons\iconoMas.png" />
     <Resource Include="Images\icons\iconoMenos.png" />
+    <Resource Include="images\icons\icons8-actualizar.png" />
     <Resource Include="Images\icons\icons8-books.png" />
     <Resource Include="Images\icons\icons8-calendar.png" />
     <Resource Include="Images\icons\icons8-dices.png" />

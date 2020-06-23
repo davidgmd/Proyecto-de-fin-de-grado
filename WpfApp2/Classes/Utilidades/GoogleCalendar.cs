@@ -66,12 +66,6 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             // List events.
             Events events = request.Execute();
             return events;
-            /*foreach (Event evento in events.Items)
-            {
-                evento.Summary;
-            }*/
-
-            Console.WriteLine("Upcoming events:");
         }
     }
 }
