@@ -1,11 +1,14 @@
 ﻿using ElEscribaDelDJ.Classes.Utilidades;
+using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using Google.Apis.Calendar.v3.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -25,6 +28,7 @@ namespace ElEscribaDelDJ.View.Calendar
         private ObservableCollection<Event> eventos = new ObservableCollection<Event>();
         private GoogleCalendar calendariogoogle = new GoogleCalendar();
 
+
         public ObservableCollection<Event> Eventos
         {
             get { return eventos; }
@@ -34,6 +38,15 @@ namespace ElEscribaDelDJ.View.Calendar
 
         public Calendario()
         {
+            string codigocultura = "en-EN";
+            
+            if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
+            {
+                codigocultura = "es-ES";
+            }
+
+            CultureInfo ci = new CultureInfo(codigocultura);
+            CultureInfo.DefaultThreadCurrentCulture = ci;
             InitializeComponent();
             ObtenerEventos();           
         }
@@ -48,14 +61,16 @@ namespace ElEscribaDelDJ.View.Calendar
 
         private void ObtenerEventos()
         {
-            var events = calendariogoogle.GetEvents();
+            var events = calendariogoogle.GetEvents();      
             eventos.Clear();
+
             foreach (Event evento in events.Items)
             {
+                //evento.End.DateTime = FormatearFecha(evento.End.DateTime);
                 eventos.Add(evento);
             }
 
-            DataContext = null;
+            //DataContext = null;
             DataContext = this;
         }
 
@@ -74,6 +89,12 @@ namespace ElEscribaDelDJ.View.Calendar
             ObtenerEventos();
             ICollectionView view = CollectionViewSource.GetDefaultView(DatosEvento.ItemsSource);
             view.Refresh();
+        }
+
+        private DateTime FormatearFecha (DateTime? fecha)
+        {
+            DateTime fecha2 = (DateTime)fecha;
+            return fecha2.ToLocalTime();
         }
     }
 }
