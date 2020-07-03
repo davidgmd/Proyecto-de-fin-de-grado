@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -27,6 +28,7 @@ namespace ElEscribaDelDJ.View.Calendar
     {
         private ObservableCollection<Event> eventos = new ObservableCollection<Event>();
         private GoogleCalendar calendariogoogle = new GoogleCalendar();
+        private List<DateTime> significantDates = new List<DateTime>();
 
 
         public ObservableCollection<Event> Eventos
@@ -48,7 +50,13 @@ namespace ElEscribaDelDJ.View.Calendar
             CultureInfo ci = new CultureInfo(codigocultura);
             CultureInfo.DefaultThreadCurrentCulture = ci;
             InitializeComponent();
-            ObtenerEventos();           
+            ObtenerEventos();
+            significantDates = new List<DateTime>
+            {
+                DateTime.Parse("2016/11/15"),
+                DateTime.Parse("2016/11/26"),
+                DateTime.Parse("2016/11/30")
+            };
         }
 
         private void TextBlockHiperLink_MouseDown(object sender, MouseButtonEventArgs e)
@@ -66,7 +74,6 @@ namespace ElEscribaDelDJ.View.Calendar
 
             foreach (Event evento in events.Items)
             {
-                //evento.End.DateTime = FormatearFecha(evento.End.DateTime);
                 eventos.Add(evento);
             }
 
@@ -91,10 +98,27 @@ namespace ElEscribaDelDJ.View.Calendar
             view.Refresh();
         }
 
-        private DateTime FormatearFecha (DateTime? fecha)
+        private void calendarButton_Loaded(object sender, EventArgs e)
         {
-            DateTime fecha2 = (DateTime)fecha;
-            return fecha2.ToLocalTime();
+            CalendarDayButton button = (CalendarDayButton)sender;
+            DateTime date = (DateTime)button.DataContext;
+            HighlightDay(button, date);
+            button.DataContextChanged += new DependencyPropertyChangedEventHandler(calendarButton_DataContextChanged);
+        }
+
+        private void HighlightDay(CalendarDayButton button, DateTime date)
+        {
+            if (significantDates.Contains(date))
+                button.Background = Brushes.LightBlue;
+            else
+                button.Background = Brushes.White;
+        }
+
+        private void calendarButton_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            CalendarDayButton button = (CalendarDayButton)sender;
+            DateTime date = (DateTime)button.DataContext;
+            HighlightDay(button, date);
         }
     }
 }
