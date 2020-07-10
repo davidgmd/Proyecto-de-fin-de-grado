@@ -52,11 +52,12 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             });      
         }
 
-        public Events GetEvents()
+        public Events GetEvents(DateTime fecha)
         {
             // Define parameters of request.
             var calendarList = service.CalendarList.List().Execute();
             EventsResource.ListRequest request = service.Events.List("primary");
+            request.TimeMin = fecha;
             //request.TimeMin = DateTime.Now;
             //request.ShowDeleted = false;
             //request.SingleEvents = true;

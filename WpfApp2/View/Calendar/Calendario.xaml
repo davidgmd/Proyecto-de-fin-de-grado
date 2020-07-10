@@ -51,7 +51,7 @@
 
         <StackPanel Grid.Row="1" >
             <Viewbox Stretch="Fill" StretchDirection="Both" Width="300">
-                <Calendar Background="Transparent" x:Name="Calendar">
+                <Calendar Background="Transparent" x:Name="Calendar" DisplayDateChanged="Calendar_DisplayDateChanged" Loaded="Calendar_Loaded">
                     <Calendar.CalendarDayButtonStyle>
                         <Style TargetType="CalendarDayButton" BasedOn="{StaticResource {x:Type CalendarDayButton}}">
                             <EventSetter Event="Loaded" Handler="calendarButton_Loaded" />

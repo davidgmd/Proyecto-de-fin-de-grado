@@ -52,7 +52,7 @@ namespace ElEscribaDelDJ.View.Calendar
             InitializeComponent();
             significantDates = new List<DateTime>();
 
-            ObtenerEventos();
+            //ObtenerEventos();
 
             
         }
@@ -65,9 +65,9 @@ namespace ElEscribaDelDJ.View.Calendar
             var proceso = Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
         }
 
-        private void ObtenerEventos()
+        private void ObtenerEventos(DateTime fecha)
         {
-            var events = calendariogoogle.GetEvents();      
+            var events = calendariogoogle.GetEvents(fecha);      
             eventos.Clear();
 
             foreach (Event evento in events.Items)
@@ -96,7 +96,7 @@ namespace ElEscribaDelDJ.View.Calendar
 
         private void ActualizarListView()
         {
-            ObtenerEventos();
+            ObtenerEventos(Calendar.DisplayDate);
             ICollectionView view = CollectionViewSource.GetDefaultView(DatosEvento.ItemsSource);
             view.Refresh();
         }
@@ -122,6 +122,22 @@ namespace ElEscribaDelDJ.View.Calendar
             CalendarDayButton button = (CalendarDayButton)sender;
             DateTime date = (DateTime)button.DataContext;
             HighlightDay(button, date);
+        }
+
+        private void Calendar_DisplayDateChanged(object sender, CalendarDateChangedEventArgs e)
+        {
+            if (calendariogoogle != null)
+            {
+                ObtenerEventos(Calendar.DisplayDate);
+            }            
+        }
+
+        private void Calendar_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (calendariogoogle != null)
+            {
+                ObtenerEventos(Calendar.DisplayDate);
+            }
         }
     }
 }
