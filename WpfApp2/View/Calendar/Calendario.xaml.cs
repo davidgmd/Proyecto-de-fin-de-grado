@@ -50,13 +50,11 @@ namespace ElEscribaDelDJ.View.Calendar
             CultureInfo ci = new CultureInfo(codigocultura);
             CultureInfo.DefaultThreadCurrentCulture = ci;
             InitializeComponent();
+            significantDates = new List<DateTime>();
+
             ObtenerEventos();
-            significantDates = new List<DateTime>
-            {
-                DateTime.Parse("2016/11/15"),
-                DateTime.Parse("2016/11/26"),
-                DateTime.Parse("2016/11/30")
-            };
+
+            
         }
 
         private void TextBlockHiperLink_MouseDown(object sender, MouseButtonEventArgs e)
@@ -75,6 +73,11 @@ namespace ElEscribaDelDJ.View.Calendar
             foreach (Event evento in events.Items)
             {
                 eventos.Add(evento);
+                if (evento.Start.DateTime.HasValue) 
+                    significantDates.Add(evento.Start.DateTime.Value.Date);
+                else if(evento.End.DateTime.HasValue)
+                    significantDates.Add(evento.End.DateTime.Value.Date);
+
             }
 
             //DataContext = null;
@@ -111,7 +114,7 @@ namespace ElEscribaDelDJ.View.Calendar
             if (significantDates.Contains(date))
                 button.Background = Brushes.LightBlue;
             else
-                button.Background = Brushes.White;
+                button.Background = Brushes.Transparent;
         }
 
         private void calendarButton_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
