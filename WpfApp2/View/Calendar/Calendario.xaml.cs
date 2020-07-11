@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows;
@@ -29,6 +30,14 @@ namespace ElEscribaDelDJ.View.Calendar
         private ObservableCollection<Event> eventos = new ObservableCollection<Event>();
         private GoogleCalendar calendariogoogle = new GoogleCalendar();
         private List<DateTime> significantDates = new List<DateTime>();
+        private List<Event> eventosoriginales = new List<Event>();
+
+        public List<Event> EventosOriginales
+        {
+            get { return eventosoriginales; }
+            set { eventosoriginales = value; }
+        }
+
 
 
         public ObservableCollection<Event> Eventos
@@ -65,9 +74,9 @@ namespace ElEscribaDelDJ.View.Calendar
             var proceso = Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
         }
 
-        private void ObtenerEventos(DateTime fecha)
+        private void ObtenerEventos()
         {
-            var events = calendariogoogle.GetEvents(fecha);      
+            var events = calendariogoogle.GetEvents();      
             eventos.Clear();
 
             foreach (Event evento in events.Items)
@@ -75,13 +84,28 @@ namespace ElEscribaDelDJ.View.Calendar
                 eventos.Add(evento);
                 if (evento.Start.DateTime.HasValue) 
                     significantDates.Add(evento.Start.DateTime.Value.Date);
-                else if(evento.End.DateTime.HasValue)
-                    significantDates.Add(evento.End.DateTime.Value.Date);
-
             }
 
             //DataContext = null;
             DataContext = this;
+        }
+
+        private void FiltrarEventos(DateTime fecha)
+        {
+            eventos.Clear();
+
+            foreach (Event evento in EventosOriginales)
+            {
+                if (evento.Start.DateTime.HasValue)
+                {
+                    int comparacion = DateTime.Compare(Calendar.DisplayDate, evento.Start.DateTime.Value);
+                    if (comparacion <= 0)
+                        eventos.Add(evento);
+                }
+            }
+
+            //DataContext = null;
+            //DataContext = this;
         }
 
         private void ActualizarListView_MouseDown(object sender, MouseButtonEventArgs e)
@@ -96,7 +120,9 @@ namespace ElEscribaDelDJ.View.Calendar
 
         private void ActualizarListView()
         {
-            ObtenerEventos(Calendar.DisplayDate);
+            ObtenerEventos();
+            EventosOriginales = eventos.ToList();
+            FiltrarEventos(Calendar.DisplayDate);
             ICollectionView view = CollectionViewSource.GetDefaultView(DatosEvento.ItemsSource);
             view.Refresh();
         }
@@ -128,15 +154,19 @@ namespace ElEscribaDelDJ.View.Calendar
         {
             if (calendariogoogle != null)
             {
-                ObtenerEventos(Calendar.DisplayDate);
+                FiltrarEventos(Calendar.DisplayDate);
             }            
         }
 
         private void Calendar_Loaded(object sender, RoutedEventArgs e)
         {
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today);
+            Calendar.BlackoutDates.Add(cdr);
+
             if (calendariogoogle != null)
             {
-                ObtenerEventos(Calendar.DisplayDate);
+                ObtenerEventos();
+                EventosOriginales = eventos.ToList();
             }
         }
     }

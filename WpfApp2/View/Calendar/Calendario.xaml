@@ -96,7 +96,7 @@
                       x:Name="DatosEvento"
                       Margin="5"
                       MinWidth="{Binding ActualWidth, ElementName=Calendar}"
-                      Height="200"
+                      Height="250"
                       ItemsSource="{Binding Path=Eventos}">
 
                 <ListView.ItemTemplate>
@@ -132,9 +132,9 @@
 
                             <StackPanel Margin="2">
                                 <Border BorderThickness="1" BorderBrush="Black">
-                                    <TextBlock Text="Fecha Fin dd/mm/yyyy" Background="Gray"/>
+                                    <TextBlock Text="Fecha Inicio dd/mm/yyyy" Background="Gray"/>
                                 </Border>
-                                <TextBlock Text="{Binding Path=End.Date}"/>
+                                <TextBlock Text="{Binding Path=Start.DateTime}"/>
                             </StackPanel>
 
                             <StackPanel Margin="2">
@@ -142,6 +142,13 @@
                                     <TextBlock Text="Fecha actualización" Background="Gray"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Updated, ConverterCulture={x:Static SystemGlobalization:CultureInfo.DefaultThreadCurrentCulture}}"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="2">
+                                <Border BorderThickness="1" BorderBrush="Black">
+                                    <TextBlock Text="Fecha Fin dd/mm/yyyy" Background="Gray"/>
+                                </Border>
+                                <TextBlock Text="{Binding Path=End.DateTime}"/>
                             </StackPanel>
 
                             <StackPanel Margin="2">
