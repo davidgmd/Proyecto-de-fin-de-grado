@@ -10,6 +10,17 @@
         Background="NavajoWhite"
         SizeToContent="WidthAndHeight">
 
+    <Window.Resources>
+        <Style x:Key="bordes-list-view-google" TargetType="Border">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Blue"/>
+        </Style>
+
+        <Style x:Key="text-block-list-view-google" TargetType="TextBlock">
+            <Setter Property="Background" Value="CornflowerBlue"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -103,57 +114,57 @@
                     <DataTemplate>
                         <WrapPanel Width="350" Orientation="Horizontal">
                             <StackPanel Margin="2">
-                                <Border BorderThickness="1" Background="CornflowerBlue" BorderBrush="Black">
-                                    <TextBlock Text="Nombre Organizador" Background="Gray"/>
+                                <Border Style="{DynamicResource bordes-list-view-google}">
+                                    <TextBlock Text="Nombre Organizador" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Organizer.DisplayName}"/>
                             </StackPanel>
 
                             <StackPanel Margin="2">
-                                <Border BorderThickness="1" BorderBrush="Black">
-                                    <TextBlock Text="Correo Organizador" Background="Gray"/>
+                                <Border Style="{DynamicResource bordes-list-view-google}">
+                                    <TextBlock Text="Correo Organizador" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Organizer.Email}"/>
                             </StackPanel>
 
                             <StackPanel Margin="2">
-                                <Border BorderThickness="1" BorderBrush="Black">
-                                    <TextBlock Text="Nombre Evento" Background="Gray"/>
+                                <Border Style="{DynamicResource bordes-list-view-google}">
+                                    <TextBlock Text="Nombre Evento" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Summary}"/>
                             </StackPanel>
 
                             <StackPanel Margin="2">
-                                <Border BorderThickness="1" BorderBrush="Black">
-                                    <TextBlock Text="Estado" Background="Gray"/>
+                                <Border Style="{DynamicResource bordes-list-view-google}">
+                                    <TextBlock Text="Estado" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Status}"/>
                             </StackPanel>
 
                             <StackPanel Margin="2">
-                                <Border BorderThickness="1" BorderBrush="Black">
-                                    <TextBlock Text="Fecha Inicio dd/mm/yyyy" Background="Gray"/>
+                                <Border Style="{DynamicResource bordes-list-view-google}">
+                                    <TextBlock Text="Fecha Inicio dd/mm/yyyy" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Start.DateTime}"/>
                             </StackPanel>
 
                             <StackPanel Margin="2">
-                                <Border BorderThickness="1" BorderBrush="Black">
-                                    <TextBlock Text="Fecha actualización" Background="Gray"/>
+                                <Border Style="{DynamicResource bordes-list-view-google}">
+                                    <TextBlock Text="Fecha actualización" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Updated, ConverterCulture={x:Static SystemGlobalization:CultureInfo.DefaultThreadCurrentCulture}}"/>
                             </StackPanel>
 
                             <StackPanel Margin="2">
-                                <Border BorderThickness="1" BorderBrush="Black">
-                                    <TextBlock Text="Fecha Fin dd/mm/yyyy" Background="Gray"/>
+                                <Border Style="{DynamicResource bordes-list-view-google}">
+                                    <TextBlock Text="Fecha Fin dd/mm/yyyy" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=End.DateTime}"/>
                             </StackPanel>
 
                             <StackPanel Margin="2">
-                                <Border BorderThickness="1" BorderBrush="Black">
-                                    <TextBlock Text="Enlace" Background="Gray"/>
+                                <Border Style="{DynamicResource bordes-list-view-google}">
+                                    <TextBlock Text="Enlace" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=HtmlLink}" Foreground="Blue" TextDecorations="Underline" MouseDown="TextBlockHiperLink_MouseDown" Cursor="Hand"/>
                             </StackPanel>
