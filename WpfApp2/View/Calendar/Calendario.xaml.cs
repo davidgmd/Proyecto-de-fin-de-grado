@@ -160,7 +160,7 @@ namespace ElEscribaDelDJ.View.Calendar
 
         private void Calendar_Loaded(object sender, RoutedEventArgs e)
         {
-            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today);
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             Calendar.BlackoutDates.Add(cdr);
 
             if (calendariogoogle != null)

@@ -11,6 +11,44 @@
         SizeToContent="WidthAndHeight">
 
     <Window.Resources>
+        <Style x:Key="Actualizar-list-view-stackpanel" TargetType="StackPanel">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style x:Key="Actualizar-stackpanel-text" TargetType="TextBlock">
+            <Setter Property="TextDecorations" Value="Underline"/>
+            <Setter Property="Margin" Value="0 0 5 0"/>
+        </Style>
+
+        <Style x:Key="Actualizar-stackpanel-boton" TargetType="Button">
+            <Setter Property="Background" Value="DarkBlue"/>
+            <Setter Property="Margin" Value="0 0 5 0"/>
+        </Style>
+
+        <Style x:Key="Actualizar-stackpanel-icono" TargetType="Image">
+            <Setter Property="Width" Value="12"/>
+            <Setter Property="Source" Value="\Images\icons\icons8-actualizar.png"/>
+        </Style>
+
+        <Style x:Key="list-view" TargetType="ListView">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="MinWidth" Value="{Binding ActualWidth, ElementName=Calendar}"/>
+            <Setter Property="Height" Value="250"/>
+            <Setter Property="ItemsSource" Value="{Binding Path=Eventos}"/>
+        </Style>
+        
+        <Style x:Key="wrappanel-list-view-google" TargetType="WrapPanel">
+            <Setter Property="Width" Value="350"/>
+            <Setter Property="Orientation" Value="Horizontal"/>
+        </Style>
+        
+        <Style x:Key="stackpanel-list-view-google" TargetType="StackPanel">
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+        
         <Style x:Key="bordes-list-view-google" TargetType="Border">
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="BorderBrush" Value="Blue"/>
@@ -25,6 +63,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -70,99 +109,75 @@
                     </Calendar.CalendarDayButtonStyle>
                 </Calendar>
             </Viewbox>
-            <Grid Margin="5" Grid.Row="1" Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock Text="Nombre Organizador" Grid.Row="0"/>
-                <TextBox Grid.Row="0" Grid.Column="1"/>
-                <TextBlock Grid.Row="3"
-                       Text="Fecha:"/>
-                <DatePicker Grid.Column="1" Grid.Row="3" Focusable="False"/>
-                <TextBlock Grid.Row="1" 
-                       Text="Asunto:"/>
-                <TextBox Grid.ColumnSpan="2" Grid.Row="1" 
-                     Grid.Column="1"  
-                     TextWrapping="Wrap" 
-                     Height="Auto"/>
-            </Grid>
         </StackPanel>
+        
         <StackPanel Grid.Row="1" 
                 Grid.Column="1">
-            <StackPanel x:Name="StacuPanelActualizarListView" HorizontalAlignment="Center" Orientation="Horizontal" MouseDown="ActualizarListView_MouseDown" Cursor="Hand">
-                <TextBlock Text="Actualizar" TextDecorations="Underline" Margin="0 0 5 0"/>
-                <Button x:Name="BotonActualizarListView" Background="DarkBlue" Margin="0 0 5 0" Click="BotonActualizarListView_Click">
-                    <Image Width="12" Source="\Images\icons\icons8-actualizar.png"/>
+            <StackPanel x:Name="StackPanelActualizarListView" 
+                        Style="{DynamicResource Actualizar-list-view-stackpanel}" 
+                        MouseDown="ActualizarListView_MouseDown">
+                <TextBlock Text="Actualizar" Style="{DynamicResource Actualizar-stackpanel-text}"/>
+                <Button x:Name="BotonActualizarListView" 
+                        Style="{DynamicResource Actualizar-stackpanel-boton}" 
+                        Click="BotonActualizarListView_Click">
+                    <Image Style="{DynamicResource Actualizar-stackpanel-icono}"/>
                 </Button>
             </StackPanel>
-            <ListView Background="Transparent" 
-                      x:Name="DatosEvento"
-                      Margin="5"
-                      MinWidth="{Binding ActualWidth, ElementName=Calendar}"
-                      Height="250"
-                      ItemsSource="{Binding Path=Eventos}">
-
+            <ListView Style="{DynamicResource list-view}" 
+                      x:Name="DatosEvento">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <WrapPanel Width="350" Orientation="Horizontal">
-                            <StackPanel Margin="2">
+                        <WrapPanel Style="{DynamicResource wrappanel-list-view-google}">
+                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
                                 <Border Style="{DynamicResource bordes-list-view-google}">
                                     <TextBlock Text="Nombre Organizador" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Organizer.DisplayName}"/>
                             </StackPanel>
 
-                            <StackPanel Margin="2">
+                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
                                 <Border Style="{DynamicResource bordes-list-view-google}">
                                     <TextBlock Text="Correo Organizador" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Organizer.Email}"/>
                             </StackPanel>
 
-                            <StackPanel Margin="2">
+                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
                                 <Border Style="{DynamicResource bordes-list-view-google}">
                                     <TextBlock Text="Nombre Evento" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Summary}"/>
                             </StackPanel>
 
-                            <StackPanel Margin="2">
+                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
                                 <Border Style="{DynamicResource bordes-list-view-google}">
                                     <TextBlock Text="Estado" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Status}"/>
                             </StackPanel>
 
-                            <StackPanel Margin="2">
+                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
                                 <Border Style="{DynamicResource bordes-list-view-google}">
                                     <TextBlock Text="Fecha Inicio dd/mm/yyyy" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Start.DateTime}"/>
                             </StackPanel>
 
-                            <StackPanel Margin="2">
+                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
                                 <Border Style="{DynamicResource bordes-list-view-google}">
                                     <TextBlock Text="Fecha actualización" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Updated, ConverterCulture={x:Static SystemGlobalization:CultureInfo.DefaultThreadCurrentCulture}}"/>
                             </StackPanel>
 
-                            <StackPanel Margin="2">
+                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
                                 <Border Style="{DynamicResource bordes-list-view-google}">
                                     <TextBlock Text="Fecha Fin dd/mm/yyyy" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=End.DateTime}"/>
                             </StackPanel>
 
-                            <StackPanel Margin="2">
+                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
                                 <Border Style="{DynamicResource bordes-list-view-google}">
                                     <TextBlock Text="Enlace" Style="{DynamicResource text-block-list-view-google}"/>
                                 </Border>
@@ -174,5 +189,69 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
+
+        <Grid Margin="5" Grid.Row="2" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Nombre Organizador" 
+                       Grid.Row="0"/>
+            <TextBox Grid.Row="0" 
+                     Grid.Column="1"
+                     Margin="5 0 5 0"/>
+
+            <TextBlock Grid.Row="1" 
+                       Text="Asunto:"/>
+            <TextBox Grid.Row="1" 
+                     Grid.Column="1"  
+                     TextWrapping="Wrap"
+                     MaxWidth="220"
+                     Height="Auto"
+                     Margin="5 0 5 0"/>
+
+            <TextBlock Grid.Row="3"
+                       Text="Fecha inicio:"/>
+            <DatePicker Grid.Column="1" 
+                        Grid.Row="3" 
+                        Focusable="False"
+                        Margin="5 0 5 0"/>
+
+            <TextBlock Text="Correo Organizador" 
+                       Grid.Row="0"
+                       Grid.Column="2"
+                       Margin="0 0 5 0"/>
+            <TextBox Grid.Row="0" 
+                     Grid.Column="3"
+                     Margin="5 0 5 0"/>
+
+            <TextBlock Grid.Row="1"
+                       Grid.Column="2"
+                       Text="Estado:"/>
+            <ComboBox Grid.Row="1"
+                      Grid.Column="3"
+                      Margin="5 0 5 0">
+                <ComboBoxItem>Confirmado</ComboBoxItem>
+                <ComboBoxItem>Cancelado</ComboBoxItem>
+                <ComboBoxItem>Finalizado</ComboBoxItem>
+            </ComboBox>
+
+            <TextBlock Grid.Row="3"
+                       Grid.Column="2"
+                       Text="Fecha Fin:"/>
+            <DatePicker Grid.Column="3"
+                        Grid.Row="3" 
+                        Focusable="False"
+                        Margin="5 0 5 0"/>
+        </Grid>
     </Grid>
 </Window>
