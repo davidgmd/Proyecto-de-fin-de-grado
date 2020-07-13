@@ -179,8 +179,6 @@ namespace ElEscribaDelDJ.View.Calendar
                 if (DatosEvento.Items.Count > 0)
                 {
                     DatosEvento.IsEditable = false;
-                    //DatosEvento.IsReadOnly = true;
-                    //DatosEvento.Focusable = false;
                     DatosEvento.SelectedIndex = 0;
                 }
                 else
@@ -198,8 +196,6 @@ namespace ElEscribaDelDJ.View.Calendar
             if (DatosEvento.Items.Count > 0)
             {
                 DatosEvento.IsEditable = false;
-                //DatosEvento.IsReadOnly = true;
-                //DatosEvento.Focusable = false;
                 DatosEvento.SelectedIndex = 0;
             }
             else
