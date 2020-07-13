@@ -4,6 +4,7 @@ using Google.Apis.Calendar.v3.Data;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
@@ -60,10 +61,11 @@ namespace ElEscribaDelDJ.View.Calendar
             CultureInfo.DefaultThreadCurrentCulture = ci;
             InitializeComponent();
             significantDates = new List<DateTime>();
+            eventos.CollectionChanged += CambiarSeleccion;
 
             //ObtenerEventos();
 
-            
+
         }
 
         private void TextBlockHiperLink_MouseDown(object sender, MouseButtonEventArgs e)
@@ -167,6 +169,45 @@ namespace ElEscribaDelDJ.View.Calendar
             {
                 ObtenerEventos();
                 EventosOriginales = eventos.ToList();
+            }
+        }
+
+        private void CambiarSeleccion(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (DatosEvento.ItemsSource != null)
+            {
+                if (DatosEvento.Items.Count > 0)
+                {
+                    DatosEvento.IsEditable = false;
+                    //DatosEvento.IsReadOnly = true;
+                    //DatosEvento.Focusable = false;
+                    DatosEvento.SelectedIndex = 0;
+                }
+                else
+                {
+                    DatosEvento.IsEditable = true;
+                    DatosEvento.IsReadOnly = true;
+                    DatosEvento.Focusable = false;
+                    DatosEvento.Text = "No hay eventos para esa fecha o posterior";
+                }
+            }     
+        }
+
+        private void DatosEvento_SourceUpdated(object sender, DataTransferEventArgs e)
+        {
+            if (DatosEvento.Items.Count > 0)
+            {
+                DatosEvento.IsEditable = false;
+                //DatosEvento.IsReadOnly = true;
+                //DatosEvento.Focusable = false;
+                DatosEvento.SelectedIndex = 0;
+            }
+            else
+            {
+                DatosEvento.IsEditable = true;
+                DatosEvento.IsReadOnly = true;
+                DatosEvento.Focusable = false;
+                DatosEvento.Text = "No hay eventos para esa fecha o posterior";
             }
         }
     }

@@ -32,12 +32,11 @@
             <Setter Property="Source" Value="\Images\icons\icons8-actualizar.png"/>
         </Style>
 
-        <Style x:Key="list-view" TargetType="ListView">
+        <Style x:Key="list-view" TargetType="ComboBox">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Margin" Value="5"/>
-            <Setter Property="MinWidth" Value="{Binding ActualWidth, ElementName=Calendar}"/>
-            <Setter Property="Height" Value="250"/>
-            <Setter Property="ItemsSource" Value="{Binding Path=Eventos}"/>
+            <Setter Property="Height" Value="Auto"/>
+            <Setter Property="ItemsSource" Value="{Binding Path=Eventos, NotifyOnTargetUpdated=True}"/>
         </Style>
         
         <Style x:Key="wrappanel-list-view-google" TargetType="WrapPanel">
@@ -123,9 +122,10 @@
                     <Image Style="{DynamicResource Actualizar-stackpanel-icono}"/>
                 </Button>
             </StackPanel>
-            <ListView Style="{DynamicResource list-view}" 
-                      x:Name="DatosEvento">
-                <ListView.ItemTemplate>
+            <ComboBox Style="{DynamicResource list-view}" 
+                      x:Name="DatosEvento"
+                      Binding.TargetUpdated="DatosEvento_SourceUpdated">
+                <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <WrapPanel Style="{DynamicResource wrappanel-list-view-google}">
                             <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
@@ -183,11 +183,10 @@
                                 </Border>
                                 <TextBlock Text="{Binding Path=HtmlLink}" Foreground="Blue" TextDecorations="Underline" MouseDown="TextBlockHiperLink_MouseDown" Cursor="Hand"/>
                             </StackPanel>
-                            <Line X1="10" X2="300" Margin="5" Stroke="Black" StrokeThickness="2"/>
                         </WrapPanel>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </StackPanel>
 
         <Grid Margin="5" Grid.Row="2" Grid.ColumnSpan="2">
