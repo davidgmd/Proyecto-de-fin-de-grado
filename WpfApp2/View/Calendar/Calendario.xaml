@@ -5,57 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElEscribaDelDJ.View.Calendar"
         xmlns:SystemGlobalization="clr-namespace:System.Globalization;assembly=mscorlib"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Calendario"
         Background="NavajoWhite"
         SizeToContent="WidthAndHeight">
 
     <Window.Resources>
-        <Style x:Key="Actualizar-list-view-stackpanel" TargetType="StackPanel">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Orientation" Value="Horizontal"/>
-            <Setter Property="Cursor" Value="Hand"/>
-        </Style>
-
-        <Style x:Key="Actualizar-stackpanel-text" TargetType="TextBlock">
-            <Setter Property="TextDecorations" Value="Underline"/>
-            <Setter Property="Margin" Value="0 0 5 0"/>
-        </Style>
-
-        <Style x:Key="Actualizar-stackpanel-boton" TargetType="Button">
-            <Setter Property="Background" Value="DarkBlue"/>
-            <Setter Property="Margin" Value="0 0 5 0"/>
-        </Style>
-
-        <Style x:Key="Actualizar-stackpanel-icono" TargetType="Image">
-            <Setter Property="Width" Value="12"/>
-            <Setter Property="Source" Value="\Images\icons\icons8-actualizar.png"/>
-        </Style>
-
-        <Style x:Key="list-view" TargetType="ComboBox">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Margin" Value="5"/>
-            <Setter Property="Height" Value="Auto"/>
-            <Setter Property="ItemsSource" Value="{Binding Path=Eventos, NotifyOnTargetUpdated=True}"/>
-        </Style>
-        
-        <Style x:Key="wrappanel-list-view-google" TargetType="WrapPanel">
-            <Setter Property="Width" Value="350"/>
-            <Setter Property="Orientation" Value="Horizontal"/>
-        </Style>
-        
-        <Style x:Key="stackpanel-list-view-google" TargetType="StackPanel">
-            <Setter Property="Margin" Value="2"/>
-        </Style>
-        
-        <Style x:Key="bordes-list-view-google" TargetType="Border">
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="Blue"/>
-        </Style>
-
-        <Style x:Key="text-block-list-view-google" TargetType="TextBlock">
-            <Setter Property="Background" Value="CornflowerBlue"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/View/Calendar/Calendario.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
 
     <Grid>
@@ -85,7 +46,7 @@
                                Source="\Images\icons\outlook.png"/>
                     </StackPanel>
                 </Button>
-                <Button Background="CornflowerBlue" Height="20">
+                <Button x:Name="botonGoogleCalendar" Background="CornflowerBlue" Height="20" Click="botonGoogleCalendar_Click">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Google Calendar"
                                    Foreground="White"
@@ -100,7 +61,11 @@
 
         <StackPanel Grid.Row="1" >
             <Viewbox Stretch="Fill" StretchDirection="Both" Width="300">
-                <Calendar Background="Transparent" x:Name="Calendar" DisplayDateChanged="Calendar_DisplayDateChanged" Loaded="Calendar_Loaded">
+                <Calendar Background="Transparent" 
+                          x:Name="Calendar" 
+                          DisplayDateChanged="Calendar_DisplayDateChanged" 
+                          Loaded="Calendar_Loaded"
+                          IsEnabled="False">
                     <Calendar.CalendarDayButtonStyle>
                         <Style TargetType="CalendarDayButton" BasedOn="{StaticResource {x:Type CalendarDayButton}}">
                             <EventSetter Event="Loaded" Handler="calendarButton_Loaded" />
@@ -111,7 +76,9 @@
         </StackPanel>
         
         <StackPanel Grid.Row="1" 
-                Grid.Column="1">
+                Grid.Column="1"
+                    IsEnabled="False"
+                    x:Name="ListaEventosGoogleCalendar">
             <StackPanel x:Name="StackPanelActualizarListView" 
                         Style="{DynamicResource Actualizar-list-view-stackpanel}" 
                         MouseDown="ActualizarListView_MouseDown">
@@ -122,64 +89,64 @@
                     <Image Style="{DynamicResource Actualizar-stackpanel-icono}"/>
                 </Button>
             </StackPanel>
-            <ComboBox Style="{DynamicResource list-view}" 
+            <ComboBox Style="{DynamicResource combo-box}" 
                       x:Name="DatosEvento"
                       Binding.TargetUpdated="DatosEvento_SourceUpdated">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
-                        <WrapPanel Style="{DynamicResource wrappanel-list-view-google}">
-                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
-                                <Border Style="{DynamicResource bordes-list-view-google}">
-                                    <TextBlock Text="Nombre Organizador" Style="{DynamicResource text-block-list-view-google}"/>
+                        <WrapPanel Style="{DynamicResource wrappanel-combo-box-google}">
+                            <StackPanel Style="{DynamicResource stackpanel-combo-box-google}">
+                                <Border Style="{DynamicResource bordes-combo-box-google}">
+                                    <TextBlock Text="Nombre Organizador" Style="{DynamicResource text-block-combo-box-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Organizer.DisplayName}"/>
                             </StackPanel>
 
-                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
-                                <Border Style="{DynamicResource bordes-list-view-google}">
-                                    <TextBlock Text="Correo Organizador" Style="{DynamicResource text-block-list-view-google}"/>
+                            <StackPanel Style="{DynamicResource stackpanel-combo-box-google}">
+                                <Border Style="{DynamicResource bordes-combo-box-google}">
+                                    <TextBlock Text="Correo Organizador" Style="{DynamicResource text-block-combo-box-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Organizer.Email}"/>
                             </StackPanel>
 
-                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
-                                <Border Style="{DynamicResource bordes-list-view-google}">
-                                    <TextBlock Text="Nombre Evento" Style="{DynamicResource text-block-list-view-google}"/>
+                            <StackPanel Style="{DynamicResource stackpanel-combo-box-google}">
+                                <Border Style="{DynamicResource bordes-combo-box-google}">
+                                    <TextBlock Text="Nombre Evento" Style="{DynamicResource text-block-combo-box-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Summary}"/>
                             </StackPanel>
 
-                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
-                                <Border Style="{DynamicResource bordes-list-view-google}">
-                                    <TextBlock Text="Estado" Style="{DynamicResource text-block-list-view-google}"/>
+                            <StackPanel Style="{DynamicResource stackpanel-combo-box-google}">
+                                <Border Style="{DynamicResource bordes-combo-box-google}">
+                                    <TextBlock Text="Estado" Style="{DynamicResource text-block-combo-box-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Status}"/>
                             </StackPanel>
 
-                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
-                                <Border Style="{DynamicResource bordes-list-view-google}">
-                                    <TextBlock Text="Fecha Inicio dd/mm/yyyy" Style="{DynamicResource text-block-list-view-google}"/>
+                            <StackPanel Style="{DynamicResource stackpanel-combo-box-google}">
+                                <Border Style="{DynamicResource bordes-combo-box-google}">
+                                    <TextBlock Text="Fecha Inicio dd/mm/yyyy" Style="{DynamicResource text-block-combo-box-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Start.DateTime}"/>
                             </StackPanel>
 
-                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
-                                <Border Style="{DynamicResource bordes-list-view-google}">
-                                    <TextBlock Text="Fecha actualización" Style="{DynamicResource text-block-list-view-google}"/>
+                            <StackPanel Style="{DynamicResource stackpanel-combo-box-google}">
+                                <Border Style="{DynamicResource bordes-combo-box-google}">
+                                    <TextBlock Text="Fecha actualización" Style="{DynamicResource text-block-combo-box-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Updated, ConverterCulture={x:Static SystemGlobalization:CultureInfo.DefaultThreadCurrentCulture}}"/>
                             </StackPanel>
 
-                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
-                                <Border Style="{DynamicResource bordes-list-view-google}">
-                                    <TextBlock Text="Fecha Fin dd/mm/yyyy" Style="{DynamicResource text-block-list-view-google}"/>
+                            <StackPanel Style="{DynamicResource stackpanel-combo-box-google}">
+                                <Border Style="{DynamicResource bordes-combo-box-google}">
+                                    <TextBlock Text="Fecha Fin dd/mm/yyyy" Style="{DynamicResource text-block-combo-box-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=End.DateTime}"/>
                             </StackPanel>
 
-                            <StackPanel Style="{DynamicResource stackpanel-list-view-google}">
-                                <Border Style="{DynamicResource bordes-list-view-google}">
-                                    <TextBlock Text="Enlace" Style="{DynamicResource text-block-list-view-google}"/>
+                            <StackPanel Style="{DynamicResource stackpanel-combo-box-google}">
+                                <Border Style="{DynamicResource bordes-combo-box-google}">
+                                    <TextBlock Text="Enlace" Style="{DynamicResource text-block-combo-box-google}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=HtmlLink}" Foreground="Blue" TextDecorations="Underline" MouseDown="TextBlockHiperLink_MouseDown" Cursor="Hand"/>
                             </StackPanel>
@@ -223,6 +190,9 @@
             <DatePicker Grid.Column="1" 
                         Grid.Row="3" 
                         Focusable="False"
+                        DisplayDate="{x:Static sys:DateTime.Now}"
+                        x:Name="FechaInicioDatePicker"
+                        SelectedDateChanged="FechaInicioDatePicker_SelectedDateChanged"
                         Margin="5 0 5 0"/>
 
             <TextBlock Text="Correo Organizador" 
@@ -250,6 +220,8 @@
             <DatePicker Grid.Column="3"
                         Grid.Row="3" 
                         Focusable="False"
+                        IsEnabled="False"
+                        x:Name="FechaFinDatePicker"
                         Margin="5 0 5 0"/>
         </Grid>
     </Grid>

@@ -29,7 +29,7 @@ namespace ElEscribaDelDJ.View.Calendar
     public partial class Calendario : Window
     {
         private ObservableCollection<Event> eventos = new ObservableCollection<Event>();
-        private GoogleCalendar calendariogoogle = new GoogleCalendar();
+        private GoogleCalendar calendariogoogle;
         private List<DateTime> significantDates = new List<DateTime>();
         private List<Event> eventosoriginales = new List<Event>();
 
@@ -139,6 +139,7 @@ namespace ElEscribaDelDJ.View.Calendar
 
         private void HighlightDay(CalendarDayButton button, DateTime date)
         {
+            button.IsEnabled = false;
             if (significantDates.Contains(date))
                 button.Background = Brushes.LightBlue;
             else
@@ -164,12 +165,7 @@ namespace ElEscribaDelDJ.View.Calendar
         {
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
             Calendar.BlackoutDates.Add(cdr);
-
-            if (calendariogoogle != null)
-            {
-                ObtenerEventos();
-                EventosOriginales = eventos.ToList();
-            }
+            FechaInicioDatePicker.BlackoutDates.Add(cdr);
         }
 
         private void CambiarSeleccion(object sender, NotifyCollectionChangedEventArgs e)
@@ -205,6 +201,37 @@ namespace ElEscribaDelDJ.View.Calendar
                 DatosEvento.Focusable = false;
                 DatosEvento.Text = "No hay eventos para esa fecha o posterior";
             }
+        }
+
+        private void botonGoogleCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            if (calendariogoogle is null)
+            {
+                calendariogoogle = new GoogleCalendar();
+                ObtenerEventos();
+                EventosOriginales = eventos.ToList();
+                Calendar.IsEnabled = true;
+                ListaEventosGoogleCalendar.IsEnabled = true;
+            }            
+        }
+
+        private void FechaInicioDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FechaFinDatePicker.IsEnabled = true;
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, FechaInicioDatePicker.SelectedDate.Value.AddDays(-1));
+            FechaFinDatePicker.BlackoutDates.Clear();
+
+            try
+            {               
+                FechaFinDatePicker.BlackoutDates.Add(cdr);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("La fecha de inicio no puede ser posterior a la de fin");
+                FechaFinDatePicker.SelectedDate = null;
+                FechaFinDatePicker.BlackoutDates.Add(cdr);
+            }
+            
         }
     }
 }
