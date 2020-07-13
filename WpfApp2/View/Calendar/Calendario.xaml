@@ -154,6 +154,16 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
+            <WrapPanel Orientation="Horizontal" Margin="5 0 0 0">
+                <Button>
+                    <TextBlock Text="Editar"
+                               Margin="5 0 5 0"/>
+                </Button>
+                <Button>
+                    <TextBlock Text="Eliminar"
+                               Margin="5 0 5 0"/>
+                </Button>
+            </WrapPanel>
         </StackPanel>
 
         <Grid Margin="5" Grid.Row="2" Grid.ColumnSpan="2">
