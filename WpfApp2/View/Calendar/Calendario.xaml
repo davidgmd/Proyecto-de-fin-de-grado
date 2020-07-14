@@ -171,6 +171,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -195,10 +197,10 @@
                      Height="Auto"
                      Margin="5 0 5 0"/>
 
-            <TextBlock Grid.Row="3"
+            <TextBlock Grid.Row="2"
                        Text="Fecha inicio:"/>
             <DatePicker Grid.Column="1" 
-                        Grid.Row="3" 
+                        Grid.Row="2" 
                         Focusable="False"
                         DisplayDate="{x:Static sys:DateTime.Now}"
                         x:Name="FechaInicioDatePicker"
@@ -219,20 +221,68 @@
             <ComboBox Grid.Row="1"
                       Grid.Column="3"
                       Margin="5 0 5 0">
+                <ComboBoxItem>Por confirmar</ComboBoxItem>
                 <ComboBoxItem>Confirmado</ComboBoxItem>
                 <ComboBoxItem>Cancelado</ComboBoxItem>
                 <ComboBoxItem>Finalizado</ComboBoxItem>
             </ComboBox>
 
-            <TextBlock Grid.Row="3"
+            <TextBlock Grid.Row="2"
                        Grid.Column="2"
                        Text="Fecha Fin:"/>
             <DatePicker Grid.Column="3"
-                        Grid.Row="3" 
+                        Grid.Row="2" 
                         Focusable="False"
                         IsEnabled="False"
                         x:Name="FechaFinDatePicker"
                         Margin="5 0 5 0"/>
+            <TextBlock Text="Hora Inicio"
+                       Grid.Row="3"/>
+            <WrapPanel Orientation="Horizontal"
+                       Grid.Row="3"
+                       Grid.Column="1"
+                       Margin="5 0 5 0">
+                <TextBox Text="HH"
+                         MaxLength="2"
+                         x:Name="TextBlockHora"
+                         GotFocus="TextBlockHora_GotFocus"
+                         LostFocus="TextBlockHora_LostFocus"
+                         KeyDown="TextBlockHora_KeyDown"/>
+                <TextBox Text="MM"
+                         MaxLength="2"/>
+            </WrapPanel>
+
+            <TextBlock Text="Hora Fin"
+                       Grid.Row="3"
+                       Grid.Column="2"/>
+            <WrapPanel Orientation="Horizontal"
+                       Grid.Row="3"
+                       Grid.Column="3"
+                       Margin="5 0 5 0">
+                <TextBox Text="HH"
+                         MaxLength="2"/>
+                <TextBox Text="MM"
+                         MaxLength="2"/>
+            </WrapPanel>
+
+            <WrapPanel Orientation="Horizontal"
+                       Grid.Row="4"
+                       Grid.ColumnSpan="4"
+                       Margin="0 5 0 0">
+                <Button IsEnabled="False">
+                    <TextBlock Text="Agregar Evento"
+                               Margin="5 0 5 0"/>
+                </Button>
+                <Button IsEnabled="False">
+                    <TextBlock Text="Editar Evento"                          
+                               Margin="5 0 5 0"/>
+                </Button>
+                <Button>
+                    <TextBlock Text="Limpiar Campos"
+                               Margin="5 0 5 0"/>
+                </Button>
+            </WrapPanel>
+
         </Grid>
     </Grid>
 </Window>

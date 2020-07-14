@@ -233,5 +233,47 @@ namespace ElEscribaDelDJ.View.Calendar
             }
             
         }
+
+        private void TextBlockHora_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) ||
+            (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
+            {             
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TextBlockHora_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if(TextBlockHora.Text.Equals("HH"))
+            {
+                TextBlockHora.Text = "";
+            }
+        }
+
+        private void TextBlockHora_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBlockHora.Text.Equals(String.Empty))
+            {
+                TextBlockHora.Text = "HH";
+            }
+            else
+            {
+                var hora = int.Parse(TextBlockHora.Text);
+                if (hora<0 || hora > 24)
+                {
+                    MessageBox.Show("La hora debe estar entre 00 y 23");
+                    TextBlockHora.Text = "HH";
+                }
+                else
+                {
+
+                }
+            }
+        }
     }
 }
