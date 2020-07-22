@@ -5,7 +5,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <StartupObject>ElEscribaDelDJ.App</StartupObject>
-    <ApplicationIcon>icono2.ico</ApplicationIcon>
+    <ApplicationIcon>logodavid1.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,6 +39,7 @@
     <None Remove="Images\icons\warhammer.jpg" />
     <None Remove="Images\licencia.png" />
     <None Remove="Images\warhammer-removebg.png" />
+    <None Remove="logodavid1.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -105,6 +106,7 @@
     <Resource Include="Images\icons\warhammer.jpg" />
     <Resource Include="Images\licencia.png" />
     <Resource Include="Images\icons\warhammer-removebg.png" />
+    <Resource Include="logodavid1.ico" />
   </ItemGroup>
 
   <ItemGroup>
