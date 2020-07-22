@@ -234,11 +234,43 @@ namespace ElEscribaDelDJ.View.Calendar
             
         }
 
-        private void TextBlockHora_KeyDown(object sender, KeyEventArgs e)
+        private void HoraInicio_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox hora = (TextBox)sender; 
+            if(hora.Text.Equals("HH"))
+            {
+                hora.Text = "";
+            }
+        }
+
+        private void HoraInicio_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox hora = (TextBox)sender;
+            if (hora.Text.Equals(String.Empty))
+            {
+                hora.Text = "HH";
+            }
+            else
+            {
+                var hora1 = int.Parse(hora.Text);
+                if (hora1<0 || hora1 > 23)
+                {
+                    MessageBox.Show("La hora debe estar entre 00 y 23");
+                    hora.Text = "HH";
+                }
+                else
+                {
+                    ValidarHora(sender);               
+                }
+            }
+            
+        }
+
+        private void HoraInicio_KeyDown(object sender, KeyEventArgs e)
         {
             if ((e.Key >= Key.D0 && e.Key <= Key.D9) ||
             (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
-            {             
+            {
                 e.Handled = false;
             }
             else
@@ -247,31 +279,120 @@ namespace ElEscribaDelDJ.View.Calendar
             }
         }
 
-        private void TextBlockHora_GotFocus(object sender, RoutedEventArgs e)
+        private void MinutosInicio_GotFocus(object sender, RoutedEventArgs e)
         {
-            if(TextBlockHora.Text.Equals("HH"))
+            TextBox minutos = (TextBox)sender;
+            if (minutos.Text.Equals("MM"))
             {
-                TextBlockHora.Text = "";
+                minutos.Text = "";
             }
         }
 
-        private void TextBlockHora_LostFocus(object sender, RoutedEventArgs e)
+        private void MinutosInicio_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (TextBlockHora.Text.Equals(String.Empty))
+            TextBox minutos = (TextBox)sender;
+            if (minutos.Text.Equals(String.Empty))
             {
-                TextBlockHora.Text = "HH";
+                minutos.Text = "MM";
             }
             else
             {
-                var hora = int.Parse(TextBlockHora.Text);
-                if (hora<0 || hora > 24)
+                var minutos1 = int.Parse(minutos.Text);
+                if (minutos1 < 0 || minutos1 > 60)
                 {
-                    MessageBox.Show("La hora debe estar entre 00 y 23");
-                    TextBlockHora.Text = "HH";
+                    MessageBox.Show("Los minutos deben estar entre 00 y 60");
+                    minutos.Text = "MM";
                 }
-                else
-                {
+            }
+        }
 
+        private void MinutosInicio_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key >= Key.D0 && e.Key <= Key.D9) ||
+            (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void HoraFin_GotFocus(object sender, RoutedEventArgs e)
+        {
+            HoraInicio_GotFocus(sender, e);
+        }
+
+        private void HoraFin_LostFocus(object sender, RoutedEventArgs e)
+        {
+            HoraInicio_LostFocus(sender, e);
+        }
+
+        private void HoraFin_KeyDown(object sender, KeyEventArgs e)
+        {
+            HoraInicio_KeyDown(sender, e);
+        }
+
+        private void MinutosFin_GotFocus(object sender, RoutedEventArgs e)
+        {
+            MinutosInicio_GotFocus(sender, e);
+        }
+
+        private void MinutosFin_LostFocus(object sender, RoutedEventArgs e)
+        {
+            MinutosInicio_LostFocus(sender, e);
+        }
+
+        private void MinutosFin_KeyDown(object sender, KeyEventArgs e)
+        {
+            MinutosInicio_KeyDown(sender, e);
+        }
+
+        private Boolean ValidarHora(int hora1, int hora2, object sender)
+        {          
+            if (hora1 > hora2)
+            {
+                MessageBox.Show("La hora de fin no puede ser menor que la de inicio");
+                TextBox hora = (TextBox)sender;
+                hora.Text = "HH";
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private Boolean FechasIguales()
+        {
+            if (DateTime.Compare(FechaInicioDatePicker.SelectedDate.Value, FechaFinDatePicker.SelectedDate.Value) == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        private void ValidarHora(Object sender)
+        {
+            if (FechasIguales())
+            {
+                if (int.TryParse(HoraInicio.Text, out int horaini) && int.TryParse(HoraFin.Text, out int horafin))
+                {
+                    if (ValidarHora(horaini, horafin, sender))
+                    {
+                        if (int.TryParse(MinutosInicio.Text, out int minini) && int.TryParse(MinutosFin.Text, out int minfin))
+                        {
+                            if (horaini == horafin)
+                            {
+                                //ValidarMinutos();
+                            }
+                        }
+                    }
                 }
             }
         }

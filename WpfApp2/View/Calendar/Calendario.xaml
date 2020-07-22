@@ -244,12 +244,16 @@
                        Margin="5 0 5 0">
                 <TextBox Text="HH"
                          MaxLength="2"
-                         x:Name="TextBlockHora"
-                         GotFocus="TextBlockHora_GotFocus"
-                         LostFocus="TextBlockHora_LostFocus"
-                         KeyDown="TextBlockHora_KeyDown"/>
+                         x:Name="HoraInicio"
+                         GotFocus="HoraInicio_GotFocus"
+                         LostFocus="HoraInicio_LostFocus"
+                         KeyDown="HoraInicio_KeyDown"/>
                 <TextBox Text="MM"
-                         MaxLength="2"/>
+                         MaxLength="2"
+                         x:Name="MinutosInicio"
+                         GotFocus="MinutosInicio_GotFocus"
+                         LostFocus="MinutosInicio_LostFocus"
+                         KeyDown="MinutosInicio_KeyDown"/>
             </WrapPanel>
 
             <TextBlock Text="Hora Fin"
@@ -260,9 +264,17 @@
                        Grid.Column="3"
                        Margin="5 0 5 0">
                 <TextBox Text="HH"
-                         MaxLength="2"/>
+                         MaxLength="2"
+                         x:Name="HoraFin"
+                         GotFocus="HoraFin_GotFocus"
+                         LostFocus="HoraFin_LostFocus"
+                         KeyDown="HoraFin_KeyDown"/>
                 <TextBox Text="MM"
-                         MaxLength="2"/>
+                         MaxLength="2"
+                         x:Name="MinutosFin"
+                         GotFocus="MinutosFin_GotFocus"
+                         LostFocus="MinutosFin_LostFocus"
+                         KeyDown="MinutosFin_KeyDown"/>
             </WrapPanel>
 
             <WrapPanel Orientation="Horizontal"
