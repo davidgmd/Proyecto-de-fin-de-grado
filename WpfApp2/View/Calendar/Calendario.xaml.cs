@@ -39,17 +39,15 @@ namespace ElEscribaDelDJ.View.Calendar
             set { eventosoriginales = value; }
         }
 
-
-
         public ObservableCollection<Event> Eventos
         {
             get { return eventos; }
             set { eventos = value; }
         }
 
-
         public Calendario()
         {
+            //Define la variable cultural según el archivo de configuración
             string codigocultura = "en-EN";
             
             if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
@@ -57,17 +55,37 @@ namespace ElEscribaDelDJ.View.Calendar
                 codigocultura = "es-ES";
             }
 
+            //modifica la variable de infórmación cultural del programa en curso
             CultureInfo ci = new CultureInfo(codigocultura);
             CultureInfo.DefaultThreadCurrentCulture = ci;
+
+            //inicializamos el programa
             InitializeComponent();
+
+            //declaramos vacio una lista de fechas para marcar en el calendario
             significantDates = new List<DateTime>();
+            //vinculamos cualquier cambio en el observable eventos al metodo cambiarselección
             eventos.CollectionChanged += CambiarSeleccion;
 
             //ObtenerEventos();
-
+            InicializarSelectorHoras();
 
         }
 
+        private void InicializarSelectorHoras()
+        {
+            for (int i=00; i < 24; i++)
+            {
+                ComboBoxHoras.Items.Add(i.ToString("00"));
+            }
+
+            for (int i = 00; i < 60; i++)
+            {
+                ComboBoxMinutos.Items.Add(i.ToString("00"));
+            }
+        }
+
+        //abre el navegador al pulsar en un texto que este como hipervinculo
         private void TextBlockHiperLink_MouseDown(object sender, MouseButtonEventArgs e)
         {
             var elemento = (TextBlock)sender;
@@ -76,6 +94,7 @@ namespace ElEscribaDelDJ.View.Calendar
             var proceso = Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
         }
 
+        //obtiene todos los eventos de googlecalendar del usuario
         private void ObtenerEventos()
         {
             var events = calendariogoogle.GetEvents();      
@@ -92,6 +111,7 @@ namespace ElEscribaDelDJ.View.Calendar
             DataContext = this;
         }
 
+        //filtra los eventos según la fecha actual
         private void FiltrarEventos(DateTime fecha)
         {
             eventos.Clear();
@@ -110,6 +130,7 @@ namespace ElEscribaDelDJ.View.Calendar
             //DataContext = this;
         }
 
+        //Actualiza la lista ya sea pulsando en el botón o en la parte de texto
         private void ActualizarListView_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ActualizarListView();
@@ -120,6 +141,7 @@ namespace ElEscribaDelDJ.View.Calendar
             ActualizarListView();
         }
 
+        //evento que actualiza la lista de eventos
         private void ActualizarListView()
         {
             ObtenerEventos();
@@ -129,6 +151,8 @@ namespace ElEscribaDelDJ.View.Calendar
             view.Refresh();
         }
 
+        //Al inicializarse los botones del calendario, este carga el aspecto de los dias como botones, marca los dias importantes y 
+        //vincula el evento change de esos botones al del calendario
         private void calendarButton_Loaded(object sender, EventArgs e)
         {
             CalendarDayButton button = (CalendarDayButton)sender;
@@ -137,6 +161,7 @@ namespace ElEscribaDelDJ.View.Calendar
             button.DataContextChanged += new DependencyPropertyChangedEventHandler(calendarButton_DataContextChanged);
         }
 
+        //Marca los dias importantes, añadiendo un fondo azulado a los dias importantes y transparente al resto
         private void HighlightDay(CalendarDayButton button, DateTime date)
         {
             button.IsEnabled = false;
@@ -146,6 +171,7 @@ namespace ElEscribaDelDJ.View.Calendar
                 button.Background = Brushes.Transparent;
         }
 
+        //Indica que pasa cuando cambian los datos
         private void calendarButton_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             CalendarDayButton button = (CalendarDayButton)sender;
@@ -153,6 +179,7 @@ namespace ElEscribaDelDJ.View.Calendar
             HighlightDay(button, date);
         }
 
+        //Indica que ocurre cuando cambian los datos de las fechas 
         private void Calendar_DisplayDateChanged(object sender, CalendarDateChangedEventArgs e)
         {
             if (calendariogoogle != null)
@@ -161,6 +188,7 @@ namespace ElEscribaDelDJ.View.Calendar
             }            
         }
 
+        //Al cargar el calendario marca como no usables todos los dias anteriores a hoy
         private void Calendar_Loaded(object sender, RoutedEventArgs e)
         {
             CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1));
@@ -168,6 +196,7 @@ namespace ElEscribaDelDJ.View.Calendar
             FechaInicioDatePicker.BlackoutDates.Add(cdr);
         }
 
+        //Al seleccionar otro dia comprueba si hay eventos y en caso de que no haya muestra el mensaje, si hay marca el primero
         private void CambiarSeleccion(object sender, NotifyCollectionChangedEventArgs e)
         {
             if (DatosEvento.ItemsSource != null)
@@ -187,6 +216,7 @@ namespace ElEscribaDelDJ.View.Calendar
             }     
         }
 
+        //Si cambia la cuenta de google o de donde estemos extrayendo los datos
         private void DatosEvento_SourceUpdated(object sender, DataTransferEventArgs e)
         {
             if (DatosEvento.Items.Count > 0)
@@ -203,6 +233,7 @@ namespace ElEscribaDelDJ.View.Calendar
             }
         }
 
+        //Cuando marcamos en google, trata de conectar con nuestra cuenta si no lo consigue nos manda a internet a indicar los datos
         private void botonGoogleCalendar_Click(object sender, RoutedEventArgs e)
         {
             if (calendariogoogle is null)
@@ -215,6 +246,7 @@ namespace ElEscribaDelDJ.View.Calendar
             }            
         }
 
+        //Al cambiar la fecha repasa los dias no disponibles, los marca en el otro calendario, si estos no cuadraran avisa del error.
         private void FechaInicioDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             FechaFinDatePicker.IsEnabled = true;
@@ -232,169 +264,6 @@ namespace ElEscribaDelDJ.View.Calendar
                 FechaFinDatePicker.BlackoutDates.Add(cdr);
             }
             
-        }
-
-        private void HoraInicio_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox hora = (TextBox)sender; 
-            if(hora.Text.Equals("HH"))
-            {
-                hora.Text = "";
-            }
-        }
-
-        private void HoraInicio_LostFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox hora = (TextBox)sender;
-            if (hora.Text.Equals(String.Empty))
-            {
-                hora.Text = "HH";
-            }
-            else
-            {
-                var hora1 = int.Parse(hora.Text);
-                if (hora1<0 || hora1 > 23)
-                {
-                    MessageBox.Show("La hora debe estar entre 00 y 23");
-                    hora.Text = "HH";
-                }
-                else
-                {
-                    ValidarHora(sender);               
-                }
-            }
-            
-        }
-
-        private void HoraInicio_KeyDown(object sender, KeyEventArgs e)
-        {
-            if ((e.Key >= Key.D0 && e.Key <= Key.D9) ||
-            (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void MinutosInicio_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox minutos = (TextBox)sender;
-            if (minutos.Text.Equals("MM"))
-            {
-                minutos.Text = "";
-            }
-        }
-
-        private void MinutosInicio_LostFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox minutos = (TextBox)sender;
-            if (minutos.Text.Equals(String.Empty))
-            {
-                minutos.Text = "MM";
-            }
-            else
-            {
-                var minutos1 = int.Parse(minutos.Text);
-                if (minutos1 < 0 || minutos1 > 60)
-                {
-                    MessageBox.Show("Los minutos deben estar entre 00 y 60");
-                    minutos.Text = "MM";
-                }
-            }
-        }
-
-        private void MinutosInicio_KeyDown(object sender, KeyEventArgs e)
-        {
-            if ((e.Key >= Key.D0 && e.Key <= Key.D9) ||
-            (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void HoraFin_GotFocus(object sender, RoutedEventArgs e)
-        {
-            HoraInicio_GotFocus(sender, e);
-        }
-
-        private void HoraFin_LostFocus(object sender, RoutedEventArgs e)
-        {
-            HoraInicio_LostFocus(sender, e);
-        }
-
-        private void HoraFin_KeyDown(object sender, KeyEventArgs e)
-        {
-            HoraInicio_KeyDown(sender, e);
-        }
-
-        private void MinutosFin_GotFocus(object sender, RoutedEventArgs e)
-        {
-            MinutosInicio_GotFocus(sender, e);
-        }
-
-        private void MinutosFin_LostFocus(object sender, RoutedEventArgs e)
-        {
-            MinutosInicio_LostFocus(sender, e);
-        }
-
-        private void MinutosFin_KeyDown(object sender, KeyEventArgs e)
-        {
-            MinutosInicio_KeyDown(sender, e);
-        }
-
-        private Boolean ValidarHora(int hora1, int hora2, object sender)
-        {          
-            if (hora1 > hora2)
-            {
-                MessageBox.Show("La hora de fin no puede ser menor que la de inicio");
-                TextBox hora = (TextBox)sender;
-                hora.Text = "HH";
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        private Boolean FechasIguales()
-        {
-            if (DateTime.Compare(FechaInicioDatePicker.SelectedDate.Value, FechaFinDatePicker.SelectedDate.Value) == 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
-        }
-
-        private void ValidarHora(Object sender)
-        {
-            if (FechasIguales())
-            {
-                if (int.TryParse(HoraInicio.Text, out int horaini) && int.TryParse(HoraFin.Text, out int horafin))
-                {
-                    if (ValidarHora(horaini, horafin, sender))
-                    {
-                        if (int.TryParse(MinutosInicio.Text, out int minini) && int.TryParse(MinutosFin.Text, out int minfin))
-                        {
-                            if (horaini == horafin)
-                            {
-                                //ValidarMinutos();
-                            }
-                        }
-                    }
-                }
-            }
         }
     }
 }

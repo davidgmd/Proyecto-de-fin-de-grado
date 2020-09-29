@@ -46,7 +46,10 @@
                                Source="\Images\icons\outlook.png"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="botonGoogleCalendar" Background="CornflowerBlue" Height="20" Click="botonGoogleCalendar_Click">
+                <Button x:Name="botonGoogleCalendar" 
+                        Background="CornflowerBlue" 
+                        Height="20" 
+                        Click="botonGoogleCalendar_Click">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Google Calendar"
                                    Foreground="White"
@@ -242,40 +245,13 @@
                        Grid.Row="3"
                        Grid.Column="1"
                        Margin="5 0 5 0">
-                <TextBox Text="HH"
-                         MaxLength="2"
-                         x:Name="HoraInicio"
-                         GotFocus="HoraInicio_GotFocus"
-                         LostFocus="HoraInicio_LostFocus"
-                         KeyDown="HoraInicio_KeyDown"/>
-                <TextBox Text="MM"
-                         MaxLength="2"
-                         x:Name="MinutosInicio"
-                         GotFocus="MinutosInicio_GotFocus"
-                         LostFocus="MinutosInicio_LostFocus"
-                         KeyDown="MinutosInicio_KeyDown"/>
+                <ComboBox x:Name="ComboBoxHoras"/>
+                <ComboBox x:Name="ComboBoxMinutos"/>
             </WrapPanel>
-
-            <TextBlock Text="Hora Fin"
-                       Grid.Row="3"
-                       Grid.Column="2"/>
             <WrapPanel Orientation="Horizontal"
                        Grid.Row="3"
                        Grid.Column="3"
-                       Margin="5 0 5 0">
-                <TextBox Text="HH"
-                         MaxLength="2"
-                         x:Name="HoraFin"
-                         GotFocus="HoraFin_GotFocus"
-                         LostFocus="HoraFin_LostFocus"
-                         KeyDown="HoraFin_KeyDown"/>
-                <TextBox Text="MM"
-                         MaxLength="2"
-                         x:Name="MinutosFin"
-                         GotFocus="MinutosFin_GotFocus"
-                         LostFocus="MinutosFin_LostFocus"
-                         KeyDown="MinutosFin_KeyDown"/>
-            </WrapPanel>
+                       Margin="5 0 5 0"/>
 
             <WrapPanel Orientation="Horizontal"
                        Grid.Row="4"
