@@ -8,12 +8,12 @@
 
   <Identity
     Name="e3ea5400-848b-4600-b956-c076a396f977"
-    Publisher="CN=K_H_S"
+    Publisher="CN=DavidPS"
     Version="1.0.0.0" />
 
   <Properties>
     <DisplayName>WapProjTemplate1</DisplayName>
-    <PublisherDisplayName>K_H_S</PublisherDisplayName>
+    <PublisherDisplayName>DavidPS</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
 
@@ -36,7 +36,7 @@
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
         Square44x44Logo="Images\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png" />
+        <uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png"  Square71x71Logo="Images\SmallTile.png" Square310x310Logo="Images\LargeTile.png"/>
         <uap:SplashScreen Image="Images\SplashScreen.png" />
       </uap:VisualElements>
     </Application>
