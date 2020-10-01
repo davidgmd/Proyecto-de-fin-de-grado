@@ -84,7 +84,7 @@ namespace ElEscribaDelDJ.Classes
                 this.clienteSmtp.SendMail(this.servidor, oMail);
                 return true;
             }
-            catch (Exception ep)
+            catch (Exception)
             {
                 //Error en el mensaje
                 return false;
