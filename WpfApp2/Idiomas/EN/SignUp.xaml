@@ -25,7 +25,7 @@
     <system:String x:Key="ValidRepeatPassword">Passwords Match</system:String>
     <system:String x:Key="ValidEmail">Valid Email</system:String>
     <system:String x:Key="ValidRepeatEmail">Emails Match</system:String>
-    <system:String x:Key="UserSignUpSucessfull">One email have been sended to {0} Check the mail inbox to see your code which you should put in the code textbox, if you don't find it, check the email Spam folder</system:String>
+    <system:String x:Key="UserSignUpSucessfull">One email have been sended to {0} Check the mail inbox to see your code which you should put in the code textbox, if you don't find it, check the email Spam folder Or Check if your email direction is writed right</system:String>
     <system:String x:Key="RightCode">User created sucessfully</system:String>
     
     <!-- Mensajes de Error -->

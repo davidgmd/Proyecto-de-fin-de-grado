@@ -1,5 +1,7 @@
-﻿using EASendMail;
+﻿using ElEscribaDelDJ.Classes.Utilidades;
 using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+using MailKit.Net.Smtp;
+using MimeKit;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,8 +11,7 @@ namespace ElEscribaDelDJ.Classes
 {
     class Email
     {
-
-        private SmtpServer servidor;
+        private SmtpServer servidor = new SmtpServer();
         private SmtpClient  clienteSmtp;
         private string[] configuracionemail;
 
@@ -43,10 +44,10 @@ namespace ElEscribaDelDJ.Classes
 
             //configuramos los datos del correo
             // SMTP server address
-            this.servidor = new SmtpServer(this.ConfiguracionEmail[0]);
+            this.servidor.Direccion = this.ConfiguracionEmail[0];
             // User and password for ESMTP authentication
-            this.servidor.User = this.ConfiguracionEmail[1];
-            this.servidor.Password = this.ConfiguracionEmail[2];
+            this.servidor.Usuario = this.ConfiguracionEmail[1];
+            this.servidor.Clave = this.ConfiguracionEmail[2];
             // If your SMTP server uses 587 port
             // oServer.Port = 587;
 
@@ -55,40 +56,44 @@ namespace ElEscribaDelDJ.Classes
             // oServer.ConnectType = SmtpConnectType.ConnectSSLAuto;
 
             this.clienteSmtp = new SmtpClient();
-            this.servidor.Port = 465;
+            this.servidor.Puerto = 465;
         }
 
         public Boolean SendEmail(string correoDestino, string motivoMensaje, string mensaje)
         {
-            try
+            var message = new MimeMessage();
+
+            message.From.Add(new MailboxAddress("ElEscribaDelDJ", this.ConfiguracionEmail[1]));
+            message.To.Add(new MailboxAddress("Usuario/a", correoDestino));
+            message.Subject = motivoMensaje;
+            message.Body = new TextPart("plain") { Text = mensaje };
+
+            using (var client = new SmtpClient())
             {
-                SmtpMail oMail = new SmtpMail("TryIt");
+                client.Connect(this.servidor.Direccion, this.servidor.Puerto);
 
-                // Set sender email address, please change it to yours
-                oMail.From = this.ConfiguracionEmail[1];
-                // Set recipient email address, please change it to yours
-                oMail.To = correoDestino;
-
-                // Set email subject
-                oMail.Subject = motivoMensaje;
-                // Set email body
-                oMail.TextBody = mensaje;
-
-                // Most mordern SMTP servers require SSL/TLS connection now.
-                // ConnectTryTLS means if server supports SSL/TLS, SSL/TLS will be used automatically.
-                //this.servidor.ConnectType = SmtpConnectType.ConnectTryTLS;
-                this.servidor.ConnectType = SmtpConnectType.ConnectSSLAuto;
-
-                //La funcion de testeo no funciona adecuadamente, esta parte es imposible testear sin servidor
-                //this.clienteSmtp.TestRecipients(null, oMail);
-                this.clienteSmtp.SendMail(this.servidor, oMail);
-                return true;
+                ////Note: only needed if the SMTP server requires authentication
+                client.Authenticate(this.servidor.Usuario, this.servidor.Clave);
+                try
+                {
+                    client.Send(message);
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                    throw;
+                }
+                finally
+                {
+                    client.Disconnect(true);
+                }    
             }
-            catch (Exception ep)
-            {
-                //Error en el mensaje
-                return false;
-            }
+
+            // Most mordern SMTP servers require SSL/TLS connection now.
+            // ConnectTryTLS means if server supports SSL/TLS, SSL/TLS will be used automatically.
+            //this.servidor.ConnectType = SmtpConnectType.ConnectTryTLS;
+            //this.servidor.ConnectType = SmtpConnectType.ConnectSSLAuto;
         }
     }
 }

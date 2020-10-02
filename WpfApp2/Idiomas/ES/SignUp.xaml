@@ -25,7 +25,7 @@
     <system:String x:Key="ValidRepeatPassword">Coinciden las contraseñas</system:String>
     <system:String x:Key="ValidEmail">Correo valido</system:String>
     <system:String x:Key="ValidRepeatEmail">Coinciden los correos</system:String>
-    <system:String x:Key="UserSignUpSucessfull">Se ha enviado un correo a la dirección introducida {0} Revise el correo para ver su código de registro el cual tendra que introducir, si no lo encuentra mire en la carpeta de 'Spam' o 'Correo no deseado'</system:String>
+    <system:String x:Key="UserSignUpSucessfull">Se ha enviado un correo a la dirección introducida {0} Revise el correo para ver su código de registro el cual tendra que introducir, si no lo encuentra mire en la carpeta de 'Spam' o 'Correo no deseado' y si no revise la dirección introducida</system:String>
     <system:String x:Key="RightCode">Usuario creado con exito</system:String>
     
     <!-- Mensajes de Error -->
