@@ -78,7 +78,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Classes\Keys\encriptkeys.txt" />
+    <Resource Include="Classes\Keys\encriptkeys.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="gitcredentials.txt" />
     <Resource Include="creditos.txt" />
     <Resource Include="Images\asistente.jpg">
