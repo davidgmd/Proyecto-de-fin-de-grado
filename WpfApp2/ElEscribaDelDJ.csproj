@@ -71,8 +71,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EASendMail" Version="7.7.0.2" />
-    <PackageReference Include="Google.Apis.Calendar.v3" Version="1.47.0.2005" />
+    <PackageReference Include="Google.Apis.Calendar.v3" Version="1.49.0.2087" />
+    <PackageReference Include="MailKit" Version="2.9.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Octokit" Version="0.48.0" />
   </ItemGroup>
