@@ -20,6 +20,14 @@
     <None Remove="Images\Calendar.jpg" />
     <None Remove="Images\icons8-calendar.png" />
     <None Remove="Images\icons\D&amp;D.png" />
+    <None Remove="Images\icons\d10.png" />
+    <None Remove="Images\icons\d100.png" />
+    <None Remove="Images\icons\d12.png" />
+    <None Remove="Images\icons\d20.png" />
+    <None Remove="Images\icons\d4.png" />
+    <None Remove="Images\icons\d6.png" />
+    <None Remove="Images\icons\d8-2.png" />
+    <None Remove="Images\icons\d8.png" />
     <None Remove="Images\icons\english.png" />
     <None Remove="images\icons\googlecalendar.png" />
     <None Remove="Images\icons\iconoMas.png" />
@@ -86,6 +94,14 @@
     </Resource>
     <Resource Include="Images\Calendar.jpg" />
     <Resource Include="Images\icons\D&amp;D.png" />
+    <Resource Include="Images\icons\d10.png" />
+    <Resource Include="Images\icons\d100.png" />
+    <Resource Include="Images\icons\d12.png" />
+    <Resource Include="Images\icons\d20.png" />
+    <Resource Include="Images\icons\d4.png" />
+    <Resource Include="Images\icons\d6.png" />
+    <Resource Include="Images\icons\d8-2.png" />
+    <Resource Include="Images\icons\d8.png" />
     <Resource Include="Images\icons\english.png" />
     <Resource Include="images\icons\googlecalendar.png" />
     <Resource Include="Images\icons\iconoMas.png" />
@@ -112,7 +128,6 @@
   <ItemGroup>
     <Folder Include="Images\User\" />
     <Folder Include="View\Resources\" />
-    <Folder Include="View\Roller\" />
     <Folder Include="View\Options\" />
   </ItemGroup>
 

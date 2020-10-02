@@ -185,7 +185,8 @@
             <Border Style="{DynamicResource borderMenu}"
                     Grid.Row="1">
                 <Button Style="{DynamicResource botonMenu}"
-                        x:Name="botonTirador">
+                        x:Name="botonTirador"
+                        Click="botonTirador_Click">
                     <StackPanel>
                         <TextBlock Style="{DynamicResource textoGridMenu}" 
                                    Text="{DynamicResource Roll}" >
@@ -203,7 +204,8 @@
                     Grid.Row="1"
                     Grid.Column="1">
                 <Button Style="{DynamicResource botonMenu}"
-                        x:Name="botonOpciones">
+                        x:Name="botonOpciones"
+                        Click="botonOpciones_Click">
                     <StackPanel>
                         <TextBlock Style="{DynamicResource textoGridMenu}" 
                                    Text="{DynamicResource Options}" >

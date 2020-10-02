@@ -16,9 +16,9 @@ namespace ElEscribaDelDJ.View.Roller
     /// <summary>
     /// Lógica de interacción para Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Lanzador : Window
     {
-        public Window1()
+        public Lanzador()
         {
             InitializeComponent();
         }

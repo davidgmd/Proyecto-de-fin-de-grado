@@ -2,6 +2,8 @@
 using ElEscribaDelDJ.Classes.Utilidades;
 using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using ElEscribaDelDJ.View.Calendar;
+using ElEscribaDelDJ.View.Options;
+using ElEscribaDelDJ.View.Roller;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -379,6 +381,18 @@ namespace ElEscribaDelDJ.View
         {
             Calendario ventanacalendario = new Calendario();
             ventanacalendario.Show();
+        }
+
+        private void botonTirador_Click(object sender, RoutedEventArgs e)
+        {
+            Lanzador roll = new Lanzador();
+            roll.Show();
+        }
+
+        private void botonOpciones_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaOpciones opciones = new VentanaOpciones();
+            opciones.Show();
         }
     }
 }
