@@ -2,9 +2,10 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <StartupObject>ElEscribaDelDJ.App</StartupObject>
+    <ApplicationIcon>logodavid1.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,13 +14,17 @@
     <None Remove="credits.txt" />
     <None Remove="emailcredentials.txt" />
     <None Remove="gitcredentials.txt" />
+    <None Remove="icono.ico" />
+    <None Remove="icono2.ico" />
     <None Remove="Images\asistente.jpg" />
     <None Remove="Images\Calendar.jpg" />
     <None Remove="Images\icons8-calendar.png" />
     <None Remove="Images\icons\D&amp;D.png" />
     <None Remove="Images\icons\english.png" />
+    <None Remove="images\icons\googlecalendar.png" />
     <None Remove="Images\icons\iconoMas.png" />
     <None Remove="Images\icons\iconoMenos.png" />
+    <None Remove="images\icons\icons8-actualizar.png" />
     <None Remove="Images\icons\icons8-books.png" />
     <None Remove="Images\icons\icons8-dices.png" />
     <None Remove="Images\icons\icons8-escudopregunta.png" />
@@ -29,11 +34,12 @@
     <None Remove="Images\icons\icons8-salir.png" />
     <None Remove="Images\icons\icons8-salir2.png" />
     <None Remove="Images\icons\icons8-verificado.png" />
+    <None Remove="images\icons\outlook.png" />
     <None Remove="Images\icons\spanish.png" />
     <None Remove="Images\icons\warhammer.jpg" />
     <None Remove="Images\licencia.png" />
     <None Remove="Images\warhammer-removebg.png" />
-    <None Remove="View\MainMenuBackground.png" />
+    <None Remove="logodavid1.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +55,8 @@
   <ItemGroup>
     <Resource Include="credits.txt" />
     <Resource Include="emailcredentials.txt" />
+    <Resource Include="icono.ico" />
+    <Resource Include="icono2.ico" />
     <Resource Include="Idiomas\EN\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Resource>
@@ -63,9 +71,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EASendMail" Version="7.7.0.1" />
+    <PackageReference Include="Google.Apis.Calendar.v3" Version="1.49.0.2087" />
+    <PackageReference Include="MailKit" Version="2.9.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="Octokit" Version="0.47.0" />
+    <PackageReference Include="Octokit" Version="0.48.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -78,8 +87,10 @@
     <Resource Include="Images\Calendar.jpg" />
     <Resource Include="Images\icons\D&amp;D.png" />
     <Resource Include="Images\icons\english.png" />
+    <Resource Include="images\icons\googlecalendar.png" />
     <Resource Include="Images\icons\iconoMas.png" />
     <Resource Include="Images\icons\iconoMenos.png" />
+    <Resource Include="images\icons\icons8-actualizar.png" />
     <Resource Include="Images\icons\icons8-books.png" />
     <Resource Include="Images\icons\icons8-calendar.png" />
     <Resource Include="Images\icons\icons8-dices.png" />
@@ -90,16 +101,16 @@
     <Resource Include="Images\icons\icons8-salir.png" />
     <Resource Include="Images\icons\icons8-salir2.png" />
     <Resource Include="Images\icons\icons8-verificado.png" />
+    <Resource Include="images\icons\outlook.png" />
     <Resource Include="Images\icons\spanish.png" />
     <Resource Include="Images\icons\warhammer.jpg" />
     <Resource Include="Images\licencia.png" />
     <Resource Include="Images\icons\warhammer-removebg.png" />
-    <Resource Include="View\MainMenuBackground.png" />
+    <Resource Include="logodavid1.ico" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Images\User\" />
-    <Folder Include="View\Calendar\" />
     <Folder Include="View\Resources\" />
     <Folder Include="View\Roller\" />
     <Folder Include="View\Options\" />

@@ -149,7 +149,8 @@
             <Border Style="{DynamicResource borderMenu}"                  
                     Grid.Row="0">
                 <Button Style="{DynamicResource botonMenu}"
-                        x:Name="botonCalendario">
+                        x:Name="botonCalendario"
+                        Click="botonCalendario_Click">
                     <StackPanel>
                         <TextBlock Style="{DynamicResource textoGridMenu}" 
                                    Text="{DynamicResource Calendar}" >
