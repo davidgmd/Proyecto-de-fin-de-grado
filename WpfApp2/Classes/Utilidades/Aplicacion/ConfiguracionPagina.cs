@@ -21,6 +21,10 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             string path;
             switch (nombreventana)
             {
+                case ("Options"):
+                    path = RecursosAplicacion.DireccionBase + "\\Idiomas\\" + ConfiguracionAplicacion.Default.Idioma + "\\View\\Options\\" + nombreventana + ".xaml";
+                    break;
+
                 case ("MainMenu"):
                     path = RecursosAplicacion.DireccionBase + "\\Idiomas\\" + ConfiguracionAplicacion.Default.Idioma + "\\View\\" + nombreventana + ".xaml";
                     break;

@@ -55,7 +55,7 @@
                         <TextBlock Style="{DynamicResource InformacionProgramaCategoria}" 
                                    Grid.Row="1"
                                    Text="{DynamicResource Author}"/>
-                        <TextBlock Style="{DynamicResource InformacionPrograma}" Grid.Row="1" Grid.Column="1">David Pinedo Solano</TextBlock>
+                        <TextBlock Style="{DynamicResource InformacionPrograma}" Grid.Row="1" Grid.Column="1">David P.S.</TextBlock>
                         <TextBlock Style="{DynamicResource InformacionProgramaEnlace}" 
                                    Grid.Row="2" 
                                    Grid.ColumnSpan="2"
