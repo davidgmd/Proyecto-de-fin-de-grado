@@ -23,5 +23,25 @@ namespace ElEscribaDelDJ.View.Options
             InitializeComponent();
             ConfiguracionPagina.DefinirIdioma(this, "Options");
         }
+
+        private void ActualizarContenidoLocal_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ActualizarContenidoLocal.Foreground = Brushes.Black;
+        }
+
+        private void ActualizarContenidoLocal_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ActualizarContenidoLocal.Foreground = Brushes.White;
+        }
+
+        private void UploadButton_MouseEnter(object sender, MouseEventArgs e)
+        {
+            UploadButton.Foreground = Brushes.Black;
+        }
+
+        private void UploadButton_MouseLeave(object sender, MouseEventArgs e)
+        {
+            UploadButton.Foreground = Brushes.White;
+        }
     }
 }

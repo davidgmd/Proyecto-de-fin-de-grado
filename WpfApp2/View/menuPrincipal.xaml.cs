@@ -65,7 +65,10 @@ namespace ElEscribaDelDJ.View
         public menuPrincipal()
         {
             InitializeComponent();
-            ConfiguracionPagina.DefinirIdioma(this, "MainMenu");
+            string path = RecursosAplicacion.DireccionBase + "\\Idiomas\\" + ConfiguracionAplicacion.Default.Idioma + "\\View\\" + "MainMenu" + ".xaml";
+            ResourceDictionary idioma = new ResourceDictionary();
+            idioma.Source = new Uri(path, UriKind.Absolute);
+            this.Resources.MergedDictionaries.Add(idioma);
 
             //Tras añadir todas las aventuras, vamos añadiendo todas las campañas y de cada campaña sus aventuras
             foreach (Campana item in RecursosAplicacion.SesionUsuario.ListCampaigns)

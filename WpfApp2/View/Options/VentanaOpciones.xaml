@@ -100,30 +100,37 @@
                 <Button Background="DarkSlateGray"
                         x:Name="ActualizarContenidoLocal"
                         BorderBrush="Transparent" 
-                        BorderThickness="2">
+                        Foreground="White"
+                        BorderThickness="2"
+                        MouseEnter="ActualizarContenidoLocal_MouseEnter"
+                        MouseLeave="ActualizarContenidoLocal_MouseLeave">
                     <StackPanel>
-                        <TextBlock Foreground="White"
-                                   FontWeight="DemiBold"
+                        <TextBlock FontWeight="DemiBold"
                                    FontSize="14"
                                    Text="{DynamicResource UpdateLocalContentTitle}"
                                    Margin="5"/>
-                        <TextBlock Foreground="White" Width="250"
-                                   Text="(Descarga de internet a tu ordenador los datos que hayas subido previamente sobre tus campañas, etc.)"
+                        <TextBlock Width="250"
+                                   Text="{DynamicResource UpdateLocalContentDescription}"
                                    TextWrapping="Wrap"/>
                         <Image Width="40" Source="../../Images/icons/icons8-cloud.png"/>
                     </StackPanel>
                 </Button>
 
-                <Button Background="DarkSlateGray" BorderBrush="Transparent" BorderThickness="2">
+                <Button x:Name="UploadButton" 
+                        Background="DarkSlateGray"
+                        BorderBrush="Transparent" 
+                        BorderThickness="2"
+                        Foreground="White"
+                        MouseEnter="UploadButton_MouseEnter"
+                        MouseLeave="UploadButton_MouseLeave">
                     <StackPanel>
-                        <TextBlock 
-                            Foreground="White"
+                        <TextBlock
                             Margin="5"
                             FontWeight="DemiBold"
                             FontSize="14"
-                            Text="Actualizar datos del servidor"/>
-                        <TextBlock Foreground="White" Width="250"
-                                   Text="(Sube a internet los datos de tus campañas etc, para poder descargarlos en un futuro o para tenerlos en otro ordenador)"
+                            Text="{DynamicResource UploadServerTitle}"/>
+                        <TextBlock Width="250"
+                                   Text="{DynamicResource UploadServerDescription}"
                                    TextWrapping="Wrap"/>
                         <Image Width="40" Source="../../Images/icons/icons8-upload.png"/>
                     </StackPanel>
