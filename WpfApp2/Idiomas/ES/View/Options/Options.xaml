@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ElEscribaDelDJ.Idiomas.ES.View.Options"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    
+    <system:String x:Key="WindowTitle">Ventana Opciones</system:String>
+    <system:String x:Key="About">Acerca de:</system:String>
+    <system:String x:Key="Version">Versión:</system:String>
+    <system:String x:Key="Author">Autor:</system:String>
+    <system:String x:Key="CheckUpdates">Comprobar Actualizaciones</system:String>
+    <system:String x:Key="Donate">Donar</system:String>
+    <system:String x:Key="Spanish">Español</system:String>
+    <system:String x:Key="English">Inglés</system:String>
+
+    <!-- Actualizar datos locales -->
+    <system:String x:Key="UpdateLocalContentTitle">Actualizar contenido local con datos servidor</system:String>
+    <system:String x:Key="UpdateLocalContentDescription">(Descarga de internet a tu ordenador los datos que hayas subido previamente sobre tus campañas, etc.)</system:String>
+
+    <!-- Subir datos a la nube -->
+    <system:String x:Key="UploadServerTitle">Actualizar datos del servidor</system:String>
+    <system:String x:Key="UploadServerDescription">(Sube a internet los datos de tus campañas etc, para poder descargarlos en un futuro o para tenerlos en otro ordenador)</system:String>
+</ResourceDictionary>

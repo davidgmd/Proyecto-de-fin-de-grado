@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ElEscribaDelDJ.Idiomas.EN.View.Options"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <system:String x:Key="WindowTitle">Settings</system:String>
+    <system:String x:Key="About">About:</system:String>
+    <system:String x:Key="Version">Version:</system:String>
+    <system:String x:Key="Author">Created by:</system:String>
+    <system:String x:Key="CheckUpdates">Check Updates</system:String>
+    <system:String x:Key="Donate">Donate</system:String>
+    <system:String x:Key="Spanish">Spanish</system:String>
+    <system:String x:Key="English">English</system:String>
+    
+    <!-- Update local content -->
+    <system:String x:Key="UpdateLocalContentTitle">Update local content with the server data</system:String> 
+    <system:String x:Key="UpdateLocalContentDescription">(Download from the cloud to your computer the data that you have uploaded previously, about your campaigns, scenarios etc.)</system:String>
+
+    <!-- Upload your data to the cloud -->
+    <system:String x:Key="UploadServerTitle">Update server data</system:String>
+    <system:String x:Key="UploadServerDescription">(Upload to the cloud your computer data, about your campaigns, scenarios etc. So you could download them in the future or in another computer)</system:String>
+</ResourceDictionary>

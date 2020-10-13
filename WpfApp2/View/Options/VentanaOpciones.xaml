@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElEscribaDelDJ.View.Options"
         mc:Ignorable="d"
-        Title="VentanaOpciones"
+        Title="{DynamicResource WindowTitle}"
         SizeToContent="WidthAndHeight"
-        Background="WhiteSmoke">
+        Background="WhiteSmoke"
+        WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Resources/View/Options/Options.xaml"/>
                 <ResourceDictionary Source="../../Resources/Login.xaml"/>
-                <ResourceDictionary Source="../../Idiomas/ES/Login.xaml"/>
+                <ResourceDictionary Source="../../Idiomas/ES/View/Options/Options.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -25,14 +27,47 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
-            <TextBlock Text="Acerca de"
+
+            <StackPanel>
+            <TextBlock Text="{DynamicResource About}"
                        Foreground="Blue"
                        FontWeight="Bold"
                        TextDecorations="Underline"
                        HorizontalAlignment="Center"
                        Margin="5"
                        Grid.Row="0"/>
+                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Visibility="Visible">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Style="{DynamicResource InformacionProgramaCategoria}" Text="{DynamicResource Version}"/>
+                        <TextBlock Style="{DynamicResource InformacionPrograma}" Grid.Column="1">0.21A</TextBlock>
+                        <TextBlock Style="{DynamicResource InformacionProgramaCategoria}" 
+                                   Grid.Row="1"
+                                   Text="{DynamicResource Author}"/>
+                        <TextBlock Style="{DynamicResource InformacionPrograma}" Grid.Row="1" Grid.Column="1">David Pinedo Solano</TextBlock>
+                        <TextBlock Style="{DynamicResource InformacionProgramaEnlace}" 
+                                   Grid.Row="2" 
+                                   Grid.ColumnSpan="2"
+                                   Text="{DynamicResource CheckUpdates}"/>
+                        <TextBlock Style="{DynamicResource InformacionProgramaEnlace}" 
+                                   Grid.Row="3" 
+                                   Grid.ColumnSpan="2"
+                                   Text="{DynamicResource Donate}"/>
+                    </Grid>
+                </Border>
+            </StackPanel>
+            
             <StackPanel Style="{DynamicResource SeccionIdiomas}"
                         Margin="5"
                         Grid.Row="1"
@@ -42,7 +77,7 @@
                             >
                     <Image x:Name="Spain"
                            Style="{DynamicResource IdiomaES}"/>
-                    <TextBlock Text="Español"
+                    <TextBlock Text="{DynamicResource Spanish}"
                                Margin="0"
                                Foreground="Black"
                                Style="{DynamicResource tipoBase}"/>
@@ -53,7 +88,7 @@
                             >
                     <Image x:Name="English"
                            Style="{DynamicResource IdiomaEN}"/>
-                    <TextBlock Text="English"
+                    <TextBlock Text="{DynamicResource English}"
                                Margin="0"
                                Foreground="Black"
                            Style="{DynamicResource tipoBase}"/>
@@ -62,24 +97,35 @@
 
             <StackPanel Grid.Row="2"
                         Margin="5">
-                <Button Background="DarkSlateGray">
+                <Button Background="DarkSlateGray"
+                        x:Name="ActualizarContenidoLocal"
+                        BorderBrush="Transparent" 
+                        BorderThickness="2">
                     <StackPanel>
                         <TextBlock Foreground="White"
                                    FontWeight="DemiBold"
-                                   Text="Actualizar contenido local con datos servidor"
+                                   FontSize="14"
+                                   Text="{DynamicResource UpdateLocalContentTitle}"
                                    Margin="5"/>
-                        <Image/>
+                        <TextBlock Foreground="White" Width="250"
+                                   Text="(Descarga de internet a tu ordenador los datos que hayas subido previamente sobre tus campañas, etc.)"
+                                   TextWrapping="Wrap"/>
+                        <Image Width="40" Source="../../Images/icons/icons8-cloud.png"/>
                     </StackPanel>
                 </Button>
 
-                <Button Background="DarkSlateGray">
+                <Button Background="DarkSlateGray" BorderBrush="Transparent" BorderThickness="2">
                     <StackPanel>
                         <TextBlock 
                             Foreground="White"
                             Margin="5"
                             FontWeight="DemiBold"
+                            FontSize="14"
                             Text="Actualizar datos del servidor"/>
-                        <Image/>
+                        <TextBlock Foreground="White" Width="250"
+                                   Text="(Sube a internet los datos de tus campañas etc, para poder descargarlos en un futuro o para tenerlos en otro ordenador)"
+                                   TextWrapping="Wrap"/>
+                        <Image Width="40" Source="../../Images/icons/icons8-upload.png"/>
                     </StackPanel>
                 </Button>
             </StackPanel>

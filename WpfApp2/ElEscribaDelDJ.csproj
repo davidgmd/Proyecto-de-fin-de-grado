@@ -34,6 +34,7 @@
     <None Remove="Images\icons\iconoMenos.png" />
     <None Remove="images\icons\icons8-actualizar.png" />
     <None Remove="Images\icons\icons8-books.png" />
+    <None Remove="images\icons\icons8-cloud.png" />
     <None Remove="Images\icons\icons8-dices.png" />
     <None Remove="Images\icons\icons8-escudopregunta.png" />
     <None Remove="Images\icons\icons8-incorrecto.png" />
@@ -41,6 +42,7 @@
     <None Remove="Images\icons\icons8-options.png" />
     <None Remove="Images\icons\icons8-salir.png" />
     <None Remove="Images\icons\icons8-salir2.png" />
+    <None Remove="images\icons\icons8-upload.png" />
     <None Remove="Images\icons\icons8-verificado.png" />
     <None Remove="images\icons\outlook.png" />
     <None Remove="Images\icons\spanish.png" />
@@ -109,6 +111,7 @@
     <Resource Include="images\icons\icons8-actualizar.png" />
     <Resource Include="Images\icons\icons8-books.png" />
     <Resource Include="Images\icons\icons8-calendar.png" />
+    <Resource Include="images\icons\icons8-cloud.png" />
     <Resource Include="Images\icons\icons8-dices.png" />
     <Resource Include="Images\icons\icons8-escudopregunta.png" />
     <Resource Include="Images\icons\icons8-incorrecto.png" />
@@ -116,6 +119,7 @@
     <Resource Include="Images\icons\icons8-options.png" />
     <Resource Include="Images\icons\icons8-salir.png" />
     <Resource Include="Images\icons\icons8-salir2.png" />
+    <Resource Include="images\icons\icons8-upload.png" />
     <Resource Include="Images\icons\icons8-verificado.png" />
     <Resource Include="images\icons\outlook.png" />
     <Resource Include="Images\icons\spanish.png" />
@@ -126,6 +130,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Idiomas\EN\View\Calendar\" />
+    <Folder Include="Idiomas\ES\View\Calendar\" />
     <Folder Include="Images\User\" />
     <Folder Include="View\Resources\" />
     <Folder Include="View\Options\" />
