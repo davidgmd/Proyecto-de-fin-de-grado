@@ -65,10 +65,7 @@ namespace ElEscribaDelDJ.View
         public menuPrincipal()
         {
             InitializeComponent();
-            string path = RecursosAplicacion.DireccionBase + "\\Idiomas\\" + ConfiguracionAplicacion.Default.Idioma + "\\View\\" + "MainMenu" + ".xaml";
-            ResourceDictionary idioma = new ResourceDictionary();
-            idioma.Source = new Uri(path, UriKind.Absolute);
-            this.Resources.MergedDictionaries.Add(idioma);
+            CambiarIdioma();
 
             //Tras añadir todas las aventuras, vamos añadiendo todas las campañas y de cada campaña sus aventuras
             foreach (Campana item in RecursosAplicacion.SesionUsuario.ListCampaigns)
@@ -79,6 +76,14 @@ namespace ElEscribaDelDJ.View
             DataContext = this;
 
             DefinirEstilos();
+        }
+
+        public void CambiarIdioma()
+        {
+            string path = RecursosAplicacion.DireccionBase + "\\Idiomas\\" + ConfiguracionAplicacion.Default.Idioma + "\\View\\" + "MainMenu" + ".xaml";
+            ResourceDictionary idioma = new ResourceDictionary();
+            idioma.Source = new Uri(path, UriKind.Absolute);
+            this.Resources.MergedDictionaries.Add(idioma);
         }
 
         //permite cambiar los estilos iniciales, los cuales se muestran cuando se indica un campo sin sentido en el combobox campaña
@@ -394,7 +399,7 @@ namespace ElEscribaDelDJ.View
 
         private void botonOpciones_Click(object sender, RoutedEventArgs e)
         {
-            VentanaOpciones opciones = new VentanaOpciones();
+            VentanaOpciones opciones = new VentanaOpciones(this);
             opciones.Show();
         }
     }

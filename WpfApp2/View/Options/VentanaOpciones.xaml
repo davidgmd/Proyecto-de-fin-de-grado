@@ -8,7 +8,8 @@
         Title="{DynamicResource WindowTitle}"
         SizeToContent="WidthAndHeight"
         Background="WhiteSmoke"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Closed="Window_Closed">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -57,9 +58,12 @@
                                    Text="{DynamicResource Author}"/>
                         <TextBlock Style="{DynamicResource InformacionPrograma}" Grid.Row="1" Grid.Column="1">David P.S.</TextBlock>
                         <TextBlock Style="{DynamicResource InformacionProgramaEnlace}" 
+                                   x:Name="CheckUpdates"
                                    Grid.Row="2" 
                                    Grid.ColumnSpan="2"
-                                   Text="{DynamicResource CheckUpdates}"/>
+                                   Text="{DynamicResource CheckUpdates}"
+                                   Cursor="Hand"
+                                   MouseDown="CheckUpdates_MouseDown"/>
                         <TextBlock Style="{DynamicResource InformacionProgramaEnlace}" 
                                    Grid.Row="3" 
                                    Grid.ColumnSpan="2"
@@ -74,7 +78,7 @@
                     x:Name="ElegirIdioma">
                 <StackPanel x:Name="IdiomaES"
                             Style="{DynamicResource CajaIdioma}"
-                            >
+                            MouseDown="IdiomaES_MouseDown">
                     <Image x:Name="Spain"
                            Style="{DynamicResource IdiomaES}"/>
                     <TextBlock Text="{DynamicResource Spanish}"
@@ -85,7 +89,7 @@
 
                 <StackPanel x:Name="IdiomaEN" 
                             Style="{DynamicResource CajaIdioma}"
-                            >
+                            MouseDown="IdiomaEN_MouseDown">
                     <Image x:Name="English"
                            Style="{DynamicResource IdiomaEN}"/>
                     <TextBlock Text="{DynamicResource English}"
@@ -102,10 +106,12 @@
                         BorderBrush="Transparent" 
                         Foreground="White"
                         BorderThickness="2"
+                        Cursor="Hand"
+                        Click="ActualizarContenidoLocal_Click"
                         MouseEnter="ActualizarContenidoLocal_MouseEnter"
                         MouseLeave="ActualizarContenidoLocal_MouseLeave">
                     <StackPanel>
-                        <TextBlock FontWeight="DemiBold"
+                        <TextBlock FontWeight="DemiBold"                              
                                    FontSize="14"
                                    Text="{DynamicResource UpdateLocalContentTitle}"
                                    Margin="5"/>
@@ -121,6 +127,8 @@
                         BorderBrush="Transparent" 
                         BorderThickness="2"
                         Foreground="White"
+                        Cursor="Hand"
+                        Click="UploadButton_Click"
                         MouseEnter="UploadButton_MouseEnter"
                         MouseLeave="UploadButton_MouseLeave">
                     <StackPanel>
