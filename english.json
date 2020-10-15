@@ -1,0 +1,84 @@
+{
+  "Correo": "y?Hi????\t8\f?R??k+U?9g?U??sh\u0015?2^\u0006",
+  "ListCampaigns": [
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "C:\\Users\\K_H_S\\Source\\Repos\\davidgmd\\Proyecto-de-fin-de-grado\\WpfApp2\\\\Images\\User\\\\english\\D&D3.5\\icon\\nice desu ne.jpg",
+      "RecursosCampana": [],
+      "Descripcion": "Base element for D&D3.5 adventuresa",
+      "Nombre": "D&D3.5"
+    },
+    {
+      "ListaEscenarios": [
+        {
+          "ListaAventuras": [
+            {
+              "NumeroAventura": 0,
+              "ListaAventuras": [],
+              "ListaEscenarios": [],
+              "DireccionImagen": null,
+              "RecursosCampana": [],
+              "Descripcion": "Descripción de asd",
+              "Nombre": "asd23"
+            },
+            {
+              "NumeroAventura": 0,
+              "ListaAventuras": [],
+              "ListaEscenarios": [],
+              "DireccionImagen": null,
+              "RecursosCampana": [],
+              "Descripcion": "Ahora es asd1",
+              "Nombre": "asd1"
+            },
+            {
+              "NumeroAventura": 0,
+              "ListaAventuras": [],
+              "ListaEscenarios": [],
+              "DireccionImagen": null,
+              "RecursosCampana": [],
+              "Descripcion": "asd",
+              "Nombre": "asd"
+            }
+          ],
+          "ListaEscenarios": [],
+          "DireccionImagen": null,
+          "RecursosCampana": [],
+          "Descripcion": "esc",
+          "Nombre": "esc"
+        }
+      ],
+      "DireccionImagen": "/Images/icons/warhammer-removebg.png",
+      "RecursosCampana": [],
+      "Descripcion": "Base element for warhammer 2º edition adventures",
+      "Nombre": "Warhammer 2ª edition"
+    },
+    {
+      "ListaEscenarios": [
+        {
+          "ListaAventuras": [
+            {
+              "NumeroAventura": 0,
+              "ListaAventuras": [],
+              "ListaEscenarios": [],
+              "DireccionImagen": null,
+              "RecursosCampana": [],
+              "Descripcion": "adv",
+              "Nombre": "adv"
+            }
+          ],
+          "ListaEscenarios": [],
+          "DireccionImagen": null,
+          "RecursosCampana": [],
+          "Descripcion": "ads",
+          "Nombre": "asd"
+        }
+      ],
+      "DireccionImagen": "C:\\Users\\K_H_S\\Source\\Repos\\davidgmd\\Proyecto-de-fin-de-grado\\WpfApp2\\\\Images\\User\\\\english\\Prueba23\\icon\\comisaria mona.jpg",
+      "RecursosCampana": [],
+      "Descripcion": "Descripcion prueba",
+      "Nombre": "Prueba23"
+    }
+  ],
+  "NombreUsuario": "english",
+  "Clave": "?#M.??\u0002+?=?\r{??!\t??i?D????$\u001e???"
+}
