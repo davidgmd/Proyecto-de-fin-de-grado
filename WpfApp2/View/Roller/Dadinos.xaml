@@ -7,14 +7,9 @@
         xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         x:Class="ElEscribaDelDJ.View.Roller.Dadinos"
         mc:Ignorable="d"
-        Title="Dadinos" Height="450" Width="800">
+        Title="Dadinos" Height="Auto" Width="Auto">
     <DockPanel>
-        <DockPanel DockPanel.Dock="Top">
-            <Button x:Name="ButtonGo" DockPanel.Dock="Right" Click="ButtonGo_Click" Content="Go"/>
-            <TextBox Name = "addressBar"/>
-        </DockPanel>
         <wv2:WebView2 Name = "webView"
-                  Source = "https://www.microsoft.com"
-    />
+                  Source = "https://dados.tr4ck.net#!/"/>
     </DockPanel>
 </Window>
