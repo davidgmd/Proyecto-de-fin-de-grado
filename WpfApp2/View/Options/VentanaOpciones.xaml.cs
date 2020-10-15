@@ -1,4 +1,6 @@
-﻿using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+﻿using ElEscribaDelDJ.Classes;
+using ElEscribaDelDJ.Classes.Utilidades;
+using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -49,7 +51,7 @@ namespace ElEscribaDelDJ.View.Options
 
         private void CheckUpdates_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("No hay actualizaciones pendientes");
+            MessageBox.Show(this.FindResource("CheckUpdates2").ToString());
         }
 
         private void IdiomaES_MouseDown(object sender, MouseButtonEventArgs e)
@@ -78,19 +80,31 @@ namespace ElEscribaDelDJ.View.Options
             System.IO.File.WriteAllLines(RecursosAplicacion.DireccionBase + "Settings.ini", valoresinicialesconf);
         }
 
-        private void ActualizarContenidoLocal_Click(object sender, RoutedEventArgs e)
+        private async void ActualizarContenidoLocal_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show(this.FindResource("UpdateLocalContentMessage").ToString(), this.FindResource("UpdateLocalContentTitle").ToString(), MessageBoxButton.YesNoCancel);
+            switch(result)
+            {
+                case MessageBoxResult.Yes:
+                    var usuario = await GitHub.GithubInstancia.RecuperarDatosUsuario(RecursosAplicacion.SesionUsuario.NombreUsuario);
+                    GestionArchivos.EscribirArchivo("Usuarios", usuario.NombreUsuario, JsonUtils.DeUserAJsonObject(usuario).ToString());
+                    MessageBox.Show(this.FindResource("UpdateLocalContentConfirm").ToString());
+                    Application.Current.Shutdown();
+                    break;
+            }
 
+            
         }
 
-        private void UploadButton_Click(object sender, RoutedEventArgs e)
+        private async void UploadButton_Click(object sender, RoutedEventArgs e)
         {
-
+            await MainWindow.gitHub.ActualizarCredenciales(RecursosAplicacion.SesionUsuario);
+            MessageBox.Show(this.FindResource("UploadServerConfirm").ToString());
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            ventana.CambiarIdioma();
+                ventana.CambiarIdioma();         
         }
     }
 }

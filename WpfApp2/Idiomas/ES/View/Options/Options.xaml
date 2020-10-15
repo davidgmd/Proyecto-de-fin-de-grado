@@ -12,11 +12,17 @@
     <system:String x:Key="Spanish">Español</system:String>
     <system:String x:Key="English">Inglés</system:String>
 
+    <!-- Check updates -->
+    <system:String x:Key="CheckUpdates2">Ya tienes la última versión</system:String>
+
     <!-- Actualizar datos locales -->
     <system:String x:Key="UpdateLocalContentTitle">Actualizar contenido local con datos servidor</system:String>
     <system:String x:Key="UpdateLocalContentDescription">(Descarga de internet a tu ordenador los datos que hayas subido previamente sobre tus campañas, etc.)</system:String>
-
+    <system:String x:Key="UpdateLocalContentMessage">¿Estas seguro? esto eliminara los datos de tu ordenador y los sustituira por los que hayas subido a la red, asegurate de haber subido previamente los datos</system:String>
+    <system:String x:Key="UpdateLocalContentConfirm">Se ha actualizado el contenido local correctamente</system:String>
+    
     <!-- Subir datos a la nube -->
     <system:String x:Key="UploadServerTitle">Actualizar datos del servidor</system:String>
     <system:String x:Key="UploadServerDescription">(Sube a internet los datos de tus campañas etc, para poder descargarlos en un futuro o para tenerlos en otro ordenador)</system:String>
+    <system:String x:Key="UploadServerConfirm">Se subieron los datos al servidor correctamente</system:String>
 </ResourceDictionary>

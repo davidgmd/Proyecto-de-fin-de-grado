@@ -12,11 +12,17 @@
     <system:String x:Key="Spanish">Spanish</system:String>
     <system:String x:Key="English">English</system:String>
     
+    <!-- Check updates -->
+    <system:String x:Key="CheckUpdates2">You already have the last version</system:String>
+    
     <!-- Update local content -->
     <system:String x:Key="UpdateLocalContentTitle">Update local content with the server data</system:String> 
     <system:String x:Key="UpdateLocalContentDescription">(Download from the cloud to your computer the data that you have uploaded previously, about your campaigns, scenarios etc.)</system:String>
-
+    <system:String x:Key="UpdateLocalContentMessage">Are you sure? This will delete your campaigns data and would be replace by the data on the cloud, be sure to upload your data to the cloud before do this.</system:String>
+    <system:String x:Key="UpdateLocalContentConfirm">The local content have been replace sucesfull</system:String>
+    
     <!-- Upload your data to the cloud -->
     <system:String x:Key="UploadServerTitle">Update server data</system:String>
     <system:String x:Key="UploadServerDescription">(Upload to the cloud your computer data, about your campaigns, scenarios etc. So you could download them in the future or in another computer)</system:String>
+    <system:String x:Key="UploadServerConfirm">The data have been uploaded sucesfull</system:String>
 </ResourceDictionary>

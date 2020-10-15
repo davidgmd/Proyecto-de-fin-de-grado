@@ -129,16 +129,16 @@ namespace ElEscribaDelDJ.Classes
             }
         }
 
-        public async void ActualizarCredenciales(string nombre, string clave, Usuario usuario)
+        public async Task ActualizarCredenciales(Usuario usuario)
         {
             try
             {
-                if (await UsuarioExiste(nombre) == true) 
+                if (await UsuarioExiste(usuario.NombreUsuario) == true) 
                 {
-                    var existingFile = await cliente.Repository.Content.GetAllContentsByRef(this.repositorio.Id, "Usuarios/" + nombre + ".json", "master");
+                    var existingFile = await cliente.Repository.Content.GetAllContentsByRef(this.repositorio.Id, "Usuarios/" + usuario.NombreUsuario + ".json", "master");
                     var updateChangeSet = await cliente.Repository.Content.UpdateFile(
                                                 repositorio.Id,
-                                                nombre + ".json",
+                                                "Usuarios/" + usuario.NombreUsuario + ".json",
                                                 new UpdateFileRequest("File update",
                                                                       JsonUtils.DeUserAJsonObject(usuario).ToString(),
                                                                       existingFile.First().Sha,
