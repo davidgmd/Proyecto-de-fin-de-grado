@@ -393,7 +393,7 @@ namespace ElEscribaDelDJ.View
 
         private void botonTirador_Click(object sender, RoutedEventArgs e)
         {
-            Lanzador roll = new Lanzador();
+            Dadinos roll = new Dadinos();
             roll.Show();
         }
 
