@@ -1,14 +1,20 @@
-﻿<Window x:Class="ElEscribaDelDJ.View.Roller.Dadinos"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ElEscribaDelDJ.View.Roller" xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        xmlns:local="clr-namespace:ElEscribaDelDJ.View.Roller"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        x:Class="ElEscribaDelDJ.View.Roller.Dadinos"
         mc:Ignorable="d"
         Title="Dadinos" Height="450" Width="800">
-    <Grid>
-        <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="0,1">
-            <wpf:ChromiumWebBrowser x:Name="Browser" Address="www.google.com"/>
-        </Border>
-    </Grid>
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <Button x:Name="ButtonGo" DockPanel.Dock="Right" Click="ButtonGo_Click" Content="Go"/>
+            <TextBox Name = "addressBar"/>
+        </DockPanel>
+        <wv2:WebView2 Name = "webView"
+                  Source = "https://www.microsoft.com"
+    />
+    </DockPanel>
 </Window>
