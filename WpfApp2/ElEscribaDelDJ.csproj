@@ -16,8 +16,6 @@
     <None Remove="credits.txt" />
     <None Remove="emailcredentials.txt" />
     <None Remove="gitcredentials.txt" />
-    <None Remove="icono.ico" />
-    <None Remove="icono2.ico" />
     <None Remove="Images\asistente.jpg" />
     <None Remove="Images\Calendar.jpg" />
     <None Remove="Images\icons8-calendar.png" />
@@ -84,8 +82,6 @@
     <Content Include="Logs\login.log">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="icono.ico" />
-    <Resource Include="icono2.ico" />
     <Resource Include="Idiomas\EN\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Resource>
