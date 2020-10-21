@@ -39,5 +39,11 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             set { direccionbase = value; }
         }
 
+        public static void EntornoInicialAplicacion()
+        {
+            var direccionejecutable = System.Reflection.Assembly.GetEntryAssembly().Location;
+            Directory.CreateDirectory(direccionejecutable + "//Logs//");
+        }
+
     }
 }
