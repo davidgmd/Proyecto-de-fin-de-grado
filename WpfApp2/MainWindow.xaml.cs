@@ -45,6 +45,8 @@ namespace ElEscribaDelDJ
             //Se crean los componentes
             InitializeComponent();
 
+            RecursosAplicacion.EntornoInicialAplicacion();
+
             //Creamos la sesión de github que se va a mantener por toda la aplicación
             MainWindow.gitHub = GitHub.GithubInstancia;
 
