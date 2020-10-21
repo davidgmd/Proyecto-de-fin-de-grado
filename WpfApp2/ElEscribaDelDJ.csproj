@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <None Remove="Classes\Keys\encriptkeys.txt" />
+    <None Remove="ConfiguracionAplicacion.settings" />
     <None Remove="creditos.txt" />
     <None Remove="credits.txt" />
     <None Remove="emailcredentials.txt" />
@@ -51,6 +52,8 @@
     <None Remove="Images\licencia.png" />
     <None Remove="Images\warhammer-removebg.png" />
     <None Remove="logodavid1.ico" />
+    <None Remove="Logs\login.back" />
+    <None Remove="Logs\login.log" />
   </ItemGroup>
 
   <ItemGroup>
@@ -64,8 +67,23 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="credits.txt" />
-    <Resource Include="emailcredentials.txt" />
+    <Content Include="ConfiguracionAplicacion.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ConfiguracionAplicacion.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="credits.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="emailcredentials.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Logs\login.back">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Logs\login.log">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="icono.ico" />
     <Resource Include="icono2.ico" />
     <Resource Include="Idiomas\EN\Login.xaml">
@@ -90,9 +108,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Classes\Keys\encriptkeys.txt" />
-    <Resource Include="gitcredentials.txt" />
-    <Resource Include="creditos.txt" />
+    <Content Include="Classes\Keys\encriptkeys.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gitcredentials.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="creditos.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Images\asistente.jpg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -140,11 +164,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="ConfiguracionAplicacion.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ConfiguracionAplicacion.settings</DependentUpon>
-    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -160,13 +179,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="ConfiguracionAplicacion.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>ConfiguracionAplicacion.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
