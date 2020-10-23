@@ -30,7 +30,7 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             UserCredential credential;
 
             using (var stream =
-                new FileStream(RecursosAplicacion.DireccionBase + "\\googlecalendarcredentials.json", FileMode.Open, FileAccess.Read))
+                new FileStream(RecursosAplicacion.Directorios["credenciales"] + "googlecalendarcredentials.json", FileMode.Open, FileAccess.Read))
             {
                 // The file token.json stores the user's access and refresh tokens, and is created
                 // automatically when the authorization flow completes for the first time.

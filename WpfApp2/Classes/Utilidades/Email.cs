@@ -39,7 +39,7 @@ namespace ElEscribaDelDJ.Classes
         {
             //cambiar a .user al finalizar las pruebas, para que no se suba al repositorio
             //Se leen todos los datos linea por linea del fichero
-            var path = RecursosAplicacion.DireccionBase + "emailcredentials.txt";
+            var path = RecursosAplicacion.Directorios["credenciales"] + "emailcredentials.txt";
             this.ConfiguracionEmail = File.ReadAllLines(path, Encoding.UTF8);
 
             //configuramos los datos del correo

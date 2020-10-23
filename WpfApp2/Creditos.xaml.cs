@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+using System;
 using System.IO;
 using System.Windows;
 using Path = System.IO.Path;
@@ -19,8 +20,7 @@ namespace ElEscribaDelDJ
         public string FileText { get; set; }
         public void ReadFile(string archivocreditos)
         {
-            var localDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\"));
-            string path = localDirectory + archivocreditos;
+            string path = RecursosAplicacion.DireccionBase + "\\" + archivocreditos;
             FileText = File.ReadAllText(path);
             this.creditos.Text = FileText;
         }

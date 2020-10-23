@@ -10,7 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Classes\Keys\encriptkeys.txt" />
     <None Remove="ConfiguracionAplicacion.settings" />
     <None Remove="creditos.txt" />
     <None Remove="credits.txt" />
@@ -79,10 +78,10 @@
     <Content Include="credits.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="emailcredentials.txt">
+    <Content Include="Utils\Credentials\emailcredentials.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="googlecalendarcredentials.json">
+    <Content Include="Utils\Credentials\googlecalendarcredentials.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Idiomas\EN\View\MainMenu.xaml">
@@ -134,10 +133,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Classes\Keys\encriptkeys.txt">
+    <Content Include="Utils\Keys\encriptkeys.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="gitcredentials.txt">
+    <Content Include="Utils\Credentials\gitcredentials.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="creditos.txt">

@@ -15,7 +15,6 @@ namespace ElEscribaDelDJ.Classes
     public sealed class GitHub
     {
         private GitHubClient cliente;
-        private Credentials credenciales;
         private Repository repositorio;
         private User usuario;
         private int fileexist;
@@ -46,12 +45,6 @@ namespace ElEscribaDelDJ.Classes
             set { repositorio = value; }
         }
 
-        public Credentials Credenciales
-        {
-            get { return credenciales; }
-            set { credenciales = value; }
-        }
-
         public GitHubClient Cliente
         {
             get { return cliente; }
@@ -61,16 +54,17 @@ namespace ElEscribaDelDJ.Classes
 
         private GitHub()
         {
+            //Crea un cliente con el nombre del proceso actual
             this.cliente = new GitHubClient(new ProductHeaderValue(System.Diagnostics.Process.GetCurrentProcess().ProcessName));
 
             //Se leen las claves de desencriptación del fichero encriptkeys
             AESencription encriptar = new AESencription();
             //cambiar a .user al finalizar las pruebas
-            string path = RecursosAplicacion.DireccionBase + "\\Classes\\Keys\\encriptkeys.txt";
+            string path = RecursosAplicacion.Directorios["clave_encriptado"] + "encriptkeys.txt";
             encriptar = JsonConvert.DeserializeObject<AESencription>(File.ReadAllText(path));
 
            //cambiar a .user al finalizar las pruebas
-            path = RecursosAplicacion.DireccionBase + "\\gitcredentials.txt";
+            path = RecursosAplicacion.Directorios["credenciales"] + "gitcredentials.txt";
 
             //Encriptar las credenciales
             //var plaintText = System.IO.File.ReadAllText(path);
@@ -80,10 +74,9 @@ namespace ElEscribaDelDJ.Classes
             //Desencriptar las credenciales
             var bytes2 = System.IO.File.ReadAllBytes(path);
 
-            encriptar.Decrypt(bytes2, encriptar.AesKey, encriptar.AesIv);
+            //encriptar.Decrypt(bytes2, encriptar.AesKey, encriptar.AesIv);
 
-            this.credenciales = new Credentials(encriptar.Decrypt(bytes2, encriptar.AesKey, encriptar.AesIv));
-            this.cliente.Credentials = credenciales;
+            this.cliente.Credentials = new Credentials(encriptar.Decrypt(bytes2, encriptar.AesKey, encriptar.AesIv));
             this.repositorio = cliente.Repository.Get("davidgmd", "Proyecto-de-fin-de-grado").Result;
         }
 

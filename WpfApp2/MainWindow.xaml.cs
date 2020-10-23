@@ -45,6 +45,8 @@ namespace ElEscribaDelDJ
             //Se crean los componentes
             InitializeComponent();
 
+            //se crea si no existiera el entorno inicial de la aplicación y se registran los path que se usaran posteriormente
+            if (RecursosAplicacion.Directorios.Count == 0)
             RecursosAplicacion.EntornoInicialAplicacion();
 
             //Creamos la sesión de github que se va a mantener por toda la aplicación
