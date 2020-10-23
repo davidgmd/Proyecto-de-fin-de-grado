@@ -70,7 +70,7 @@ namespace ElEscribaDelDJ.Classes
             encriptar = JsonConvert.DeserializeObject<AESencription>(File.ReadAllText(path));
 
            //cambiar a .user al finalizar las pruebas
-            path = RecursosAplicacion.DireccionBase + "gitcredentials.txt";
+            path = RecursosAplicacion.DireccionBase + "\\gitcredentials.txt";
 
             //Encriptar las credenciales
             //var plaintText = System.IO.File.ReadAllText(path);

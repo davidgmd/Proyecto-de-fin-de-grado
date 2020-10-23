@@ -182,7 +182,7 @@ namespace ElEscribaDelDJ.View
             }
 
             //una vez definida la dirección, indica la carpeta donde se guardara si no se encuentra, el nombre del fichero y genera el path
-            string carpeta = RecursosAplicacion.ImagenUsuario + $"\\{RecursosAplicacion.SesionUsuario.NombreUsuario}\\{nombrecampana}\\icon\\";
+            string carpeta = RecursosAplicacion.Directorios["imagenes_usuario"] + $"\\{RecursosAplicacion.SesionUsuario.NombreUsuario}\\{nombrecampana}\\icon\\";
             string fichero = Path.GetFileName(direccioncompletaimagen);
             string direccionueva = carpeta + fichero;
 

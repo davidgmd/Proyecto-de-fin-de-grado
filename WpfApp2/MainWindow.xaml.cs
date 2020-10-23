@@ -92,7 +92,7 @@ namespace ElEscribaDelDJ
         // Lee la configuración inicial
         private void ConfiguracionInicial()
         {
-            this.valoresinicialesconf = System.IO.File.ReadAllLines(RecursosAplicacion.DireccionBase + "Settings.ini");
+            this.valoresinicialesconf = System.IO.File.ReadAllLines(RecursosAplicacion.DireccionBase + "\\Settings.ini");
             int i = 0;
             foreach (string cadenainicial in this.valoresinicialesconf)
             {
@@ -115,7 +115,7 @@ namespace ElEscribaDelDJ
             this.valoresinicialesconf[0] = "Language:" + ConfiguracionAplicacion.Default.Idioma;
             this.valoresinicialesconf[1] = "RememberUser:" + ConfiguracionAplicacion.Default.RecordarUsuario.ToString();
             this.valoresinicialesconf[2] = "RememberLogin:" + ConfiguracionAplicacion.Default.RecordarLogin.ToString();
-            System.IO.File.WriteAllLines(RecursosAplicacion.DireccionBase + "Settings.ini", this.valoresinicialesconf);
+            System.IO.File.WriteAllLines(RecursosAplicacion.DireccionBase + "\\Settings.ini", this.valoresinicialesconf);
         }
 
         // Boton salir
@@ -248,7 +248,7 @@ namespace ElEscribaDelDJ
                 {
                     //recuperamos los datos del usuario
                     usuario = await GitHub.GithubInstancia.RecuperarDatosUsuario(usuario.NombreUsuario);
-                    if (!File.Exists(RecursosAplicacion.Usuarios + usuario.NombreUsuario + ".json"))
+                    if (!File.Exists(RecursosAplicacion.Directorios["usuario"] + usuario.NombreUsuario + ".json"))
                         GestionArchivos.EscribirArchivo("Usuarios", usuario.NombreUsuario, JsonUtils.DeUserAJsonObject(usuario).ToString());
                     RecursosAplicacion.SesionUsuario = usuario;
                 }

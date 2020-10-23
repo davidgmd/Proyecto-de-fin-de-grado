@@ -22,7 +22,7 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
 
         public static void EscribirUsuarioLocal()
         {
-            File.WriteAllText(RecursosAplicacion.Usuarios + RecursosAplicacion.SesionUsuario.NombreUsuario + ".json" ,JsonUtils.DeUserAJsonObject(RecursosAplicacion.SesionUsuario).ToString());
+            File.WriteAllText(RecursosAplicacion.Directorios["usuario"] + RecursosAplicacion.SesionUsuario.NombreUsuario + ".json" ,JsonUtils.DeUserAJsonObject(RecursosAplicacion.SesionUsuario).ToString());
         }
     }
 }

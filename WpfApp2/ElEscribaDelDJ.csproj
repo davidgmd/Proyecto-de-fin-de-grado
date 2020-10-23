@@ -16,6 +16,7 @@
     <None Remove="credits.txt" />
     <None Remove="emailcredentials.txt" />
     <None Remove="gitcredentials.txt" />
+    <None Remove="googlecalendarcredentials.json" />
     <None Remove="Images\asistente.jpg" />
     <None Remove="Images\Calendar.jpg" />
     <None Remove="Images\icons8-calendar.png" />
@@ -52,13 +53,18 @@
     <None Remove="logodavid1.ico" />
     <None Remove="Logs\login.back" />
     <None Remove="Logs\login.log" />
+    <None Remove="Settings.ini" />
   </ItemGroup>
 
   <ItemGroup>
     <Page Remove="Idiomas\EN\Login.xaml" />
     <Page Remove="Idiomas\EN\SignUp.xaml" />
+    <Page Remove="Idiomas\EN\View\MainMenu.xaml" />
+    <Page Remove="Idiomas\EN\View\Options\Options.xaml" />
     <Page Remove="Idiomas\ES\Login.xaml" />
     <Page Remove="Idiomas\ES\SignUp.xaml" />
+    <Page Remove="Idiomas\ES\View\MainMenu.xaml" />
+    <Page Remove="Idiomas\ES\View\Options\Options.xaml" />
     <Page Remove="Idiomas\IdiomasLogin.xaml" />
     <Page Remove="Idiomas\LoginEN.xaml" />
     <Page Remove="Idiomas\LoginES.xaml" />
@@ -76,23 +82,47 @@
     <Content Include="emailcredentials.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="googlecalendarcredentials.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\EN\View\MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\EN\View\Options\Options.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\ES\View\MainMenu.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\ES\View\Options\Options.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Logs\login.back">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Logs\login.log">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Idiomas\EN\Login.xaml">
+    <Content Include="Settings.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\EN\Login.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Resource>
-    <Resource Include="Idiomas\EN\SignUp.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\EN\SignUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Resource>
-    <Resource Include="Idiomas\ES\SignUp.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\ES\SignUp.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Resource>
-    <Resource Include="Idiomas\ES\Login.xaml" />
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\ES\Login.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -178,9 +208,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Idiomas\EN\View\MainMenu.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="Resources\View\AdventurePopUp.xaml">
       <SubType>Designer</SubType>
     </Page>

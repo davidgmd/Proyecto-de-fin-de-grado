@@ -31,7 +31,7 @@ namespace ElEscribaDelDJ.Classes.Utilidades
 
         public string MoverImagen(string nombrecampana, string direccionarchivo)
         {
-            string carpeta = RecursosAplicacion.ImagenUsuario + $"\\{RecursosAplicacion.SesionUsuario.NombreUsuario}\\{nombrecampana}\\icon\\";
+            string carpeta = RecursosAplicacion.Directorios["imagenes_usuario"] + $"\\{RecursosAplicacion.SesionUsuario.NombreUsuario}\\{nombrecampana}\\icon\\";
             string fichero = Path.GetFileName(direccionarchivo);
             string direccionueva = carpeta + fichero;
 

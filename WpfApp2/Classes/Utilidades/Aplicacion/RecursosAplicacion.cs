@@ -13,7 +13,7 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
 System.Reflection.Assembly.GetExecutingAssembly().Location);
         private static Usuario _sesionusuario;
         private static JObject _userjobject;
-        private static SortedList<string, string> _directoriosaplicacion = new SortedList<string, string>;
+        private static SortedList<string, string> _directoriosaplicacion = new SortedList<string, string>();
 
         public static SortedList<string, string> Directorios
         {
@@ -55,7 +55,7 @@ System.Reflection.Assembly.GetExecutingAssembly().Location);
             Directorios.Add("imagenes_defecto", DireccionBase + "\\Imagenes\\Default\\");
             Directorios.Add("usuario", DireccionBase + "\\Usuarios\\");
             Directorios.Add("imagenes_usuario", DireccionBase + "\\Usuarios\\Imagenes\\");
-            Directorios.Add("imagenes_usuario", DireccionBase + "\\Usuarios\\Archivos\\");
+            Directorios.Add("archivos_usuario", DireccionBase + "\\Usuarios\\Archivos\\");
             Directorios.Add("recursos", DireccionBase + "\\Resources\\");
 
             //Nos aseguramos de que estan todas las carpetas importantes creadas, creandolas si faltan.

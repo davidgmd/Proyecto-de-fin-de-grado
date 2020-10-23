@@ -45,7 +45,7 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
         public static void GenerarLog(string titulolog, string[] camposlog, string nombrearchivo, string resultado)
         {
             //creamos un archivo temporal que luego sera eliminado, esto es simplemente para poder anidar al inicio
-            using (StreamWriter sw = File.AppendText(RecursosAplicacion.DireccionBase + "Logs\\" + nombrearchivo + ".temp"))
+            using (StreamWriter sw = File.AppendText(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".temp"))
             {
                 //instruccion muy útil pero actualmente no usada
                 //Employee e = (Employee)line; // unbox once
@@ -67,14 +67,14 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
 
                 //Para que en vez de estar añadido al final, lo este al principio y tengamos ordenados los logins
                 //Del más reciente al más antiguo, anidamos las lineas originales tras escribir las nuevas
-                foreach (string linea in System.IO.File.ReadAllLines(RecursosAplicacion.DireccionBase + "Logs\\" + nombrearchivo + ".log"))
+                foreach (string linea in System.IO.File.ReadAllLines(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log"))
                 {
                     sw.WriteLine(linea);
                 }               
             }
 
             //Sustituimos el login original por el nuevo y se crea una copia de seguridad por si ocurriera algún error que sera un .back
-            System.IO.File.Replace(RecursosAplicacion.DireccionBase + "Logs\\" + nombrearchivo + ".temp", RecursosAplicacion.DireccionBase + "Logs\\" + nombrearchivo + ".log", RecursosAplicacion.DireccionBase + "Logs\\" + nombrearchivo + ".back");
+            System.IO.File.Replace(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".temp", RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log", RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".back");
         }
 
         public static string[] LeerLog(string nombrearchivo, string exito, string fallo)
@@ -82,18 +82,18 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             List<String> campos = new List<String>();
             string linea;
 
-            if (!File.Exists(RecursosAplicacion.DireccionBase + "Logs\\" + nombrearchivo + ".log"))
+            if (!File.Exists(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log"))
             {
-                File.Create(RecursosAplicacion.DireccionBase + "Logs\\" + nombrearchivo + ".log");
+                File.Create(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log");
                 return null;
             }
 
             
-            if (File.ReadAllText(RecursosAplicacion.DireccionBase + "Logs\\" + nombrearchivo + ".log").Trim().Equals(""))
+            if (File.ReadAllText(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log").Trim().Equals(""))
             {
                 return null;
             }
-            using (StreamReader sr = new StreamReader(RecursosAplicacion.DireccionBase + "Logs\\" + nombrearchivo + ".log"))
+            using (StreamReader sr = new StreamReader(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log"))
             {
                 while ((linea = sr.ReadLine()) != null)
                 { 
