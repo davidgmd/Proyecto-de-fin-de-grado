@@ -60,10 +60,12 @@
     <Page Remove="Idiomas\EN\SignUp.xaml" />
     <Page Remove="Idiomas\EN\View\MainMenu.xaml" />
     <Page Remove="Idiomas\EN\View\Options\Options.xaml" />
+    <Page Remove="Idiomas\EN\View\Roller\VentanaModal.xaml" />
     <Page Remove="Idiomas\ES\Login.xaml" />
     <Page Remove="Idiomas\ES\SignUp.xaml" />
     <Page Remove="Idiomas\ES\View\MainMenu.xaml" />
     <Page Remove="Idiomas\ES\View\Options\Options.xaml" />
+    <Page Remove="Idiomas\ES\View\Roller\VentanaModal.xaml" />
     <Page Remove="Idiomas\IdiomasLogin.xaml" />
     <Page Remove="Idiomas\LoginEN.xaml" />
     <Page Remove="Idiomas\LoginES.xaml" />
@@ -76,6 +78,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="credits.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\EN\View\Roller\VentanaModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\ES\View\Roller\VentanaModal.xaml">
+      <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Utils\Credentials\emailcredentials.txt">

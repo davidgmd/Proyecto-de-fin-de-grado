@@ -393,8 +393,8 @@ namespace ElEscribaDelDJ.View
 
         private void botonTirador_Click(object sender, RoutedEventArgs e)
         {
-            Dadinos roll = new Dadinos();
-            roll.Show();
+            VentanaModal ventana = new VentanaModal();
+            ventana.Show();
         }
 
         private void botonOpciones_Click(object sender, RoutedEventArgs e)

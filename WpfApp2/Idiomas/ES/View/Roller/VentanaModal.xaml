@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ElEscribaDelDJ.Idiomas.ES.View.Roller" 
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="WindowTitle">Advertencia</system:String>
+    <system:String x:Key="WindowText">El navegador interno de la aplicación, requiere poseer el navegador Edge versión cannary 
+                       (versión todavia en testeo bastante actualizada), 
+                       en su lugar puede abrirse dadiños en su navegador</system:String>
+    <system:String x:Key="BrowserButton">Abrir en su navegador</system:String>
+    <system:String x:Key="AppBrowserButton">Abrir en el navegador de la aplicación</system:String>
+
+</ResourceDictionary>
