@@ -158,7 +158,8 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
             <WrapPanel Orientation="Horizontal" Margin="5 0 0 0">
-                <Button>
+                <Button x:Name="BotonEditarEvento" 
+                        Click="BotonEditarEvento_Click">
                     <TextBlock Text="Editar"
                                Margin="5 0 5 0"/>
                 </Button>
@@ -189,7 +190,8 @@
                        Grid.Row="0"/>
             <TextBox Grid.Row="0" 
                      Grid.Column="1"
-                     Margin="5 0 5 0"/>
+                     Margin="5 0 5 0"
+                     x:Name="TextoOrganizador"/>
 
             <TextBlock Grid.Row="1" 
                        Text="Asunto:"/>
@@ -198,7 +200,8 @@
                      TextWrapping="Wrap"
                      MaxWidth="220"
                      Height="Auto"
-                     Margin="5 0 5 0"/>
+                     Margin="5 0 5 0"
+                     x:Name="TextoAsunto"/>
 
             <TextBlock Grid.Row="2"
                        Text="Fecha inicio:"/>
@@ -216,18 +219,19 @@
                        Margin="0 0 5 0"/>
             <TextBox Grid.Row="0" 
                      Grid.Column="3"
-                     Margin="5 0 5 0"/>
+                     Margin="5 0 5 0"
+                     x:Name="TextoEmail"/>
 
             <TextBlock Grid.Row="1"
                        Grid.Column="2"
                        Text="Estado:"/>
             <ComboBox Grid.Row="1"
                       Grid.Column="3"
-                      Margin="5 0 5 0">
+                      Margin="5 0 5 0"
+                      x:Name="ComboBoxEstado">
                 <ComboBoxItem>Por confirmar</ComboBoxItem>
                 <ComboBoxItem>Confirmado</ComboBoxItem>
                 <ComboBoxItem>Cancelado</ComboBoxItem>
-                <ComboBoxItem>Finalizado</ComboBoxItem>
             </ComboBox>
 
             <TextBlock Grid.Row="2"

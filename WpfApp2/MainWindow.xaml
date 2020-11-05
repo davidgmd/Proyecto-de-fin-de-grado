@@ -17,7 +17,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Login.xaml"/>
-                <ResourceDictionary Source="Idiomas/ES/Login.xaml"/>
+                <ResourceDictionary Source="Idiomas/ES/MainWindow.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
 

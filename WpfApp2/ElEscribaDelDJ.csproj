@@ -56,15 +56,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Remove="Idiomas\EN\Login.xaml" />
-    <Page Remove="Idiomas\EN\SignUp.xaml" />
+    <Page Remove="Idiomas\EN\MainWindow.xaml" />
+    <Page Remove="Idiomas\EN\Registrarse.xaml" />
+    <Page Remove="Idiomas\EN\View\AnadirAventura.xaml" />
+    <Page Remove="Idiomas\EN\View\AnadirCampana.xaml" />
+    <Page Remove="Idiomas\EN\View\AnadirEscenario.xaml" />
     <Page Remove="Idiomas\EN\View\MainMenu.xaml" />
-    <Page Remove="Idiomas\EN\View\Options\Options.xaml" />
+    <Page Remove="Idiomas\EN\View\Options\VentanaOpciones.xaml" />
     <Page Remove="Idiomas\EN\View\Roller\VentanaModal.xaml" />
-    <Page Remove="Idiomas\ES\Login.xaml" />
-    <Page Remove="Idiomas\ES\SignUp.xaml" />
+    <Page Remove="Idiomas\ES\MainWindow.xaml" />
+    <Page Remove="Idiomas\ES\Registrarse.xaml" />
+    <Page Remove="Idiomas\ES\View\AnadirAventura.xaml" />
+    <Page Remove="Idiomas\ES\View\AnadirCampana.xaml" />
+    <Page Remove="Idiomas\ES\View\AnadirEscenario.xaml" />
     <Page Remove="Idiomas\ES\View\MainMenu.xaml" />
-    <Page Remove="Idiomas\ES\View\Options\Options.xaml" />
+    <Page Remove="Idiomas\ES\View\Options\VentanaOpciones.xaml" />
     <Page Remove="Idiomas\ES\View\Roller\VentanaModal.xaml" />
     <Page Remove="Idiomas\IdiomasLogin.xaml" />
     <Page Remove="Idiomas\LoginEN.xaml" />
@@ -80,8 +86,32 @@
     <Content Include="credits.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Idiomas\EN\View\AnadirAventura.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\EN\View\AnadirCampana.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\EN\View\AnadirEscenario.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Idiomas\EN\View\Roller\VentanaModal.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\ES\View\AnadirAventura.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\ES\View\AnadirCampana.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\ES\View\AnadirEscenario.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -99,13 +129,13 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Idiomas\EN\View\Options\Options.xaml">
+    <Content Include="Idiomas\EN\View\Options\VentanaOpciones.xaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Idiomas\ES\View\MainMenu.xaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Idiomas\ES\View\Options\Options.xaml">
+    <Content Include="Idiomas\ES\View\Options\VentanaOpciones.xaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Logs\login.back">
@@ -117,20 +147,20 @@
     <Content Include="Settings.ini">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Idiomas\EN\Login.xaml">
+    <Content Include="Idiomas\EN\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Idiomas\EN\SignUp.xaml">
+    <Content Include="Idiomas\EN\Registrarse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Idiomas\ES\SignUp.xaml">
+    <Content Include="Idiomas\ES\Registrarse.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Idiomas\ES\Login.xaml">
+    <Content Include="Idiomas\ES\MainWindow.xaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

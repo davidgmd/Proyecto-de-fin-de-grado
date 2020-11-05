@@ -61,7 +61,7 @@ namespace ElEscribaDelDJ
                 this.LoginInicial();
 
             //Indicamos que va a haber un diccionario de recursos y su dirección        
-            ConfiguracionPagina.DefinirIdioma(this, "Login");
+            ConfiguracionPagina.DefinirIdioma(this, "Raiz");
         }
 
         //Se ejecuta si hay que recordarusuario o login, marca el que sea, y lee el login buscando el ultimo

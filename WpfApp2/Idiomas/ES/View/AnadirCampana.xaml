@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ElEscribaDelDJ.Idiomas.ES.View" 
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Campaña -->
+    <system:String x:Key="CampanaTitle">Añadir o Modificar Campaña</system:String>
+    <system:String x:Key="CampaignName">Nombre Campaña</system:String>
+    <system:String x:Key="CampaignDescription">Descripción Campaña</system:String>
+    <system:String x:Key="CampaignImage">Imagen Campaña</system:String>
+    <system:String x:Key="CampaignSelectImage">Seleccionar Imagen</system:String>
+
+</ResourceDictionary>

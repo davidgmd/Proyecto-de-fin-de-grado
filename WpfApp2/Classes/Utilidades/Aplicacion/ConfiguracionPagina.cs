@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 
@@ -15,26 +16,29 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             set { idioma = value; }
         }
 
-        public static void DefinirIdioma(Window ventana, string nombreventana)
+        public static void DefinirIdioma(Window ventana, string origen)
         {
-            //Según el idioma cargamos uno u otro
-            string path;
-            switch (nombreventana)
+            //Según el idioma cargamos uno u otro           
+            string path = RecursosAplicacion.Directorios["idiomas"] + ConfiguracionAplicacion.Default.Idioma;
+            var methodInfo = new StackTrace().GetFrame(1).GetMethod();
+            var nombreventana = methodInfo.ReflectedType.Name;
+
+            switch (origen)
             {
                 case ("VentanaModal"):
-                    path = RecursosAplicacion.DireccionBase + "\\Idiomas\\" + ConfiguracionAplicacion.Default.Idioma + "\\View\\Roller\\" + nombreventana + ".xaml";
+                    path = path + "\\View\\Roller\\" + nombreventana + ".xaml";
                     break;
 
                 case ("Options"):
-                    path = RecursosAplicacion.DireccionBase + "\\Idiomas\\" + ConfiguracionAplicacion.Default.Idioma + "\\View\\Options\\" + nombreventana + ".xaml";
+                    path = path + "\\View\\Options\\" + nombreventana + ".xaml";
                     break;
 
                 case ("MainMenu"):
-                    path = RecursosAplicacion.DireccionBase + "\\Idiomas\\" + ConfiguracionAplicacion.Default.Idioma + "\\View\\" + nombreventana + ".xaml";
+                    path = path + "\\View\\" + nombreventana + ".xaml";
                     break;
 
                 default:
-                    path = RecursosAplicacion.DireccionBase + "\\Idiomas\\" + ConfiguracionAplicacion.Default.Idioma + "\\" + nombreventana + ".xaml";
+                    path = path + "\\" + nombreventana + ".xaml";
                     break;
             }
             

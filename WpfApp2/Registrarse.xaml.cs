@@ -25,7 +25,7 @@ namespace ElEscribaDelDJ
         public Registrarse()
         {
             InitializeComponent();
-            ConfiguracionPagina.DefinirIdioma(this, "SignUp");
+            ConfiguracionPagina.DefinirIdioma(this, "Raiz");
         }
 
         private async void User_LostFocus(object sender, RoutedEventArgs e)

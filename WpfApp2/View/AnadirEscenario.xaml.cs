@@ -40,6 +40,8 @@ namespace ElEscribaDelDJ.View
         {
             InitializeComponent();
 
+            ConfiguracionPagina.DefinirIdioma(this, "MainMenu");
+
             this.Escenario = escenario;
             this.Campana = campana;
             this.observable = observable1;

@@ -265,5 +265,29 @@ namespace ElEscribaDelDJ.View.Calendar
             }
             
         }
+
+        private void BotonEditarEvento_Click(object sender, RoutedEventArgs e)
+        {
+            var item = DatosEvento.SelectedItem;
+            Event evento = (Event)item;
+            TextoOrganizador.Text = evento.Organizer.DisplayName;
+            TextoEmail.Text = evento.Organizer.Email;
+            TextoAsunto.Text = evento.Description;
+            switch (evento.Status)
+            {
+                case "tentative":
+                    ComboBoxEstado.SelectedIndex = 0;
+                    break;
+                case "confirmed":
+                    ComboBoxEstado.SelectedIndex = 1;
+                    break;
+                case "cancelled":
+                    ComboBoxEstado.SelectedIndex = 2;
+                    break;
+                default:
+                    ComboBoxEstado.SelectedIndex = 0;
+                    break;
+            }
+        }
     }
 }

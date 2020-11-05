@@ -37,18 +37,5 @@
     <system:String x:Key="PopUpAddButton">Añadir</system:String>
     <system:String x:Key="PopUpModifyButton">Modificar</system:String>
     <system:String x:Key="PopUpCancelButton">Cancelar</system:String>
-    <!-- Campaña -->
-    <system:String x:Key="CampanaTitle">Añadir o Modificar Campaña</system:String>
-    <system:String x:Key="CampaignName">Nombre Campaña</system:String>
-    <system:String x:Key="CampaignDescription">Descripción Campaña</system:String>
-    <system:String x:Key="CampaignImage">Imagen Campaña</system:String>
-    <system:String x:Key="CampaignSelectImage">Seleccionar Imagen</system:String>
-    <!-- Escenario -->
-    <system:String x:Key="ScenaryTitle">Añadir o modificar Escenario</system:String>
-    <system:String x:Key="ScenaryName">Nombre de escenario</system:String>
-    <system:String x:Key="ScenaryDescription">Descripción de escenario</system:String>
-    <!-- Aventura -->
-    <system:String x:Key="AdventureWindowTitle">Añadir o modificar aventura</system:String>
-    <system:String x:Key="AdventureName">Nombre Aventura</system:String>
-    <system:String x:Key="AdventureDescription">Descripción aventura</system:String>
+       
 </ResourceDictionary>
