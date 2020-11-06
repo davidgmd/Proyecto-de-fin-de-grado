@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading;
+using System.Windows;
 
 namespace ElEscribaDelDJ.Classes.Utilidades
 {
@@ -66,6 +67,36 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             // List events.
             Events events = request.Execute();
             return events;
+        }
+
+        public Boolean DeleteEvent(Event evento)
+        {
+            try
+            {
+                service.Events.Delete("primary", evento.Id).Execute();
+                return true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ha ocurrido algún tipo de error, revise que la lista esta actualizada y no se ha intentado eliminar un evento ya borrado" +
+                    "o que usted no sea propietario");
+                return false;
+                throw;
+            }          
+        }
+
+        public Boolean CreateEvent(Event evento)
+        {
+            try
+            {
+                service.Events.Insert(evento, "primary").Execute();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
         }
     }
 }

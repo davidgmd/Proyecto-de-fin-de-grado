@@ -288,6 +288,48 @@ namespace ElEscribaDelDJ.View.Calendar
                     ComboBoxEstado.SelectedIndex = 0;
                     break;
             }
+
+            FechaInicioDatePicker.SelectedDate = evento.Start.DateTime.Value.Date;
+            FechaFinDatePicker.SelectedDate = evento.End.DateTime.Value.Date;
+        }
+
+        private void DatosEvento_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Event evento = (Event)DatosEvento.SelectedItem;
+            if (evento != null)
+            if (DateTime.Compare(DateTime.Now, evento.End.DateTime.Value) > 0)
+            {
+                BotonEditarEvento.IsEnabled = false;
+            }
+            else
+            {
+                BotonEditarEvento.IsEnabled = true;
+            }
+        }
+
+        private void BotonAgregarEvento_Click(object sender, RoutedEventArgs e)
+        {
+            Event evento = new Event();
+            evento.Organizer.DisplayName = TextoOrganizador.Text;
+            evento.Organizer.Email = TextoEmail.Text;
+            evento.Description = TextoAsunto.Text;
+            evento.Status = ComboBoxEstado.SelectedItem.ToString();
+
+            //Para guardar la fecha de inicio tenemos que tomar la fecha y luego la hora y minutos, los segundos son puestos 00, pues no son importantes
+            EventDateTime start = new EventDateTime();
+            start.DateTime = FechaInicioDatePicker.SelectedDate.Value.Date;
+            TimeSpan hora = new TimeSpan(int.Parse(ComboBoxHoras.SelectedItem.ToString()), int.Parse(ComboBoxMinutos.SelectedIndex.ToString()), 00);
+            start.DateTime = start.DateTime + hora;
+
+            evento.Start = start;
+
+            //Para guardar la fecha de fin tenemos que tomar la fecha y luego la hora y minutos, los segundos son puestos 00, pues no son importantes
+            EventDateTime ends = new EventDateTime();
+            ends.DateTime = FechaFinDatePicker.SelectedDate.Value.Date;
+
+            evento.End = ends;
+
+            calendariogoogle.CreateEvent(evento);
         }
     }
 }
