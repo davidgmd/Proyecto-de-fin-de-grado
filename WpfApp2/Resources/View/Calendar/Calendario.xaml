@@ -11,6 +11,14 @@
         <!-- Texto de la cabecera -->
         <Style x:Key="TextoEncabezadoVentana" TargetType="TextBlock">
             <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Light"/>
+            <Setter Property="TextDecorations" Value="Underline"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+    
+        <!-- Descripción de la cabecera-->
+        <Style x:Key="TextoDescriptivoEncabezado" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
     
         <!-- Botonera -->
@@ -166,6 +174,41 @@
             <Setter Property="Margin" Value="5 0 5 0"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
         </Style>
+
+        <!-- Estilo por defecto para el combobox -->
+        <Style x:Key="ComboBoxBase" TargetType="ComboBox">
+            <Setter Property="Margin" Value="5 0 5 0"/>
+        </Style>
+
+        <!-- El datepicker base se usa para la fecha de inicio -->
+        <Style x:Key="DatePickerBase" TargetType="DatePicker">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Margin" Value="5 0 5 0"/>
+        </Style>
+
+        <!-- Para la fecha de fin la dejamos deshabilitada por defecto y el resto tomamos de la base común-->
+        <Style x:Key="DatePickerFechaFin" TargetType="DatePicker" BasedOn="{StaticResource DatePickerBase}">
+            <Setter Property="IsEnabled" Value="False"/>
+        </Style>
     
+        <!-- Wrappanel con los botones para limpiar campos, añadir y editar un evento-->
+        <Style x:Key="WrapPanelBotoneraEventos" TargetType="WrapPanel">
+            <Setter Property="Margin" Value="0 5 0 0"/>
+        </Style> 
     
+            <!-- Los estilos de cada boton particular -->
+            <Style x:Key="BotonAgregarEvento" TargetType="Button">
+                <Setter Property="IsEnabled" Value="False"/>
+            </Style>
+
+            <Style x:Key="BotonEditarEvento" TargetType="Button">
+                <Setter Property="IsEnabled" Value="False"/>
+            </Style>
+
+                <!-- Estilo del texto interno de los botones -->
+                <Style x:Key="TextoBotonesEvento" TargetType="TextBlock">
+                    <Setter Property="Margin" Value="5 0 5 0"/>
+                </Style>
+
+
 </ResourceDictionary>

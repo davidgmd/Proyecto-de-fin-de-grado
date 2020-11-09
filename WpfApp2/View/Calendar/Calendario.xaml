@@ -34,7 +34,8 @@
         <StackPanel Style="{DynamicResource StackPanelTituloVentana}">
         <TextBlock Text="Anotar Partida en el Calendario"
                    Style="{DynamicResource TextoEncabezadoVentana}"/>
-            <TextBlock Text="Autentifiquese antes que nada en google calendar o pulse en el botón para recordar sus credenciales"/>
+            <TextBlock Style="{DynamicResource TextoDescriptivoEncabezado}" 
+                       Text="Pulse en el botón de Google Calendar para autentificarse o recordar sus credenciales"/>
             <StackPanel Style="{DynamicResource StackPanelBotonera}">
                 <Button Style="{DynamicResource BotonLoginOutlook}">
                     <StackPanel Style="{DynamicResource StackPanelBotonOutlook}">
@@ -186,28 +187,26 @@
                        Grid.Row="0"/>
             <TextBox Grid.Row="0" 
                      Grid.Column="1"
-                     Margin="5 0 5 0"
-                     x:Name="TextoOrganizador"/>
+                     x:Name="TextoOrganizador"
+                     Style="{DynamicResource TextBoxBase}"
+                     TextChanged="TextoFormulario_TextChanged"/>
 
             <TextBlock Grid.Row="1" 
                        Text="Asunto:"/>
             <TextBox Grid.Row="1" 
-                     Grid.Column="1"  
-                     TextWrapping="Wrap"
-                     MaxWidth="220"
-                     Height="Auto"
-                     Margin="5 0 5 0"
-                     x:Name="TextoAsunto"/>
+                     Grid.Column="1" 
+                     x:Name="TextoAsunto"
+                     Style="{DynamicResource TextBoxBase}"
+                     TextChanged="TextoFormulario_TextChanged"/>
 
             <TextBlock Grid.Row="2"
                        Text="Fecha inicio:"/>
             <DatePicker Grid.Column="1" 
                         Grid.Row="2" 
-                        Focusable="False"
+                        Style="{DynamicResource DatePickerBase}"
                         DisplayDate="{x:Static sys:DateTime.Now}"
                         x:Name="FechaInicioDatePicker"
-                        SelectedDateChanged="FechaInicioDatePicker_SelectedDateChanged"
-                        Margin="5 0 5 0"/>
+                        SelectedDateChanged="FechaInicioDatePicker_SelectedDateChanged"/>
 
             <TextBlock Text="Correo Organizador" 
                        Grid.Row="0"
@@ -215,15 +214,16 @@
                        Margin="0 0 5 0"/>
             <TextBox Grid.Row="0" 
                      Grid.Column="3"
-                     Margin="5 0 5 0"
-                     x:Name="TextoEmail"/>
+                     x:Name="TextoEmail"
+                     Style="{DynamicResource TextBoxBase}"
+                     TextChanged="TextoFormulario_TextChanged"/>
 
             <TextBlock Grid.Row="1"
                        Grid.Column="2"
                        Text="Estado:"/>
             <ComboBox Grid.Row="1"
                       Grid.Column="3"
-                      Margin="5 0 5 0"
+                      Style="{DynamicResource ComboBoxBase}"
                       x:Name="ComboBoxEstado">
                 <ComboBoxItem>Por confirmar</ComboBoxItem>
                 <ComboBoxItem>Confirmado</ComboBoxItem>
@@ -235,10 +235,8 @@
                        Text="Fecha Fin:"/>
             <DatePicker Grid.Column="3"
                         Grid.Row="2" 
-                        Focusable="False"
-                        IsEnabled="False"
-                        x:Name="FechaFinDatePicker"
-                        Margin="5 0 5 0"/>
+                        Style="{DynamicResource DatePickerFechaFin}"
+                        x:Name="FechaFinDatePicker"/>
             <TextBlock Text="Hora Inicio"
                        Grid.Row="3"/>
             <WrapPanel Orientation="Horizontal"
@@ -256,20 +254,23 @@
             <WrapPanel Orientation="Horizontal"
                        Grid.Row="4"
                        Grid.ColumnSpan="4"
-                       Margin="0 5 0 0">
-                <Button IsEnabled="False"
-                        x:Name="BotonAgregarEvento"
+                       Style="{DynamicResource WrapPanelBotoneraEventos}">
+                
+                <Button x:Name="BotonAgregarEvento" 
+                        Style="{DynamicResource BotonAgregarEvento}"                      
                         Click="BotonAgregarEvento_Click">
                     <TextBlock Text="Agregar Evento"
-                               Margin="5 0 5 0"/>
+                               Style="{DynamicResource TextoBotonesEvento}"/>
                 </Button>
-                <Button IsEnabled="False">
+                
+                <Button Style="{DynamicResource BotonEditarEvento}">
                     <TextBlock Text="Editar Evento"                          
-                               Margin="5 0 5 0"/>
+                               Style="{DynamicResource TextoBotonesEvento}"/>
                 </Button>
+                
                 <Button>
                     <TextBlock Text="Limpiar Campos"
-                               Margin="5 0 5 0"/>
+                               Style="{DynamicResource TextoBotonesEvento}"/>
                 </Button>
             </WrapPanel>
 

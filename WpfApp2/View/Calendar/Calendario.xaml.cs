@@ -28,21 +28,29 @@ namespace ElEscribaDelDJ.View.Calendar
     /// </summary>
     public partial class Calendario : Window
     {
-        private ObservableCollection<Event> eventos = new ObservableCollection<Event>();
-        private GoogleCalendar calendariogoogle;
-        private List<DateTime> significantDates = new List<DateTime>();
-        private List<Event> eventosoriginales = new List<Event>();
+        private ObservableCollection<Event> _eventos = new ObservableCollection<Event>();
+        private GoogleCalendar _calendariogoogle;
+        private List<DateTime> _significantDates = new List<DateTime>();
+        private List<Event> _eventosoriginales = new List<Event>();
+        private Dictionary<String, Boolean> _camposcorrectos;
+
+        public Dictionary<String, Boolean> CamposCorrectos
+        {
+            get { return _camposcorrectos; }
+            set { _camposcorrectos = value; }
+        }
+
 
         public List<Event> EventosOriginales
         {
-            get { return eventosoriginales; }
-            set { eventosoriginales = value; }
+            get { return _eventosoriginales; }
+            set { _eventosoriginales = value; }
         }
 
         public ObservableCollection<Event> Eventos
         {
-            get { return eventos; }
-            set { eventos = value; }
+            get { return _eventos; }
+            set { _eventos = value; }
         }
 
         public Calendario()
@@ -63,9 +71,9 @@ namespace ElEscribaDelDJ.View.Calendar
             InitializeComponent();
 
             //declaramos vacio una lista de fechas para marcar en el calendario
-            significantDates = new List<DateTime>();
+            _significantDates = new List<DateTime>();
             //vinculamos cualquier cambio en el observable eventos al metodo cambiarselección
-            eventos.CollectionChanged += CambiarSeleccion;
+            _eventos.CollectionChanged += CambiarSeleccion;
 
             //ObtenerEventos();
             InicializarSelectorHoras();
@@ -97,14 +105,14 @@ namespace ElEscribaDelDJ.View.Calendar
         //obtiene todos los eventos de googlecalendar del usuario
         private void ObtenerEventos()
         {
-            var events = calendariogoogle.GetEvents();      
-            eventos.Clear();
+            var events = _calendariogoogle.GetEvents();      
+            _eventos.Clear();
 
             foreach (Event evento in events.Items)
             {
-                eventos.Add(evento);
+                _eventos.Add(evento);
                 if (evento.Start.DateTime.HasValue) 
-                    significantDates.Add(evento.Start.DateTime.Value.Date);
+                    _significantDates.Add(evento.Start.DateTime.Value.Date);
             }
 
             //DataContext = null;
@@ -114,7 +122,7 @@ namespace ElEscribaDelDJ.View.Calendar
         //filtra los eventos según la fecha actual
         private void FiltrarEventos(DateTime fecha)
         {
-            eventos.Clear();
+            _eventos.Clear();
 
             foreach (Event evento in EventosOriginales)
             {
@@ -122,7 +130,7 @@ namespace ElEscribaDelDJ.View.Calendar
                 {
                     int comparacion = DateTime.Compare(Calendar.DisplayDate, evento.Start.DateTime.Value);
                     if (comparacion <= 0)
-                        eventos.Add(evento);
+                        _eventos.Add(evento);
                 }
             }
 
@@ -145,7 +153,7 @@ namespace ElEscribaDelDJ.View.Calendar
         private void ActualizarListView()
         {
             ObtenerEventos();
-            EventosOriginales = eventos.ToList();
+            EventosOriginales = _eventos.ToList();
             FiltrarEventos(Calendar.DisplayDate);
             ICollectionView view = CollectionViewSource.GetDefaultView(DatosEvento.ItemsSource);
             view.Refresh();
@@ -165,7 +173,7 @@ namespace ElEscribaDelDJ.View.Calendar
         private void HighlightDay(CalendarDayButton button, DateTime date)
         {
             button.IsEnabled = false;
-            if (significantDates.Contains(date))
+            if (_significantDates.Contains(date))
                 button.Background = Brushes.LightBlue;
             else
                 button.Background = Brushes.Transparent;
@@ -182,7 +190,7 @@ namespace ElEscribaDelDJ.View.Calendar
         //Indica que ocurre cuando cambian los datos de las fechas 
         private void Calendar_DisplayDateChanged(object sender, CalendarDateChangedEventArgs e)
         {
-            if (calendariogoogle != null)
+            if (_calendariogoogle != null)
             {
                 FiltrarEventos(Calendar.DisplayDate);
             }            
@@ -236,11 +244,11 @@ namespace ElEscribaDelDJ.View.Calendar
         //Cuando marcamos en google, trata de conectar con nuestra cuenta si no lo consigue nos manda a internet a indicar los datos
         private void botonGoogleCalendar_Click(object sender, RoutedEventArgs e)
         {
-            if (calendariogoogle is null)
+            if (_calendariogoogle is null)
             {
-                calendariogoogle = new GoogleCalendar();
+                _calendariogoogle = new GoogleCalendar();
                 ObtenerEventos();
-                EventosOriginales = eventos.ToList();
+                EventosOriginales = _eventos.ToList();
                 Calendar.IsEnabled = true;
                 ListaEventosGoogleCalendar.IsEnabled = true;
             }            
@@ -330,6 +338,36 @@ namespace ElEscribaDelDJ.View.Calendar
             evento.End = ends;
 
             calendariogoogle.CreateEvent(evento);
+        }
+
+        private void TextoFormulario_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textblock = (TextBlock)sender;
+            if (textblock.Text != String.Empty)
+            {
+                if (!CamposCorrectos.ContainsKey(textblock.Name))
+                {
+                    CamposCorrectos.Add(textblock.Name, true);
+                    ValidarCampos();
+                }       
+            }
+            else
+            {
+                if (CamposCorrectos.ContainsKey(textblock.Name))
+                {
+                    CamposCorrectos.Remove(textblock.Name);
+                    if (BotonAgregarEvento.IsEnabled == true)
+                        BotonAgregarEvento.IsEnabled = false;
+                }           
+            }
+        }
+
+        private void ValidarCampos()
+        {
+            if (CamposCorrectos.Count == 8)
+            {
+                BotonAgregarEvento.IsEnabled = true;
+            }
         }
     }
 }
