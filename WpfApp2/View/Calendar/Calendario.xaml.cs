@@ -32,7 +32,7 @@ namespace ElEscribaDelDJ.View.Calendar
         private GoogleCalendar _calendariogoogle;
         private List<DateTime> _significantDates = new List<DateTime>();
         private List<Event> _eventosoriginales = new List<Event>();
-        private Dictionary<String, Boolean> _camposcorrectos;
+        private Dictionary<String, Boolean> _camposcorrectos = new Dictionary<String, Boolean>();
 
         public Dictionary<String, Boolean> CamposCorrectos
         {
@@ -263,13 +263,25 @@ namespace ElEscribaDelDJ.View.Calendar
 
             try
             {               
-                FechaFinDatePicker.BlackoutDates.Add(cdr);
+                FechaFinDatePicker.BlackoutDates.Add(cdr);         
             }
             catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("La fecha de inicio no puede ser posterior a la de fin");
                 FechaFinDatePicker.SelectedDate = null;
                 FechaFinDatePicker.BlackoutDates.Add(cdr);
+                if (CamposCorrectos.ContainsKey(FechaFinDatePicker.Name))
+                {
+                    CamposCorrectos.Remove(FechaFinDatePicker.Name);
+                }
+            }
+            finally
+            {
+                if (!CamposCorrectos.ContainsKey(FechaInicioDatePicker.Name))
+                {
+                    CamposCorrectos.Add(FechaInicioDatePicker.Name, true);
+                }
+                ValidarCampos();
             }
             
         }
@@ -337,25 +349,25 @@ namespace ElEscribaDelDJ.View.Calendar
 
             evento.End = ends;
 
-            calendariogoogle.CreateEvent(evento);
+            _calendariogoogle.CreateEvent(evento);
         }
 
         private void TextoFormulario_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var textblock = (TextBlock)sender;
-            if (textblock.Text != String.Empty)
+            var textbox = (TextBox)sender;
+            if (textbox.Text != String.Empty)
             {
-                if (!CamposCorrectos.ContainsKey(textblock.Name))
+                if (!CamposCorrectos.ContainsKey(textbox.Name))
                 {
-                    CamposCorrectos.Add(textblock.Name, true);
+                    CamposCorrectos.Add(textbox.Name, true);
                     ValidarCampos();
                 }       
             }
             else
             {
-                if (CamposCorrectos.ContainsKey(textblock.Name))
+                if (CamposCorrectos.ContainsKey(textbox.Name))
                 {
-                    CamposCorrectos.Remove(textblock.Name);
+                    CamposCorrectos.Remove(textbox.Name);
                     if (BotonAgregarEvento.IsEnabled == true)
                         BotonAgregarEvento.IsEnabled = false;
                 }           
@@ -367,6 +379,29 @@ namespace ElEscribaDelDJ.View.Calendar
             if (CamposCorrectos.Count == 8)
             {
                 BotonAgregarEvento.IsEnabled = true;
+            }
+            else
+            {
+                BotonAgregarEvento.IsEnabled = false;
+            }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox combobox = (ComboBox)sender;
+            if (!CamposCorrectos.ContainsKey(combobox.Name))
+            {
+                CamposCorrectos.Add(combobox.Name, true);
+                ValidarCampos();
+            }
+        }
+
+        private void FechaFinDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!CamposCorrectos.ContainsKey(FechaFinDatePicker.Name))
+            {
+                CamposCorrectos.Add(FechaFinDatePicker.Name, true);
+                ValidarCampos();
             }
         }
     }

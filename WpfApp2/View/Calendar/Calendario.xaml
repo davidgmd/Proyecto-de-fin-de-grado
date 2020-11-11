@@ -223,8 +223,9 @@
                        Text="Estado:"/>
             <ComboBox Grid.Row="1"
                       Grid.Column="3"
+                      x:Name="ComboBoxEstado"
                       Style="{DynamicResource ComboBoxBase}"
-                      x:Name="ComboBoxEstado">
+                      SelectionChanged="ComboBox_SelectionChanged">
                 <ComboBoxItem>Por confirmar</ComboBoxItem>
                 <ComboBoxItem>Confirmado</ComboBoxItem>
                 <ComboBoxItem>Cancelado</ComboBoxItem>
@@ -235,16 +236,19 @@
                        Text="Fecha Fin:"/>
             <DatePicker Grid.Column="3"
                         Grid.Row="2" 
+                        x:Name="FechaFinDatePicker"
                         Style="{DynamicResource DatePickerFechaFin}"
-                        x:Name="FechaFinDatePicker"/>
+                        SelectedDateChanged="FechaFinDatePicker_SelectedDateChanged"/>
             <TextBlock Text="Hora Inicio"
                        Grid.Row="3"/>
             <WrapPanel Orientation="Horizontal"
                        Grid.Row="3"
                        Grid.Column="1"
                        Margin="5 0 5 0">
-                <ComboBox x:Name="ComboBoxHoras"/>
-                <ComboBox x:Name="ComboBoxMinutos"/>
+                <ComboBox x:Name="ComboBoxHoras"
+                          SelectionChanged="ComboBox_SelectionChanged"/>
+                <ComboBox x:Name="ComboBoxMinutos"
+                          SelectionChanged="ComboBox_SelectionChanged"/>
             </WrapPanel>
             <WrapPanel Orientation="Horizontal"
                        Grid.Row="3"
