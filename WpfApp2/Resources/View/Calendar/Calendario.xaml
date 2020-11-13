@@ -169,7 +169,7 @@
         <!-- Ahora vamos a ir definiendo el estilo de cada categoria y el bloque para introducir el texto, como la mayoría son iguales y solo cambia
              su posición, tenemos que crear 2 categorias base y basaremos cada estilo los detalles concretos grid.row y grid.colum -->
         <Style x:Key="TextBoxBase" TargetType="TextBox">
-            <Setter Property="MaxWidth" Value="220"/>
+            <Setter Property="MaxWidth" Value="265"/>
             <Setter Property="Height" Value="Auto"/>
             <Setter Property="Margin" Value="5 0 5 0"/>
             <Setter Property="TextWrapping" Value="Wrap"/>

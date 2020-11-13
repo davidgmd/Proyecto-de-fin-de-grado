@@ -53,6 +53,7 @@
     <None Remove="Logs\login.back" />
     <None Remove="Logs\login.log" />
     <None Remove="Settings.ini" />
+    <None Remove="Utils\Credentials\googlecalendarcredentials.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -122,9 +123,6 @@
     <Content Include="Utils\Credentials\emailcredentials.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Utils\Credentials\googlecalendarcredentials.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Idiomas\EN\View\MainMenu.xaml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -161,6 +159,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Idiomas\ES\MainWindow.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Utils\Credentials\googlecalendarcredentials.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

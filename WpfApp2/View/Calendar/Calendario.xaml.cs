@@ -1,6 +1,7 @@
 ﻿using ElEscribaDelDJ.Classes.Utilidades;
 using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using Google.Apis.Calendar.v3.Data;
+using Octokit;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,6 +21,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace ElEscribaDelDJ.View.Calendar
 {
@@ -33,6 +35,14 @@ namespace ElEscribaDelDJ.View.Calendar
         private List<DateTime> _significantDates = new List<DateTime>();
         private List<Event> _eventosoriginales = new List<Event>();
         private Dictionary<String, Boolean> _camposcorrectos = new Dictionary<String, Boolean>();
+        private Event _evento = new Event();
+
+        public Event Evento
+        {
+            get { return _evento; }
+            set { _evento = value; }
+        }
+
 
         public Dictionary<String, Boolean> CamposCorrectos
         {
@@ -69,6 +79,8 @@ namespace ElEscribaDelDJ.View.Calendar
 
             //inicializamos el programa
             InitializeComponent();
+
+            Evento.Location = "prueba";
 
             //declaramos vacio una lista de fechas para marcar en el calendario
             _significantDates = new List<DateTime>();
@@ -329,25 +341,17 @@ namespace ElEscribaDelDJ.View.Calendar
 
         private void BotonAgregarEvento_Click(object sender, RoutedEventArgs e)
         {
-            Event evento = new Event();
-            evento.Organizer.DisplayName = TextoOrganizador.Text;
-            evento.Organizer.Email = TextoEmail.Text;
+            Event evento = new Event();           
+            evento.Location = "mi casa";
+            evento.Summary = "evento2";
             evento.Description = TextoAsunto.Text;
-            evento.Status = ComboBoxEstado.SelectedItem.ToString();
+            evento.Status = "confirmed";
 
-            //Para guardar la fecha de inicio tenemos que tomar la fecha y luego la hora y minutos, los segundos son puestos 00, pues no son importantes
-            EventDateTime start = new EventDateTime();
-            start.DateTime = FechaInicioDatePicker.SelectedDate.Value.Date;
-            TimeSpan hora = new TimeSpan(int.Parse(ComboBoxHoras.SelectedItem.ToString()), int.Parse(ComboBoxMinutos.SelectedIndex.ToString()), 00);
-            start.DateTime = start.DateTime + hora;
+            evento.Start = new EventDateTime();
+            evento.Start.DateTime = new DateTime(2019, 3, 11, 10, 0, 0);
 
-            evento.Start = start;
-
-            //Para guardar la fecha de fin tenemos que tomar la fecha y luego la hora y minutos, los segundos son puestos 00, pues no son importantes
-            EventDateTime ends = new EventDateTime();
-            ends.DateTime = FechaFinDatePicker.SelectedDate.Value.Date;
-
-            evento.End = ends;
+            evento.End = new EventDateTime();
+            evento.End.DateTime = new DateTime(2019, 3, 11, 10, 30, 0);
 
             _calendariogoogle.CreateEvent(evento);
         }
@@ -402,6 +406,14 @@ namespace ElEscribaDelDJ.View.Calendar
             {
                 CamposCorrectos.Add(FechaFinDatePicker.Name, true);
                 ValidarCampos();
+            }
+        }
+
+        private void BotonEliminarEvento_Click(object sender, RoutedEventArgs e)
+        {
+            if (_calendariogoogle.DeleteEvent((Event)DatosEvento.SelectedItem))
+            {
+                MessageBox.Show("Eliminado con exito");
             }
         }
     }

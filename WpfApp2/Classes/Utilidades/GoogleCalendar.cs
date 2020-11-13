@@ -15,7 +15,7 @@ namespace ElEscribaDelDJ.Classes.Utilidades
 {
     class GoogleCalendar
     {
-        string[] Scopes = { CalendarService.Scope.CalendarReadonly };
+        string[] Scopes = { CalendarService.Scope.Calendar };
         string ApplicationName = "ElEscribaDelDJ";
         private CalendarService service;
 
@@ -89,11 +89,14 @@ namespace ElEscribaDelDJ.Classes.Utilidades
         {
             try
             {
-                service.Events.Insert(evento, "primary").Execute();
+                EventsResource.InsertRequest request = service.Events.Insert(evento, "primary");
+                var respuesta = request.Execute();
+                int a = 0;
                 return true;
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                MessageBox.Show("hubo un error " + e);
                 return false;
                 throw;
             }

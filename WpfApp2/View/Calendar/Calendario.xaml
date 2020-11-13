@@ -95,9 +95,9 @@
                         <WrapPanel Style="{DynamicResource WrappanelOrganizador}">
                             <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
                                 <Border Style="{DynamicResource BordesCategoria}">
-                                    <TextBlock Text="Nombre Organizador" Style="{DynamicResource ValorCategoria}"/>
+                                    <TextBlock Text="Resumen Evento" Style="{DynamicResource ValorCategoria}"/>
                                 </Border>
-                                <TextBlock Text="{Binding Path=Organizer.DisplayName}"/>
+                                <TextBlock Text="{Binding Path=Summary}"/>
                             </StackPanel>
 
                             <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
@@ -109,9 +109,16 @@
 
                             <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
                                 <Border Style="{DynamicResource BordesCategoria}">
-                                    <TextBlock Text="Nombre Evento" Style="{DynamicResource ValorCategoria}"/>
+                                    <TextBlock Text="Descripción Evento" Style="{DynamicResource ValorCategoria}"/>
                                 </Border>
-                                <TextBlock Text="{Binding Path=Summary}"/>
+                                <TextBlock Text="{Binding Path=Description}"/>
+                            </StackPanel>
+
+                            <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
+                                <Border Style="{DynamicResource BordesCategoria}">
+                                    <TextBlock Text="Localización Evento" Style="{DynamicResource ValorCategoria}"/>
+                                </Border>
+                                <TextBlock Text="{Binding Path=Location}"/>
                             </StackPanel>
 
                             <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
@@ -141,13 +148,6 @@
                                 </Border>
                                 <TextBlock Text="{Binding Path=End.DateTime}"/>
                             </StackPanel>
-
-                            <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
-                                <Border Style="{DynamicResource BordesCategoria}">
-                                    <TextBlock Text="Enlace" Style="{DynamicResource ValorCategoria}"/>
-                                </Border>
-                                <TextBlock Text="{Binding Path=HtmlLink}" Foreground="Blue" TextDecorations="Underline" MouseDown="TextBlockHiperLink_MouseDown" Cursor="Hand"/>
-                            </StackPanel>
                         </WrapPanel>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
@@ -160,14 +160,15 @@
                                x:Name="BotonEditar"
                                Style="{DynamicResource TextoBotonera}"/>
                 </Button>
-                <Button>
+                <Button x:Name="BotonEliminarEvento"
+                        Click="BotonEliminarEvento_Click">
                     <TextBlock Text="Eliminar"
                               Style="{DynamicResource TextoBotonera}"/>
                 </Button>
             </WrapPanel>
         </StackPanel>
 
-        <Grid Margin="5" Grid.Row="2" Grid.ColumnSpan="2">
+        <Grid Margin="5" Grid.Row="2" Grid.ColumnSpan="2" DataContext="{Binding Evento}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -183,12 +184,13 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Nombre Organizador" 
+            <TextBlock Text="Resumen:" 
                        Grid.Row="0"/>
             <TextBox Grid.Row="0" 
                      Grid.Column="1"
                      x:Name="TextoOrganizador"
-                     Style="{DynamicResource TextBoxBase}"
+                     Text="{Binding Path=Location}"
+                     Style="{DynamicResource TextBoxBase}"                   
                      TextChanged="TextoFormulario_TextChanged"/>
 
             <TextBlock Grid.Row="1" 
@@ -208,10 +210,9 @@
                         x:Name="FechaInicioDatePicker"
                         SelectedDateChanged="FechaInicioDatePicker_SelectedDateChanged"/>
 
-            <TextBlock Text="Correo Organizador" 
+            <TextBlock Text="Localización:" 
                        Grid.Row="0"
-                       Grid.Column="2"
-                       Margin="0 0 5 0"/>
+                       Grid.Column="2"/>
             <TextBox Grid.Row="0" 
                      Grid.Column="3"
                      x:Name="TextoEmail"
