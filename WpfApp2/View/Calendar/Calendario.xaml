@@ -189,15 +189,16 @@
             <TextBox Grid.Row="0" 
                      Grid.Column="1"
                      x:Name="TextoOrganizador"
-                     Text="{Binding Path=Location}"
+                     Text="{Binding Path=Summary}"
                      Style="{DynamicResource TextBoxBase}"                   
                      TextChanged="TextoFormulario_TextChanged"/>
 
             <TextBlock Grid.Row="1" 
-                       Text="Asunto:"/>
+                       Text="Descripción:"/>
             <TextBox Grid.Row="1" 
                      Grid.Column="1" 
                      x:Name="TextoAsunto"
+                     Text="{Binding Path=Description}"
                      Style="{DynamicResource TextBoxBase}"
                      TextChanged="TextoFormulario_TextChanged"/>
 
@@ -216,6 +217,7 @@
             <TextBox Grid.Row="0" 
                      Grid.Column="3"
                      x:Name="TextoEmail"
+                     Text="{Binding Path=Location}"
                      Style="{DynamicResource TextBoxBase}"
                      TextChanged="TextoFormulario_TextChanged"/>
 
@@ -246,10 +248,8 @@
                        Grid.Row="3"
                        Grid.Column="1"
                        Margin="5 0 5 0">
-                <ComboBox x:Name="ComboBoxHoras"
-                          SelectionChanged="ComboBox_SelectionChanged"/>
-                <ComboBox x:Name="ComboBoxMinutos"
-                          SelectionChanged="ComboBox_SelectionChanged"/>
+                <ComboBox x:Name="ComboBoxHoras"/>
+                <ComboBox x:Name="ComboBoxMinutos"/>
             </WrapPanel>
             <WrapPanel Orientation="Horizontal"
                        Grid.Row="3"

@@ -80,8 +80,6 @@ namespace ElEscribaDelDJ.View.Calendar
             //inicializamos el programa
             InitializeComponent();
 
-            Evento.Location = "prueba";
-
             //declaramos vacio una lista de fechas para marcar en el calendario
             _significantDates = new List<DateTime>();
             //vinculamos cualquier cambio en el observable eventos al metodo cambiarselección
@@ -292,6 +290,11 @@ namespace ElEscribaDelDJ.View.Calendar
                 if (!CamposCorrectos.ContainsKey(FechaInicioDatePicker.Name))
                 {
                     CamposCorrectos.Add(FechaInicioDatePicker.Name, true);
+                    DateTime fecha = new DateTime();
+                    fecha = FechaInicioDatePicker.SelectedDate.Value;
+ 
+                    Evento.Start = new EventDateTime();
+                    Evento.Start.DateTime = new DateTime(fecha.Year, fecha.Month, fecha.Day, 00, 0, 0);
                 }
                 ValidarCampos();
             }
@@ -341,17 +344,12 @@ namespace ElEscribaDelDJ.View.Calendar
 
         private void BotonAgregarEvento_Click(object sender, RoutedEventArgs e)
         {
-            Event evento = new Event();           
-            evento.Location = "mi casa";
-            evento.Summary = "evento2";
-            evento.Description = TextoAsunto.Text;
-            evento.Status = "confirmed";
+            Event evento = Evento;
 
-            evento.Start = new EventDateTime();
-            evento.Start.DateTime = new DateTime(2019, 3, 11, 10, 0, 0);
 
-            evento.End = new EventDateTime();
-            evento.End.DateTime = new DateTime(2019, 3, 11, 10, 30, 0);
+            TimeSpan hora = new TimeSpan(int.Parse(ComboBoxHoras.SelectedItem.ToString()), int.Parse(ComboBoxMinutos.SelectedIndex.ToString()), 00);
+            evento.Start.DateTime = evento.Start.DateTime + hora;
+
 
             _calendariogoogle.CreateEvent(evento);
         }
@@ -393,6 +391,19 @@ namespace ElEscribaDelDJ.View.Calendar
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox combobox = (ComboBox)sender;
+            switch (ComboBoxEstado.SelectedIndex)
+            {
+                case 0:
+                    Evento.Status = "tentative";
+                    break;
+                case 1:
+                    Evento.Status = "confirmed";
+                    break;
+                case 2:
+                    Evento.Status = "cancelled";
+                    break;
+            }
+
             if (!CamposCorrectos.ContainsKey(combobox.Name))
             {
                 CamposCorrectos.Add(combobox.Name, true);
@@ -402,6 +413,12 @@ namespace ElEscribaDelDJ.View.Calendar
 
         private void FechaFinDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
+            DateTime fecha = new DateTime();
+            fecha = FechaInicioDatePicker.SelectedDate.Value;
+
+            Evento.End = new EventDateTime();
+            Evento.End.DateTime = new DateTime(fecha.Year, fecha.Month, fecha.Day, 00, 0, 0);
+
             if (!CamposCorrectos.ContainsKey(FechaFinDatePicker.Name))
             {
                 CamposCorrectos.Add(FechaFinDatePicker.Name, true);
