@@ -248,8 +248,10 @@
                        Grid.Row="3"
                        Grid.Column="1"
                        Margin="5 0 5 0">
-                <ComboBox x:Name="ComboBoxHoras"/>
-                <ComboBox x:Name="ComboBoxMinutos"/>
+                <ComboBox x:Name="ComboBoxHoras"
+                          SelectionChanged="ComboBoxHoras_SelectionChanged"/>
+                <ComboBox x:Name="ComboBoxMinutos"
+                          SelectionChanged="ComboBoxHoras_SelectionChanged"/>
             </WrapPanel>
             <WrapPanel Orientation="Horizontal"
                        Grid.Row="3"

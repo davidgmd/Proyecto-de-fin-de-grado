@@ -167,6 +167,7 @@ namespace ElEscribaDelDJ.View.Calendar
             FiltrarEventos(Calendar.DisplayDate);
             ICollectionView view = CollectionViewSource.GetDefaultView(DatosEvento.ItemsSource);
             view.Refresh();
+            MessageBox.Show("El elemento calendario de la izquierda no muestra los cambios automaticamente hay que cambiar de fecha y volver a esta");
         }
 
         //Al inicializarse los botones del calendario, este carga el aspecto de los dias como botones, marca los dias importantes y 
@@ -413,17 +414,28 @@ namespace ElEscribaDelDJ.View.Calendar
 
         private void FechaFinDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            DateTime fecha = new DateTime();
-            fecha = FechaInicioDatePicker.SelectedDate.Value;
-
-            Evento.End = new EventDateTime();
-            Evento.End.DateTime = new DateTime(fecha.Year, fecha.Month, fecha.Day, 00, 0, 0);
-
-            if (!CamposCorrectos.ContainsKey(FechaFinDatePicker.Name))
+            if (FechaFinDatePicker.SelectedDate.HasValue)
             {
-                CamposCorrectos.Add(FechaFinDatePicker.Name, true);
-                ValidarCampos();
+                DateTime fecha = new DateTime();
+                fecha = FechaFinDatePicker.SelectedDate.Value;
+
+                Evento.End = new EventDateTime();
+                Evento.End.DateTime = new DateTime(fecha.Year, fecha.Month, fecha.Day, 00, 0, 0);
+
+                if (!CamposCorrectos.ContainsKey(FechaFinDatePicker.Name))
+                {
+                    CamposCorrectos.Add(FechaFinDatePicker.Name, true);
+                    ValidarCampos();
+                }
             }
+            else
+            {
+                if (CamposCorrectos.ContainsKey(FechaFinDatePicker.Name))
+                {
+                    CamposCorrectos.Remove(FechaFinDatePicker.Name);
+                    ValidarCampos();
+                }
+            }           
         }
 
         private void BotonEliminarEvento_Click(object sender, RoutedEventArgs e)
@@ -431,6 +443,17 @@ namespace ElEscribaDelDJ.View.Calendar
             if (_calendariogoogle.DeleteEvent((Event)DatosEvento.SelectedItem))
             {
                 MessageBox.Show("Eliminado con exito");
+            }
+        }
+
+        private void ComboBoxHoras_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox hora = (ComboBox)sender;
+
+            if (!CamposCorrectos.ContainsKey(hora.Name))
+            {
+                CamposCorrectos.Add(hora.Name, true);
+                ValidarCampos();
             }
         }
     }
