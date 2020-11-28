@@ -69,22 +69,6 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             return events;
         }
 
-        public Boolean DeleteEvent(Event evento)
-        {
-            try
-            {
-                service.Events.Delete("primary", evento.Id).Execute();
-                return true;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ha ocurrido algún tipo de error, revise que la lista esta actualizada y no se ha intentado eliminar un evento ya borrado" +
-                    "o que usted no sea propietario");
-                return false;
-                throw;
-            }          
-        }
-
         public Boolean CreateEvent(Event evento)
         {
             try
@@ -97,6 +81,39 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             catch (Exception e)
             {
                 MessageBox.Show("hubo un error " + e);
+                return false;
+                throw;
+            }
+        }
+
+        public Boolean EditEvent (Event evento)
+        {
+            try
+            {
+                EventsResource.UpdateRequest request = service.Events.Update(evento, "primary", evento.Id);
+                var respuesta = request.Execute();
+                int a = 0;
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("hubo un error " + e);
+                return false;
+                throw;
+            }
+        }
+
+        public Boolean DeleteEvent(Event evento)
+        {
+            try
+            {
+                service.Events.Delete("primary", evento.Id).Execute();
+                return true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ha ocurrido algún tipo de error, revise que la lista esta actualizada y no se ha intentado eliminar un evento ya borrado" +
+                    "o que usted no sea propietario");
                 return false;
                 throw;
             }

@@ -168,7 +168,7 @@
             </WrapPanel>
         </StackPanel>
 
-        <Grid Margin="5" Grid.Row="2" Grid.ColumnSpan="2" DataContext="{Binding Evento}">
+        <Grid Style="{DynamicResource GridFormularioEvento}" x:Name="GridFormulario" DataContext="{Binding Evento}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -249,9 +249,11 @@
                        Grid.Column="1"
                        Margin="5 0 5 0">
                 <ComboBox x:Name="ComboBoxHoras"
-                          SelectionChanged="ComboBoxHoras_SelectionChanged"/>
+                          SelectionChanged="ComboBoxHoras_SelectionChanged"
+                          SelectedIndex="0"/>
                 <ComboBox x:Name="ComboBoxMinutos"
-                          SelectionChanged="ComboBoxHoras_SelectionChanged"/>
+                          SelectionChanged="ComboBoxHoras_SelectionChanged"
+                          SelectedIndex="0"/>
             </WrapPanel>
             <WrapPanel Orientation="Horizontal"
                        Grid.Row="3"
@@ -270,12 +272,15 @@
                                Style="{DynamicResource TextoBotonesEvento}"/>
                 </Button>
                 
-                <Button Style="{DynamicResource BotonEditarEvento}">
+                <Button Style="{DynamicResource BotonEditarEvento}" 
+                        x:Name="BotonFormularioEditar"
+                        Click="BotonFormularioEditar_Click">
                     <TextBlock Text="Editar Evento"                          
                                Style="{DynamicResource TextoBotonesEvento}"/>
                 </Button>
                 
-                <Button>
+                <Button x:Name="BotonLimpiarCampos" 
+                        Click="BotonLimpiarCampos_Click">
                     <TextBlock Text="Limpiar Campos"
                                Style="{DynamicResource TextoBotonesEvento}"/>
                 </Button>

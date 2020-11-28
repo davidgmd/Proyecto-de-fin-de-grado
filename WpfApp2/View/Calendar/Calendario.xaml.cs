@@ -148,6 +148,20 @@ namespace ElEscribaDelDJ.View.Calendar
             //DataContext = this;
         }
 
+        //Cuando marcamos en google, trata de conectar con nuestra cuenta si no lo consigue nos manda a internet a indicar los datos
+        private void botonGoogleCalendar_Click(object sender, RoutedEventArgs e)
+        {
+            if (_calendariogoogle is null)
+            {
+                _calendariogoogle = new GoogleCalendar();
+                ObtenerEventos();
+                EventosOriginales = _eventos.ToList();
+                Calendar.IsEnabled = true;
+                ListaEventosGoogleCalendar.IsEnabled = true;
+                GridFormulario.IsEnabled = true;
+            }
+        }
+
         //Actualiza la lista ya sea pulsando en el botón o en la parte de texto
         private void ActualizarListView_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -252,64 +266,34 @@ namespace ElEscribaDelDJ.View.Calendar
             }
         }
 
-        //Cuando marcamos en google, trata de conectar con nuestra cuenta si no lo consigue nos manda a internet a indicar los datos
-        private void botonGoogleCalendar_Click(object sender, RoutedEventArgs e)
+        //Cuando cambiamos el evento comprueba si es igual a esta fecha o posterior en caso afirmativo
+        //Desbloquea el botón editar
+        private void DatosEvento_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (_calendariogoogle is null)
-            {
-                _calendariogoogle = new GoogleCalendar();
-                ObtenerEventos();
-                EventosOriginales = _eventos.ToList();
-                Calendar.IsEnabled = true;
-                ListaEventosGoogleCalendar.IsEnabled = true;
-            }            
+            Event evento = (Event)DatosEvento.SelectedItem;
+            if (evento != null)
+                if (DateTime.Compare(DateTime.Now, evento.End.DateTime.Value) > 0)
+                {
+                    BotonEditarEvento.IsEnabled = false;
+                }
+                else
+                {
+                    BotonEditarEvento.IsEnabled = true;
+                }
         }
 
-        //Al cambiar la fecha repasa los dias no disponibles, los marca en el otro calendario, si estos no cuadraran avisa del error.
-        private void FechaInicioDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            FechaFinDatePicker.IsEnabled = true;
-            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, FechaInicioDatePicker.SelectedDate.Value.AddDays(-1));
-            FechaFinDatePicker.BlackoutDates.Clear();
-
-            try
-            {               
-                FechaFinDatePicker.BlackoutDates.Add(cdr);         
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                MessageBox.Show("La fecha de inicio no puede ser posterior a la de fin");
-                FechaFinDatePicker.SelectedDate = null;
-                FechaFinDatePicker.BlackoutDates.Add(cdr);
-                if (CamposCorrectos.ContainsKey(FechaFinDatePicker.Name))
-                {
-                    CamposCorrectos.Remove(FechaFinDatePicker.Name);
-                }
-            }
-            finally
-            {
-                if (!CamposCorrectos.ContainsKey(FechaInicioDatePicker.Name))
-                {
-                    CamposCorrectos.Add(FechaInicioDatePicker.Name, true);
-                    DateTime fecha = new DateTime();
-                    fecha = FechaInicioDatePicker.SelectedDate.Value;
- 
-                    Evento.Start = new EventDateTime();
-                    Evento.Start.DateTime = new DateTime(fecha.Year, fecha.Month, fecha.Day, 00, 0, 0);
-                }
-                ValidarCampos();
-            }
-            
-        }
-
+        //Permite editar los eventos si estos son iguales a la fecha actual o posterior
+        //Este botón se encuentra en el listview
         private void BotonEditarEvento_Click(object sender, RoutedEventArgs e)
         {
-            var item = DatosEvento.SelectedItem;
-            Event evento = (Event)item;
-            TextoOrganizador.Text = evento.Organizer.DisplayName;
-            TextoEmail.Text = evento.Organizer.Email;
-            TextoAsunto.Text = evento.Description;
-            switch (evento.Status)
+            var item = DatosEvento.SelectedItem;          
+            Event eventoseleccionado = (Event)item;
+
+            Evento.Id = eventoseleccionado.Id;
+            Evento.Summary = eventoseleccionado.Summary;
+            Evento.Location = eventoseleccionado.Location;
+            Evento.Description = eventoseleccionado.Description;
+            switch (eventoseleccionado.Status)
             {
                 case "tentative":
                     ComboBoxEstado.SelectedIndex = 0;
@@ -325,36 +309,30 @@ namespace ElEscribaDelDJ.View.Calendar
                     break;
             }
 
-            FechaInicioDatePicker.SelectedDate = evento.Start.DateTime.Value.Date;
-            FechaFinDatePicker.SelectedDate = evento.End.DateTime.Value.Date;
+            FechaInicioDatePicker.SelectedDate = eventoseleccionado.Start.DateTime.Value.Date;
+            Evento.Start = eventoseleccionado.Start;
+            FechaFinDatePicker.SelectedDate = eventoseleccionado.End.DateTime.Value.Date;
+            Evento.End = eventoseleccionado.End;
+            ComboBoxHoras.Text = eventoseleccionado.Start.DateTime.Value.Hour.ToString();
+            ComboBoxMinutos.Text = eventoseleccionado.Start.DateTime.Value.Minute.ToString();
+
+            BotonAgregarEvento.IsEnabled = false;
+            BotonFormularioEditar.IsEnabled = true;
+
+            RefrescarGrid();
+            
         }
 
-        private void DatosEvento_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //Permite eliminar eventos, este botón se encuentra en el listview
+        private void BotonEliminarEvento_Click(object sender, RoutedEventArgs e)
         {
-            Event evento = (Event)DatosEvento.SelectedItem;
-            if (evento != null)
-            if (DateTime.Compare(DateTime.Now, evento.End.DateTime.Value) > 0)
+            if (_calendariogoogle.DeleteEvent((Event)DatosEvento.SelectedItem))
             {
-                BotonEditarEvento.IsEnabled = false;
-            }
-            else
-            {
-                BotonEditarEvento.IsEnabled = true;
+                MessageBox.Show("Eliminado con exito");
             }
         }
 
-        private void BotonAgregarEvento_Click(object sender, RoutedEventArgs e)
-        {
-            Event evento = Evento;
-
-
-            TimeSpan hora = new TimeSpan(int.Parse(ComboBoxHoras.SelectedItem.ToString()), int.Parse(ComboBoxMinutos.SelectedIndex.ToString()), 00);
-            evento.Start.DateTime = evento.Start.DateTime + hora;
-
-
-            _calendariogoogle.CreateEvent(evento);
-        }
-
+        //Comprueba que el campo de texto no esta vacio y en caso de no estarlo lo añade como correcto a la lista de campos
         private void TextoFormulario_TextChanged(object sender, TextChangedEventArgs e)
         {
             var textbox = (TextBox)sender;
@@ -377,18 +355,7 @@ namespace ElEscribaDelDJ.View.Calendar
             }
         }
 
-        private void ValidarCampos()
-        {
-            if (CamposCorrectos.Count == 8)
-            {
-                BotonAgregarEvento.IsEnabled = true;
-            }
-            else
-            {
-                BotonAgregarEvento.IsEnabled = false;
-            }
-        }
-
+        //Se encarga de convertir el estado a los valores admitidos por google
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox combobox = (ComboBox)sender;
@@ -412,6 +379,44 @@ namespace ElEscribaDelDJ.View.Calendar
             }
         }
 
+        //Al cambiar la fecha repasa los dias no disponibles, los marca en el otro calendario, si estos no cuadraran avisa del error.
+        private void FechaInicioDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FechaFinDatePicker.IsEnabled = true;
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, FechaInicioDatePicker.SelectedDate.Value.AddDays(-1));
+            FechaFinDatePicker.BlackoutDates.Clear();
+
+            try
+            {
+                FechaFinDatePicker.BlackoutDates.Add(cdr);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("La fecha de inicio no puede ser posterior a la de fin");
+                FechaFinDatePicker.SelectedDate = null;
+                FechaFinDatePicker.BlackoutDates.Add(cdr);
+                if (CamposCorrectos.ContainsKey(FechaFinDatePicker.Name))
+                {
+                    CamposCorrectos.Remove(FechaFinDatePicker.Name);
+                }
+            }
+            finally
+            {
+                if (!CamposCorrectos.ContainsKey(FechaInicioDatePicker.Name))
+                {
+                    CamposCorrectos.Add(FechaInicioDatePicker.Name, true);
+                    DateTime fecha = new DateTime();
+                    fecha = FechaInicioDatePicker.SelectedDate.Value;
+
+                    Evento.Start = new EventDateTime();
+                    Evento.Start.DateTime = new DateTime(fecha.Year, fecha.Month, fecha.Day, 00, 0, 0);
+                }
+                ValidarCampos();
+            }
+
+        }
+
+        //Se encarga de asignar el valor de la fecha y además de que no pueda ser la fecha fin incorrecta
         private void FechaFinDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (FechaFinDatePicker.SelectedDate.HasValue)
@@ -438,14 +443,7 @@ namespace ElEscribaDelDJ.View.Calendar
             }           
         }
 
-        private void BotonEliminarEvento_Click(object sender, RoutedEventArgs e)
-        {
-            if (_calendariogoogle.DeleteEvent((Event)DatosEvento.SelectedItem))
-            {
-                MessageBox.Show("Eliminado con exito");
-            }
-        }
-
+        //Añade el campo hora tal como seleccionamos uno de los combobos de hora
         private void ComboBoxHoras_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ComboBox hora = (ComboBox)sender;
@@ -456,5 +454,75 @@ namespace ElEscribaDelDJ.View.Calendar
                 ValidarCampos();
             }
         }
+
+        //Valida que los campos del formulario estan todos agregados como correctos y desbloquea el botón añadir
+        private void ValidarCampos()
+        {
+            if (CamposCorrectos.Count == 8 && BotonFormularioEditar.IsEnabled == false)
+            {
+                BotonAgregarEvento.IsEnabled = true;
+            }
+            else
+            {
+                BotonAgregarEvento.IsEnabled = false;
+            }
+        }
+
+        //Agrega un evento al calendario del usuario
+        private void BotonAgregarEvento_Click(object sender, RoutedEventArgs e)
+        {
+            Event evento = Evento;
+
+
+            TimeSpan hora = new TimeSpan(int.Parse(ComboBoxHoras.SelectedItem.ToString()), int.Parse(ComboBoxMinutos.SelectedIndex.ToString()), 00);
+            evento.Start.DateTime = evento.Start.DateTime + hora;
+
+
+            _calendariogoogle.CreateEvent(evento);
+            LimpiarCampos();
+        }
+
+        private void BotonFormularioEditar_Click(object sender, RoutedEventArgs e)
+        {
+            Event evento = Evento;
+            DateTime fecha = FechaInicioDatePicker.SelectedDate.Value;
+            TimeSpan hora = new TimeSpan(int.Parse(ComboBoxHoras.SelectedItem.ToString()), int.Parse(ComboBoxMinutos.SelectedIndex.ToString()), 00);
+            fecha = fecha + hora;
+
+            evento.Start.DateTime = fecha;
+            evento.End.DateTime = FechaFinDatePicker.SelectedDate.Value;
+
+            _calendariogoogle.EditEvent(evento);
+
+            BotonFormularioEditar.IsEnabled = false;
+            BotonAgregarEvento.IsEnabled = true;
+            LimpiarCampos();
+
+        }
+
+        private void BotonLimpiarCampos_Click(object sender, RoutedEventArgs e)
+        {
+            LimpiarCampos();
+        }
+
+        private void LimpiarCampos()
+        {
+            Evento = null;
+            ComboBoxEstado.Text = "";
+            FechaInicioDatePicker.SelectedDate = DateTime.Now;
+            FechaFinDatePicker.Text = "";
+            ComboBoxHoras.Text = "00";
+            ComboBoxMinutos.Text = "00";
+
+            RefrescarGrid();
+        }
+
+        private void RefrescarGrid()
+        {
+            GridFormulario.DataContext = null;
+            GridFormulario.DataContext = Evento;
+        }
+
+        
     }
 }
