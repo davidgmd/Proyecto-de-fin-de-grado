@@ -226,6 +226,7 @@
     <Folder Include="Idiomas\EN\View\Calendar\" />
     <Folder Include="Idiomas\ES\View\Calendar\" />
     <Folder Include="Images\User\" />
+    <Folder Include="Resources\View\CampaignResources\" />
     <Folder Include="View\Resources\" />
     <Folder Include="View\Options\" />
   </ItemGroup>

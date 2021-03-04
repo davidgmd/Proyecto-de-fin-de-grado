@@ -1,0 +1,48 @@
+﻿<Window x:Class="ElEscribaDelDJ.View.CampaignResources.MenuRecursos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElEscribaDelDJ.View.CampaignResources"
+        xmlns:uc="clr-namespace:ElEscribaDelDJ.Resources.UserControls.CampaignResources"
+        mc:Ignorable="d"
+        Title="MenuRecursos"
+        WindowStartupLocation="CenterScreen"
+        SizeToContent="WidthAndHeight">
+
+    <Window.Resources>
+
+    </Window.Resources>
+
+    <Grid>
+        <!-- Rejilla base, esta define las filas y columnas donde ira cada elemento del menu -->
+        <Grid x:Name="GridRecursos">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- 1º Elemento del menu, control de usuario personalizado -->
+            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-books.png" NombreElemento="Archivos/Documentos"/>
+            
+            <!-- 2º Elemento del menu, control personalizado de usuario -->
+            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-books.png" NombreElemento="Resumen Reglas" Grid.Column="1"/>
+
+            <!-- 2º Elemento del menu, control personalizado de usuario -->
+            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-books.png" NombreElemento="Elementos Lore" Grid.Row="1"/>
+
+            <!-- 2º Elemento del menu, control personalizado de usuario -->
+            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-books.png" NombreElemento="Imagenes/Musica" Grid.Row="1" Grid.Column="1"/>
+
+            <!-- 2º Elemento del menu, control personalizado de usuario -->
+            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-books.png" NombreElemento="Fichas" Grid.Row="2"/>
+
+        </Grid>
+    </Grid>
+</Window>

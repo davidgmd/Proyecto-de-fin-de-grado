@@ -168,7 +168,8 @@
                     Grid.Row="0"
                     Grid.Column="1">
                 <Button Style="{DynamicResource botonMenu}"
-                        x:Name="botonRecursos">
+                        x:Name="botonRecursos"
+                        Click="botonRecursos_Click">
                     <StackPanel>
                         <TextBlock Style="{DynamicResource textoGridMenu}" 
                                    Text="{DynamicResource CampaignResources}" >

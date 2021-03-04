@@ -2,6 +2,7 @@
 using ElEscribaDelDJ.Classes.Utilidades;
 using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using ElEscribaDelDJ.View.Calendar;
+using ElEscribaDelDJ.View.CampaignResources;
 using ElEscribaDelDJ.View.Options;
 using ElEscribaDelDJ.View.Roller;
 using System;
@@ -401,6 +402,12 @@ namespace ElEscribaDelDJ.View
         {
             VentanaOpciones opciones = new VentanaOpciones(this);
             opciones.Show();
+        }
+
+        private void botonRecursos_Click(object sender, RoutedEventArgs e)
+        {
+            MenuRecursos recursos = new MenuRecursos();
+            recursos.Show();
         }
     }
 }
