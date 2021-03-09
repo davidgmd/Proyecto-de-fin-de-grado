@@ -24,14 +24,16 @@
         <StackPanel Style="{DynamicResource ElementoRecursos}">
             <!-- boton con dos partes, puesta en horizontal, una imagen y texto -->
             <Border BorderBrush="Black" BorderThickness="2">
-                <Button x:Name="ElementButton" Background="White" BorderBrush="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
                         <Image Source="{Binding DireccionImagen}" VerticalAlignment="Center" Stretch="None"/>
-                        <TextBlock Text="{Binding NombreElemento}" Margin="5" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding NombreElemento}" Margin="5" VerticalAlignment="Center" Foreground="Gray"/>
                     </StackPanel>
-                
-            </Button>
             </Border>
+
+
+            <StackPanel Background="White">
+                
+            </StackPanel>
 
 
         </StackPanel>

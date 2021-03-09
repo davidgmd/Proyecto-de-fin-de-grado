@@ -20,7 +20,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.CampaignResources
     {
         public ElementoRecursos()
         {
-            InitializeComponent();
+            InitializeComponent();         
             this.DataContext = this;
         }
 
@@ -40,5 +40,12 @@ namespace ElEscribaDelDJ.Resources.UserControls.CampaignResources
             set { _direccionimagen = value; }
         }
 
+        private Boolean _detallesarchivo;
+
+        public Boolean DetallesArchivos
+        {
+            get { return _detallesarchivo; }
+            set { _detallesarchivo = value; }
+        }
     }
 }

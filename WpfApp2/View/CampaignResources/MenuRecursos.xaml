@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="MenuRecursos"
         WindowStartupLocation="CenterScreen"
-        SizeToContent="WidthAndHeight">
+        SizeToContent="WidthAndHeight"
+        Background="DarkRed">
 
     <Window.Resources>
 
@@ -18,30 +19,66 @@
         <!-- Rejilla base, esta define las filas y columnas donde ira cada elemento del menu -->
         <Grid x:Name="GridRecursos">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <!-- 1º Elemento del menu, control de usuario personalizado -->
-            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-books.png" NombreElemento="Archivos/Documentos"/>
+            
+                <StackPanel>
+                <Button x:Name="BotonDetallesDocumentos" 
+                    Click="BotonDetallesDocumentos_Click" 
+                    Background="Transparent" 
+                    BorderThickness="0"
+                    HorizontalContentAlignment="Stretch"
+                    VerticalContentAlignment="Stretch">
+                    <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-documents.png" 
+                                 NombreElemento="Archivos/Documentos"/>
+            </Button>
+            <!-- Control de usuario que controla titulo de campaña y el botón para crear uno nuevo -->
+                <ScrollViewer x:Name="ScrollViewerDocumentos" Visibility="Collapsed" Opacity="1">
+                    <StackPanel>
+                        <uc:SeccionConBoton Background="White"/>
+                        <WrapPanel x:Name="WrapPanelDetallesDocumentos" 
+                           Background="#f9f2a4" 
+                           MaxWidth="800">
+                        <!-- Control de usuario que muestra los detalles de cada archivo y permite eliminarlo -->
+                            <uc:DetallesArchivoCampana NombreArchivo="Manual basico ejemplo" 
+                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
+                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
+                                                       Margin="0,0,5,0"/>
+                            <uc:DetallesArchivoCampana NombreArchivo="Manual basico ejemplo" 
+                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
+                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"/>
+                            <uc:DetallesArchivoCampana NombreArchivo="Manual basico ejemplo" 
+                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
+                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
+                                                       Margin="0,0,5,0"/>
+                            <uc:DetallesArchivoCampana NombreArchivo="Manual basico ejemplo" 
+                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
+                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"/>
+                        </WrapPanel>
+                </StackPanel>
+                </ScrollViewer>
+            </StackPanel>
             
             <!-- 2º Elemento del menu, control personalizado de usuario -->
-            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-books.png" NombreElemento="Resumen Reglas" Grid.Column="1"/>
+            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-resume.png" NombreElemento="Resumen Reglas" Grid.Column="1"/>
 
             <!-- 2º Elemento del menu, control personalizado de usuario -->
-            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-books.png" NombreElemento="Elementos Lore" Grid.Row="1"/>
+            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-himeji.png" NombreElemento="Elementos Lore" Grid.Row="1"/>
 
             <!-- 2º Elemento del menu, control personalizado de usuario -->
-            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-books.png" NombreElemento="Imagenes/Musica" Grid.Row="1" Grid.Column="1"/>
+            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-speaker.png" NombreElemento="Imagenes/Musica" Grid.Row="1" Grid.Column="1"/>
 
             <!-- 2º Elemento del menu, control personalizado de usuario -->
-            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-books.png" NombreElemento="Fichas" Grid.Row="2"/>
+            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-pdf.png" NombreElemento="Fichas" Grid.Row="2"/>
 
         </Grid>
     </Grid>

@@ -21,5 +21,33 @@ namespace ElEscribaDelDJ.View.CampaignResources
         {
             InitializeComponent();
         }
+
+        private void MostrarStackPanelDetalles(StackPanel panel)
+        {
+            if (panel.IsVisible) {
+                panel.Visibility = Visibility.Collapsed;
+            }
+            else
+            {             
+                panel.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void MostrarScrollViewer(ScrollViewer panel)
+        {
+            if (panel.IsVisible)
+            {
+                panel.Visibility = Visibility.Collapsed;
+            }
+            else
+            {               
+                panel.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void BotonDetallesDocumentos_Click(object sender, RoutedEventArgs e)
+        {
+            MostrarScrollViewer(ScrollViewerDocumentos);
+        }
     }
 }
