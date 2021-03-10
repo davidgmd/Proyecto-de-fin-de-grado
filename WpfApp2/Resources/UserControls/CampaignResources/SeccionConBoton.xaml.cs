@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElEscribaDelDJ.Classes;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,24 @@ namespace ElEscribaDelDJ.Resources.UserControls.CampaignResources
         public SeccionConBoton()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
+
+        private string _seccion;
+
+        public string Seccion
+        {
+            get { return _seccion; }
+            set { _seccion = value; }
+        }
+
+        private List<Recursos> myVar;
+
+        public List<Recursos> MyProperty
+        {
+            get { return myVar; }
+            set { myVar = value; }
+        }
+
     }
 }

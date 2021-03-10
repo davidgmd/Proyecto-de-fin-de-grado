@@ -7,8 +7,8 @@
         xmlns:uc="clr-namespace:ElEscribaDelDJ.Resources.UserControls.CampaignResources"
         mc:Ignorable="d"
         Title="MenuRecursos"
-        WindowStartupLocation="CenterScreen"
-        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterOwner"
+        WindowState="Maximized"
         Background="DarkRed">
 
     <Window.Resources>
@@ -19,7 +19,7 @@
         <!-- Rejilla base, esta define las filas y columnas donde ira cada elemento del menu -->
         <Grid x:Name="GridRecursos">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             
@@ -42,9 +42,9 @@
                                  NombreElemento="Archivos/Documentos"/>
             </Button>
             <!-- Control de usuario que controla titulo de campaña y el botón para crear uno nuevo -->
-                <ScrollViewer x:Name="ScrollViewerDocumentos" Visibility="Collapsed" Opacity="1">
+                <ScrollViewer x:Name="ScrollViewerDocumentos" Visibility="Collapsed">
                     <StackPanel>
-                        <uc:SeccionConBoton Background="White"/>
+                        <uc:SeccionConBoton Seccion="Campaña" Background="White"/>
                         <WrapPanel x:Name="WrapPanelDetallesDocumentos" 
                            Background="#f9f2a4" 
                            MaxWidth="800">
@@ -55,21 +55,39 @@
                                                        Margin="0,0,5,0"/>
                             <uc:DetallesArchivoCampana NombreArchivo="Manual basico ejemplo" 
                                                    DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"/>
+                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
+                                                       Margin="0,0,5,0"/>
                             <uc:DetallesArchivoCampana NombreArchivo="Manual basico ejemplo" 
                                                    DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
                                                    UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
                                                        Margin="0,0,5,0"/>
                             <uc:DetallesArchivoCampana NombreArchivo="Manual basico ejemplo" 
                                                    DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"/>
+                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
+                                                       Margin="0,0,5,0"/>
                         </WrapPanel>
                 </StackPanel>
                 </ScrollViewer>
             </StackPanel>
             
             <!-- 2º Elemento del menu, control personalizado de usuario -->
-            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-resume.png" NombreElemento="Resumen Reglas" Grid.Column="1"/>
+            <StackPanel Grid.Column="1">
+                <Button x:Name="BotonDetallesReglas"
+                    Click="BotonDetallesReglas_Click"
+                    Background="Transparent" 
+                    BorderThickness="0"
+                    HorizontalContentAlignment="Stretch"
+                    VerticalContentAlignment="Stretch">
+                    <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-resume.png" NombreElemento="Resumen Reglas" />
+                </Button>
+                <ScrollViewer x:Name="ScrollViewerReglas" Visibility="Collapsed">
+                    <ListView>
+                        <uc:Resumen_reglas/>
+                    </ListView>
+                </ScrollViewer>
+            </StackPanel>
+                
+            
 
             <!-- 2º Elemento del menu, control personalizado de usuario -->
             <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-himeji.png" NombreElemento="Elementos Lore" Grid.Row="1"/>

@@ -49,5 +49,10 @@ namespace ElEscribaDelDJ.View.CampaignResources
         {
             MostrarScrollViewer(ScrollViewerDocumentos);
         }
+
+        private void BotonDetallesReglas_Click(object sender, RoutedEventArgs e)
+        {
+            MostrarScrollViewer(ScrollViewerReglas);
+        }
     }
 }
