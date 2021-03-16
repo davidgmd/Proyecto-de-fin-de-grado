@@ -19,8 +19,26 @@ namespace ElEscribaDelDJ.View.CampaignResources
     {
         public MenuRecursos()
         {
-            InitializeComponent();
+            InitializeComponent();           
         }
+
+        private double _maxheightscrollviewers;
+
+        public double MaximaAlturaScrollViewers
+        {
+            get { return _maxheightscrollviewers; }
+            set { _maxheightscrollviewers = value; }
+        }
+
+        private void Window_ContentRendered(object sender, EventArgs e)
+        {
+            double AlturaColumna = PrimeraColumna.ActualHeight;
+            double AlturaBoton = BotonDetallesDocumentos.ActualHeight;
+
+            MaximaAlturaScrollViewers = (AlturaColumna - AlturaBoton);
+            this.DataContext = this;
+        }
+
 
         private void MostrarStackPanelDetalles(StackPanel panel)
         {

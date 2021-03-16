@@ -8,10 +8,14 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <TextBlock Text="{Binding Seccion}" TextDecorations="Underline" VerticalAlignment="Center" FontSize="15" Margin="0,0,10,0"/>
+            <TextBlock Text="{Binding Seccion}" 
+                       TextDecorations="Underline" 
+                       VerticalAlignment="Center" 
+                       FontSize="15" 
+                       Margin="0,0,10,0"/>
             <Button BorderThickness="0" Background="Transparent">
                 <StackPanel>
-                    <Image Source="/Images/icons/iconoMas.png" Width="25"/>
+                    <Image Source="/Images/icons/iconoMas.png" Width="15"/>
                     <TextBlock Text="Añadir" FontSize="10"/>
                 </StackPanel>
             </Button>

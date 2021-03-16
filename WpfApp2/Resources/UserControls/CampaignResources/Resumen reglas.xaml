@@ -25,10 +25,12 @@
             <TextBox HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWidth="350"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="1">
-            <Image Source="/Images/icons/iconoMas.png" Width="25" HorizontalAlignment="Left"/>
+        <Button Grid.Column="1" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0">
+        <StackPanel >
+            <Image Source="/Images/icons/iconoMas.png" Width="25" HorizontalAlignment="Center"/>
             <TextBlock Text="Añadir"/>
         </StackPanel>
+        </Button>
 
         <StackPanel Grid.Row="1" Margin="0,0,5,0">
             <TextBlock Text="Nombre"/>

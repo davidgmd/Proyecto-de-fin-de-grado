@@ -9,10 +9,10 @@
         Title="MenuRecursos"
         WindowStartupLocation="CenterOwner"
         WindowState="Maximized"
-        Background="DarkRed">
+        Background="DarkRed"
+        ContentRendered="Window_ContentRendered">
 
     <Window.Resources>
-
     </Window.Resources>
 
     <Grid>
@@ -24,14 +24,14 @@
             </Grid.ColumnDefinitions>
             
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <!-- 1º Elemento del menu, control de usuario personalizado -->
             
-                <StackPanel>
+                <StackPanel x:Name="PrimeraColumna">
                 <Button x:Name="BotonDetallesDocumentos" 
                     Click="BotonDetallesDocumentos_Click" 
                     Background="Transparent" 
@@ -42,12 +42,15 @@
                                  NombreElemento="Archivos/Documentos"/>
             </Button>
             <!-- Control de usuario que controla titulo de campaña y el botón para crear uno nuevo -->
-                <ScrollViewer x:Name="ScrollViewerDocumentos" Visibility="Collapsed">
+                <ScrollViewer x:Name="ScrollViewerDocumentos" 
+                              Visibility="Collapsed"
+                              MaxHeight="{Binding MaximaAlturaScrollViewers}">
+
                     <StackPanel>
                         <uc:SeccionConBoton Seccion="Campaña" Background="White"/>
                         <WrapPanel x:Name="WrapPanelDetallesDocumentos" 
-                           Background="#f9f2a4" 
-                           MaxWidth="800">
+                           Background="#f9f2a4">
+                            
                         <!-- Control de usuario que muestra los detalles de cada archivo y permite eliminarlo -->
                             <uc:DetallesArchivoCampana NombreArchivo="Manual basico ejemplo" 
                                                    DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
@@ -80,7 +83,9 @@
                     VerticalContentAlignment="Stretch">
                     <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-resume.png" NombreElemento="Resumen Reglas" />
                 </Button>
-                <ScrollViewer x:Name="ScrollViewerReglas" Visibility="Collapsed">
+                <ScrollViewer x:Name="ScrollViewerReglas" 
+                              Visibility="Collapsed"
+                              MaxHeight="{Binding MaximaAlturaScrollViewers}">
                     <ListView>
                         <uc:Resumen_reglas/>
                     </ListView>
@@ -90,7 +95,7 @@
             
 
             <!-- 2º Elemento del menu, control personalizado de usuario -->
-            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-himeji.png" NombreElemento="Elementos Lore" Grid.Row="1"/>
+            <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-himeji.png" NombreElemento="Elementos Lore" Grid.Row="1" />
 
             <!-- 2º Elemento del menu, control personalizado de usuario -->
             <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-speaker.png" NombreElemento="Imagenes/Musica" Grid.Row="1" Grid.Column="1"/>
