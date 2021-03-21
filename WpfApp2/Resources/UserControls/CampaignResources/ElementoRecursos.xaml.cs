@@ -22,7 +22,6 @@ namespace ElEscribaDelDJ.Resources.UserControls.CampaignResources
         {
             InitializeComponent();         
             this.DataContext = this;
-            Altura = Altura * 0.2;
             //MessageBox.Show(Altura.ToString());
         }
 
