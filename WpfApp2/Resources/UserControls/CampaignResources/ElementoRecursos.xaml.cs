@@ -22,7 +22,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.CampaignResources
         {
             InitializeComponent();         
             this.DataContext = this;
-            Altura = Altura;
+            Altura = Altura * 0.2;
             //MessageBox.Show(Altura.ToString());
         }
 
@@ -62,6 +62,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.CampaignResources
         private void OnSetDoubleChanged(DependencyPropertyChangedEventArgs e)
         {
             Altura = (double)e.NewValue;
+            Altura2 = (double)e.NewValue * 0.2;
         }
 
         public double Altura
@@ -69,6 +70,15 @@ namespace ElEscribaDelDJ.Resources.UserControls.CampaignResources
             get { return (double)GetValue(AlturaProperty); }
             set { SetValue(AlturaProperty,value); }
         }
+
+        private double _altura2;
+
+        public double Altura2
+        {
+            get { return _altura2; }
+            set { _altura2 = value; }
+        }
+
 
     }
 }

@@ -39,7 +39,8 @@
                     HorizontalContentAlignment="Stretch"
                     VerticalContentAlignment="Stretch">
                     <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-documents.png" 
-                                 NombreElemento="Archivos/Documentos" Altura="{Binding ElementName=BotonDetallesDocumentos, Path=ActualHeight}"/>
+                                 NombreElemento="Archivos/Documentos" 
+                                         Altura="{Binding ElementName=PrimeraColumna, Path=ActualHeight}"/>
             </Button>
             <!-- Control de usuario que controla titulo de campaña y el botón para crear uno nuevo -->
                 <Border BorderBrush="#FF000000" 
@@ -97,7 +98,7 @@
                     VerticalContentAlignment="Stretch">
                     <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-resume.png" 
                                          NombreElemento="Resumen Reglas" 
-                                         Altura="{Binding ElementName=BotonDetallesDocumentos, Path=ActualHeight}"/>
+                                         Altura="{Binding ElementName=PrimeraColumna, Path=ActualHeight}"/>
                 </Button>
                 <Border BorderBrush="#FF000000" 
                         BorderThickness="1" 

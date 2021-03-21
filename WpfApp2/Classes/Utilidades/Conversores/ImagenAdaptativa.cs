@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElEscribaDelDJ.Resources.UserControls.CampaignResources;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -12,8 +13,9 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Conversores
         //Este conversor obtiene como primer valor en value el porcentaje, como segundo valor en parameter el ancho del elemento padre
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            double porcentaje = (double)value;
-            return porcentaje * 0.8;
+            ElementoRecursos valor = value as ElementoRecursos;
+            double porcentaje = valor.ActualHeight;
+            return porcentaje * 0.2;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
