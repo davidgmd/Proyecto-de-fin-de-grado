@@ -10,8 +10,9 @@ namespace ElEscribaDelDJ.Classes
 		protected string nombre;
 		protected string descripcion;
         private string imagen;
-        protected List<Recursos> listarecursos = new List<Recursos>();
-        private List<EscenarioCampana> listaescenarios = new List<EscenarioCampana>();
+        protected List<Archivos> listaarchivos = new List<Archivos>();
+		protected List<Resumenes> listaresumenes = new List<Resumenes>();
+		private List<EscenarioCampana> listaescenarios = new List<EscenarioCampana>();
 
         public List<EscenarioCampana> ListaEscenarios
         {
@@ -26,10 +27,16 @@ namespace ElEscribaDelDJ.Classes
 			set { imagen = value; }
 		}
 
-		public List<Recursos> RecursosCampana
+		public List<Archivos> ListaArchivos
 		{
-			get { return listarecursos; }
-			set { listarecursos = value; }
+			get { return listaarchivos; }
+			set { listaarchivos = value; }
+		}
+
+		public List<Resumenes> ListaResumenes
+		{
+			get { return listaresumenes; }
+			set { listaresumenes = value; }
 		}
 
 		public string Descripcion

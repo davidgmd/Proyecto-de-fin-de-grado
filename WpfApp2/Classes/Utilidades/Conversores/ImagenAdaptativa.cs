@@ -13,7 +13,7 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Conversores
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             double porcentaje = (double)value;
-            return porcentaje * 0.9;
+            return porcentaje * 0.8;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

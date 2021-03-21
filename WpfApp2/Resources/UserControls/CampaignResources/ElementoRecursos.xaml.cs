@@ -22,6 +22,8 @@ namespace ElEscribaDelDJ.Resources.UserControls.CampaignResources
         {
             InitializeComponent();         
             this.DataContext = this;
+            Altura = Altura;
+            //MessageBox.Show(Altura.ToString());
         }
 
         private string _nombrelemento;
@@ -47,5 +49,26 @@ namespace ElEscribaDelDJ.Resources.UserControls.CampaignResources
             get { return _detallesarchivo; }
             set { _detallesarchivo = value; }
         }
+
+        public static readonly DependencyProperty AlturaProperty = DependencyProperty.Register("Altura", typeof(double), typeof(ElementoRecursos), new
+            PropertyMetadata(0.0d, new PropertyChangedCallback(OnSetDoubleChanged)));
+
+        private static void OnSetDoubleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ElementoRecursos uc = d as ElementoRecursos;
+            uc.OnSetDoubleChanged(e);
+        }
+
+        private void OnSetDoubleChanged(DependencyPropertyChangedEventArgs e)
+        {
+            Altura = (double)e.NewValue;
+        }
+
+        public double Altura
+        {
+            get { return (double)GetValue(AlturaProperty); }
+            set { SetValue(AlturaProperty,value); }
+        }
+
     }
 }

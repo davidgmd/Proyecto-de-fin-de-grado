@@ -33,9 +33,9 @@ namespace ElEscribaDelDJ.Resources.UserControls.CampaignResources
             set { _seccion = value; }
         }
 
-        private List<Recursos> myVar;
+        private List<object> myVar;
 
-        public List<Recursos> MyProperty
+        public List<object> MyProperty
         {
             get { return myVar; }
             set { myVar = value; }

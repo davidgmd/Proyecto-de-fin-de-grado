@@ -28,9 +28,7 @@
             <Border BorderBrush="Black" BorderThickness="2">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="{Binding DireccionImagen}" 
-                           VerticalAlignment="Center" 
-                           Stretch="UniformToFill" 
-                           Height="{Binding Converter={StaticResource ImagenAdaptativa}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type StackPanel}},Path=ActualHeight}"/>
+                           VerticalAlignment="Center" Stretch="Uniform" Height="{Binding Altura}"/>
                     <TextBlock Text="{Binding NombreElemento}" Margin="5" VerticalAlignment="Center" Foreground="Gray"/>
                 </StackPanel>
             </Border>

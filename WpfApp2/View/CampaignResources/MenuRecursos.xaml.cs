@@ -19,7 +19,7 @@ namespace ElEscribaDelDJ.View.CampaignResources
     {
         public MenuRecursos()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
 
         private double _maxheightscrollviewers;
@@ -51,26 +51,28 @@ namespace ElEscribaDelDJ.View.CampaignResources
             }
         }
 
-        private void MostrarScrollViewer(ScrollViewer panel)
+        private void MostrarScrollViewer(ScrollViewer panel, Border bordeocultar)
         {
             if (panel.IsVisible)
             {
                 panel.Visibility = Visibility.Collapsed;
+                bordeocultar.Visibility = Visibility.Visible;
             }
             else
             {               
                 panel.Visibility = Visibility.Visible;
+                bordeocultar.Visibility = Visibility.Collapsed;
             }
         }
 
         private void BotonDetallesDocumentos_Click(object sender, RoutedEventArgs e)
         {
-            MostrarScrollViewer(ScrollViewerDocumentos);
+            MostrarScrollViewer(ScrollViewerDocumentos, DescripcionDocumentos);
         }
 
         private void BotonDetallesReglas_Click(object sender, RoutedEventArgs e)
         {
-            MostrarScrollViewer(ScrollViewerReglas);
+            MostrarScrollViewer(ScrollViewerReglas, DescripcionResumenes);
         }
     }
 }

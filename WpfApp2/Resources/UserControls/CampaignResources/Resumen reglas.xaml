@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ElEscribaDelDJ.Resources.UserControls.CampaignResources"
+             xmlns:uc="clr-namespace:ElEscribaDelDJ.Resources.UserControls.CampaignResources"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -13,9 +14,6 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -32,30 +30,50 @@
         </StackPanel>
         </Button>
 
-        <StackPanel Grid.Row="1" Margin="0,0,5,0">
-            <TextBlock Text="Nombre"/>
-            <TextBox HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap"/>
-        </StackPanel>
+        <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="ListaResumenes">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <uc:ReglaResumida/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBlock Text="Etiquetas"/>
-            <TextBox HorizontalAlignment="Stretch"/>
-        </StackPanel>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
-            <TextBlock Text="Descripción" HorizontalAlignment="Center"/>
-            <TextBox HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap"/>
-        </StackPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <StackPanel Margin="0,0,5,0">
+                <TextBlock Text="Nombre"/>
+                <TextBox HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap"/>
+            </StackPanel>
 
-        <StackPanel Grid.Row="3" Margin="0,0,5,0">
-            <TextBlock Text="Pagina"/>
-            <TextBox HorizontalAlignment="Stretch"/>
-        </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Etiquetas"/>
+                <TextBox HorizontalAlignment="Stretch"/>
+            </StackPanel>
 
-        <StackPanel Grid.Row="3" Grid.Column="1">
-            <TextBlock Text="Manual o Documento de referencia" TextWrapping="Wrap"/>
-            <TextBox HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap"/>
-        </StackPanel>
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                <TextBlock Text="Descripción" HorizontalAlignment="Center"/>
+                <TextBox HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap"/>
+            </StackPanel>
 
+            <StackPanel Grid.Row="2" Margin="0,0,5,0">
+                <TextBlock Text="Pagina"/>
+                <TextBox HorizontalAlignment="Stretch"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.Column="1">
+                <TextBlock Text="Manual o Documento de referencia" TextWrapping="Wrap"/>
+                <TextBox HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>
