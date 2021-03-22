@@ -6,7 +6,14 @@ namespace ElEscribaDelDJ.Classes
 {
     public class Archivos
     {
-        //public string TipoRecurso { get; set; }
+        private string _seccion;
+
+        public string Seccion
+        {
+            get { return _seccion; }
+            set { _seccion = value; }
+        }
+
 
         private string _nombre;
 

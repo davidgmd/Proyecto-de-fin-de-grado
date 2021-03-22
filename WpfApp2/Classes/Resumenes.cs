@@ -15,9 +15,9 @@ namespace ElEscribaDelDJ.Classes
             set { _nombre = value; }
         }
 
-        private string[] _etiquetas;
+        private string _etiquetas;
 
-        public string[] Etiquetas
+        public string Etiquetas
         {
             get { return _etiquetas; }
             set { _etiquetas = value; }

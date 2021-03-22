@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ElEscribaDelDJ.View.CampaignResources
+namespace ElEscribaDelDJ.View.Resources
 {
     /// <summary>
     /// Lógica de interacción para MenuRecursos.xaml
@@ -39,18 +39,6 @@ namespace ElEscribaDelDJ.View.CampaignResources
             this.DataContext = this;
         }
 
-
-        private void MostrarStackPanelDetalles(StackPanel panel)
-        {
-            if (panel.IsVisible) {
-                panel.Visibility = Visibility.Collapsed;
-            }
-            else
-            {             
-                panel.Visibility = Visibility.Visible;
-            }
-        }
-
         private void MostrarScrollViewer(ScrollViewer panel, Border bordeocultar)
         {
             if (panel.IsVisible)
@@ -73,6 +61,21 @@ namespace ElEscribaDelDJ.View.CampaignResources
         private void BotonDetallesReglas_Click(object sender, RoutedEventArgs e)
         {
             MostrarScrollViewer(ScrollViewerReglas, DescripcionResumenes);
+        }
+
+        private void BotonLore_Click(object sender, RoutedEventArgs e)
+        {
+            MostrarScrollViewer(ScrollViewerLore, DescripcionLore);
+        }
+
+        private void BotonMedia_Click(object sender, RoutedEventArgs e)
+        {
+            MostrarScrollViewer(ScrollViewerMedia, DescripcionMedia);
+        }
+
+        private void BotonFichas_Click(object sender, RoutedEventArgs e)
+        {
+            MostrarScrollViewer(ScrollViewerFichas, DescripcionFichas);
         }
     }
 }

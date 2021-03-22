@@ -9,13 +9,18 @@
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Image/>
-                <TextBlock Margin="5,0,0,0" Text="{Binding Nombre}" TextDecorations="Underline"/>
+                <Image Width="10" Source="/images/icons/icons8-select.png" Opacity="0.5"/>
+                <TextBlock Margin="5,0,0,0" Text= "Nombre:" TextDecorations="Underline"/>
+                <TextBlock Margin="5,0,0,0" Text="{Binding Nombre}" FontWeight="Bold"/>
+                <TextBlock Margin="5,0,0,0" Text= "Etiquetas:" TextDecorations="Underline"/>
                 <TextBlock Margin="5,0,0,0" Text="{Binding Etiquetas}"/>
             </StackPanel>
+            <TextBlock Text="Descripción:" TextDecorations="Underline"/>
             <TextBlock Text="{Binding Descripcion}"/>
             <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Pagina:" TextDecorations="Underline"/>
                 <TextBlock Text="{Binding Pagina}"/>
+                <TextBlock Margin="5,0,0,0" Text="Manual:" TextDecorations="Underline"/>
                 <TextBlock Margin="5,0,0,0" Text="{Binding Manual}"/>
             </StackPanel>
         </StackPanel>            

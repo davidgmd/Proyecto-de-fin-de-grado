@@ -23,7 +23,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.CampaignResources
         {
             InitializeComponent();
             List<Resumenes> resumenes = new List<Resumenes>();
-            resumenes.Add(new Resumenes() { Nombre = "Regla transformación en garou", Etiquetas = new string[]{ "Hombre lobo", "garou", "mundo de tinieblas" }, 
+            resumenes.Add(new Resumenes() { Nombre = "Regla transformación en garou", Etiquetas = "Hombre lobo, garou, mundo de tinieblas", 
                 Descripcion = "Esta regla permite al hombre lobo pasar de su forma huminida a su forma garou obteniendo los diversos bonificadores", 
                 Pagina = 120, Manual="Hombre Lobo 20 aniversario" });
             //recursos.Add(new Recursos() { NombreRecurso = "Jane Doe", Age = 39, Mail = "jane@doe-family.com" });
