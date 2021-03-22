@@ -1,4 +1,4 @@
-﻿using ElEscribaDelDJ.Resources.UserControls.CampaignResources;
+﻿using ElEscribaDelDJ.Resources.UserControls.Resources;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

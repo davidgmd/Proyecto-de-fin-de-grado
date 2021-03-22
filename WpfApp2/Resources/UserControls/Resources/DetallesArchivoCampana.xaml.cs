@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ElEscribaDelDJ.Resources.UserControls.CampaignResources
+namespace ElEscribaDelDJ.Resources.UserControls.Resources
 {
     /// <summary>
     /// Lógica de interacción para DetallesArchivo.xaml
