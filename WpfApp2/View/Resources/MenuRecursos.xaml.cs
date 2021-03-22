@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -20,6 +21,7 @@ namespace ElEscribaDelDJ.View.Resources
         public MenuRecursos()
         {
             InitializeComponent();
+            ConfiguracionPagina.DefinirIdioma(this, "Resources");
         }
 
         private double _maxheightscrollviewers;

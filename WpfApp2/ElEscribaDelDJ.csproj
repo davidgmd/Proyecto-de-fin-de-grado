@@ -71,6 +71,7 @@
     <Page Remove="Idiomas\EN\View\AnadirEscenario.xaml" />
     <Page Remove="Idiomas\EN\View\MainMenu.xaml" />
     <Page Remove="Idiomas\EN\View\Options\VentanaOpciones.xaml" />
+    <Page Remove="Idiomas\EN\View\Resources\MenuRecursos.xaml" />
     <Page Remove="Idiomas\EN\View\Roller\VentanaModal.xaml" />
     <Page Remove="Idiomas\ES\MainWindow.xaml" />
     <Page Remove="Idiomas\ES\Registrarse.xaml" />
@@ -79,6 +80,7 @@
     <Page Remove="Idiomas\ES\View\AnadirEscenario.xaml" />
     <Page Remove="Idiomas\ES\View\MainMenu.xaml" />
     <Page Remove="Idiomas\ES\View\Options\VentanaOpciones.xaml" />
+    <Page Remove="Idiomas\ES\View\Resources\MenuRecursos.xaml" />
     <Page Remove="Idiomas\ES\View\Roller\VentanaModal.xaml" />
     <Page Remove="Idiomas\IdiomasLogin.xaml" />
     <Page Remove="Idiomas\LoginEN.xaml" />
@@ -106,6 +108,10 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Idiomas\EN\View\Resources\MenuRecursos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Idiomas\EN\View\Roller\VentanaModal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -120,6 +126,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Idiomas\ES\View\AnadirEscenario.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\ES\View\Resources\MenuRecursos.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -240,7 +250,6 @@
     <Folder Include="Idiomas\EN\View\Calendar\" />
     <Folder Include="Idiomas\ES\View\Calendar\" />
     <Folder Include="Images\User\" />
-    <Folder Include="Resources\View\CampaignResources\" />
     <Folder Include="View\Resources\" />
     <Folder Include="View\Options\" />
   </ItemGroup>

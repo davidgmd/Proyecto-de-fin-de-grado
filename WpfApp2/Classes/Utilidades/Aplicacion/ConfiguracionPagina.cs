@@ -25,20 +25,17 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
 
             switch (origen)
             {
-                case ("VentanaModal"):
-                    path = path + "\\View\\Roller\\" + nombreventana + ".xaml";
-                    break;
-
-                case ("Options"):
-                    path = path + "\\View\\Options\\" + nombreventana + ".xaml";
-                    break;
 
                 case ("MainMenu"):
                     path = path + "\\View\\" + nombreventana + ".xaml";
                     break;
 
-                default:
+                case ("Raiz"):
                     path = path + "\\" + nombreventana + ".xaml";
+                    break;
+
+                default:
+                    path = path + "\\View\\" + origen + "\\" + nombreventana + ".xaml";
                     break;
             }
             

@@ -16,7 +16,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../../Resources/View/Options/Options.xaml"/>
                 <ResourceDictionary Source="../../Resources/Login.xaml"/>
-                <ResourceDictionary Source="../../Idiomas/ES/View/Options/Options.xaml"/>
+                <ResourceDictionary Source="../../Idiomas/ES/View/Options/VentanaOpciones.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>

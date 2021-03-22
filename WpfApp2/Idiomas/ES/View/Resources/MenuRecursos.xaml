@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ElEscribaDelDJ.Idiomas.ES.View" 
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Seccion Archivos/Documentos -->
+    <system:String x:Key="DocumentsTitle">Archivos/Documentos</system:String>
+    <system:String x:Key="DocumentsInfo">Sección que permite ver los documentos de la campaña, sesión o aventura, como por ejemplo los manuales, suplementos o añadir nuevos</system:String>
+
+</ResourceDictionary>

@@ -22,7 +22,7 @@ namespace ElEscribaDelDJ.View.Roller
         public VentanaModal()
         {
             InitializeComponent();
-            ConfiguracionPagina.DefinirIdioma(this, "VentanaModal");
+            ConfiguracionPagina.DefinirIdioma(this, "Roller");
         }
 
         private void BotonDadinos_Click(object sender, RoutedEventArgs e)

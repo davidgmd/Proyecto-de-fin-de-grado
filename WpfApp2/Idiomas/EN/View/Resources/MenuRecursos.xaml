@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Seccion Archivos/Documentos -->
+    <system:String x:Key="DocumentsTitle">Files/Documents</system:String>
+    <system:String x:Key="DocumentsInfo">This sections shows you the documents or files that you have stored for your, adventure or session, as manuals, supplements and also let you to add new files</system:String>
+    
+</ResourceDictionary>
