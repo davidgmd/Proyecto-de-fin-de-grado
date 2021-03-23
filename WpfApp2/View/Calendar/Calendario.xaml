@@ -15,6 +15,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/View/Calendar/Calendario.xaml"/>
+                <ResourceDictionary Source="../../Idiomas/ES/View/Calendar/Calendario.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -32,14 +33,14 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Style="{DynamicResource StackPanelTituloVentana}">
-        <TextBlock Text="Anotar Partida en el Calendario"
+        <TextBlock Text="{DynamicResource CalendarTitle}"
                    Style="{DynamicResource TextoEncabezadoVentana}"/>
             <TextBlock Style="{DynamicResource TextoDescriptivoEncabezado}" 
-                       Text="Pulse en el botón de Google Calendar para autentificarse o recordar sus credenciales"/>
+                       Text="{DynamicResource CalendarHowItWorks}"/>
             <StackPanel Style="{DynamicResource StackPanelBotonera}">
                 <Button Style="{DynamicResource BotonLoginOutlook}">
                     <StackPanel Style="{DynamicResource StackPanelBotonOutlook}">
-                        <TextBlock Text="Outlook, Proximamente"
+                        <TextBlock Text="{DynamicResource OutlookButtonText}"
                                    Style="{DynamicResource TextoStackPanelOutlook}"/>
                         <!-- <Image Height="20"
                                Source="\Images\icons\outlook.png"/>-->
@@ -49,7 +50,7 @@
                         Style="{DynamicResource BotonLoginGoogleCalendar}"
                         Click="botonGoogleCalendar_Click">
                     <StackPanel Style="{DynamicResource StackPanelBotonGoogleCalendar}">
-                        <TextBlock Text="Google Calendar"
+                        <TextBlock Text="{DynamicResource GoogleCalendarButtonText}"
                                    Style="{DynamicResource TextoStackPanelGoogleCalendar}"/>
                         <Image Style="{DynamicResource ImagenStackPanelGoogleCalendar}"/>
                     </StackPanel>
@@ -78,7 +79,7 @@
             <StackPanel x:Name="StackPanelActualizarListView" 
                         Style="{DynamicResource StackPanelActualizar}" 
                         MouseDown="ActualizarListView_MouseDown">
-                <TextBlock Text="Actualizar" Style="{DynamicResource TextoActualizar}"/>
+                <TextBlock Text="{DynamicResource UpdateButtonText}" Style="{DynamicResource TextoActualizar}"/>
                 <Button x:Name="BotonActualizarListView" 
                         Style="{DynamicResource BotonActualizar}" 
                         Click="BotonActualizarListView_Click">
@@ -95,56 +96,56 @@
                         <WrapPanel Style="{DynamicResource WrappanelOrganizador}">
                             <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
                                 <Border Style="{DynamicResource BordesCategoria}">
-                                    <TextBlock Text="Resumen Evento" Style="{DynamicResource ValorCategoria}"/>
+                                    <TextBlock Text="{DynamicResource EventSummaryLabel}" Style="{DynamicResource ValorCategoria}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Summary}"/>
                             </StackPanel>
 
                             <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
                                 <Border Style="{DynamicResource BordesCategoria}">
-                                    <TextBlock Text="Correo Organizador" Style="{DynamicResource ValorCategoria}"/>
+                                    <TextBlock Text="{DynamicResource EventOrganizerEmailLabel}" Style="{DynamicResource ValorCategoria}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Organizer.Email}"/>
                             </StackPanel>
 
                             <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
                                 <Border Style="{DynamicResource BordesCategoria}">
-                                    <TextBlock Text="Descripción Evento" Style="{DynamicResource ValorCategoria}"/>
+                                    <TextBlock Text="{DynamicResource EventDescriptionLabel}" Style="{DynamicResource ValorCategoria}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Description}"/>
                             </StackPanel>
 
                             <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
                                 <Border Style="{DynamicResource BordesCategoria}">
-                                    <TextBlock Text="Localización Evento" Style="{DynamicResource ValorCategoria}"/>
+                                    <TextBlock Text="{DynamicResource EventLocationLabel}" Style="{DynamicResource ValorCategoria}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Location}"/>
                             </StackPanel>
 
                             <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
                                 <Border Style="{DynamicResource BordesCategoria}">
-                                    <TextBlock Text="Estado" Style="{DynamicResource ValorCategoria}"/>
+                                    <TextBlock Text="{DynamicResource EventStatusLabel}" Style="{DynamicResource ValorCategoria}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Status}"/>
                             </StackPanel>
 
                             <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
                                 <Border Style="{DynamicResource BordesCategoria}">
-                                    <TextBlock Text="Fecha Inicio dd/mm/yyyy" Style="{DynamicResource ValorCategoria}"/>
+                                    <TextBlock Text="{DynamicResource EventStartDateLabel}" Style="{DynamicResource ValorCategoria}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Start.DateTime}"/>
                             </StackPanel>
 
                             <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
                                 <Border Style="{DynamicResource BordesCategoria}">
-                                    <TextBlock Text="Fecha actualización" Style="{DynamicResource ValorCategoria}"/>
+                                    <TextBlock Text="{DynamicResource EventUpdatedDateLabel}" Style="{DynamicResource ValorCategoria}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=Updated, ConverterCulture={x:Static SystemGlobalization:CultureInfo.DefaultThreadCurrentCulture}}"/>
                             </StackPanel>
 
                             <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
                                 <Border Style="{DynamicResource BordesCategoria}">
-                                    <TextBlock Text="Fecha Fin dd/mm/yyyy" Style="{DynamicResource ValorCategoria}"/>
+                                    <TextBlock Text="{DynamicResource EventEndDateLabel}" Style="{DynamicResource ValorCategoria}"/>
                                 </Border>
                                 <TextBlock Text="{Binding Path=End.DateTime}"/>
                             </StackPanel>
@@ -156,13 +157,13 @@
             <WrapPanel Orientation="Horizontal" Margin="5 0 0 0">
                 <Button x:Name="BotonEditarEvento" 
                         Click="BotonEditarEvento_Click">
-                    <TextBlock Text="Editar"
+                    <TextBlock Text="{DynamicResource EventEditButtonText}"
                                x:Name="BotonEditar"
                                Style="{DynamicResource TextoBotonera}"/>
                 </Button>
                 <Button x:Name="BotonEliminarEvento"
                         Click="BotonEliminarEvento_Click">
-                    <TextBlock Text="Eliminar"
+                    <TextBlock Text="{DynamicResource EventDeleteButtonText}"
                               Style="{DynamicResource TextoBotonera}"/>
                 </Button>
             </WrapPanel>
@@ -184,7 +185,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Resumen:" 
+            <TextBlock Text="{DynamicResource FormSummary}" 
                        Grid.Row="0"/>
             <TextBox Grid.Row="0" 
                      Grid.Column="1"
@@ -194,7 +195,7 @@
                      TextChanged="TextoFormulario_TextChanged"/>
 
             <TextBlock Grid.Row="1" 
-                       Text="Descripción:"/>
+                       Text="{DynamicResource FormDescription}"/>
             <TextBox Grid.Row="1" 
                      Grid.Column="1" 
                      x:Name="TextoAsunto"
@@ -203,7 +204,7 @@
                      TextChanged="TextoFormulario_TextChanged"/>
 
             <TextBlock Grid.Row="2"
-                       Text="Fecha inicio:"/>
+                       Text="{DynamicResource FormStartDate}"/>
             <DatePicker Grid.Column="1" 
                         Grid.Row="2" 
                         Style="{DynamicResource DatePickerBase}"
@@ -211,7 +212,7 @@
                         x:Name="FechaInicioDatePicker"
                         SelectedDateChanged="FechaInicioDatePicker_SelectedDateChanged"/>
 
-            <TextBlock Text="Localización:" 
+            <TextBlock Text="{DynamicResource FormLocation}" 
                        Grid.Row="0"
                        Grid.Column="2"/>
             <TextBox Grid.Row="0" 
@@ -223,7 +224,7 @@
 
             <TextBlock Grid.Row="1"
                        Grid.Column="2"
-                       Text="Estado:"/>
+                       Text="{DynamicResource FormStatus}"/>
             <ComboBox Grid.Row="1"
                       Grid.Column="3"
                       x:Name="ComboBoxEstado"
@@ -236,13 +237,13 @@
 
             <TextBlock Grid.Row="2"
                        Grid.Column="2"
-                       Text="Fecha Fin:"/>
+                       Text="{DynamicResource FormEndDate}"/>
             <DatePicker Grid.Column="3"
                         Grid.Row="2" 
                         x:Name="FechaFinDatePicker"
                         Style="{DynamicResource DatePickerFechaFin}"
                         SelectedDateChanged="FechaFinDatePicker_SelectedDateChanged"/>
-            <TextBlock Text="Hora Inicio"
+            <TextBlock Text="{DynamicResource FormStartHour}"
                        Grid.Row="3"/>
             <WrapPanel Orientation="Horizontal"
                        Grid.Row="3"
@@ -268,20 +269,20 @@
                 <Button x:Name="BotonAgregarEvento" 
                         Style="{DynamicResource BotonAgregarEvento}"                      
                         Click="BotonAgregarEvento_Click">
-                    <TextBlock Text="Agregar Evento"
+                    <TextBlock Text="{DynamicResource FormAddButtonText}"
                                Style="{DynamicResource TextoBotonesEvento}"/>
                 </Button>
                 
                 <Button Style="{DynamicResource BotonEditarEvento}" 
                         x:Name="BotonFormularioEditar"
                         Click="BotonFormularioEditar_Click">
-                    <TextBlock Text="Editar Evento"                          
+                    <TextBlock Text="{DynamicResource FormEditButtonText}"                          
                                Style="{DynamicResource TextoBotonesEvento}"/>
                 </Button>
                 
                 <Button x:Name="BotonLimpiarCampos" 
                         Click="BotonLimpiarCampos_Click">
-                    <TextBlock Text="Limpiar Campos"
+                    <TextBlock Text="{DynamicResource FormCleanButtonText}"
                                Style="{DynamicResource TextoBotonesEvento}"/>
                 </Button>
             </WrapPanel>

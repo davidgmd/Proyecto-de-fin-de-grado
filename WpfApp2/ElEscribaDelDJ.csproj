@@ -69,6 +69,7 @@
     <Page Remove="Idiomas\EN\View\AnadirAventura.xaml" />
     <Page Remove="Idiomas\EN\View\AnadirCampana.xaml" />
     <Page Remove="Idiomas\EN\View\AnadirEscenario.xaml" />
+    <Page Remove="Idiomas\EN\View\Calendar\Calendario.xaml" />
     <Page Remove="Idiomas\EN\View\MainMenu.xaml" />
     <Page Remove="Idiomas\EN\View\Options\VentanaOpciones.xaml" />
     <Page Remove="Idiomas\EN\View\Resources\MenuRecursos.xaml" />
@@ -78,6 +79,7 @@
     <Page Remove="Idiomas\ES\View\AnadirAventura.xaml" />
     <Page Remove="Idiomas\ES\View\AnadirCampana.xaml" />
     <Page Remove="Idiomas\ES\View\AnadirEscenario.xaml" />
+    <Page Remove="Idiomas\ES\View\Calendar\Calendario.xaml" />
     <Page Remove="Idiomas\ES\View\MainMenu.xaml" />
     <Page Remove="Idiomas\ES\View\Options\VentanaOpciones.xaml" />
     <Page Remove="Idiomas\ES\View\Resources\MenuRecursos.xaml" />
@@ -108,6 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Idiomas\EN\View\Calendar\Calendario.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Idiomas\EN\View\Resources\MenuRecursos.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -126,6 +132,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Idiomas\ES\View\AnadirEscenario.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\ES\View\Calendar\Calendario.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -247,8 +257,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Idiomas\EN\View\Calendar\" />
-    <Folder Include="Idiomas\ES\View\Calendar\" />
     <Folder Include="Images\User\" />
     <Folder Include="View\Resources\" />
     <Folder Include="View\Options\" />

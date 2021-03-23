@@ -1,0 +1,45 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+
+    <!-- Sección central con un mensaje en mayusculas, descripción y los botones de outlook y google calendar -->
+    <system:String x:Key="CalendarTitle">Anotar Partida en el Calendario</system:String>
+    <system:String x:Key="CalendarHowItWorks">Pulse en el botón de Google Calendar para autentificarse o recordar sus credenciales</system:String>
+    <system:String x:Key="OutlookButtonText">Outlook, Proximamente</system:String>
+    <system:String x:Key="GoogleCalendarButtonText">Google Calendar</system:String>
+    
+    <!-- Calendario en si -->
+        <!-- La parte de la derecha texto, botón de actualizar, combobox y dos botones editar y eliminar -->
+        <system:String x:Key="UpdateButtonText">Actualizar</system:String>
+    
+        <!-- Combobox -->
+            <!-- Como se muestran los eventos -->
+            <system:String x:Key="EventSummaryLabel">Resumen Evento</system:String>
+            <system:String x:Key="EventOrganizerEmailLabel">Correo Organizador</system:String>
+            <system:String x:Key="EventDescriptionLabel">Descripción Evento</system:String>
+            <system:String x:Key="EventLocationLabel">Localización Evento</system:String>
+            <system:String x:Key="EventStatusLabel">Estado</system:String>
+            <system:String x:Key="EventStartDateLabel">Fecha Inicio dd/mm/yyyy</system:String>
+            <system:String x:Key="EventUpdatedDateLabel">Fecha actualización</system:String>
+            <system:String x:Key="EventEndDateLabel">Fecha Fin dd/mm/yyyy</system:String>
+    
+            <!-- Botones para interactuar con los eventos -->
+            <system:String x:Key="EventEditButtonText">Editar</system:String>
+            <system:String x:Key="EventDeleteButtonText">Eliminar</system:String>
+    
+    <!-- Formulario -->
+        <!-- Campos del formulario -->
+        <system:String x:Key="FormSummary">Resumen:</system:String>
+        <system:String x:Key="FormDescription">Descripción:</system:String>
+        <system:String x:Key="FormStartDate">Fecha inicio:</system:String>
+        <system:String x:Key="FormLocation">Localización:</system:String>
+        <system:String x:Key="FormStatus">Estado:</system:String>
+        <system:String x:Key="FormEndDate">Fecha Fin:</system:String>
+        <system:String x:Key="FormStartHour">Hora Inicio:</system:String>
+    
+        <!-- Botones del formulario -->
+        <system:String x:Key="FormAddButtonText">Agregar Evento</system:String>
+        <system:String x:Key="FormEditButtonText">Editar Evento</system:String>
+        <system:String x:Key="FormCleanButtonText">Limpiar Campos</system:String>
+</ResourceDictionary>

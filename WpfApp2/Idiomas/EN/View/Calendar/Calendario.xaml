@@ -1,0 +1,45 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Sección central con un mensaje en mayusculas, descripción y los botones de outlook y google calendar -->
+    <system:String x:Key="CalendarTitle">Save the date of your games on the Calendar</system:String>
+    <system:String x:Key="CalendarHowItWorks">Press Google Calendar button to authenticate yourself or remember your credentials (The calendar use your system language)</system:String>
+    <system:String x:Key="OutlookButtonText">Outlook, Coming Soon</system:String>
+    <system:String x:Key="GoogleCalendarButtonText">Google Calendar</system:String>
+
+    <!-- Calendario en si -->
+    <!-- La parte de la derecha texto, botón de actualizar, combobox y dos botones editar y eliminar -->
+    <system:String x:Key="UpdateButtonText">Update</system:String>
+
+    <!-- Combobox -->
+    <!-- Como se muestran los eventos -->
+    <system:String x:Key="EventSummaryLabel">Event Summary</system:String>
+    <system:String x:Key="EventOrganizerEmailLabel">Organizer Email</system:String>
+    <system:String x:Key="EventDescriptionLabel">Event Description</system:String>
+    <system:String x:Key="EventLocationLabel">Event Location</system:String>
+    <system:String x:Key="EventStatusLabel">Status</system:String>
+    <system:String x:Key="EventStartDateLabel">Start Date dd/mm/yyyy</system:String>
+    <system:String x:Key="EventUpdatedDateLabel">Updated Date</system:String>
+    <system:String x:Key="EventEndDateLabel">End Date dd/mm/yyyy</system:String>
+
+    <!-- Botones para interactuar con los eventos -->
+    <system:String x:Key="EventEditButtonText">Edit</system:String>
+    <system:String x:Key="EventDeleteButtonText">Delete</system:String>
+
+    <!-- Formulario -->
+    <!-- Campos del formulario -->
+    <system:String x:Key="FormSummary">Summary:</system:String>
+    <system:String x:Key="FormDescription">Description:</system:String>
+    <system:String x:Key="FormStartDate">Start Date:</system:String>
+    <system:String x:Key="FormLocation">Location:</system:String>
+    <system:String x:Key="FormStatus">Status:</system:String>
+    <system:String x:Key="FormEndDate">End Date:</system:String>
+    <system:String x:Key="FormStartHour">Start Hour:</system:String>
+
+    <!-- Botones del formulario -->
+    <system:String x:Key="FormAddButtonText">Add Event</system:String>
+    <system:String x:Key="FormEditButtonText">Edit Event</system:String>
+    <system:String x:Key="FormCleanButtonText">Clean Fields</system:String>
+
+</ResourceDictionary>

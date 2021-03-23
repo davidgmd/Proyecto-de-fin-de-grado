@@ -66,7 +66,7 @@ namespace ElEscribaDelDJ.View.Calendar
         public Calendario()
         {
             //Define la variable cultural según el archivo de configuración
-            string codigocultura = "en-EN";
+            string codigocultura = "en-US";
             
             if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
             {
@@ -79,6 +79,8 @@ namespace ElEscribaDelDJ.View.Calendar
 
             //inicializamos el programa
             InitializeComponent();
+
+            ConfiguracionPagina.DefinirIdioma(this, "Calendar");
 
             //declaramos vacio una lista de fechas para marcar en el calendario
             _significantDates = new List<DateTime>();
@@ -271,7 +273,7 @@ namespace ElEscribaDelDJ.View.Calendar
         private void DatosEvento_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Event evento = (Event)DatosEvento.SelectedItem;
-            if (evento != null)
+            if ((evento != null) && (evento.End.DateTime.HasValue))
                 if (DateTime.Compare(DateTime.Now, evento.End.DateTime.Value) > 0)
                 {
                     BotonEditarEvento.IsEnabled = false;
