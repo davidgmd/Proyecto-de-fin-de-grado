@@ -5,5 +5,21 @@
     <!-- Seccion Archivos/Documentos -->
     <system:String x:Key="DocumentsTitle">Files/Documents</system:String>
     <system:String x:Key="DocumentsInfo">This sections shows you the documents or files that you have stored for your, adventure or session, as manuals, supplements and also let you to add new files</system:String>
-    
+
+    <!-- Seccion Resumenes de reglas -->
+    <system:String x:Key="RulesTitle">Rules Summary</system:String>
+    <system:String x:Key="RulesInfo">This sections shows you the rules summary, let you add new ones etc. In this summaries you have the page and manual that they refer to</system:String>
+
+    <!-- Seccion Lore -->
+    <system:String x:Key="LoreTitle">Lore elements</system:String>
+    <system:String x:Key="LoreInfo">This sections let you add any file related to the Lore of your games, as pdfs, words, images, etc</system:String>
+
+    <!-- Seccion Media -->
+    <system:String x:Key="MediaTitle">Images/Music</system:String>
+    <system:String x:Key="MediaInfo">This sections let you add any images not related with the lore and music to enliven your games</system:String>
+
+    <!-- Seccion Fichas -->
+    <system:String x:Key="SheetsTitle">Character Sheets</system:String>
+    <system:String x:Key="SheetsInfo">This sections let you add the character sheets, placing apart by campagins, sessions and adventurs</system:String>
+
 </ResourceDictionary>

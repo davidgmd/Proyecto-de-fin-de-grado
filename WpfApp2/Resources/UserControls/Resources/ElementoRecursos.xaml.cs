@@ -25,12 +25,24 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             //MessageBox.Show(Altura.ToString());
         }
 
-        private string _nombrelemento;
+        public static readonly DependencyProperty NombreElementoProperty = DependencyProperty.Register("NombreElemento", typeof(string), typeof(ElementoRecursos), new
+            PropertyMetadata("", new PropertyChangedCallback(OnSetStringChanged)));
+
+        private static void OnSetStringChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ElementoRecursos uc = d as ElementoRecursos;
+            uc.OnSetStringChanged(e);
+        }
+
+        private void OnSetStringChanged(DependencyPropertyChangedEventArgs e)
+        {
+            NombreElemento = (string)e.NewValue;
+        }
 
         public string NombreElemento
         {
-            get { return _nombrelemento; }
-            set { _nombrelemento = value; }
+            get { return (string)GetValue(NombreElementoProperty); }
+            set { SetValue(NombreElementoProperty, value); }
         }
 
         private string _direccionimagen;

@@ -1,10 +1,24 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:ElEscribaDelDJ.Idiomas.ES.View" 
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <!-- Seccion Archivos/Documentos -->
     <system:String x:Key="DocumentsTitle">Archivos/Documentos</system:String>
     <system:String x:Key="DocumentsInfo">Sección que permite ver los documentos de la campaña, sesión o aventura, como por ejemplo los manuales, suplementos o añadir nuevos</system:String>
 
+    <!-- Seccion Resumenes de reglas -->
+    <system:String x:Key="RulesTitle">Resumen Reglas</system:String>
+    <system:String x:Key="RulesInfo">Sección que permite ver los resumenes de reglas, añadirlos etc. En estos resumenes se indica a que manual hacen referencia y la pagina</system:String>
+
+    <!-- Seccion Lore -->
+    <system:String x:Key="LoreTitle">Elementos Lores</system:String>
+    <system:String x:Key="LoreInfo">Sección que permite añadir cualquier tipo de archivo relacionada con el Lore, ya sean pdfs, words, imagenes, etc</system:String>
+
+    <!-- Seccion Media -->
+    <system:String x:Key="MediaTitle">Imagenes/Musica</system:String>
+    <system:String x:Key="MediaInfo">Sección donde se añade la lista de imagenes de cualquier tipo que no sean del Lore y las canciones para ambientar</system:String>
+
+    <!-- Seccion Fichas -->
+    <system:String x:Key="SheetsTitle">Fichas</system:String>
+    <system:String x:Key="SheetsInfo">Sección donde se añade los pdfs de las fichas de personajes, diferenciando los de campañas, sesiones y aventuras</system:String>
 </ResourceDictionary>

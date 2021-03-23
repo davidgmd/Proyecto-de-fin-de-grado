@@ -4,12 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ElEscribaDelDJ.Resources.UserControls.Resources"
-             xmlns:imagenadaptativa = "clr-namespace:ElEscribaDelDJ.Classes.Utilidades.Conversores"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
-        <imagenadaptativa:ImagenAdaptativa x:Key="ImagenAdaptativa"/>
         <Style x:Key="ElementoRecursos" TargetType="StackPanel">
             <Setter Property="Margin" Value="5"/>
         </Style>

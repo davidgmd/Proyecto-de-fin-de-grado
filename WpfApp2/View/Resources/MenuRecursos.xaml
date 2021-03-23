@@ -42,8 +42,8 @@
                     Click="BotonDetallesDocumentos_Click" 
                     Style="{DynamicResource BotonSeccion}">
                     <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-documents.png" 
-                                 NombreElemento="{StaticResource DocumentsTitle}" 
-                                         Altura="{Binding ElementName=PrimeraColumna, Path=ActualHeight}"/>
+                                 NombreElemento="{DynamicResource DocumentsTitle}" 
+                                         Altura="{Binding ElementName=PrimeraColumna, Path=ActualHeight}" x:Name="UCdocuments"/>
             </Button>
             <!-- Control de usuario que controla titulo de campaña y el botón para crear uno nuevo -->
                 <Border x:Name="DescripcionDocumentos"
@@ -88,13 +88,13 @@
                     Click="BotonDetallesReglas_Click"
                     Style="{DynamicResource BotonSeccion}">
                     <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-resume.png" 
-                                         NombreElemento="Resumen Reglas" 
-                                         Altura="{Binding ElementName=PrimeraColumna, Path=ActualHeight}"/>
+                                         NombreElemento="{DynamicResource RulesTitle}" 
+                                         Altura="{Binding ElementName=PrimeraColumna, Path=ActualHeight}" x:Name="UCresumenes"/>
                 </Button>
                 <Border x:Name="DescripcionResumenes"
                         Style="{DynamicResource InformacionSeccion}">
                     <TextBlock Style="{DynamicResource Texto_InformacionSeccion}"
-                               Text="Sección que permite ver los resumenes de reglas, añadirlos etc. En estos resumenes se indica a que manual hacen referencia y la pagina"/>
+                               Text="{DynamicResource RulesInfo}"/>
                 </Border>
                 <ScrollViewer x:Name="ScrollViewerReglas" 
                               Visibility="Collapsed"
@@ -113,13 +113,13 @@
                         Click="BotonLore_Click"
                         Style="{DynamicResource BotonSeccion}">
                     <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-himeji.png" 
-                                         NombreElemento="Elementos Lore"
-                                         Altura="{Binding ElementName=PrimeraColumna, Path=ActualHeight}"/>
+                                         NombreElemento="{DynamicResource LoreTitle}"
+                                         Altura="{Binding ElementName=PrimeraColumna, Path=ActualHeight}" x:Name="UClore"/>
                 </Button>
                 <Border x:Name="DescripcionLore"
                     Style="{DynamicResource InformacionSeccion}">
                     <TextBlock Style="{DynamicResource Texto_InformacionSeccion}"
-                                   Text="Sección que permite añadir cualquier tipo de archivo relacionada con el Lore, ya sean pdfs, words, imagenes, etc "/>
+                                   Text="{DynamicResource LoreInfo}"/>
                 </Border>
                 <ScrollViewer x:Name="ScrollViewerLore" 
                               Visibility="Collapsed"
@@ -158,13 +158,13 @@
                         Click="BotonMedia_Click"
                         Style="{DynamicResource BotonSeccion}">
                 <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-speaker.png" 
-                                     NombreElemento="Imagenes/Musica"
-                                     Altura="{Binding ElementName=PrimeraColumna, Path=ActualHeight}"/>
+                                     NombreElemento="{DynamicResource MediaTitle}"
+                                     Altura="{Binding ElementName=PrimeraColumna, Path=ActualHeight}" x:Name="UCmedia"/>
                 </Button>
                 <Border x:Name="DescripcionMedia" 
                         Style="{DynamicResource InformacionSeccion}">
                     <TextBlock Style="{DynamicResource Texto_InformacionSeccion}"
-                                   Text="Sección donde se añade la lista de imagenes de cualquier tipo que no sean del Lore y las canciones para ambientar "/>
+                                   Text="{DynamicResource MediaInfo}"/>
                 </Border>
                 <ScrollViewer x:Name="ScrollViewerMedia" 
                               Visibility="Collapsed"
@@ -203,13 +203,13 @@
                         Click="BotonFichas_Click"
                         Style="{DynamicResource BotonSeccion}">
                     <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-pdf.png" 
-                                     NombreElemento="Fichas"
-                                     Altura="{Binding ElementName=PrimeraColumna, Path=ActualHeight}"/>
+                                     NombreElemento="{DynamicResource SheetsTitle}"
+                                     Altura="{Binding ElementName=PrimeraColumna, Path=ActualHeight}" x:Name="UCfichas"/>
                 </Button>
                 <Border x:Name="DescripcionFichas" 
                         Style="{DynamicResource InformacionSeccion}">
                     <TextBlock Style="{DynamicResource Texto_InformacionSeccion}"
-                                   Text="Sección donde se añade los pdfs de las fichas de personajes, diferenciando los de campañas, sesiones y aventuras "/>
+                                   Text="{DynamicResource SheetsInfo}"/>
                 </Border>
                 <ScrollViewer x:Name="ScrollViewerFichas" 
                               Visibility="Collapsed"

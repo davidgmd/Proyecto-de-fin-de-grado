@@ -22,6 +22,7 @@ namespace ElEscribaDelDJ.View.Resources
         {
             InitializeComponent();
             ConfiguracionPagina.DefinirIdioma(this, "Resources");
+            RefrescarUcs();
         }
 
         private double _maxheightscrollviewers;
@@ -39,6 +40,15 @@ namespace ElEscribaDelDJ.View.Resources
 
             MaximaAlturaScrollViewers = (AlturaColumna - AlturaBoton);
             this.DataContext = this;
+        }
+
+        private void RefrescarUcs()
+        {
+            UCdocuments.NombreElemento = this.FindResource("DocumentsTitle").ToString();
+            UCresumenes.NombreElemento = this.FindResource("RulesTitle").ToString();
+            UClore.NombreElemento = this.FindResource("LoreTitle").ToString();
+            UCmedia.NombreElemento = this.FindResource("MediaTitle").ToString();
+            UCfichas.NombreElemento = this.FindResource("SheetsTitle").ToString();
         }
 
         private void MostrarScrollViewer(ScrollViewer panel, Border bordeocultar)
