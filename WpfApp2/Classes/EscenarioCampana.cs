@@ -6,12 +6,12 @@ namespace ElEscribaDelDJ.Classes
 {
     public class EscenarioCampana:Campana
     {
-        private List<Aventura> listaaventuras = new List<Aventura>();
+        private List<Aventura> _listaaventuras = new List<Aventura>();
       
         public List<Aventura> ListaAventuras
         {
-            get { return listaaventuras; }
-            set { listaaventuras = value; }
+            get { return _listaaventuras; }
+            set { _listaaventuras = value; }
         }
     }
 }

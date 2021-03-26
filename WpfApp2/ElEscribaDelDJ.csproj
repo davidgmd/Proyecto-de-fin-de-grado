@@ -48,6 +48,7 @@
     <None Remove="images\icons\icons8-resume.png" />
     <None Remove="Images\icons\icons8-salir.png" />
     <None Remove="Images\icons\icons8-salir2.png" />
+    <None Remove="images\icons\icons8-select.png" />
     <None Remove="images\icons\icons8-speaker.png" />
     <None Remove="images\icons\icons8-upload.png" />
     <None Remove="Images\icons\icons8-verificado.png" />
@@ -147,6 +148,9 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="images\icons\icons8-select.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Utils\Credentials\emailcredentials.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -215,44 +219,118 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\Calendar.jpg" />
-    <Resource Include="Images\icons\D&amp;D.png" />
-    <Resource Include="Images\icons\d10.png" />
-    <Resource Include="Images\icons\d100.png" />
-    <Resource Include="Images\icons\d12.png" />
-    <Resource Include="Images\icons\d20.png" />
-    <Resource Include="Images\icons\d4.png" />
-    <Resource Include="Images\icons\d6.png" />
-    <Resource Include="Images\icons\d8-2.png" />
-    <Resource Include="Images\icons\d8.png" />
-    <Resource Include="Images\icons\english.png" />
-    <Resource Include="images\icons\googlecalendar.png" />
-    <Resource Include="Images\icons\iconoMas.png" />
-    <Resource Include="Images\icons\iconoMenos.png" />
-    <Resource Include="images\icons\icons8-actualizar.png" />
-    <Resource Include="Images\icons\icons8-books.png" />
-    <Resource Include="Images\icons\icons8-calendar.png" />
-    <Resource Include="images\icons\icons8-cloud.png" />
-    <Resource Include="images\icons\icons8-delete.png" />
-    <Resource Include="Images\icons\icons8-dices.png" />
-    <Resource Include="images\icons\icons8-documents.png" />
-    <Resource Include="Images\icons\icons8-escudopregunta.png" />
-    <Resource Include="images\icons\icons8-himeji.png" />
-    <Resource Include="Images\icons\icons8-incorrecto.png" />
-    <Resource Include="Images\icons\icons8-lock.png" />
-    <Resource Include="Images\icons\icons8-options.png" />
-    <Resource Include="images\icons\icons8-pdf.png" />
-    <Resource Include="images\icons\icons8-pencil.png" />
-    <Resource Include="images\icons\icons8-resume.png" />
-    <Resource Include="Images\icons\icons8-salir.png" />
-    <Resource Include="Images\icons\icons8-salir2.png" />
-    <Resource Include="images\icons\icons8-speaker.png" />
-    <Resource Include="images\icons\icons8-upload.png" />
-    <Resource Include="Images\icons\icons8-verificado.png" />
-    <Resource Include="images\icons\outlook.png" />
-    <Resource Include="Images\icons\spanish.png" />
-    <Resource Include="Images\icons\warhammer.jpg" />
+    <Content Include="Images\icons\D&amp;D.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\d10.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\d100.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\d12.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\d20.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\d4.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\d6.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\d8-2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\d8.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\english.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\icons\googlecalendar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\iconoMas.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\iconoMenos.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\icons\icons8-actualizar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\icons8-books.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\icons8-calendar.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\icons\icons8-cloud.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\icons\icons8-delete.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\icons8-dices.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\icons\icons8-documents.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\icons8-escudopregunta.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\icons\icons8-himeji.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\icons8-incorrecto.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\icons8-lock.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\icons8-options.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\icons\icons8-pdf.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\icons\icons8-pencil.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\icons\icons8-resume.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\icons8-salir.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\icons8-salir2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\icons\icons8-speaker.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\icons\icons8-upload.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\icons8-verificado.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\icons\outlook.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\spanish.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\icons\warhammer.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Images\licencia.png" />
-    <Resource Include="Images\icons\warhammer-removebg.png" />
+    <Content Include="Images\icons\warhammer-removebg.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Resource Include="logodavid1.ico" />
   </ItemGroup>
 

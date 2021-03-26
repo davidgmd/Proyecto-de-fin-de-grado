@@ -7,59 +7,52 @@ namespace ElEscribaDelDJ.Classes
 {
     public class Campana
     {
-		protected string nombre;
-		protected string descripcion;
-        private string imagen;
-        protected List<Archivos> listaarchivos = new List<Archivos>();
-		protected List<Resumenes> listaresumenes = new List<Resumenes>();
-		private List<EscenarioCampana> listaescenarios = new List<EscenarioCampana>();
+		protected string _nombre;
+		protected string _descripcion;
+        private string _imagen;
+		protected Recursos _recursos;
+		private List<EscenarioCampana> _listaescenarios = new List<EscenarioCampana>();
 
         public List<EscenarioCampana> ListaEscenarios
         {
-            get { return listaescenarios; }
-            set { listaescenarios = value; }
+            get { return _listaescenarios; }
+            set { _listaescenarios = value; }
         }
 
 
         public string DireccionImagen
 		{
-			get { return imagen; }
-			set { imagen = value; }
+			get { return _imagen; }
+			set { _imagen = value; }
 		}
 
-		public List<Archivos> ListaArchivos
+		public Recursos Recursos
 		{
-			get { return listaarchivos; }
-			set { listaarchivos = value; }
-		}
-
-		public List<Resumenes> ListaResumenes
-		{
-			get { return listaresumenes; }
-			set { listaresumenes = value; }
+			get { return _recursos; }
+			set { _recursos = value; }
 		}
 
 		public string Descripcion
 		{
-			get { return descripcion; }
-			set { descripcion = value; }
+			get { return _descripcion; }
+			set { _descripcion = value; }
 		}
 
 		public string Nombre
 		{
-			get { return nombre; }
-			set { nombre = value; }
+			get { return _nombre; }
+			set { _nombre = value; }
 		}
 
 		public Campana ExisteCampanaSesion(Campana campana1)
         {
-			var resultado = RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.nombre.Equals(campana1.nombre) && c.descripcion.Equals(campana1.descripcion));
+			var resultado = RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.Nombre.Equals(campana1.Nombre) && c.Descripcion.Equals(campana1.Descripcion));
 			return resultado;
         }
 
 		public Campana ExisteCampanaObservable(Campana campana1, ObservableCollection<Campana> observable)
 		{
-			var resultado = observable.Where(c => c.nombre.Equals(campana1.nombre) && c.descripcion.Equals(campana1.descripcion));
+			var resultado = observable.Where(c => c.Nombre.Equals(campana1.Nombre) && c.Descripcion.Equals(campana1.Descripcion));
 			return resultado.FirstOrDefault();
 		}
 	}

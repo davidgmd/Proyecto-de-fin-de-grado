@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElEscribaDelDJ.Classes.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -45,6 +46,6 @@ namespace ElEscribaDelDJ.Classes
         {
             get { return _url; }
             set { _url = value; }
-        }       
+        }
     }
 }

@@ -28,13 +28,22 @@ namespace ElEscribaDelDJ.View
         private ObservableCollection<Aventura> aventuras = new ObservableCollection<Aventura>();
         private List<Style> estilosbase = new List<Style>();
         private List<Style> estilosactivados = new List<Style>();
+
         private Campana campanaseleccionada;
-        private EscenarioCampana escenarioseleccionado = null;
+        private EscenarioCampana _escenarioseleccionado = null;
+        private Aventura _aventuraseleccionada;
+
+        public Aventura AventuraSeleccionada
+        {
+            get { return _aventuraseleccionada; }
+            set { _aventuraseleccionada = value; }
+        }
+
 
         public EscenarioCampana EscenarioSeleccionado
         {
-            get { return escenarioseleccionado; }
-            set { escenarioseleccionado = value; }
+            get { return _escenarioseleccionado; }
+            set { _escenarioseleccionado = value; }
         }
 
 
@@ -135,6 +144,8 @@ namespace ElEscribaDelDJ.View
             ComprobarImagen();
 
             this.CampanaSeleccionada = (Campana)this.campaignComboBox.SelectedItem;
+            EscenarioSeleccionado = null;
+            AventuraSeleccionada = null;
 
             //Habilita el botón de borrado si no se ha seleccionado una de las predeterminadas
             if (campaignComboBox.SelectedIndex > 1)
@@ -230,6 +241,7 @@ namespace ElEscribaDelDJ.View
 
         private void EscenarioComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            AventuraSeleccionada = null;
             if (EscenarioComboBox.SelectedIndex >= 0)
             {
                 this.aventuras.Clear();
@@ -238,6 +250,8 @@ namespace ElEscribaDelDJ.View
                     this.aventuras.Add(aventura);
                 }
 
+                EscenarioSeleccionado = (EscenarioCampana)this.EscenarioComboBox.SelectedItem;
+                
                 this.StackPanelAventura.Visibility = Visibility;
                 if (this.AventuraComboBox.HasItems)
                     this.AventuraComboBox.SelectedIndex = 0;   
@@ -343,7 +357,7 @@ namespace ElEscribaDelDJ.View
             var cantidad = this.AventuraComboBox.Items.Count;
             var index = this.AventuraComboBox.SelectedIndex;
             EscenarioSeleccionado = (EscenarioCampana)EscenarioComboBox.SelectedItem;
-            Aventura AventuraSeleccionada = (Aventura)AventuraComboBox.SelectedItem;
+            AventuraSeleccionada = (Aventura)AventuraComboBox.SelectedItem;
             AnadirAventura aventura = new AnadirAventura(CampanaSeleccionada, EscenarioSeleccionado, AventuraSeleccionada, this.aventuras);
             this.Hide();
             aventura.ShowDialog();
@@ -386,6 +400,12 @@ namespace ElEscribaDelDJ.View
             }
         }
 
+        private void AventuraComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.AventuraComboBox.SelectedIndex >= 0)
+                _aventuraseleccionada = (Aventura)this.AventuraComboBox.SelectedItem;
+        }
+
         private void botonCalendario_Click(object sender, RoutedEventArgs e)
         {
             Calendario ventanacalendario = new Calendario();
@@ -406,8 +426,10 @@ namespace ElEscribaDelDJ.View
 
         private void botonRecursos_Click(object sender, RoutedEventArgs e)
         {
-            MenuRecursos recursos = new MenuRecursos();
+            MenuRecursos recursos = new MenuRecursos(CampanaSeleccionada, EscenarioSeleccionado, AventuraSeleccionada);
             recursos.Show();
         }
+
+
     }
 }

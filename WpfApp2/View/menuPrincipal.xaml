@@ -112,6 +112,7 @@
                         TextSearch.TextPath="Nombre"
                         ItemsSource="{Binding Path=Aventuras}" 
                         x:Name="AventuraComboBox"
+                        SelectionChanged="AventuraComboBox_SelectionChanged"
                         SizeChanged="AventuraComboBox_SizeChanged">
                 </ComboBox>
 

@@ -1,4 +1,5 @@
-﻿using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+﻿using ElEscribaDelDJ.Classes;
+using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,7 +19,7 @@ namespace ElEscribaDelDJ.View.Resources
     /// </summary>
     public partial class MenuRecursos : Window
     {
-        public MenuRecursos()
+        public MenuRecursos(Campana CampanaSeleccionada, EscenarioCampana EscenarioSeleccionado, Aventura AventuraSeleccionada)
         {
             InitializeComponent();
             ConfiguracionPagina.DefinirIdioma(this, "Resources");

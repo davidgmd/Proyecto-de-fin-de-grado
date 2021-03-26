@@ -54,31 +54,7 @@
                 <ScrollViewer x:Name="ScrollViewerDocumentos" 
                               Visibility="Collapsed"
                               MaxHeight="{Binding MaximaAlturaScrollViewers}">
-
-                    <StackPanel>
-                        <uc:SeccionConBoton Seccion="Campaña" Background="White"/>
-                        <WrapPanel x:Name="WrapPanelDetallesDocumentos" 
-                           Background="#f9f2a4">
-                            
-                        <!-- Control de usuario que muestra los detalles de cada archivo y permite eliminarlo -->
-                            <uc:DetallesArchivoCampana NombreArchivo="Manual basico ejemplo" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                            <uc:DetallesArchivoCampana NombreArchivo="Manual basico ejemplo" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                            <uc:DetallesArchivoCampana NombreArchivo="Manual basico ejemplo" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                            <uc:DetallesArchivoCampana NombreArchivo="Manual basico ejemplo" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                        </WrapPanel>
-                </StackPanel>
+                    <uc:PanelMostrarArchivos/>
                 </ScrollViewer>
             </StackPanel>
             
@@ -125,30 +101,7 @@
                               Visibility="Collapsed"
                               MaxHeight="{Binding MaximaAlturaScrollViewers}">
 
-                    <StackPanel>
-                        <uc:SeccionConBoton Seccion="Campaña" Background="White"/>
-                        <WrapPanel x:Name="WrapPanelDetallesLore" 
-                           Background="#f9f2a4">
-
-                            <!-- Control de usuario que muestra los detalles de cada archivo y permite eliminarlo -->
-                            <uc:DetallesArchivoCampana NombreArchivo="Historia de Rokugan" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                            <uc:DetallesArchivoCampana NombreArchivo="Clan escorpión" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                            <uc:DetallesArchivoCampana NombreArchivo="Manual del desafio" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                            <uc:DetallesArchivoCampana NombreArchivo="La vida del samurai" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                        </WrapPanel>
-                    </StackPanel>
+                    <uc:PanelMostrarArchivos/>
                 </ScrollViewer>
             </StackPanel>
 
@@ -170,30 +123,7 @@
                               Visibility="Collapsed"
                               MaxHeight="{Binding MaximaAlturaScrollViewers}">
 
-                    <StackPanel>
-                        <uc:SeccionConBoton Seccion="Archivos" Background="White"/>
-                        <WrapPanel x:Name="WrapPanelDetallesMedia" 
-                           Background="#f9f2a4">
-
-                            <!-- Control de usuario que muestra los detalles de cada archivo y permite eliminarlo -->
-                            <uc:DetallesArchivoCampana NombreArchivo="Fight for the glory" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                            <uc:DetallesArchivoCampana NombreArchivo="Campeón Glorioso" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                            <uc:DetallesArchivoCampana NombreArchivo="Musica mapamundi" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                            <uc:DetallesArchivoCampana NombreArchivo="Castillo tipico" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                        </WrapPanel>
-                    </StackPanel>
+                    <uc:PanelMostrarArchivos/>
                 </ScrollViewer>
             </StackPanel>
             
@@ -215,30 +145,7 @@
                               Visibility="Collapsed"
                               MaxHeight="{Binding MaximaAlturaScrollViewers}">
 
-                    <StackPanel>
-                        <uc:SeccionConBoton Seccion="Archivos" Background="White"/>
-                        <WrapPanel x:Name="WrapPanelDetallesFichas" 
-                           Background="#f9f2a4">
-
-                            <!-- Control de usuario que muestra los detalles de cada archivo y permite eliminarlo -->
-                            <uc:DetallesArchivoCampana NombreArchivo="Ficha campeón esmeralda" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                            <uc:DetallesArchivoCampana NombreArchivo="Ficha fanzineroso" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                            <uc:DetallesArchivoCampana NombreArchivo="Ficha bardo" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                            <uc:DetallesArchivoCampana NombreArchivo="Ficha monje" 
-                                                   DireccionArchivo="C:\Usuarios\David\Escritorio\Rol\Warhammer\Manuales" 
-                                                   UrlArchivo="http:\\www.google.es\drive\manolito\manualbasico234242242?=ver.html"
-                                                       Margin="0,0,5,0"/>
-                        </WrapPanel>
-                    </StackPanel>
+                    <uc:PanelMostrarArchivos/>
                 </ScrollViewer>
             </StackPanel>
         </Grid>

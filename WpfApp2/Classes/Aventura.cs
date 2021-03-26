@@ -6,12 +6,12 @@ namespace ElEscribaDelDJ.Classes
 {
     public class Aventura:EscenarioCampana
     {        
-        private int numeroaventura;
+        private int _numeroaventura;
 
         public int NumeroAventura
         {
-            get { return numeroaventura; }
-            set { numeroaventura = value; }
+            get { return _numeroaventura; }
+            set { _numeroaventura = value; }
         }
     }
 }
