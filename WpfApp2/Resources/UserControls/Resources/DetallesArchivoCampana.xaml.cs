@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ElEscribaDelDJ.Classes;
+using ElEscribaDelDJ.Classes.Utilidades;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,9 +20,13 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
     /// </summary>
     public partial class DetallesArchivoCampana : UserControl
     {
-        public DetallesArchivoCampana()
+        public DetallesArchivoCampana(Archivos archivo)
         {
             InitializeComponent();
+            NombreArchivo = archivo.NombreArchivo;
+            DireccionArchivo = archivo.Direccion;
+            UrlArchivo = archivo.Url;
+            Imagen = Extensiones.IconoExtension(archivo.Extension);
             this.DataContext = this;
         }
 

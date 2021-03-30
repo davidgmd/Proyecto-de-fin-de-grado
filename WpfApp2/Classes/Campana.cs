@@ -10,7 +10,7 @@ namespace ElEscribaDelDJ.Classes
 		protected string _nombre;
 		protected string _descripcion;
         private string _imagen;
-		protected Recursos _recursos;
+		protected Recursos _recursos = new Recursos();
 		private List<EscenarioCampana> _listaescenarios = new List<EscenarioCampana>();
 
         public List<EscenarioCampana> ListaEscenarios

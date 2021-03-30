@@ -24,6 +24,13 @@ namespace ElEscribaDelDJ.View.Resources
             InitializeComponent();
             ConfiguracionPagina.DefinirIdioma(this, "Resources");
             RefrescarUcs();
+            UCPanelMostrarArchivos.ListaCampana = CampanaSeleccionada.Recursos.Documentos;
+            UCPanelMostrarArchivos.ListaEscenario = EscenarioSeleccionado.Recursos.Documentos;
+            UCPanelMostrarArchivos.ListaAventuras = AventuraSeleccionada.Recursos.Documentos;
+            ListaNombres.Add(CampanaSeleccionada.Nombre);
+            ListaNombres.Add(EscenarioSeleccionado.Nombre);
+            ListaNombres.Add(AventuraSeleccionada.Nombre);
+            
         }
 
         private double _maxheightscrollviewers;
@@ -42,6 +49,15 @@ namespace ElEscribaDelDJ.View.Resources
             MaximaAlturaScrollViewers = (AlturaColumna - AlturaBoton);
             this.DataContext = this;
         }
+
+        private List<string> _listanombres = new List<string>();
+
+        public List<string> ListaNombres 
+        {
+            get { return _listanombres; }
+            set { _listanombres = value; }
+        }
+
 
         private void RefrescarUcs()
         {

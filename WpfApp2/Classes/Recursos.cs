@@ -6,7 +6,7 @@ namespace ElEscribaDelDJ.Classes
 {
     public class Recursos
     {
-        private List<Archivos> _documentos;
+        private List<Archivos> _documentos = new List<Archivos>();
 
         public List<Archivos> Documentos
         {
@@ -14,16 +14,16 @@ namespace ElEscribaDelDJ.Classes
             set { _documentos = value; }
         }
 
-        private List<Resumenes> _resumenes;
+        private List<Resumenes> _resumenes = new List<Resumenes>();
 
-        public List<Resumenes> Resumense
+        public List<Resumenes> Resumenes
         {
             get { return _resumenes; }
             set { _resumenes = value; }
         }
 
 
-        private List<Archivos> _lore;
+        private List<Archivos> _lore = new List<Archivos>();
 
         public List<Archivos> Lore
         {
@@ -31,7 +31,7 @@ namespace ElEscribaDelDJ.Classes
             set { _lore = value; }
         }
 
-        private List<Archivos> _media;
+        private List<Archivos> _media = new List<Archivos>();
 
         public List<Archivos> Media
         {
@@ -39,7 +39,7 @@ namespace ElEscribaDelDJ.Classes
             set { _media = value; }
         }
 
-        private List<Archivos> _fichas;
+        private List<Archivos> _fichas = new List<Archivos>();
 
         public List<Archivos> Fichas
         {
