@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
         mc:Ignorable="d"
         Title="{DynamicResource WindowTitle}" Height="700" Width="800"
         WindowStartupLocation="CenterScreen"
@@ -55,12 +56,13 @@
 
                 <!-- Le falta cambiar la funcionalidad inicial y al cambiar a este y el resto de stackpanels-->               
                 <ComboBox Style="{DynamicResource comboBoxCampaign}"
-                        x:Name="campaignComboBox"                
+                        x:Name="campaignComboBox"  
+                          DataContext="{Binding}"
                         ItemsSource="{Binding Path=Campanas}"
+                        SelectedItem="{Binding Path=CampanaSeleccionada, Mode=TwoWay}"
                         ItemTemplate="{StaticResource CustomerTemplate}"
                         TextSearch.TextPath="Nombre"
                         IsSynchronizedWithCurrentItem="True"
-                        Text="{Binding SelectedItemText, Mode=TwoWay}"
                         Loaded="campaignComboBox_Loaded"
                         SelectionChanged="CampaigneComboBox_SelectionChanged"/>
                     
@@ -84,8 +86,10 @@
                 <ComboBox Style="{DynamicResource comboBoxCampaign}" 
                         ItemTemplate="{StaticResource CustomerTemplate}"
                         TextSearch.TextPath="Nombre"
+                          DataContext="{Binding}"
                         ItemsSource="{Binding Path=Escenarios}"  
                         x:Name="EscenarioComboBox"
+                          SelectedItem="{Binding EscenarioSeleccionado}"
                         SelectionChanged="EscenarioComboBox_SelectionChanged"
                         SizeChanged="EscenarioComboBox_SizeChanged">
                 </ComboBox>
@@ -110,8 +114,10 @@
                 <ComboBox Style="{DynamicResource comboBoxCampaign}"                     
                         ItemTemplate="{StaticResource CustomerTemplate}"
                         TextSearch.TextPath="Nombre"
+                          DataContext="{Binding}"
                         ItemsSource="{Binding Path=Aventuras}" 
                         x:Name="AventuraComboBox"
+                          SelectedItem="{Binding AventuraSeleccionada}"
                         SelectionChanged="AventuraComboBox_SelectionChanged"
                         SizeChanged="AventuraComboBox_SizeChanged">
                 </ComboBox>
