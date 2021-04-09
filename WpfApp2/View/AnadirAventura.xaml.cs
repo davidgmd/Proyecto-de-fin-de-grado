@@ -69,8 +69,8 @@ namespace ElEscribaDelDJ.View
             if (!(iguales.Count() > 0))
             {
                 observable.Add(aventura1);
-                var lista_escenarios = RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.Nombre.Equals(Campana.Nombre) && c.Descripcion.Equals(Campana.Descripcion)).ListaEscenarios;
-                lista_escenarios.Find(c => c.Nombre.Equals(Escenario.Nombre) && c.Descripcion.Equals(Escenario.Descripcion)).ListaAventuras.Add(aventura1);
+                var lista_escenarios = RecursosAplicacion.SesionUsuario.ListCampaigns.First(c => c.Nombre.Equals(Campana.Nombre) && c.Descripcion.Equals(Campana.Descripcion)).ListaEscenarios;
+                lista_escenarios.First(c => c.Nombre.Equals(Escenario.Nombre) && c.Descripcion.Equals(Escenario.Descripcion)).ListaAventuras.Add(aventura1);
                 GestionArchivos.EscribirUsuarioLocal();
                 this.Close();
             }
@@ -119,8 +119,8 @@ namespace ElEscribaDelDJ.View
             {
                 iguales.First().Nombre = aventura1.Nombre;
                 iguales.First().Descripcion = aventura1.Descripcion;
-                var lista_escenarios = RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.Nombre.Equals(Campana.Nombre) && c.Descripcion.Equals(Campana.Descripcion)).ListaEscenarios;
-                lista_escenarios.Find(c => c.Nombre.Equals(Escenario.Nombre) && c.Descripcion.Equals(Escenario.Descripcion)).ListaAventuras = observable.ToList<Aventura>();
+                var lista_escenarios = RecursosAplicacion.SesionUsuario.ListCampaigns.First(c => c.Nombre.Equals(Campana.Nombre) && c.Descripcion.Equals(Campana.Descripcion)).ListaEscenarios;
+                lista_escenarios.First(c => c.Nombre.Equals(Escenario.Nombre) && c.Descripcion.Equals(Escenario.Descripcion)).ListaAventuras = observable.ToList<Aventura>();
                 GestionArchivos.EscribirUsuarioLocal();
                 this.Close();
             }

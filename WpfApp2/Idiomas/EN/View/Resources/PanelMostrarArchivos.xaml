@@ -5,6 +5,7 @@
     <system:String x:Key="CampaignSection">Campaign</system:String>
     <system:String x:Key="ScenarySection">Scenary</system:String>
     <system:String x:Key="AdventureSection">Adventure</system:String>
+    <system:String x:Key="ButtonText">Add</system:String>
 
     <!-- Errores -->
     <system:String x:Key="NoElements">There's no elements to show in this section</system:String>

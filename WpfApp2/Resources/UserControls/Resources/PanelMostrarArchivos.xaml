@@ -19,35 +19,42 @@
     <Grid Background="White">
         <StackPanel>
             <Grid Background="White">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="White">
-                <TextBlock Text="{Binding CampaignTitle}" 
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Center" 
+                        Background="White"
+                        x:Name="StackPanelCampana">
+                <TextBlock Text="{Binding TituloCampana}"
                        TextDecorations="Underline" 
                        VerticalAlignment="Center"
                        FontSize="15" 
                        Margin="0,0,10,0"/>
-                <Button BorderThickness="0" Background="Transparent">
+                <Button BorderThickness="0" Background="Transparent" x:Name="BotonAnadirCampana">
                     <StackPanel>
                         <Image Source="/Images/icons/iconoMas.png" Width="15"/>
-                        <TextBlock Text="Añadir" FontSize="10"/>
+                        <TextBlock Text="{Binding TextoBoton}" FontSize="10"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
             </Grid>
-            
+
             <WrapPanel x:Name="WrapPanelCampaign" 
                            Background="#f9f2a4">
             </WrapPanel>
-            
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="White">
-                <TextBlock Text="{Binding ScenaryTitle}" 
+
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Center" 
+                        Background="White"
+                        Visibility="Collapsed"
+                        x:Name="StackPanelScenary">
+                <TextBlock Text="{Binding TituloEscenario}" 
                        TextDecorations="Underline" 
                        VerticalAlignment="Center" 
                        FontSize="15" 
                        Margin="0,0,10,0"/>
-                <Button BorderThickness="0" Background="Transparent">
+                <Button BorderThickness="0" Background="Transparent" x:Name="BotonAnadirEscenario">
                     <StackPanel>
                         <Image Source="/Images/icons/iconoMas.png" Width="15"/>
-                        <TextBlock Text="Añadir" FontSize="10"/>
+                        <TextBlock Text="{Binding TextoBoton}" FontSize="10"/>
                     </StackPanel>
                 </Button>
             </StackPanel>
@@ -55,16 +62,21 @@
                            Background="#f9f2a4">
             </WrapPanel>
             
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="White" VerticalAlignment="Center">
-                <TextBlock Text="{Binding AdventureTitle}" 
+            <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Center" 
+                        Background="White" 
+                        VerticalAlignment="Center"
+                        Visibility="Collapsed"
+                        x:Name="StackPanelAdventure">
+                <TextBlock Text="{Binding TituloAventura}"
                        TextDecorations="Underline" 
                        VerticalAlignment="Center"
                        FontSize="15" 
                        Margin="0,0,10,0"/>
-                <Button BorderThickness="0" Background="Transparent">
+                <Button BorderThickness="0" Background="Transparent" x:Name="BotonAnadirAventura">
                     <StackPanel>
                         <Image Source="/Images/icons/iconoMas.png" Width="15"/>
-                        <TextBlock Text="Añadir" FontSize="10"/>
+                        <TextBlock Text="{Binding TextoBoton}" FontSize="10"/>
                     </StackPanel>
                 </Button>
             </StackPanel>

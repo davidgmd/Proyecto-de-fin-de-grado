@@ -65,7 +65,7 @@ namespace ElEscribaDelDJ.View
             if (!(iguales.Count() > 0))
             {
                 observable.Add(escenario1);
-                RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.Nombre.Equals(Campana.Nombre) && c.Descripcion.Equals(Campana.Descripcion)).ListaEscenarios.Add(escenario1);
+                RecursosAplicacion.SesionUsuario.ListCampaigns.First(c => c.Nombre.Equals(Campana.Nombre) && c.Descripcion.Equals(Campana.Descripcion)).ListaEscenarios.Add(escenario1);
                 GestionArchivos.EscribirUsuarioLocal();
                 this.Close();
             }
@@ -115,7 +115,7 @@ namespace ElEscribaDelDJ.View
                 iguales.First().Nombre = escenario1.Nombre;
                 iguales.First().Descripcion = escenario1.Descripcion;
 
-                RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.Nombre.Equals(Campana.Nombre) && c.Descripcion.Equals(Campana.Descripcion)).ListaEscenarios = observable.ToList<EscenarioCampana>();
+                RecursosAplicacion.SesionUsuario.ListCampaigns.First(c => c.Nombre.Equals(Campana.Nombre) && c.Descripcion.Equals(Campana.Descripcion)).ListaEscenarios = observable.ToList();
                 GestionArchivos.EscribirUsuarioLocal();
                 this.Close();
             }

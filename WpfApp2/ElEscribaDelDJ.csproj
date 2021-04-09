@@ -39,6 +39,7 @@
     <None Remove="Images\icons\icons8-dices.png" />
     <None Remove="images\icons\icons8-documents.png" />
     <None Remove="Images\icons\icons8-escudopregunta.png" />
+    <None Remove="images\icons\icons8-folder.png" />
     <None Remove="images\icons\icons8-himeji.png" />
     <None Remove="Images\icons\icons8-incorrecto.png" />
     <None Remove="Images\icons\icons8-lock.png" />
@@ -331,6 +332,9 @@
     <Content Include="Images\icons\warhammer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="images\icons\icons8-folder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\licencia.png" />
     <Content Include="Images\icons\warhammer-removebg.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -340,7 +344,6 @@
 
   <ItemGroup>
     <Folder Include="Images\User\" />
-    <Folder Include="View\Resources\" />
     <Folder Include="View\Options\" />
   </ItemGroup>
 

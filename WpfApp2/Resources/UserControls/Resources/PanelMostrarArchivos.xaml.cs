@@ -26,74 +26,53 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         public PanelMostrarArchivos()
         {
             ConfiguracionPagina.DefinirIdioma(this, "Resources");
-            refrescartitulos();
-            this.DataContext = this;
+            
             InitializeComponent();
-            
-            
-            
-            
+            this.DataContext = this;
         }
 
-        public static readonly DependencyProperty CampaignTitleProperty = DependencyProperty.Register("CampaignTitle", typeof(string), typeof(PanelMostrarArchivos), new
-            PropertyMetadata("", new PropertyChangedCallback(OnCampaignTitleChanged)));
-
-        private static void OnCampaignTitleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public string TituloCampana
         {
-            PanelMostrarArchivos uc = d as PanelMostrarArchivos;
-            uc.OnSetCampaignTitleChanged(e);
+            get { return (string)GetValue(TituloCampanaProperty); }
+            set { SetValue(TituloCampanaProperty, value); }
         }
 
-        private void OnSetCampaignTitleChanged(DependencyPropertyChangedEventArgs e)
+        // Using a DependencyProperty as the backing store for TituloCampana.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TituloCampanaProperty =
+            DependencyProperty.Register("TituloCampana", typeof(string), typeof(PanelMostrarArchivos), new PropertyMetadata(""));
+
+
+        public string TituloEscenario
         {
-            CampaignTitle = (string)e.NewValue;
+            get { return (string)GetValue(TituloEscenarioProperty); }
+            set { SetValue(TituloEscenarioProperty, value); }
         }
 
-        public string CampaignTitle
+        // Using a DependencyProperty as the backing store for TituloEscenario.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TituloEscenarioProperty =
+            DependencyProperty.Register("TituloEscenario", typeof(string), typeof(PanelMostrarArchivos), new PropertyMetadata(""));
+
+
+        public string TituloAventura
         {
-            get { return (string)GetValue(CampaignTitleProperty); }
-            set { SetValue(CampaignTitleProperty, value); }
+            get { return (string)GetValue(TituloAventuraProperty); }
+            set { SetValue(TituloAventuraProperty, value); }
         }
 
-        public static readonly DependencyProperty ScenaryTitleProperty = DependencyProperty.Register("ScenaryTitle", typeof(string), typeof(PanelMostrarArchivos), new
-            PropertyMetadata("", new PropertyChangedCallback(OnScenaryTitleChanged)));
+        // Using a DependencyProperty as the backing store for TituloAventura.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TituloAventuraProperty =
+            DependencyProperty.Register("TituloAventura", typeof(string), typeof(PanelMostrarArchivos), new PropertyMetadata(""));
 
-        private static void OnScenaryTitleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+
+        public string TextoBoton
         {
-            PanelMostrarArchivos uc = d as PanelMostrarArchivos;
-            uc.OnSetScenaryTitleChanged(e);
+            get { return (string)GetValue(TextoBotonProperty); }
+            set { SetValue(TextoBotonProperty, value); }
         }
 
-        private void OnSetScenaryTitleChanged(DependencyPropertyChangedEventArgs e)
-        {
-            ScenaryTitle = (string)e.NewValue;
-        }
-
-        public string ScenaryTitle
-        {
-            get { return (string)GetValue(ScenaryTitleProperty); }
-            set { SetValue(ScenaryTitleProperty, value); }
-        }
-
-        public static readonly DependencyProperty AdventureTitleProperty = DependencyProperty.Register("AdventureTitle", typeof(string), typeof(PanelMostrarArchivos), new
-            PropertyMetadata("", new PropertyChangedCallback(OnAdventureTitleChanged)));
-
-        private static void OnAdventureTitleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            PanelMostrarArchivos uc = d as PanelMostrarArchivos;
-            uc.OnSetAdventureTitleChanged(e);
-        }
-
-        private void OnSetAdventureTitleChanged(DependencyPropertyChangedEventArgs e)
-        {
-            AdventureTitle = (string)e.NewValue;
-        }
-
-        public string AdventureTitle
-        {
-            get { return (string)GetValue(AdventureTitleProperty); }
-            set { SetValue(AdventureTitleProperty, value); }
-        }
+        // Using a DependencyProperty as the backing store for TextoBoton.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextoBotonProperty =
+            DependencyProperty.Register("TextoBoton", typeof(string), typeof(PanelMostrarArchivos), new PropertyMetadata(""));
 
         public static readonly DependencyProperty ListaCampanaProperty = DependencyProperty.Register("ListaCampana", typeof(List<Archivos>), typeof(PanelMostrarArchivos), new
             PropertyMetadata(default(List<Archivos>), new PropertyChangedCallback(OnListaCampanaChanged)));
@@ -107,7 +86,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         private void OnListaCampanaChanged(DependencyPropertyChangedEventArgs e)
         {
             ListaCampana = (List<Archivos>)e.NewValue;
-            RellenarPanel(ListaCampana, WrapPanelCampaign);
+            RellenarPanel(ListaCampana, WrapPanelCampaign, StackPanelCampana);
         }
 
         public List<Archivos> ListaCampana
@@ -128,7 +107,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         private void OnListaEscenarioChanged(DependencyPropertyChangedEventArgs e)
         {
             ListaEscenario = (List<Archivos>)e.NewValue;
-            RellenarPanel(ListaEscenario, WrapPanelScenary);
+            RellenarPanel(ListaEscenario, WrapPanelScenary, StackPanelScenary);
         }
 
         public List<Archivos> ListaEscenario
@@ -149,7 +128,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         private void OnListaAventurasChanged(DependencyPropertyChangedEventArgs e)
         {
             ListaAventuras = (List<Archivos>)e.NewValue;
-            RellenarPanel(ListaAventuras, WrapPanelAdventures);
+            RellenarPanel(ListaAventuras, WrapPanelAdventures, StackPanelAdventure);
         }
 
         public List<Archivos> ListaAventuras
@@ -158,28 +137,24 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             set { SetValue(ListaAventurasProperty, value); }
         }
 
-
-        private void refrescartitulos()
-        {
-            CampaignTitle = this.FindResource("CampaignSection").ToString();
-            ScenaryTitle = this.FindResource("ScenarySection").ToString();
-            AdventureTitle = this.FindResource("AdventureSection").ToString();
-        }
-
-        private void RellenarPanel(List<Archivos> listaarchivos, WrapPanel panel)
+        private void RellenarPanel(List<Archivos> listaarchivos, WrapPanel panel, StackPanel stackpanel)
         {
             if (listaarchivos.Any())
             {
                 foreach (Archivos archivo in listaarchivos)
                 {
+                    stackpanel.Visibility = Visibility.Visible;
                     DetallesArchivoCampana detalles = new DetallesArchivoCampana(archivo);
                     panel.Children.Add(detalles);
                 }
             }
             else
             {
+                stackpanel.Visibility = Visibility.Visible;
                 TextBlock textoinformativo = new TextBlock();
                 textoinformativo.Text = this.FindResource("NoElements").ToString();
+                panel.HorizontalAlignment = HorizontalAlignment.Center;
+                textoinformativo.Padding = new Thickness(6);
                 panel.Children.Add(textoinformativo);
             }
         }

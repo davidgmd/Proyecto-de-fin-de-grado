@@ -43,7 +43,8 @@
                     Style="{DynamicResource BotonSeccion}">
                     <uc:ElementoRecursos DireccionImagen="/images/icons/icons8-documents.png" 
                                  NombreElemento="{DynamicResource DocumentsTitle}" 
-                                         Altura="{Binding ElementName=PrimeraColumna, Path=ActualHeight}" x:Name="UCdocuments"/>
+                                         Altura="{Binding ElementName=PrimeraColumna, Path=ActualHeight}"
+                                         x:Name="UCdocuments"/>
             </Button>
             <!-- Control de usuario que controla titulo de campaña y el botón para crear uno nuevo -->
                 <Border x:Name="DescripcionDocumentos"
@@ -54,7 +55,12 @@
                 <ScrollViewer x:Name="ScrollViewerDocumentos" 
                               Visibility="Collapsed"
                               MaxHeight="{Binding MaximaAlturaScrollViewers}">
-                    <uc:PanelMostrarArchivos x:Name="UCPanelMostrarArchivos"/>
+                    <uc:PanelMostrarArchivos DataContext="{Binding}" 
+                                             
+                                             ListaCampana="{Binding Campana.Recursos.Documentos}" 
+                                             ListaEscenario="{Binding Escenario.Recursos.Documentos}"
+                                             ListaAventuras="{Binding Aventura.Recursos.Documentos}"
+                                             x:Name="UCPanelMostrarArchivos"/>
                 </ScrollViewer>
             </StackPanel>
             

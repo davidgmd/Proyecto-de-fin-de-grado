@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 
@@ -63,6 +65,15 @@ System.Reflection.Assembly.GetExecutingAssembly().Location);
             {
                 Directory.CreateDirectory(direccion);
             }
+        }
+
+        public static void SustituirCampana(Campana campana1)
+        {
+            
+            int index = RecursosAplicacion.SesionUsuario.ListCampaigns.IndexOf(campana1);
+            if (index != -1)
+                RecursosAplicacion.SesionUsuario.ListCampaigns[index] = campana1;
+            GestionArchivos.EscribirUsuarioLocal();
         }
 
     }

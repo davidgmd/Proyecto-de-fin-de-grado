@@ -44,11 +44,17 @@ namespace ElEscribaDelDJ.Classes
 			set { _nombre = value; }
 		}
 
+		public Campana RecuperarCampana(string nombrecampana)
+		{
+			var resultado = RecursosAplicacion.SesionUsuario.ListCampaigns.First(c => c.Nombre.Equals(nombrecampana));
+			return resultado;
+		}
+
 		public Campana ExisteCampanaSesion(Campana campana1)
-        {
+		{
 			var resultado = RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.Nombre.Equals(campana1.Nombre) && c.Descripcion.Equals(campana1.Descripcion));
 			return resultado;
-        }
+		}
 
 		public Campana ExisteCampanaObservable(Campana campana1, ObservableCollection<Campana> observable)
 		{

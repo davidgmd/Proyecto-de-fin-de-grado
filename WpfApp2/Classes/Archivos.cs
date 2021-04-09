@@ -1,4 +1,6 @@
 ﻿using ElEscribaDelDJ.Classes.Utilidades;
+using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+using ElEscribaDelDJ.View.Resources;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,15 +9,6 @@ namespace ElEscribaDelDJ.Classes
 {
     public class Archivos
     {
-        private string _seccion;
-
-        public string Seccion
-        {
-            get { return _seccion; }
-            set { _seccion = value; }
-        }
-
-
         private string _nombre;
 
         public string NombreArchivo
@@ -46,6 +39,30 @@ namespace ElEscribaDelDJ.Classes
         {
             get { return _url; }
             set { _url = value; }
+        }
+
+        public void ModificarListaArchivos(List<Archivos> listaarchivos, string seccion, string tipoaventura, List<string> nombres, string accion)
+        {
+            AnadirArchivo anadir = new AnadirArchivo(listaarchivos);
+            anadir.Show();
+            GuardarLista(listaarchivos, seccion, tipoaventura, nombres);
+        }
+
+        public void GuardarLista(List<Archivos> listaarchivos, string seccion, string tipoaventura, List<string> nombres)
+        {
+            switch (tipoaventura)
+            {
+                case ("Campana"):
+                    break;
+                case ("Escenario"):
+                    break;
+                case ("Aventura"):
+                    Aventura aventura1 = new Aventura();
+                    aventura1.AnadirArchivo(nombres, seccion, listaarchivos);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

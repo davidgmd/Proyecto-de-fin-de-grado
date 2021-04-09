@@ -4,6 +4,7 @@ using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -286,7 +287,7 @@ namespace ElEscribaDelDJ
             //valores iniciales según idioma.
             if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
             {
-                Campana campana = new Campana(){ Nombre = "D&D3.5", Descripcion = "Elemento base para las aventuras de D&D 3.5", DireccionImagen = "/Images/icons/D&D.png" };
+                Campana campana = new Campana() { Nombre = "D&D3.5", Descripcion = "Elemento base para las aventuras de D&D 3.5", DireccionImagen = "/Images/icons/D&D.png" };
                 listacampana.Add(campana);
             }
             else
@@ -306,7 +307,7 @@ namespace ElEscribaDelDJ
                 Campana campana = new Campana() { Nombre = "Warhammer 2ª edition", Descripcion = "Base element for warhammer 2º edition adventures", DireccionImagen = "/Images/icons/warhammer-removebg.png" };
                 listacampana.Add(campana);
             }
-        }
+        } 
 
         private string Encriptacion(string inputString)
         {

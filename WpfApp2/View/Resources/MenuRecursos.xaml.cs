@@ -24,12 +24,9 @@ namespace ElEscribaDelDJ.View.Resources
             InitializeComponent();
             ConfiguracionPagina.DefinirIdioma(this, "Resources");
             RefrescarUcs();
-            UCPanelMostrarArchivos.ListaCampana = CampanaSeleccionada.Recursos.Documentos;
-            UCPanelMostrarArchivos.ListaEscenario = EscenarioSeleccionado.Recursos.Documentos;
-            UCPanelMostrarArchivos.ListaAventuras = AventuraSeleccionada.Recursos.Documentos;
-            ListaNombres.Add(CampanaSeleccionada.Nombre);
-            ListaNombres.Add(EscenarioSeleccionado.Nombre);
-            ListaNombres.Add(AventuraSeleccionada.Nombre);
+            Campana = CampanaSeleccionada;
+            Escenario = EscenarioSeleccionado;
+            Aventura = AventuraSeleccionada;
             
         }
 
@@ -50,14 +47,84 @@ namespace ElEscribaDelDJ.View.Resources
             this.DataContext = this;
         }
 
-        private List<string> _listanombres = new List<string>();
 
-        public List<string> ListaNombres 
+
+        public string TituloCampana
         {
-            get { return _listanombres; }
-            set { _listanombres = value; }
+            get { return (string)GetValue(TituloCampanaProperty); }
+            set { SetValue(TituloCampanaProperty, value); }
         }
 
+        // Using a DependencyProperty as the backing store for TituloCampana.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TituloCampanaProperty =
+            DependencyProperty.Register("TituloCampana", typeof(string), typeof(MenuRecursos), new PropertyMetadata(""));
+
+
+        public string TituloEscenario
+        {
+            get { return (string)GetValue(TituloEscenarioProperty); }
+            set { SetValue(TituloEscenarioProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TituloEscenario.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TituloEscenarioProperty =
+            DependencyProperty.Register("TituloEscenario", typeof(string), typeof(MenuRecursos), new PropertyMetadata(""));
+
+
+        public string TituloAventura
+        {
+            get { return (string)GetValue(TituloAventuraProperty); }
+            set { SetValue(TituloAventuraProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TituloAventura.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TituloAventuraProperty =
+            DependencyProperty.Register("TituloAventura", typeof(string), typeof(MenuRecursos), new PropertyMetadata(""));
+
+
+
+        public string TextoBoton
+        {
+            get { return (string)GetValue(TextoBotonProperty); }
+            set { SetValue(TextoBotonProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TextoBoton.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextoBotonProperty =
+            DependencyProperty.Register("TextoBoton", typeof(string), typeof(MenuRecursos), new PropertyMetadata(""));
+
+
+
+
+        public Campana Campana
+        {
+            get { return (Campana)GetValue(MyPropertyProperty); }
+            set { SetValue(MyPropertyProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MyPropertyProperty =
+            DependencyProperty.Register("Campana", typeof(Campana), typeof(MenuRecursos));
+
+        public EscenarioCampana Escenario
+        {
+            get { return (EscenarioCampana)GetValue(EscenarioProperty); }
+            set { SetValue(EscenarioProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Escenario.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty EscenarioProperty =
+            DependencyProperty.Register("Escenario", typeof(EscenarioCampana), typeof(MenuRecursos));
+
+        public Aventura Aventura
+        {
+            get { return (Aventura)GetValue(AventuraProperty); }
+            set { SetValue(AventuraProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Aventura.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AventuraProperty =
+            DependencyProperty.Register("Aventura", typeof(Aventura), typeof(MenuRecursos));
 
         private void RefrescarUcs()
         {
@@ -66,6 +133,22 @@ namespace ElEscribaDelDJ.View.Resources
             UClore.NombreElemento = this.FindResource("LoreTitle").ToString();
             UCmedia.NombreElemento = this.FindResource("MediaTitle").ToString();
             UCfichas.NombreElemento = this.FindResource("SheetsTitle").ToString();
+
+            if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
+            {
+                TituloCampana = "Campaña";
+                TituloEscenario = "Escenario";
+                TituloAventura = "Aventura";
+                TextoBoton = "Añadir";
+            }
+            else
+            {
+                TituloCampana = "Campaign";
+                TituloEscenario = "Scenary";
+                TituloAventura = "Adventure";
+                TextoBoton = "Add";
+            }
+            
         }
 
         private void MostrarScrollViewer(ScrollViewer panel, Border bordeocultar)

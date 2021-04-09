@@ -30,8 +30,8 @@ namespace ElEscribaDelDJ.View
         private List<Style> estilosactivados = new List<Style>();
 
         private Campana campanaseleccionada = new Campana();
-        private EscenarioCampana _escenarioseleccionado = new EscenarioCampana();
-        private Aventura _aventuraseleccionada = new Aventura();
+        private EscenarioCampana _escenarioseleccionado;
+        private Aventura _aventuraseleccionada;
 
         public Aventura AventuraSeleccionada
         {
@@ -143,9 +143,6 @@ namespace ElEscribaDelDJ.View
         {
             ComprobarImagen();
 
-            if (CampanaSeleccionada.Nombre is null)
-                this.CampanaSeleccionada = (Campana)this.campaignComboBox.SelectedItem;
-
             //Habilita el botón de borrado si no se ha seleccionado una de las predeterminadas
             if (campaignComboBox.SelectedIndex > 1)
             {
@@ -240,8 +237,6 @@ namespace ElEscribaDelDJ.View
 
         private void EscenarioComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (EscenarioSeleccionado is null)
-                EscenarioSeleccionado = new EscenarioCampana();
 
             if (EscenarioComboBox.SelectedIndex >= 0)
             {     
@@ -318,7 +313,7 @@ namespace ElEscribaDelDJ.View
             if (confirmacion == MessageBoxResult.Yes)
             {
                 this.campanas.Remove((Campana)campaignComboBox.SelectedItem);
-                RecursosAplicacion.SesionUsuario.ListCampaigns = this.campanas.ToList<Campana>();
+                RecursosAplicacion.SesionUsuario.ListCampaigns = this.campanas.ToList();
                 GestionArchivos.EscribirUsuarioLocal();
                 campaignComboBox.SelectedIndex = 0;
                 MessageBox.Show(this.FindResource("DeleteCampaingSucessfull").ToString());
@@ -332,7 +327,7 @@ namespace ElEscribaDelDJ.View
             {
                 this.escenarios.Remove((EscenarioCampana)EscenarioComboBox.SelectedItem);
                 var campana = (Campana)campaignComboBox.SelectedItem;
-                campana.ListaEscenarios = Escenarios.ToList<EscenarioCampana>();
+                campana.ListaEscenarios = Escenarios.ToList();
                 GestionArchivos.EscribirUsuarioLocal();
                 Aventuras.Clear();
                 MessageBox.Show(this.FindResource("DeleteScenarioSucessfull").ToString());
@@ -401,8 +396,6 @@ namespace ElEscribaDelDJ.View
 
         private void AventuraComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (AventuraSeleccionada is null)
-                AventuraSeleccionada = new Aventura();
         }
 
         private void botonCalendario_Click(object sender, RoutedEventArgs e)
