@@ -143,6 +143,9 @@ namespace ElEscribaDelDJ.View
         {
             ComprobarImagen();
 
+            if (campanaseleccionada.Nombre is null)
+                campanaseleccionada = (Campana)campaignComboBox.SelectedItem;
+
             //Habilita el botón de borrado si no se ha seleccionado una de las predeterminadas
             if (campaignComboBox.SelectedIndex > 1)
             {
