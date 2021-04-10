@@ -418,6 +418,10 @@ namespace ElEscribaDelDJ.View
 
         private void botonRecursos_Click(object sender, RoutedEventArgs e)
         {
+            DatosAplicacion.CampanaSeleccionada = CampanaSeleccionada;
+            DatosAplicacion.EscenarioSeleccionado = EscenarioSeleccionado;
+            DatosAplicacion.AventuraSeleccionada = AventuraSeleccionada;
+
             MenuRecursos recursos = new MenuRecursos(CampanaSeleccionada, EscenarioSeleccionado, AventuraSeleccionada);
             recursos.Show();
         }
