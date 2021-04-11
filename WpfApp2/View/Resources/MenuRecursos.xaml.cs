@@ -19,14 +19,11 @@ namespace ElEscribaDelDJ.View.Resources
     /// </summary>
     public partial class MenuRecursos : Window
     {
-        public MenuRecursos(Campana CampanaSeleccionada, EscenarioCampana EscenarioSeleccionado, Aventura AventuraSeleccionada)
+        public MenuRecursos()
         {
             InitializeComponent();
             ConfiguracionPagina.DefinirIdioma(this, "Resources");
             RefrescarUcs();
-            Campana = CampanaSeleccionada;
-            Escenario = EscenarioSeleccionado;
-            Aventura = AventuraSeleccionada;
             
         }
 
@@ -92,39 +89,6 @@ namespace ElEscribaDelDJ.View.Resources
         // Using a DependencyProperty as the backing store for TextoBoton.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty TextoBotonProperty =
             DependencyProperty.Register("TextoBoton", typeof(string), typeof(MenuRecursos), new PropertyMetadata(""));
-
-
-
-
-        public Campana Campana
-        {
-            get { return (Campana)GetValue(MyPropertyProperty); }
-            set { SetValue(MyPropertyProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty MyPropertyProperty =
-            DependencyProperty.Register("Campana", typeof(Campana), typeof(MenuRecursos));
-
-        public EscenarioCampana Escenario
-        {
-            get { return (EscenarioCampana)GetValue(EscenarioProperty); }
-            set { SetValue(EscenarioProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Escenario.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty EscenarioProperty =
-            DependencyProperty.Register("Escenario", typeof(EscenarioCampana), typeof(MenuRecursos));
-
-        public Aventura Aventura
-        {
-            get { return (Aventura)GetValue(AventuraProperty); }
-            set { SetValue(AventuraProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Aventura.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty AventuraProperty =
-            DependencyProperty.Register("Aventura", typeof(Aventura), typeof(MenuRecursos));
 
         private void RefrescarUcs()
         {

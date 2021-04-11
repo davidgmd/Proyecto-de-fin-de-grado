@@ -29,6 +29,17 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             
             InitializeComponent();
             this.DataContext = this;
+            RellenarPanel(DatosAplicacion.CampanaSeleccionada.Recursos.Documentos, WrapPanelCampaign, StackPanelCampana);
+            if (DatosAplicacion.EscenarioSeleccionado is null)
+                RellenarPanel(null, WrapPanelScenary, StackPanelScenary);
+            else
+                RellenarPanel(DatosAplicacion.EscenarioSeleccionado.Recursos.Documentos, WrapPanelScenary, StackPanelScenary);
+
+            if (DatosAplicacion.AventuraSeleccionada is null)
+                RellenarPanel(null, WrapPanelAdventures, StackPanelAdventure);
+            else
+                RellenarPanel(DatosAplicacion.AventuraSeleccionada.Recursos.Documentos, WrapPanelAdventures, StackPanelAdventure);
+
         }
 
         public string TituloCampana
@@ -74,89 +85,28 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         public static readonly DependencyProperty TextoBotonProperty =
             DependencyProperty.Register("TextoBoton", typeof(string), typeof(PanelMostrarArchivos), new PropertyMetadata(""));
 
-        public static readonly DependencyProperty ListaCampanaProperty = DependencyProperty.Register("ListaCampana", typeof(List<Archivos>), typeof(PanelMostrarArchivos), new
-            PropertyMetadata(default(List<Archivos>), new PropertyChangedCallback(OnListaCampanaChanged)));
-
-        private static void OnListaCampanaChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            PanelMostrarArchivos uc = d as PanelMostrarArchivos;
-            uc.OnListaCampanaChanged(e);
-        }
-
-        private void OnListaCampanaChanged(DependencyPropertyChangedEventArgs e)
-        {
-            ListaCampana = (List<Archivos>)e.NewValue;
-            RellenarPanel(ListaCampana, WrapPanelCampaign, StackPanelCampana);
-        }
-
-        public List<Archivos> ListaCampana
-        {
-            get { return (List<Archivos>)GetValue(ListaCampanaProperty); }
-            set { SetValue(ListaCampanaProperty, value); }
-        }
-
-        public static readonly DependencyProperty ListaEscenarioProperty = DependencyProperty.Register("ListaEscenario", typeof(List<Archivos>), typeof(PanelMostrarArchivos), new
-            PropertyMetadata(default(List<Archivos>), new PropertyChangedCallback(OnListaEscenarioChanged)));
-
-        private static void OnListaEscenarioChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            PanelMostrarArchivos uc = d as PanelMostrarArchivos;
-            uc.OnListaEscenarioChanged(e);
-        }
-
-        private void OnListaEscenarioChanged(DependencyPropertyChangedEventArgs e)
-        {
-            ListaEscenario = (List<Archivos>)e.NewValue;
-            RellenarPanel(ListaEscenario, WrapPanelScenary, StackPanelScenary);
-        }
-
-        public List<Archivos> ListaEscenario
-        {
-            get { return (List<Archivos>)GetValue(ListaEscenarioProperty); }
-            set { SetValue(ListaEscenarioProperty, value); }
-        }
-
-        public static readonly DependencyProperty ListaAventurasProperty = DependencyProperty.Register("ListaAventuras", typeof(List<Archivos>), typeof(PanelMostrarArchivos), new
-             PropertyMetadata(default(List<Archivos>), new PropertyChangedCallback(OnListaAventurasChanged)));
-
-        private static void OnListaAventurasChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            PanelMostrarArchivos uc = d as PanelMostrarArchivos;
-            uc.OnListaAventurasChanged(e);
-        }
-
-        private void OnListaAventurasChanged(DependencyPropertyChangedEventArgs e)
-        {
-            ListaAventuras = (List<Archivos>)e.NewValue;
-            RellenarPanel(ListaAventuras, WrapPanelAdventures, StackPanelAdventure);
-        }
-
-        public List<Archivos> ListaAventuras
-        {
-            get { return (List<Archivos>)GetValue(ListaAventurasProperty); }
-            set { SetValue(ListaAventurasProperty, value); }
-        }
-
         private void RellenarPanel(List<Archivos> listaarchivos, WrapPanel panel, StackPanel stackpanel)
         {
-            if (listaarchivos.Any())
-            {
-                foreach (Archivos archivo in listaarchivos)
+            if (listaarchivos is null) { }
+                else
+                if (listaarchivos.Any())
+                {
+                    foreach (Archivos archivo in listaarchivos)
+                    {
+                        stackpanel.Visibility = Visibility.Visible;
+                        DetallesArchivoCampana detalles = new DetallesArchivoCampana(archivo);
+                        panel.Children.Add(detalles);
+                    }
+                }
+                else
                 {
                     stackpanel.Visibility = Visibility.Visible;
-                    DetallesArchivoCampana detalles = new DetallesArchivoCampana(archivo);
-                    panel.Children.Add(detalles);
+                    TextBlock textoinformativo = new TextBlock();
+                    textoinformativo.Text = this.FindResource("NoElements").ToString();
+                    panel.HorizontalAlignment = HorizontalAlignment.Center;
+                    textoinformativo.Padding = new Thickness(6);
+                    panel.Children.Add(textoinformativo);
                 }
-            }
-            else
-            {
-                stackpanel.Visibility = Visibility.Visible;
-                TextBlock textoinformativo = new TextBlock();
-                textoinformativo.Text = this.FindResource("NoElements").ToString();
-                panel.HorizontalAlignment = HorizontalAlignment.Center;
-                textoinformativo.Padding = new Thickness(6);
-                panel.Children.Add(textoinformativo);
-            }
         }
     }
 }

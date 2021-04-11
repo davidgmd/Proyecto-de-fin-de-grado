@@ -56,10 +56,6 @@
                               Visibility="Collapsed"
                               MaxHeight="{Binding MaximaAlturaScrollViewers}">
                     <uc:PanelMostrarArchivos DataContext="{Binding}" 
-                                             
-                                             ListaCampana="{Binding Campana.Recursos.Documentos}" 
-                                             ListaEscenario="{Binding Escenario.Recursos.Documentos}"
-                                             ListaAventuras="{Binding Aventura.Recursos.Documentos}"
                                              x:Name="UCPanelMostrarArchivos"/>
                 </ScrollViewer>
             </StackPanel>

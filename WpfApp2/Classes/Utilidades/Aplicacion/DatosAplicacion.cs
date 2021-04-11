@@ -14,8 +14,21 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             set { _campana = value; }
         }
 
-        public static EscenarioCampana EscenarioSeleccionado;
-        public static Aventura AventuraSeleccionada;
+        private static EscenarioCampana _escenarioseleccionado = new EscenarioCampana();
+
+        public static EscenarioCampana EscenarioSeleccionado
+        {
+            get { return _escenarioseleccionado; }
+            set { _escenarioseleccionado = value; }
+        }
+
+        private static Aventura _aventuraseleccionada;
+
+        public static Aventura AventuraSeleccionada
+        {
+            get { return _aventuraseleccionada; }
+            set { _aventuraseleccionada = value; }
+        }
 
     }
 }

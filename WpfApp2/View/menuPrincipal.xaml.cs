@@ -425,7 +425,7 @@ namespace ElEscribaDelDJ.View
             DatosAplicacion.EscenarioSeleccionado = EscenarioSeleccionado;
             DatosAplicacion.AventuraSeleccionada = AventuraSeleccionada;
 
-            MenuRecursos recursos = new MenuRecursos(CampanaSeleccionada, EscenarioSeleccionado, AventuraSeleccionada);
+            MenuRecursos recursos = new MenuRecursos();
             recursos.Show();
         }
 
