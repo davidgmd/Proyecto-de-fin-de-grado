@@ -3,11 +3,12 @@ using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using ElEscribaDelDJ.View.Resources;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace ElEscribaDelDJ.Classes
 {
-    public class Archivos
+    public class Archivos : INotifyPropertyChanged
     {
         private string _nombre;
 
@@ -22,7 +23,11 @@ namespace ElEscribaDelDJ.Classes
         public string Extension
         {
             get { return _extension; }
-            set { _extension = value; }
+            set 
+            { 
+                _extension = value;
+                OnPropertyChanged("Extension");
+            }
         }
 
         private string _direccion;
@@ -30,7 +35,11 @@ namespace ElEscribaDelDJ.Classes
         public string Direccion
         {
             get { return _direccion; }
-            set { _direccion = value; }
+            set 
+            { 
+                _direccion = value;
+                OnPropertyChanged("Direccion");
+             }
         }       
 
         private string _url;
@@ -41,24 +50,44 @@ namespace ElEscribaDelDJ.Classes
             set { _url = value; }
         }
 
-        public void ModificarListaArchivos(List<Archivos> listaarchivos, string seccion, string tipoaventura, List<string> nombres, string accion)
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(string PropertyName)
         {
-            AnadirArchivo anadir = new AnadirArchivo(listaarchivos);
-            anadir.Show();
-            GuardarLista(listaarchivos, seccion, tipoaventura, nombres);
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
         }
 
-        public void GuardarLista(List<Archivos> listaarchivos, string seccion, string tipoaventura, List<string> nombres)
+        public void AgregarArchivo(string tipoaventura, Archivos archivo, string seccion)
         {
             switch (tipoaventura)
             {
-                case ("Campana"):
+                case "Campana":
+                    DatosAplicacion.CampanaSeleccionada.AnadirArchivo(seccion, archivo);
                     break;
-                case ("Escenario"):
+                case "Escenario":
+                    DatosAplicacion.EscenarioSeleccionado.AnadirArchivo(seccion, archivo);
                     break;
-                case ("Aventura"):
-                    Aventura aventura1 = new Aventura();
-                    aventura1.AnadirArchivo(nombres, seccion, listaarchivos);
+                case "Aventura":
+                    DatosAplicacion.AventuraSeleccionada.AnadirArchivo(seccion, archivo);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public void EditarArchivo(string tipoaventura, Archivos archivoviejo, Archivos archivo, string seccion)
+        {
+            switch (tipoaventura)
+            {
+                case "Campana":
+                    DatosAplicacion.CampanaSeleccionada.EditarArchivo(seccion, archivoviejo, archivo);
+                    break;
+                case "Escenario":
+                    DatosAplicacion.EscenarioSeleccionado.EditarArchivo(seccion, archivoviejo, archivo);
+                    break;
+                case "Aventura":
+                    DatosAplicacion.AventuraSeleccionada.EditarArchivo(seccion, archivoviejo, archivo);
                     break;
                 default:
                     break;

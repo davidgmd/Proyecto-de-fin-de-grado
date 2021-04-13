@@ -30,24 +30,24 @@
     <Grid>
         <WrapPanel>
             <Label Content="Nombre Archivo:"/>
-            <TextBox/>
+            <TextBox Text="{Binding ArchivoNuevo.NombreArchivo}"/>
             <Label Content="Extension:"/>
-            <TextBox IsEnabled="False"/>
+            <TextBox IsEnabled="False" Text="{Binding ArchivoNuevo.Extension}"/>
             <Label Content="Dirección Archivo:"/>
             <StackPanel Orientation="Horizontal">
-                <TextBox IsEnabled="False" x:Name="textodireccionarchivo"/>
-                <Button Background="RosyBrown">
-                    <Image Source="/images/icons/icons8-folder.png" Width="25" Stretch="UniformToFill"/>
+                <TextBox IsEnabled="False" x:Name="textodireccionarchivo" Text="{Binding Path=ArchivoNuevo.Direccion,Mode=OneWay}"/>
+                <Button Background="RosyBrown" x:Name="BotonBuscarArchivo" Click="BotonBuscarArchivo_Click">
+                    <Image Source="/images/icons/icons8-folder.png" Width="25" Stretch="Uniform"/>
                 </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
             <Label Content="Dirección Url"/>
-            <TextBox/>
+                <TextBox Text="{Binding ArchivoNuevo.Url}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Content="Añadir" Margin="250, 10, 0, 10"/>
-                <Button Content="Editar" Margin="10, 10, 10, 10"/>
-                <Button Content="Cancelar" Margin="0, 10, 0, 10"/>
+                <Button Content="Añadir" Margin="250, 10, 0, 10" x:Name="BotonAnadir" IsEnabled="False" Click="BotonAnadir_Click"/>
+                <Button Content="Editar" Margin="10, 10, 10, 10" x:Name="BotonEditar" IsEnabled="False" Click="BotonEditar_Click"/>
+                <Button Content="Cancelar" Margin="0, 10, 0, 10" x:Name="BotonCancelar" Click="BotonCancelar_Click"/>
             </StackPanel>
         </WrapPanel>
     </Grid>

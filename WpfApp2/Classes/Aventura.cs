@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,42 +15,78 @@ namespace ElEscribaDelDJ.Classes
             set { _numeroaventura = value; }
         }
 
-        public Aventura RecuperarAventura(EscenarioCampana escenario,string nombre)
+        public void AnadirArchivo(string seccion, Archivos archivo)
         {
-            Aventura aventura1 = escenario.ListaAventuras.Find(a => a.Nombre.Equals(nombre));
-            return aventura1;
-        }
-
-        public void AnadirArchivo(List<string> nombres, string seccion, List<Archivos> archivos)
-        {
-            Campana campana1 = new Campana();
-            campana1= campana1.RecuperarCampana(nombres[0]);
-
-            EscenarioCampana escenario1 = new EscenarioCampana();
-            escenario1 = escenario1.RecuperarEscenario(campana1, nombres[1]);
-
-            Aventura aventura1 = new Aventura();
-            aventura1 = RecuperarAventura(escenario1, nombres[2]);
-
             switch (seccion)
             {
                 case "documentos":
-                    aventura1.Recursos.Documentos = archivos;
+                    DatosAplicacion.AventuraSeleccionada.Recursos.Documentos.Add(archivo);
                     break;
                 case "lore":
-                    aventura1.Recursos.Lore = archivos;
+                    DatosAplicacion.AventuraSeleccionada.Recursos.Lore.Add(archivo);
                     break;
                 case "media":
-                    aventura1.Recursos.Media = archivos;
+                    DatosAplicacion.AventuraSeleccionada.Recursos.Media.Add(archivo);
                     break;
                 case "fichas":
-                    aventura1.Recursos.Fichas = archivos;
+                    DatosAplicacion.AventuraSeleccionada.Recursos.Fichas.Add(archivo);
                     break;
 
                 default:
                     break;
             }
+            RecursosAplicacion.SesionUsuario.ActualizarEscenario();
+        }
 
+        public void EditarArchivo(string seccion, Archivos archivoviejo, Archivos archivo)
+        {
+            int indice = 0;
+            switch (seccion)
+            {
+                case "documentos":
+                    indice = DatosAplicacion.AventuraSeleccionada.Recursos.Documentos.FindIndex(a=>a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
+                    DatosAplicacion.AventuraSeleccionada.Recursos.Documentos[indice] = archivo;
+                    break;
+                case "lore":
+                    indice = DatosAplicacion.AventuraSeleccionada.Recursos.Lore.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
+                    DatosAplicacion.AventuraSeleccionada.Recursos.Lore[indice] = archivo;
+                    break;
+                case "media":
+                    indice = DatosAplicacion.AventuraSeleccionada.Recursos.Media.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
+                    DatosAplicacion.AventuraSeleccionada.Recursos.Media[indice] = archivo;
+                    break;
+                case "fichas":
+                    indice = DatosAplicacion.AventuraSeleccionada.Recursos.Fichas.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
+                    DatosAplicacion.AventuraSeleccionada.Recursos.Fichas[indice] = archivo;
+                    break;
+
+                default:
+                    break;
+            }
+            RecursosAplicacion.SesionUsuario.ActualizarEscenario();
+        }
+
+        public void EliminarArchivo(string seccion, Archivos archivo)
+        {
+            switch (seccion)
+            {
+                case "documentos":
+                    DatosAplicacion.AventuraSeleccionada.Recursos.Documentos.Remove(archivo);
+                    break;
+                case "lore":
+                    DatosAplicacion.AventuraSeleccionada.Recursos.Lore.Remove(archivo);
+                    break;
+                case "media":
+                    DatosAplicacion.AventuraSeleccionada.Recursos.Media.Remove(archivo);
+                    break;
+                case "fichas":
+                    DatosAplicacion.AventuraSeleccionada.Recursos.Fichas.Remove(archivo);
+                    break;
+
+                default:
+                    break;
+            }
+            RecursosAplicacion.SesionUsuario.ActualizarEscenario();
         }
     }
 }

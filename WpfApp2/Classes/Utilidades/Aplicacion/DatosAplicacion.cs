@@ -14,6 +14,8 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             set { _campana = value; }
         }
 
+        public static int IndiceCampana;
+
         private static EscenarioCampana _escenarioseleccionado = new EscenarioCampana();
 
         public static EscenarioCampana EscenarioSeleccionado
@@ -21,6 +23,8 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             get { return _escenarioseleccionado; }
             set { _escenarioseleccionado = value; }
         }
+
+        public static int IndiceEscenario;
 
         private static Aventura _aventuraseleccionada;
 
@@ -30,5 +34,6 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             set { _aventuraseleccionada = value; }
         }
 
+        public static int IndiceAventuraSeleccionada;
     }
 }

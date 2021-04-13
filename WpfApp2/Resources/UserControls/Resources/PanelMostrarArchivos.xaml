@@ -3,8 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:ElEscribaDelDJ.Resources.UserControls.Resources"
-             xmlns:uc="clr-namespace:ElEscribaDelDJ.Resources.UserControls.Resources"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -28,7 +26,7 @@
                        VerticalAlignment="Center"
                        FontSize="15" 
                        Margin="0,0,10,0"/>
-                <Button BorderThickness="0" Background="Transparent" x:Name="BotonAnadirCampana">
+                <Button BorderThickness="0" Background="Transparent" x:Name="BotonAnadirCampana" Click="BotonAnadirCampana_Click">
                     <StackPanel>
                         <Image Source="/Images/icons/iconoMas.png" Width="15"/>
                         <TextBlock Text="{Binding TextoBoton}" FontSize="10"/>
@@ -51,7 +49,7 @@
                        VerticalAlignment="Center" 
                        FontSize="15" 
                        Margin="0,0,10,0"/>
-                <Button BorderThickness="0" Background="Transparent" x:Name="BotonAnadirEscenario">
+                <Button BorderThickness="0" Background="Transparent" x:Name="BotonAnadirEscenario" Click="BotonAnadirEscenario_Click">
                     <StackPanel>
                         <Image Source="/Images/icons/iconoMas.png" Width="15"/>
                         <TextBlock Text="{Binding TextoBoton}" FontSize="10"/>
@@ -73,7 +71,7 @@
                        VerticalAlignment="Center"
                        FontSize="15" 
                        Margin="0,0,10,0"/>
-                <Button BorderThickness="0" Background="Transparent" x:Name="BotonAnadirAventura">
+                <Button BorderThickness="0" Background="Transparent" x:Name="BotonAnadirAventura" Click="BotonAnadirAventura_Click">
                     <StackPanel>
                         <Image Source="/Images/icons/iconoMas.png" Width="15"/>
                         <TextBlock Text="{Binding TextoBoton}" FontSize="10"/>

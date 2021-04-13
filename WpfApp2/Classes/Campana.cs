@@ -23,7 +23,7 @@ namespace ElEscribaDelDJ.Classes
         public string DireccionImagen
 		{
 			get { return _imagen; }
-			set { _imagen = value; }
+			set { _imagen = value ?? "/Images/icons/icons8-escudopregunta.png"; }
 		}
 
 		public Recursos Recursos
@@ -44,12 +44,6 @@ namespace ElEscribaDelDJ.Classes
 			set { _nombre = value; }
 		}
 
-		public Campana RecuperarCampana(string nombrecampana)
-		{
-			var resultado = RecursosAplicacion.SesionUsuario.ListCampaigns.First(c => c.Nombre.Equals(nombrecampana));
-			return resultado;
-		}
-
 		public Campana ExisteCampanaSesion(Campana campana1)
 		{
 			var resultado = RecursosAplicacion.SesionUsuario.ListCampaigns.Find(c => c.Nombre.Equals(campana1.Nombre) && c.Descripcion.Equals(campana1.Descripcion));
@@ -61,5 +55,79 @@ namespace ElEscribaDelDJ.Classes
 			var resultado = observable.Where(c => c.Nombre.Equals(campana1.Nombre) && c.Descripcion.Equals(campana1.Descripcion));
 			return resultado.FirstOrDefault();
 		}
-	}
+
+        public void AnadirArchivo(string seccion, Archivos archivo)
+        {
+            switch (seccion)
+            {
+                case "Documentos":
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Documentos.Add(archivo);
+                    break;
+                case "Lore":
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Lore.Add(archivo);
+                    break;
+                case "Media":
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Media.Add(archivo);
+                    break;
+                case "Fichas":
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Fichas.Add(archivo);
+                    break;
+
+                default:
+                    break;
+            }
+            RecursosAplicacion.SesionUsuario.ReemplazarCampana();
+        }
+
+        public void EditarArchivo(string seccion, Archivos archivoviejo, Archivos archivo)
+        {
+            int indice = 0;
+            switch (seccion)
+            {
+                case "documentos":
+                    indice = DatosAplicacion.CampanaSeleccionada.Recursos.Documentos.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Documentos[indice] = archivo;
+                    break;
+                case "lore":
+                    indice = DatosAplicacion.CampanaSeleccionada.Recursos.Lore.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Lore[indice] = archivo;
+                    break;
+                case "media":
+                    indice = DatosAplicacion.CampanaSeleccionada.Recursos.Media.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Media[indice] = archivo;
+                    break;
+                case "fichas":
+                    indice = DatosAplicacion.CampanaSeleccionada.Recursos.Fichas.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Fichas[indice] = archivo;
+                    break;
+
+                default:
+                    break;
+            }
+            RecursosAplicacion.SesionUsuario.ReemplazarCampana();
+        }
+
+        public void EliminarArchivo(string seccion, Archivos archivo)
+        {
+            switch (seccion)
+            {
+                case "documentos":
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Documentos.Remove(archivo);
+                    break;
+                case "lore":
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Lore.Remove(archivo);
+                    break;
+                case "media":
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Media.Remove(archivo);
+                    break;
+                case "fichas":
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Fichas.Remove(archivo);
+                    break;
+
+                default:
+                    break;
+            }
+            RecursosAplicacion.SesionUsuario.ReemplazarCampana();
+        }
+    }
 }

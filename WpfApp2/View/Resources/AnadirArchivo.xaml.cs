@@ -1,6 +1,8 @@
 ﻿using ElEscribaDelDJ.Classes;
+using ElEscribaDelDJ.Classes.Utilidades;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,20 +20,56 @@ namespace ElEscribaDelDJ.View.Resources
     /// </summary>
     public partial class AnadirArchivo : Window
     {
-        public AnadirArchivo(List<Archivos> lista)
+        public AnadirArchivo(Archivos archivo1, string tipoaventura, string seccion)
         {
             InitializeComponent();
-            listaarchivos = lista;
+            if (archivo1 is null)
+            {
+                BotonAnadir.IsEnabled = true;
+            }
+            else
+            {
+                BotonEditar.IsEnabled = true;
+                this.ArchivoViejo = archivo1;
+                this.ArchivoNuevo = archivo1;
+            }
+
+            this.TipoAventura = tipoaventura;
+            this.Seccion = seccion;
+
+            this.DataContext = this;
         }
 
-        public AnadirArchivo(Archivos archivo1)
+        public Archivos ArchivoNuevo { get; set; } = new Archivos();
+        public Archivos ArchivoViejo { get; set; }
+        public string TipoAventura { get; set; }
+        public string Seccion { get; set; }
+
+        private void BotonAnadir_Click(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
-            archivo = archivo1;
+            ArchivoNuevo.AgregarArchivo(this.TipoAventura,ArchivoNuevo,this.Seccion);
         }
 
+        private void BotonEditar_Click(object sender, RoutedEventArgs e)
+        {
+            ArchivoViejo.EditarArchivo(this.TipoAventura, this.ArchivoViejo, this.ArchivoNuevo, this.Seccion);
+        }
 
-        public List<Archivos> listaarchivos { get; set; }
-        public Archivos archivo { get; set; }
+        private void BotonCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void BotonBuscarArchivo_Click(object sender, RoutedEventArgs e)
+        {
+            SelectorArchivos seleccionarimagen = new SelectorArchivos();
+            this.ArchivoNuevo.Direccion = seleccionarimagen.SeleccionarArchivo();
+            if (!(this.ArchivoNuevo is null))
+            {
+                FileInfo fichero = new FileInfo(this.ArchivoNuevo.Direccion);
+                this.ArchivoNuevo.Extension = fichero.Extension;
+            }
+            
+        }
     }
 }

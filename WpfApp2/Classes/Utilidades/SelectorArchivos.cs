@@ -29,6 +29,26 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             }
         }
 
+        public string SeleccionarArchivo()
+        {
+            string filename;
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Image Files (*.pdf; *.doc; *docx; *odt)|*.pdf;*.doc;*.docx;*.odt";
+            dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            if (dialog.ShowDialog() == true)
+            {
+                return filename = dialog.FileName;
+
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+
         public string MoverImagen(string nombrecampana, string direccionarchivo)
         {
             string carpeta = RecursosAplicacion.Directorios["imagenes_usuario"] + $"\\{RecursosAplicacion.SesionUsuario.NombreUsuario}\\{nombrecampana}\\icon\\";

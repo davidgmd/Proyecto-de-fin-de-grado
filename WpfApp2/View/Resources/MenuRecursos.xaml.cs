@@ -93,6 +93,7 @@ namespace ElEscribaDelDJ.View.Resources
         private void RefrescarUcs()
         {
             UCdocuments.NombreElemento = this.FindResource("DocumentsTitle").ToString();
+            UCPanelMostrarArchivos.Seccion = "Documentos";
             UCresumenes.NombreElemento = this.FindResource("RulesTitle").ToString();
             UClore.NombreElemento = this.FindResource("LoreTitle").ToString();
             UCmedia.NombreElemento = this.FindResource("MediaTitle").ToString();
