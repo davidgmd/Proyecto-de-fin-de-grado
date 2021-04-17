@@ -93,5 +93,23 @@ namespace ElEscribaDelDJ.Classes
                     break;
             }
         }
+
+        public void EliminarArchivo(string tipoaventura, Archivos archivo, string seccion, int indice)
+        {
+            switch (tipoaventura)
+            {
+                case "Campana":
+                    DatosAplicacion.CampanaSeleccionada.EliminarArchivo(seccion, archivo, indice);
+                    break;
+                case "Escenario":
+                    DatosAplicacion.EscenarioSeleccionado.EliminarArchivo(seccion, archivo);
+                    break;
+                case "Aventura":
+                    DatosAplicacion.AventuraSeleccionada.EliminarArchivo(seccion, archivo);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

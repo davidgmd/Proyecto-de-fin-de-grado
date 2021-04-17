@@ -34,6 +34,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
 
         public void MostrarListas()
         {
+            this.ListaArchivosCampana = null;
             this.ListaArchivosCampana = ElegirLista(DatosAplicacion.CampanaSeleccionada);
             this.ListaArchivosEscenario = ElegirLista(DatosAplicacion.EscenarioSeleccionado);
             this.ListaArchivosAventura = ElegirLista(DatosAplicacion.AventuraSeleccionada);
@@ -91,7 +92,8 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         /// <param name="newValue">El nuevo valor</param>
         private void OnListaArchivosCampanaChanged(List<Archivos> oldValue, List<Archivos> newValue)
         {
-            RellenarPanel(this.ListaArchivosCampana, WrapPanelCampaign, StackPanelCampana);
+            WrapPanelCampaign.Children.Clear();
+            RellenarPanel(this.ListaArchivosCampana, WrapPanelCampaign, StackPanelCampana, "Campana");
         }
 
         /// <summary>
@@ -132,7 +134,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         /// <param name="newValue">El nuevo valor</param>
         private void OnListaArchivosEscenarioChanged(List<Archivos> oldValue, List<Archivos> newValue)
         {
-            RellenarPanel(this.ListaArchivosEscenario, WrapPanelCampaign, StackPanelScenary);
+            RellenarPanel(this.ListaArchivosEscenario, WrapPanelCampaign, StackPanelScenary, "Escenario");
         }
 
         /// <summary>
@@ -173,7 +175,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         /// <param name="newValue">El nuevo valor</param>
         private void OnListaArchivosAventuraChanged(List<Archivos> oldValue, List<Archivos> newValue)
         {
-            RellenarPanel(this.ListaArchivosAventura, WrapPanelCampaign, StackPanelAdventure);
+            RellenarPanel(this.ListaArchivosAventura, WrapPanelCampaign, StackPanelAdventure, "Aventura");
         }
 
         /// <summary>
@@ -245,15 +247,17 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
 
 
 
-        private void RellenarPanel(List<Archivos> listaarchivos, WrapPanel panel, StackPanel stackpanel)
+        private void RellenarPanel(List<Archivos> listaarchivos, WrapPanel panel, StackPanel stackpanel, string tipoaventura)
         {
             if (!(listaarchivos is null))
                 if (listaarchivos.Any())
                 {
+                    int indice = 0;
+                    stackpanel.Visibility = Visibility.Visible;
                     foreach (Archivos archivo in listaarchivos)
-                    {
-                        stackpanel.Visibility = Visibility.Visible;
-                        DetallesArchivoCampana detalles = new DetallesArchivoCampana(archivo);
+                    {                     
+                        DetallesArchivoCampana detalles = new DetallesArchivoCampana(archivo, this.Seccion, tipoaventura, indice, this);
+                        indice++;
                         panel.Children.Add(detalles);
                     }
                 }
@@ -271,7 +275,8 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         private void BotonAnadirCampana_Click(object sender, RoutedEventArgs e)
         {        
             AnadirArchivo anadirarchivo = new AnadirArchivo(null,"Campana",this.Seccion);
-            anadirarchivo.Show();
+            anadirarchivo.ShowDialog();
+            MostrarListas();
         }
 
         private void BotonAnadirEscenario_Click(object sender, RoutedEventArgs e)

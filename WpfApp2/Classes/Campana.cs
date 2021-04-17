@@ -84,19 +84,19 @@ namespace ElEscribaDelDJ.Classes
             int indice = 0;
             switch (seccion)
             {
-                case "documentos":
+                case "Documentos":
                     indice = DatosAplicacion.CampanaSeleccionada.Recursos.Documentos.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
                     DatosAplicacion.CampanaSeleccionada.Recursos.Documentos[indice] = archivo;
                     break;
-                case "lore":
+                case "Lore":
                     indice = DatosAplicacion.CampanaSeleccionada.Recursos.Lore.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
                     DatosAplicacion.CampanaSeleccionada.Recursos.Lore[indice] = archivo;
                     break;
-                case "media":
+                case "Media":
                     indice = DatosAplicacion.CampanaSeleccionada.Recursos.Media.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
                     DatosAplicacion.CampanaSeleccionada.Recursos.Media[indice] = archivo;
                     break;
-                case "fichas":
+                case "Fichas":
                     indice = DatosAplicacion.CampanaSeleccionada.Recursos.Fichas.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
                     DatosAplicacion.CampanaSeleccionada.Recursos.Fichas[indice] = archivo;
                     break;
@@ -107,21 +107,21 @@ namespace ElEscribaDelDJ.Classes
             RecursosAplicacion.SesionUsuario.ReemplazarCampana();
         }
 
-        public void EliminarArchivo(string seccion, Archivos archivo)
+        public void EliminarArchivo(string seccion, Archivos archivo, int indice)
         {
             switch (seccion)
             {
-                case "documentos":
-                    DatosAplicacion.CampanaSeleccionada.Recursos.Documentos.Remove(archivo);
+                case "Documentos":
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Documentos.RemoveAt(indice);
                     break;
-                case "lore":
-                    DatosAplicacion.CampanaSeleccionada.Recursos.Lore.Remove(archivo);
+                case "Lore":
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Lore.RemoveAt(indice);
                     break;
-                case "media":
-                    DatosAplicacion.CampanaSeleccionada.Recursos.Media.Remove(archivo);
+                case "Media":
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Media.RemoveAt(indice);
                     break;
-                case "fichas":
-                    DatosAplicacion.CampanaSeleccionada.Recursos.Fichas.Remove(archivo);
+                case "Fichas":
+                    DatosAplicacion.CampanaSeleccionada.Recursos.Fichas.RemoveAt(indice);
                     break;
 
                 default:

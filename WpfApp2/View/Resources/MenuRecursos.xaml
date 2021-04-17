@@ -55,7 +55,7 @@
                 <ScrollViewer x:Name="ScrollViewerDocumentos" 
                               Visibility="Collapsed"
                               MaxHeight="{Binding MaximaAlturaScrollViewers}">
-                    <uc:PanelMostrarArchivos DataContext="{Binding}" 
+                    <uc:PanelMostrarArchivos Seccion="Documentos" DataContext="{Binding}" 
                                              x:Name="UCPanelMostrarArchivos"/>
                 </ScrollViewer>
             </StackPanel>

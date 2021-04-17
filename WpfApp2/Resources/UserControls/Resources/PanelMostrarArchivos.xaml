@@ -35,7 +35,7 @@
             </StackPanel>
             </Grid>
 
-            <WrapPanel x:Name="WrapPanelCampaign" 
+            <WrapPanel x:Name="WrapPanelCampaign"
                            Background="#f9f2a4">
             </WrapPanel>
 

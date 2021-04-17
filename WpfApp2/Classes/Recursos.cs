@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace ElEscribaDelDJ.Classes
 {
-    public class Recursos
+    public class Recursos: INotifyPropertyChanged
     {
         private List<Archivos> _documentos = new List<Archivos>();
 
         public List<Archivos> Documentos
         {
             get { return _documentos; }
-            set { _documentos = value; }
+            set { 
+                _documentos = value;
+                OnPropertyChanged("Documentos");
+            }
         }
 
         private List<Resumenes> _resumenes = new List<Resumenes>();
@@ -47,6 +51,13 @@ namespace ElEscribaDelDJ.Classes
             set { _fichas = value; }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(string PropertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
+        }
 
     }
 }

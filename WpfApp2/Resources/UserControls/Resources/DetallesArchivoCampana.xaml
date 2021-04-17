@@ -15,33 +15,40 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center">
-            <Button HorizontalAlignment="Center" Margin="0,10,0,0" Background="Transparent">
+            <Button HorizontalAlignment="Center" Margin="0,10,0,0" Background="Transparent" x:Name="BotonArchivo" Click="BotonArchivo_Click">
                 <Image Source="/Images/icons/icons8-pdf.png" Width="30"/>
             </Button>
             <TextBlock Text="{Binding NombreArchivo}" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,5,0,5"/>
             
             <StackPanel Orientation="Horizontal">
-                        <Button Background="Transparent">
-                            <Image Source="/Images/icons/icons8-lock.png" Width="20"/>
-                        </Button>
-                        <TextBlock Text="Ubicación" VerticalAlignment="Center" Margin="5,0,0,0"/>
-                    </StackPanel>
+                <Button Background="Transparent" x:Name="BotonUbicacion" Click="BotonUbicacion_Click">
+                    <Image Source="/Images/icons/icons8-lock.png" 
+                            Width="20" Stretch="Uniform" 
+                            RenderOptions.BitmapScalingMode="Fant" 
+                            x:Name="ImagenUbicacion"/>
+                </Button>
+                <TextBlock Text="Ubicación" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Background="Transparent">
-                    <Image Source="/Images/icons/icons8-lock.png" Width="20"/>
+                <Button Background="Transparent" Name="BotonUrl" Click="BotonUrl_Click">
+                    <Image Source="/Images/icons/icons8-web.png" Width="20" RenderOptions.BitmapScalingMode="Fant" x:Name="ImagenUrl"/>
                 </Button>
                 <TextBlock Text="Url" Margin="5,0,0,0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Background="Transparent" BorderThickness="0" Margin="5">
+                <Button Background="Transparent" 
+                        BorderThickness="0" 
+                        Margin="5"
+                        x:Name="BotonEditar"
+                        Click="BotonEditar_Click">
                     <StackPanel>
                         <Image Source="/Images/icons/icons8-pencil.png" Width="15"/>
                         <TextBlock Text="Editar"/>
                     </StackPanel>
                 </Button>
 
-                <Button Background="Transparent" BorderThickness="0" Margin="5">
+                <Button Background="Transparent" BorderThickness="0" Margin="5" x:Name="BotonEliminar" Click="BotonEliminar_Click">
                     <StackPanel>
                         <Image Source="/Images/icons/icons8-delete.png" Width="15"/>
                         <TextBlock Text="Eliminar"/>

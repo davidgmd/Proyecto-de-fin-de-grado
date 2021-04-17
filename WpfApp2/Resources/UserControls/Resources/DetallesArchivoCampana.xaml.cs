@@ -1,8 +1,13 @@
 ﻿using ElEscribaDelDJ.Classes;
 using ElEscribaDelDJ.Classes.Utilidades;
+using ElEscribaDelDJ.View.Resources;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Net.Http;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,13 +25,43 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
     /// </summary>
     public partial class DetallesArchivoCampana : UserControl
     {
-        public DetallesArchivoCampana(Archivos archivo)
+        public DetallesArchivoCampana(Archivos archivo, string seccion, string tipoaventura, int? indice, PanelMostrarArchivos mostrararchivos = null)
         {
             InitializeComponent();
             NombreArchivo = archivo.NombreArchivo;
             DireccionArchivo = archivo.Direccion;
+            if (File.Exists(DireccionArchivo))
+            {
+                BotonUbicacion.IsEnabled = true;
+                ImagenUbicacion.Source = new BitmapImage(new Uri("/Images/icons/icons8-folder.png", UriKind.Relative));
+            }
+            else
+            {
+                BotonUbicacion.IsEnabled = false;
+                ImagenUbicacion.Source = new BitmapImage(new Uri("/Images/icons/icons8-lock.png", UriKind.Relative));
+            }
+
             UrlArchivo = archivo.Url;
+
+            if (ComprobarUrl().Result)
+            {
+                BotonUrl.IsEnabled = true;
+                ImagenUrl.Source = new BitmapImage(new Uri("/Images/icons/icons8-web.png", UriKind.Relative));
+            }
+            else
+            {
+                BotonUrl.IsEnabled = false;
+                ImagenUrl.Source = new BitmapImage(new Uri("/Images/icons/icons8-lock.png", UriKind.Relative));
+            }
+
             Imagen = Extensiones.IconoExtension(archivo.Extension);
+
+            Extension = archivo.Extension;
+
+            this.Seccion = seccion;
+            this.TipoAventura = tipoaventura;
+            this.Indice = indice.Value;
+            this.MostrarArchivos = mostrararchivos;
             this.DataContext = this;
         }
 
@@ -63,7 +98,69 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             set { _urlarchivo = value; }
         }
 
+        private string _extension;
+
+        public string Extension
+        {
+            get { return _extension; }
+            set { _extension = value; }
+        }
+
+        public string Seccion { get; set; }
+        public string TipoAventura { get; set; }
+        public int Indice;
+        public PanelMostrarArchivos MostrarArchivos;
 
 
+        private async Task<bool> ComprobarUrl()
+        {
+            Uri uriResult;
+            if (!(Uri.TryCreate(UrlArchivo, UriKind.Absolute, out uriResult)
+    && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps)))
+                return false;
+
+            HttpClient client = new HttpClient();
+            var checkingResponse = await client.GetAsync(UrlArchivo);
+            if (!checkingResponse.IsSuccessStatusCode)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void BotonUbicacion_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("explorer.exe", System.IO.Path.GetDirectoryName(this.DireccionArchivo));
+        }
+
+        private void BotonUrl_Click(object sender, RoutedEventArgs e)
+        {
+            string url = this.UrlArchivo.Replace("&", "^&");
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+        }
+
+        private void BotonArchivo_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("explorer.exe", this.DireccionArchivo);
+        }
+
+        private void BotonEditar_Click(object sender, RoutedEventArgs e)
+        {
+            AnadirArchivo editar = 
+                new AnadirArchivo(new Archivos() 
+                { Direccion=this.DireccionArchivo, Extension=this.Extension, NombreArchivo= this.NombreArchivo, Url=this.UrlArchivo},"","");
+        }
+
+        private void BotonEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            Archivos eliminararchivo = new Archivos() 
+            { Direccion = this.DireccionArchivo, Extension = this.Extension, NombreArchivo = this.NombreArchivo, Url = this.UrlArchivo };
+
+            eliminararchivo.EliminarArchivo(this.TipoAventura, eliminararchivo, this.Seccion, this.Indice);
+            MostrarArchivos.MostrarListas();
+        }
     }
 }
