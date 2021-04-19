@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 
@@ -7,9 +8,9 @@ namespace ElEscribaDelDJ.Classes
 {
     public class Recursos: INotifyPropertyChanged
     {
-        private List<Archivos> _documentos = new List<Archivos>();
+        private ObservableCollection<Archivos> _documentos = new ObservableCollection<Archivos>();
 
-        public List<Archivos> Documentos
+        public ObservableCollection<Archivos> Documentos
         {
             get { return _documentos; }
             set { 
@@ -18,34 +19,34 @@ namespace ElEscribaDelDJ.Classes
             }
         }
 
-        private List<Resumenes> _resumenes = new List<Resumenes>();
+        private ObservableCollection<Resumenes> _resumenes = new ObservableCollection<Resumenes>();
 
-        public List<Resumenes> Resumenes
+        public ObservableCollection<Resumenes> Resumenes
         {
             get { return _resumenes; }
             set { _resumenes = value; }
         }
 
 
-        private List<Archivos> _lore = new List<Archivos>();
+        private ObservableCollection<Archivos> _lore = new ObservableCollection<Archivos>();
 
-        public List<Archivos> Lore
+        public ObservableCollection<Archivos> Lore
         {
             get { return _lore; }
             set { _lore = value; }
         }
 
-        private List<Archivos> _media = new List<Archivos>();
+        private ObservableCollection<Archivos> _media = new ObservableCollection<Archivos>();
 
-        public List<Archivos> Media
+        public ObservableCollection<Archivos> Media
         {
             get { return _media; }
             set { _media = value; }
         }
 
-        private List<Archivos> _fichas = new List<Archivos>();
+        private ObservableCollection<Archivos> _fichas = new ObservableCollection<Archivos>();
 
-        public List<Archivos> Fichas
+        public ObservableCollection<Archivos> Fichas
         {
             get { return _fichas; }
             set { _fichas = value; }

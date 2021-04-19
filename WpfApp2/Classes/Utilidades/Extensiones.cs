@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Media.Imaging;
 
 namespace ElEscribaDelDJ.Classes.Utilidades
 {
@@ -32,21 +33,21 @@ namespace ElEscribaDelDJ.Classes.Utilidades
 
         static Extensiones()
         {
-            Documentos = new List<string>() { "doc", "docx", "txt" };
-            Imagenes = new List<string>() { "png", "bmp", "jpg", "jpeg" };
-            Musica = new List<string>() { "mp3", "wav" };
+            Documentos = new List<string>() { ".doc", ".docx", ".txt" };
+            Imagenes = new List<string>() { ".png", ".bmp", ".jpg", ".jpeg" };
+            Musica = new List<string>() { ".mp3", ".wav" };
         }
 
-        public static string IconoExtension(string extension)
+        public static BitmapImage IconoExtension(string extension)
         {
-            if (extension.Equals("pdf"))
-                return "x";
+            if (extension.Equals(".pdf"))
+                return new BitmapImage(new Uri("/Images/icons/icons8-pdf2.png", UriKind.Relative)); 
             else if (Documentos.Contains(extension))
-                return "a";
+                return new BitmapImage(new Uri("/Images/icons/icons8-textdocument2.png", UriKind.Relative));
             else if (Imagenes.Contains(extension))
-                return "b";
+                return new BitmapImage(new Uri("/Images/icons/icons8-play.png", UriKind.Relative));
             else
-                return "c";
+                return new BitmapImage(new Uri("/Images/icons/icons8-file.png", UriKind.Relative));
         }
 
     }

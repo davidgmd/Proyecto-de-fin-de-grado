@@ -79,25 +79,20 @@ namespace ElEscribaDelDJ.Classes
             RecursosAplicacion.SesionUsuario.ReemplazarCampana();
         }
 
-        public void EditarArchivo(string seccion, Archivos archivoviejo, Archivos archivo)
+        public void EditarArchivo(string seccion, Archivos archivo, int indice)
         {
-            int indice = 0;
             switch (seccion)
             {
                 case "Documentos":
-                    indice = DatosAplicacion.CampanaSeleccionada.Recursos.Documentos.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
                     DatosAplicacion.CampanaSeleccionada.Recursos.Documentos[indice] = archivo;
                     break;
                 case "Lore":
-                    indice = DatosAplicacion.CampanaSeleccionada.Recursos.Lore.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
                     DatosAplicacion.CampanaSeleccionada.Recursos.Lore[indice] = archivo;
                     break;
                 case "Media":
-                    indice = DatosAplicacion.CampanaSeleccionada.Recursos.Media.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
                     DatosAplicacion.CampanaSeleccionada.Recursos.Media[indice] = archivo;
                     break;
                 case "Fichas":
-                    indice = DatosAplicacion.CampanaSeleccionada.Recursos.Fichas.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
                     DatosAplicacion.CampanaSeleccionada.Recursos.Fichas[indice] = archivo;
                     break;
 

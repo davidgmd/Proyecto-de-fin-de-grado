@@ -76,18 +76,18 @@ namespace ElEscribaDelDJ.Classes
             }
         }
 
-        public void EditarArchivo(string tipoaventura, Archivos archivoviejo, Archivos archivo, string seccion)
+        public void EditarArchivo(string tipoaventura, Archivos archivo, int indice, string seccion)
         {
             switch (tipoaventura)
             {
                 case "Campana":
-                    DatosAplicacion.CampanaSeleccionada.EditarArchivo(seccion, archivoviejo, archivo);
+                    DatosAplicacion.CampanaSeleccionada.EditarArchivo(seccion, archivo, indice);
                     break;
                 case "Escenario":
-                    DatosAplicacion.EscenarioSeleccionado.EditarArchivo(seccion, archivoviejo, archivo);
+                    DatosAplicacion.EscenarioSeleccionado.EditarArchivo(seccion, archivo, indice);
                     break;
                 case "Aventura":
-                    DatosAplicacion.AventuraSeleccionada.EditarArchivo(seccion, archivoviejo, archivo);
+                    DatosAplicacion.AventuraSeleccionada.EditarArchivo(seccion, archivo, indice);
                     break;
                 default:
                     break;
@@ -102,10 +102,10 @@ namespace ElEscribaDelDJ.Classes
                     DatosAplicacion.CampanaSeleccionada.EliminarArchivo(seccion, archivo, indice);
                     break;
                 case "Escenario":
-                    DatosAplicacion.EscenarioSeleccionado.EliminarArchivo(seccion, archivo);
+                    DatosAplicacion.EscenarioSeleccionado.EliminarArchivo(seccion, archivo, indice);
                     break;
                 case "Aventura":
-                    DatosAplicacion.AventuraSeleccionada.EliminarArchivo(seccion, archivo);
+                    DatosAplicacion.AventuraSeleccionada.EliminarArchivo(seccion, archivo, indice);
                     break;
                 default:
                     break;

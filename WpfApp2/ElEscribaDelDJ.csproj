@@ -39,18 +39,23 @@
     <None Remove="Images\icons\icons8-dices.png" />
     <None Remove="images\icons\icons8-documents.png" />
     <None Remove="Images\icons\icons8-escudopregunta.png" />
+    <None Remove="images\icons\icons8-file.png" />
     <None Remove="images\icons\icons8-folder.png" />
     <None Remove="images\icons\icons8-himeji.png" />
     <None Remove="Images\icons\icons8-incorrecto.png" />
     <None Remove="Images\icons\icons8-lock.png" />
     <None Remove="Images\icons\icons8-options.png" />
     <None Remove="images\icons\icons8-pdf.png" />
+    <None Remove="images\icons\icons8-pdf2.png" />
     <None Remove="images\icons\icons8-pencil.png" />
+    <None Remove="images\icons\icons8-play.png" />
     <None Remove="images\icons\icons8-resume.png" />
     <None Remove="Images\icons\icons8-salir.png" />
     <None Remove="Images\icons\icons8-salir2.png" />
     <None Remove="images\icons\icons8-select.png" />
     <None Remove="images\icons\icons8-speaker.png" />
+    <None Remove="images\icons\icons8-textdocument.png" />
+    <None Remove="images\icons\icons8-textdocument2.png" />
     <None Remove="images\icons\icons8-upload.png" />
     <None Remove="Images\icons\icons8-verificado.png" />
     <None Remove="images\icons\icons8-web.png" />
@@ -333,7 +338,22 @@
     <Content Include="Images\icons\warhammer.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="images\icons\icons8-file.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="images\icons\icons8-folder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\icons\icons8-pdf2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\icons\icons8-play.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\icons\icons8-textdocument.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\icons\icons8-textdocument2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="images\icons\icons8-web.png">

@@ -20,7 +20,7 @@ namespace ElEscribaDelDJ.View.Resources
     /// </summary>
     public partial class AnadirArchivo : Window
     {
-        public AnadirArchivo(Archivos archivo1, string tipoaventura, string seccion)
+        public AnadirArchivo(Archivos archivo1, string tipoaventura, string seccion, int indice=0)
         {
             InitializeComponent();
             if (archivo1 is null)
@@ -36,6 +36,7 @@ namespace ElEscribaDelDJ.View.Resources
 
             this.TipoAventura = tipoaventura;
             this.Seccion = seccion;
+            this.indice = indice;
 
             this.DataContext = this;
         }
@@ -44,6 +45,7 @@ namespace ElEscribaDelDJ.View.Resources
         public Archivos ArchivoViejo { get; set; }
         public string TipoAventura { get; set; }
         public string Seccion { get; set; }
+        public int indice { get; set; }
 
         private void BotonAnadir_Click(object sender, RoutedEventArgs e)
         {
@@ -52,7 +54,7 @@ namespace ElEscribaDelDJ.View.Resources
 
         private void BotonEditar_Click(object sender, RoutedEventArgs e)
         {
-            ArchivoViejo.EditarArchivo(this.TipoAventura, this.ArchivoViejo, this.ArchivoNuevo, this.Seccion);
+            ArchivoViejo.EditarArchivo(this.TipoAventura, this.ArchivoNuevo, this.indice,this.Seccion);
         }
 
         private void BotonCancelar_Click(object sender, RoutedEventArgs e)

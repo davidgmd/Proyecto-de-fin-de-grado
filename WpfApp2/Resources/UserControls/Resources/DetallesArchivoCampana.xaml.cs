@@ -54,7 +54,8 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
                 ImagenUrl.Source = new BitmapImage(new Uri("/Images/icons/icons8-lock.png", UriKind.Relative));
             }
 
-            Imagen = Extensiones.IconoExtension(archivo.Extension);
+            IconoExtension.Source = Extensiones.IconoExtension(archivo.Extension);
+            IconoExtension.Width = 35;
 
             Extension = archivo.Extension;
 
@@ -72,15 +73,6 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             get { return _nombrearchivo; }
             set { _nombrearchivo = value; }
         }
-
-        private string _imagen;
-
-        public string Imagen
-        {
-            get { return _imagen; }
-            set { _imagen = value; }
-        }
-
 
         private string _direccionarchivo;
 
@@ -120,7 +112,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
                 return false;
 
             HttpClient client = new HttpClient();
-            var checkingResponse = await client.GetAsync(UrlArchivo);
+            var checkingResponse = await client.GetAsync(UrlArchivo).ConfigureAwait(false);
             if (!checkingResponse.IsSuccessStatusCode)
             {
                 return false;

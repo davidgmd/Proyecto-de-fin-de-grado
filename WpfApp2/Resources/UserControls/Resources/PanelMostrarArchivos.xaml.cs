@@ -3,6 +3,7 @@ using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using ElEscribaDelDJ.View.Resources;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -34,13 +35,13 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
 
         public void MostrarListas()
         {
-            this.ListaArchivosCampana = null;
+            //this.ListaArchivosCampana = null;
             this.ListaArchivosCampana = ElegirLista(DatosAplicacion.CampanaSeleccionada);
             this.ListaArchivosEscenario = ElegirLista(DatosAplicacion.EscenarioSeleccionado);
             this.ListaArchivosAventura = ElegirLista(DatosAplicacion.AventuraSeleccionada);
         }
 
-        public List<Archivos> ElegirLista(Campana escenario_o_aventura)
+        public ObservableCollection<Archivos> ElegirLista(Campana escenario_o_aventura)
         {
             if (escenario_o_aventura is null)
             {
@@ -71,7 +72,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         public static readonly DependencyProperty ListaArchivosCampanaProperty =
             DependencyProperty.Register(
                 "ListaArchivosCampana",
-                typeof(List<Archivos>),
+                typeof(ObservableCollection<Archivos>),
                 typeof(PanelMostrarArchivos),
                 new PropertyMetadata(null, OnListaArchivosCampanaPropertyChanged));
 
@@ -82,7 +83,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         /// <param name="e">La <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instancia que contiene los datos del evento.</param>
         private static void OnListaArchivosCampanaPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as PanelMostrarArchivos).OnListaArchivosCampanaChanged(e.OldValue as List<Archivos>, e.NewValue as List<Archivos>);
+            (d as PanelMostrarArchivos).OnListaArchivosCampanaChanged(e.OldValue as ObservableCollection<Archivos>, e.NewValue as ObservableCollection<Archivos>);
         }
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         /// </summary>
         /// <param name="oldValue">El viejo valor</param>
         /// <param name="newValue">El nuevo valor</param>
-        private void OnListaArchivosCampanaChanged(List<Archivos> oldValue, List<Archivos> newValue)
+        private void OnListaArchivosCampanaChanged(ObservableCollection<Archivos> oldValue, ObservableCollection<Archivos> newValue)
         {
             WrapPanelCampaign.Children.Clear();
             RellenarPanel(this.ListaArchivosCampana, WrapPanelCampaign, StackPanelCampana, "Campana");
@@ -99,9 +100,9 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         /// <summary>
         /// 
         /// </summary>
-        public List<Archivos> ListaArchivosCampana
+        public ObservableCollection<Archivos> ListaArchivosCampana
         {
-            get { return (List<Archivos>)GetValue(ListaArchivosCampanaProperty); }
+            get { return (ObservableCollection<Archivos>)GetValue(ListaArchivosCampanaProperty); }
             set { SetValue(ListaArchivosCampanaProperty, value); }
         }
         #endregion
@@ -113,7 +114,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         public static readonly DependencyProperty ListaArchivosEscenarioProperty =
             DependencyProperty.Register(
                 "ListaArchivosEscenario",
-                typeof(List<Archivos>),
+                typeof(ObservableCollection<Archivos>),
                 typeof(PanelMostrarArchivos),
                 new PropertyMetadata(null, OnListaArchivosEscenarioPropertyChanged));
 
@@ -124,7 +125,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         /// <param name="e">La <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instancia que contiene los datos del evento.</param>
         private static void OnListaArchivosEscenarioPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as PanelMostrarArchivos).OnListaArchivosEscenarioChanged(e.OldValue as List<Archivos>, e.NewValue as List<Archivos>);
+            (d as PanelMostrarArchivos).OnListaArchivosEscenarioChanged(e.OldValue as ObservableCollection<Archivos>, e.NewValue as ObservableCollection<Archivos>);
         }
 
         /// <summary>
@@ -132,7 +133,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         /// </summary>
         /// <param name="oldValue">El viejo valor</param>
         /// <param name="newValue">El nuevo valor</param>
-        private void OnListaArchivosEscenarioChanged(List<Archivos> oldValue, List<Archivos> newValue)
+        private void OnListaArchivosEscenarioChanged(ObservableCollection<Archivos> oldValue, ObservableCollection<Archivos> newValue)
         {
             RellenarPanel(this.ListaArchivosEscenario, WrapPanelCampaign, StackPanelScenary, "Escenario");
         }
@@ -140,9 +141,9 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         /// <summary>
         /// 
         /// </summary>
-        public List<Archivos> ListaArchivosEscenario
+        public ObservableCollection<Archivos> ListaArchivosEscenario
         {
-            get { return (List<Archivos>)GetValue(ListaArchivosEscenarioProperty); }
+            get { return (ObservableCollection<Archivos>)GetValue(ListaArchivosEscenarioProperty); }
             set { SetValue(ListaArchivosEscenarioProperty, value); }
         }
         #endregion
@@ -154,7 +155,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         public static readonly DependencyProperty ListaArchivosAventuraProperty =
             DependencyProperty.Register(
                 "ListaArchivosAventura",
-                typeof(List<Archivos>),
+                typeof(ObservableCollection<Archivos>),
                 typeof(PanelMostrarArchivos),
                 new PropertyMetadata(null, OnListaArchivosAventuraPropertyChanged));
 
@@ -165,7 +166,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         /// <param name="e">La <see cref="System.Windows.DependencyPropertyChangedEventArgs"/> instancia que contiene los datos del evento.</param>
         private static void OnListaArchivosAventuraPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as PanelMostrarArchivos).OnListaArchivosAventuraChanged(e.OldValue as List<Archivos>, e.NewValue as List<Archivos>);
+            (d as PanelMostrarArchivos).OnListaArchivosAventuraChanged(e.OldValue as ObservableCollection<Archivos>, e.NewValue as ObservableCollection<Archivos>);
         }
 
         /// <summary>
@@ -173,7 +174,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         /// </summary>
         /// <param name="oldValue">El viejo valor</param>
         /// <param name="newValue">El nuevo valor</param>
-        private void OnListaArchivosAventuraChanged(List<Archivos> oldValue, List<Archivos> newValue)
+        private void OnListaArchivosAventuraChanged(ObservableCollection<Archivos> oldValue, ObservableCollection<Archivos> newValue)
         {
             RellenarPanel(this.ListaArchivosAventura, WrapPanelCampaign, StackPanelAdventure, "Aventura");
         }
@@ -181,9 +182,9 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         /// <summary>
         /// 
         /// </summary>
-        public List<Archivos> ListaArchivosAventura
+        public ObservableCollection<Archivos> ListaArchivosAventura
         {
-            get { return (List<Archivos>)GetValue(ListaArchivosAventuraProperty); }
+            get { return (ObservableCollection<Archivos>)GetValue(ListaArchivosAventuraProperty); }
             set { SetValue(ListaArchivosAventuraProperty, value); }
         }
         #endregion
@@ -247,7 +248,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
 
 
 
-        private void RellenarPanel(List<Archivos> listaarchivos, WrapPanel panel, StackPanel stackpanel, string tipoaventura)
+        private void RellenarPanel(ObservableCollection<Archivos> listaarchivos, WrapPanel panel, StackPanel stackpanel, string tipoaventura)
         {
             if (!(listaarchivos is null))
                 if (listaarchivos.Any())

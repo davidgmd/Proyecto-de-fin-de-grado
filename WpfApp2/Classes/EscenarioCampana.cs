@@ -39,25 +39,20 @@ namespace ElEscribaDelDJ.Classes
             RecursosAplicacion.SesionUsuario.ActualizarCampana();
         }
 
-        public void EditarArchivo(string seccion, Archivos archivoviejo, Archivos archivo)
+        public void EditarArchivo(string seccion, Archivos archivo, int indice)
         {
-            int indice = 0;
             switch (seccion)
             {
                 case "documentos":
-                    indice = DatosAplicacion.EscenarioSeleccionado.Recursos.Documentos.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
                     DatosAplicacion.EscenarioSeleccionado.Recursos.Documentos[indice] = archivo;
                     break;
                 case "lore":
-                    indice = DatosAplicacion.EscenarioSeleccionado.Recursos.Lore.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
                     DatosAplicacion.EscenarioSeleccionado.Recursos.Lore[indice] = archivo;
                     break;
                 case "media":
-                    indice = DatosAplicacion.EscenarioSeleccionado.Recursos.Media.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
                     DatosAplicacion.EscenarioSeleccionado.Recursos.Media[indice] = archivo;
                     break;
                 case "fichas":
-                    indice = DatosAplicacion.EscenarioSeleccionado.Recursos.Fichas.FindIndex(a => a.NombreArchivo.Equals(archivoviejo.NombreArchivo));
                     DatosAplicacion.EscenarioSeleccionado.Recursos.Fichas[indice] = archivo;
                     break;
 
@@ -67,21 +62,21 @@ namespace ElEscribaDelDJ.Classes
             RecursosAplicacion.SesionUsuario.ActualizarCampana();
         }
 
-        public void EliminarArchivo(string seccion, Archivos archivo)
+        public void EliminarArchivo(string seccion, Archivos archivo, int indice)
         {
             switch (seccion)
             {
                 case "documentos":
-                    DatosAplicacion.EscenarioSeleccionado.Recursos.Documentos.Remove(archivo);
+                    DatosAplicacion.EscenarioSeleccionado.Recursos.Documentos.RemoveAt(indice);
                     break;
                 case "lore":
-                    DatosAplicacion.EscenarioSeleccionado.Recursos.Lore.Remove(archivo);
+                    DatosAplicacion.EscenarioSeleccionado.Recursos.Lore.RemoveAt(indice);
                     break;
                 case "media":
-                    DatosAplicacion.EscenarioSeleccionado.Recursos.Media.Remove(archivo);
+                    DatosAplicacion.EscenarioSeleccionado.Recursos.Media.RemoveAt(indice);
                     break;
                 case "fichas":
-                    DatosAplicacion.EscenarioSeleccionado.Recursos.Fichas.Remove(archivo);
+                    DatosAplicacion.EscenarioSeleccionado.Recursos.Fichas.RemoveAt(indice);
                     break;
 
                 default:
