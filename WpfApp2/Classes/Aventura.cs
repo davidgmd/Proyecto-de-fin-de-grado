@@ -15,7 +15,7 @@ namespace ElEscribaDelDJ.Classes
             set { _numeroaventura = value; }
         }
 
-        public void AnadirArchivo(string seccion, Archivos archivo)
+        public new void AnadirArchivo(string seccion, Archivos archivo)
         {
             switch (seccion)
             {
@@ -38,7 +38,7 @@ namespace ElEscribaDelDJ.Classes
             RecursosAplicacion.SesionUsuario.ActualizarEscenario();
         }
 
-        public void EditarArchivo(string seccion, Archivos archivo, int indice)
+        public new void EditarArchivo(string seccion, Archivos archivo, int indice)
         {
             switch (seccion)
             {
@@ -61,7 +61,7 @@ namespace ElEscribaDelDJ.Classes
             RecursosAplicacion.SesionUsuario.ActualizarEscenario();
         }
 
-        public void EliminarArchivo(string seccion, Archivos archivo, int indice)
+        public new void EliminarArchivo(string seccion, Archivos archivo, int indice)
         {
             switch (seccion)
             {

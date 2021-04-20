@@ -29,17 +29,23 @@
     
     <Grid>
         <StackPanel>
-        <TextBlock Text="Debe especificar un nombre a mostrar y seleccionar el fichero y/o indicar la url " FontSize="16" FontWeight="SemiBold" Margin="5"/>
+        <TextBlock Text="Debe especificar un nombre a mostrar y seleccionar el fichero y/o indicar la url " 
+                   FontSize="16" 
+                   FontWeight="SemiBold" 
+                   Margin="5"
+                   x:Name="CabeceraTextBlock"/>
         <WrapPanel>
-            <Label Content="Nombre a mostrar:"/>
+            <Label Content="Nombre a mostrar:"
+                   x:Name="NombreLabel"/>
             <TextBox Text="{Binding ArchivoNuevo.NombreArchivo}" 
                      BorderBrush="Red" 
                      BorderThickness="2" 
                      x:Name="NombreTextBox" 
                      TextChanged="NombreTextBox_TextChanged"/>
-            <Label Content="Extensión:"/>
+            <Label Content="Extension:"/>
             <TextBox IsEnabled="False" Text="{Binding ArchivoNuevo.Extension}"/>
-            <Label Content="Dirección Archivo:"/>
+            <Label Content="Dirección Archivo:"
+                   x:Name="DireccionLabel"/>
             <StackPanel Orientation="Horizontal">
                 <TextBox IsEnabled="False" x:Name="textodireccionarchivo" Text="{Binding Path=ArchivoNuevo.Direccion,Mode=OneWay}" 
                          BorderBrush="Goldenrod" 
@@ -50,7 +56,8 @@
                 </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-            <Label Content="Dirección Url"/>
+            <Label Content="Dirección Url"
+                   x:Name="UrlLabel"/>
                     <TextBox Text="{Binding ArchivoNuevo.Url}" 
                              BorderBrush="Goldenrod" 
                              BorderThickness="2"

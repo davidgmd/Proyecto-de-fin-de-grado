@@ -20,6 +20,6 @@
 
     <!-- Seccion Fichas -->
     <system:String x:Key="SheetsTitle">Character Sheets</system:String>
-    <system:String x:Key="SheetsInfo">This sections let you add the character sheets, placing apart by campagins, sessions and adventurs</system:String>
+    <system:String x:Key="SheetsInfo">This sections let you add the character sheets, placing apart by campagins, sessions and adventures</system:String>
 
 </ResourceDictionary>

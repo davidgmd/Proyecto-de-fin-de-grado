@@ -23,6 +23,14 @@ namespace ElEscribaDelDJ.View.Resources
         public AnadirArchivo(Archivos archivo1, string tipoaventura, string seccion, int indice=0)
         {
             InitializeComponent();
+            Inicializar(archivo1,tipoaventura,seccion,indice = 0);
+            Traducir();
+
+            this.DataContext = this;
+        }
+
+        private void Inicializar(Archivos archivo1, string tipoaventura, string seccion, int indice = 0)
+        {
             if (archivo1 is null)
             {
                 BotonAnadir.IsEnabled = true;
@@ -36,8 +44,33 @@ namespace ElEscribaDelDJ.View.Resources
             this.TipoAventura = tipoaventura;
             this.Seccion = seccion;
             this.indice = indice;
+        }
 
-            this.DataContext = this;
+        private void Traducir()
+        {
+            if (ConfiguracionAplicacion.Default.Idioma.Equals("EN"))
+            {
+                this.Title = "FileAdd";
+                CabeceraTextBlock.Text = "You must specify a name to show and the file location and/or the url";
+                NombreLabel.Content = "Name to show";
+                DireccionLabel.Content = "File Location";
+                UrlLabel.Content = "Url Location";
+                BotonAnadir.Content = "Add";
+                BotonEditar.Content = "Edit";
+                BotonCancelar.Content = "Cancel";
+            }          
+        }
+
+        private void ErrorCampos()
+        {
+            if (ConfiguracionAplicacion.Default.Idioma.Equals("EN"))
+            {
+                MessageBox.Show("All the required fields doesn't have been filled");
+            }
+            else
+            {
+                MessageBox.Show("Todos los campos obligatorios no han sido introducidos");
+            }
         }
 
         public Archivos ArchivoNuevo { get; set; } = new Archivos();
@@ -51,15 +84,15 @@ namespace ElEscribaDelDJ.View.Resources
             if (CamposCorrectos.Count >= 2)
                 ArchivoNuevo.AgregarArchivo(this.TipoAventura, ArchivoNuevo, this.Seccion);
             else
-                MessageBox.Show("Todos los campos obligatorios no han sido introducidos");
+                ErrorCampos();
         }
 
         private void BotonEditar_Click(object sender, RoutedEventArgs e)
         {
             if (CamposCorrectos.Count >= 2)
-                ArchivoNuevo.EditarArchivo(this.TipoAventura, this.ArchivoNuevo, this.indice,this.Seccion);
+                ArchivoNuevo.EditarArchivo(this.TipoAventura, this.ArchivoNuevo, this.indice, this.Seccion);
             else
-                MessageBox.Show("Todos los campos obligatorios no han sido introducidos");
+                ErrorCampos();
         }
 
         private void BotonCancelar_Click(object sender, RoutedEventArgs e)
@@ -69,12 +102,16 @@ namespace ElEscribaDelDJ.View.Resources
 
         private void BotonBuscarArchivo_Click(object sender, RoutedEventArgs e)
         {
-            SelectorArchivos seleccionarimagen = new SelectorArchivos();
-            this.ArchivoNuevo.Direccion = seleccionarimagen.SeleccionarArchivo();
-            if (!(this.ArchivoNuevo is null))
+            SelectorArchivos seleccionararchivo = new SelectorArchivos();
+            this.ArchivoNuevo.Direccion = seleccionararchivo.SeleccionarArchivo(this.Seccion);
+            if (!(this.ArchivoNuevo.Direccion is null))
             {
                 FileInfo fichero = new FileInfo(this.ArchivoNuevo.Direccion);
                 this.ArchivoNuevo.Extension = fichero.Extension;
+            }
+            else
+            {
+                this.ArchivoNuevo.Extension = null;
             }
             
         }
@@ -120,7 +157,10 @@ namespace ElEscribaDelDJ.View.Resources
 
         private void textodireccionarchivo_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ValidarCampo2(true, textodireccionarchivo);
+            if (textodireccionarchivo.Text.Equals(""))
+                ValidarCampo2(false, textodireccionarchivo);   
+            else
+                ValidarCampo2(true, textodireccionarchivo);
         }
 
         private void ValidarCampo2(bool validacion, Control elementointerfaz)

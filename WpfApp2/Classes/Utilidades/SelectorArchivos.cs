@@ -29,11 +29,11 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             }
         }
 
-        public string SeleccionarArchivo()
+        public string SeleccionarArchivo(string seccion)
         {
             string filename;
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "Image Files (*.pdf; *.doc; *docx; *odt)|*.pdf;*.doc;*.docx;*.odt";
+            dialog.Filter = ElegirFiltro(seccion);
             dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
             if (dialog.ShowDialog() == true)
@@ -47,6 +47,23 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             }
 
 
+        }
+
+        public string ElegirFiltro(string seccion)
+        {
+            switch (seccion)
+            {
+                case "Documentos":
+                    return "Document/Documentos (*.pdf; *.doc; *docx; *odt)|*.pdf;*.doc;*.docx;*.odt";
+                case "Lore":
+                    return "Any/Cualquiera (*.*)|*.*";
+                case "Media":
+                    return "Image or Music/Imagenes o Music (*.png; *.jpeg; *.jpg; *.mp3; *.midi; *.wav)|*.png; *.jpeg; *.jpg; *.mp3; *.midi; *.wav";
+                case "Fichas":
+                    return "Document/Documentos (*.pdf; *.doc; *docx; *odt)|*.pdf;*.doc;*.docx;*.odt";
+                default:
+                    return null;
+            }
         }
 
         public string MoverImagen(string nombrecampana, string direccionarchivo)
