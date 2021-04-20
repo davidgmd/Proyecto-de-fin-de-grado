@@ -28,41 +28,8 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         public DetallesArchivoCampana(Archivos archivo, string seccion, string tipoaventura, int? indice, PanelMostrarArchivos mostrararchivos = null)
         {
             InitializeComponent();
-            NombreArchivo = archivo.NombreArchivo;
-            DireccionArchivo = archivo.Direccion;
-            if (File.Exists(DireccionArchivo))
-            {
-                BotonUbicacion.IsEnabled = true;
-                ImagenUbicacion.Source = new BitmapImage(new Uri("/Images/icons/icons8-folder.png", UriKind.Relative));
-            }
-            else
-            {
-                BotonUbicacion.IsEnabled = false;
-                ImagenUbicacion.Source = new BitmapImage(new Uri("/Images/icons/icons8-lock.png", UriKind.Relative));
-            }
-
-            UrlArchivo = archivo.Url;
-
-            if (ComprobarUrl().Result)
-            {
-                BotonUrl.IsEnabled = true;
-                ImagenUrl.Source = new BitmapImage(new Uri("/Images/icons/icons8-web.png", UriKind.Relative));
-            }
-            else
-            {
-                BotonUrl.IsEnabled = false;
-                ImagenUrl.Source = new BitmapImage(new Uri("/Images/icons/icons8-lock.png", UriKind.Relative));
-            }
-
-            IconoExtension.Source = Extensiones.IconoExtension(archivo.Extension);
-            IconoExtension.Width = 35;
-
-            Extension = archivo.Extension;
-
-            this.Seccion = seccion;
-            this.TipoAventura = tipoaventura;
-            this.Indice = indice.Value;
-            this.MostrarArchivos = mostrararchivos;
+            Inicializar(archivo, seccion, tipoaventura, indice, mostrararchivos);
+            Traducir();
             this.DataContext = this;
         }
 
@@ -103,6 +70,55 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         public int Indice;
         public PanelMostrarArchivos MostrarArchivos;
 
+
+        private void Inicializar(Archivos archivo, string seccion, string tipoaventura, int? indice, PanelMostrarArchivos mostrararchivos = null)
+        {
+            NombreArchivo = archivo.NombreArchivo;
+            DireccionArchivo = archivo.Direccion;
+            if (File.Exists(DireccionArchivo))
+            {
+                BotonUbicacion.IsEnabled = true;
+                ImagenUbicacion.Source = new BitmapImage(new Uri("/Images/icons/icons8-folder.png", UriKind.Relative));
+            }
+            else
+            {
+                BotonUbicacion.IsEnabled = false;
+                ImagenUbicacion.Source = new BitmapImage(new Uri("/Images/icons/icons8-lock.png", UriKind.Relative));
+            }
+
+            UrlArchivo = archivo.Url;
+
+            if (ComprobarUrl().Result)
+            {
+                BotonUrl.IsEnabled = true;
+                ImagenUrl.Source = new BitmapImage(new Uri("/Images/icons/icons8-web.png", UriKind.Relative));
+            }
+            else
+            {
+                BotonUrl.IsEnabled = false;
+                ImagenUrl.Source = new BitmapImage(new Uri("/Images/icons/icons8-lock.png", UriKind.Relative));
+            }
+
+            IconoExtension.Source = Extensiones.IconoExtension(archivo.Extension);
+            IconoExtension.Width = 35;
+
+            Extension = archivo.Extension;
+
+            this.Seccion = seccion;
+            this.TipoAventura = tipoaventura;
+            this.Indice = indice.Value;
+            this.MostrarArchivos = mostrararchivos;
+        }
+
+        private void Traducir()
+        {
+            if (ConfiguracionAplicacion.Default.Idioma.Equals("EN"))
+            {
+                UbicacionTextBlock.Text = "Location";
+                EditarTextBlock.Text = "Edit";
+                EliminarTextBlock.Text = "Delete";
+            }
+        }
 
         private async Task<bool> ComprobarUrl()
         {

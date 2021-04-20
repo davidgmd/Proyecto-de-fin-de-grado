@@ -42,8 +42,10 @@
     <None Remove="images\icons\icons8-file.png" />
     <None Remove="images\icons\icons8-folder.png" />
     <None Remove="images\icons\icons8-himeji.png" />
+    <None Remove="images\icons\icons8-images.png" />
     <None Remove="Images\icons\icons8-incorrecto.png" />
     <None Remove="Images\icons\icons8-lock.png" />
+    <None Remove="images\icons\icons8-music.png" />
     <None Remove="Images\icons\icons8-options.png" />
     <None Remove="images\icons\icons8-pdf.png" />
     <None Remove="images\icons\icons8-pdf2.png" />
@@ -342,6 +344,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="images\icons\icons8-folder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\icons\icons8-images.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\icons\icons8-music.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="images\icons\icons8-pdf2.png">

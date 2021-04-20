@@ -45,7 +45,9 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             else if (Documentos.Contains(extension))
                 return new BitmapImage(new Uri("/Images/icons/icons8-textdocument2.png", UriKind.Relative));
             else if (Imagenes.Contains(extension))
-                return new BitmapImage(new Uri("/Images/icons/icons8-play.png", UriKind.Relative));
+                return new BitmapImage(new Uri("/Images/icons/icons8-images.png", UriKind.Relative));
+            else if (Musica.Contains(extension))
+                return new BitmapImage(new Uri("/Images/icons/icons8-music.png", UriKind.Relative));
             else
                 return new BitmapImage(new Uri("/Images/icons/icons8-file.png", UriKind.Relative));
         }
