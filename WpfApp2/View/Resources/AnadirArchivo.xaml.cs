@@ -30,7 +30,6 @@ namespace ElEscribaDelDJ.View.Resources
             else
             {
                 BotonEditar.IsEnabled = true;
-                this.ArchivoViejo = archivo1;
                 this.ArchivoNuevo = archivo1;
             }
 
@@ -42,19 +41,25 @@ namespace ElEscribaDelDJ.View.Resources
         }
 
         public Archivos ArchivoNuevo { get; set; } = new Archivos();
-        public Archivos ArchivoViejo { get; set; }
         public string TipoAventura { get; set; }
         public string Seccion { get; set; }
         public int indice { get; set; }
+        public List<Control> CamposCorrectos = new List<Control>();
 
         private void BotonAnadir_Click(object sender, RoutedEventArgs e)
         {
-            ArchivoNuevo.AgregarArchivo(this.TipoAventura,ArchivoNuevo,this.Seccion);
+            if (CamposCorrectos.Count >= 2)
+                ArchivoNuevo.AgregarArchivo(this.TipoAventura, ArchivoNuevo, this.Seccion);
+            else
+                MessageBox.Show("Todos los campos obligatorios no han sido introducidos");
         }
 
         private void BotonEditar_Click(object sender, RoutedEventArgs e)
         {
-            ArchivoViejo.EditarArchivo(this.TipoAventura, this.ArchivoNuevo, this.indice,this.Seccion);
+            if (CamposCorrectos.Count >= 2)
+                ArchivoNuevo.EditarArchivo(this.TipoAventura, this.ArchivoNuevo, this.indice,this.Seccion);
+            else
+                MessageBox.Show("Todos los campos obligatorios no han sido introducidos");
         }
 
         private void BotonCancelar_Click(object sender, RoutedEventArgs e)
@@ -72,6 +77,65 @@ namespace ElEscribaDelDJ.View.Resources
                 this.ArchivoNuevo.Extension = fichero.Extension;
             }
             
+        }
+
+        private void NombreTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (NombreTextBox.Text.Equals(""))
+            {
+                ValidarCampo(false, NombreTextBox);
+            }
+            else
+            {
+                ValidarCampo(true, NombreTextBox);
+            }
+        }
+
+        private void ValidarCampo (bool validacion, Control elementointerfaz)
+        {
+            if (validacion)
+            {
+                elementointerfaz.BorderBrush = Brushes.Green;
+                if (!CamposCorrectos.Contains(elementointerfaz))
+                    CamposCorrectos.Add(elementointerfaz);
+            }
+            else
+            {
+                elementointerfaz.BorderBrush = Brushes.Red;
+                CamposCorrectos.Remove(elementointerfaz);
+            }
+        }
+
+        private void UrlTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (UrlTextBox.Text.Equals(""))
+            {
+                ValidarCampo2(false, UrlTextBox);
+            }
+            else
+            {
+                ValidarCampo2(true, UrlTextBox);
+            }
+        }
+
+        private void textodireccionarchivo_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ValidarCampo2(true, textodireccionarchivo);
+        }
+
+        private void ValidarCampo2(bool validacion, Control elementointerfaz)
+        {
+            if (validacion)
+            {
+                elementointerfaz.BorderBrush = Brushes.Green;
+                if (!CamposCorrectos.Contains(elementointerfaz))
+                    CamposCorrectos.Add(elementointerfaz);
+            }
+            else
+            {
+                elementointerfaz.BorderBrush = Brushes.Goldenrod;
+                CamposCorrectos.Remove(elementointerfaz);
+            }
         }
     }
 }

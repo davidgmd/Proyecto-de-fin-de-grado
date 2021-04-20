@@ -103,7 +103,7 @@
                               Visibility="Collapsed"
                               MaxHeight="{Binding MaximaAlturaScrollViewers}">
 
-                    <uc:PanelMostrarArchivos/>
+                    <uc:PanelMostrarArchivos DataContext="{Binding}" x:Name="UCPanelMostrarArchivosLore"/>
                 </ScrollViewer>
             </StackPanel>
 
@@ -125,7 +125,7 @@
                               Visibility="Collapsed"
                               MaxHeight="{Binding MaximaAlturaScrollViewers}">
 
-                    <uc:PanelMostrarArchivos/>
+                    <uc:PanelMostrarArchivos DataContext="{Binding}" x:Name="UCPanelMostrarArchivosMedia"/>
                 </ScrollViewer>
             </StackPanel>
             
@@ -147,7 +147,7 @@
                               Visibility="Collapsed"
                               MaxHeight="{Binding MaximaAlturaScrollViewers}">
 
-                    <uc:PanelMostrarArchivos/>
+                    <uc:PanelMostrarArchivos DataContext="{Binding}" x:Name="UCPanelMostrarArchivosFichas"/>
                 </ScrollViewer>
             </StackPanel>
         </Grid>

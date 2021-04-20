@@ -143,7 +143,10 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         {
             AnadirArchivo editar = 
                 new AnadirArchivo(new Archivos() 
-                { Direccion=this.DireccionArchivo, Extension=this.Extension, NombreArchivo= this.NombreArchivo, Url=this.UrlArchivo},"","");
+                { Direccion=this.DireccionArchivo, Extension=this.Extension, NombreArchivo= this.NombreArchivo, Url=this.UrlArchivo},
+                this.TipoAventura,this.Seccion,this.Indice);
+            editar.ShowDialog();
+            ListaAMostrar();
         }
 
         private void BotonEliminar_Click(object sender, RoutedEventArgs e)
@@ -152,7 +155,25 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             { Direccion = this.DireccionArchivo, Extension = this.Extension, NombreArchivo = this.NombreArchivo, Url = this.UrlArchivo };
 
             eliminararchivo.EliminarArchivo(this.TipoAventura, eliminararchivo, this.Seccion, this.Indice);
-            MostrarArchivos.MostrarListas();
+            ListaAMostrar();
+        }
+
+        private void ListaAMostrar()
+        {
+            switch (this.TipoAventura)
+            {
+                case "Campana":
+                    MostrarArchivos.MostrarListaCampana();
+                    break;
+                case "Escenario":
+                    MostrarArchivos.MostrarListaEscenario();
+                    break;
+                case "Aventura":
+                    MostrarArchivos.MostrarListaAventuras();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

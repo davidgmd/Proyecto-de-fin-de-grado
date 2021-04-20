@@ -28,27 +28,51 @@
     </Window.Resources>
     
     <Grid>
+        <StackPanel>
+        <TextBlock Text="Debe especificar un nombre a mostrar y seleccionar el fichero y/o indicar la url " FontSize="16" FontWeight="SemiBold" Margin="5"/>
         <WrapPanel>
-            <Label Content="Nombre Archivo:"/>
-            <TextBox Text="{Binding ArchivoNuevo.NombreArchivo}"/>
-            <Label Content="Extension:"/>
+            <Label Content="Nombre a mostrar:"/>
+            <TextBox Text="{Binding ArchivoNuevo.NombreArchivo}" 
+                     BorderBrush="Red" 
+                     BorderThickness="2" 
+                     x:Name="NombreTextBox" 
+                     TextChanged="NombreTextBox_TextChanged"/>
+            <Label Content="Extensión:"/>
             <TextBox IsEnabled="False" Text="{Binding ArchivoNuevo.Extension}"/>
             <Label Content="Dirección Archivo:"/>
             <StackPanel Orientation="Horizontal">
-                <TextBox IsEnabled="False" x:Name="textodireccionarchivo" Text="{Binding Path=ArchivoNuevo.Direccion,Mode=OneWay}"/>
+                <TextBox IsEnabled="False" x:Name="textodireccionarchivo" Text="{Binding Path=ArchivoNuevo.Direccion,Mode=OneWay}" 
+                         BorderBrush="Goldenrod" 
+                         BorderThickness="2"
+                         TextChanged="textodireccionarchivo_TextChanged"/>
                 <Button Background="RosyBrown" x:Name="BotonBuscarArchivo" Click="BotonBuscarArchivo_Click">
-                    <Image Source="/images/icons/icons8-folder.png" Width="25" Stretch="Uniform"/>
+                        <Image Source="/images/icons/icons8-folder.png" Width="25" Stretch="Uniform" RenderOptions.BitmapScalingMode="Fant"/>
                 </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
             <Label Content="Dirección Url"/>
-                <TextBox Text="{Binding ArchivoNuevo.Url}"/>
+                    <TextBox Text="{Binding ArchivoNuevo.Url}" 
+                             BorderBrush="Goldenrod" 
+                             BorderThickness="2"
+                             x:Name="UrlTextBox"
+                             TextChanged="UrlTextBox_TextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Content="Añadir" Margin="250, 10, 0, 10" x:Name="BotonAnadir" IsEnabled="False" Click="BotonAnadir_Click"/>
-                <Button Content="Editar" Margin="10, 10, 10, 10" x:Name="BotonEditar" IsEnabled="False" Click="BotonEditar_Click"/>
-                <Button Content="Cancelar" Margin="0, 10, 0, 10" x:Name="BotonCancelar" Click="BotonCancelar_Click"/>
+                <Button Content="Añadir" Margin="250, 10, 0, 10" 
+                        x:Name="BotonAnadir" 
+                        IsEnabled="False" 
+                        Click="BotonAnadir_Click"/>
+                <Button Content="Editar" 
+                        Margin="10, 10, 10, 10" 
+                        x:Name="BotonEditar" 
+                        IsEnabled="False" 
+                        Click="BotonEditar_Click"/>
+                <Button Content="Cancelar" 
+                        Margin="0, 10, 0, 10" 
+                        x:Name="BotonCancelar" 
+                        Click="BotonCancelar_Click"/>
             </StackPanel>
         </WrapPanel>
+        </StackPanel>
     </Grid>
 </Window>

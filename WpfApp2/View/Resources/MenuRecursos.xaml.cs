@@ -94,10 +94,17 @@ namespace ElEscribaDelDJ.View.Resources
         {
             UCdocuments.NombreElemento = this.FindResource("DocumentsTitle").ToString();
             UCPanelMostrarArchivos.Seccion = "Documentos";
+
             UCresumenes.NombreElemento = this.FindResource("RulesTitle").ToString();
+
             UClore.NombreElemento = this.FindResource("LoreTitle").ToString();
+            UCPanelMostrarArchivosLore.Seccion = "Lore";
+
             UCmedia.NombreElemento = this.FindResource("MediaTitle").ToString();
+            UCPanelMostrarArchivosMedia.Seccion = "Media";
+
             UCfichas.NombreElemento = this.FindResource("SheetsTitle").ToString();
+            UCPanelMostrarArchivosFichas.Seccion = "Fichas";
 
             if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
             {
