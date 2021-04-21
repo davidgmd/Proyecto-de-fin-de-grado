@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ElEscribaDelDJ.View.Resources"
         xmlns:uc="clr-namespace:ElEscribaDelDJ.Resources.UserControls.Resources"
         mc:Ignorable="d"
-        Title="MenuRecursos"
+        Title="{DynamicResource WindowsTitle}"
         WindowStartupLocation="CenterOwner"
         WindowState="Maximized"
         Background="DarkRed"
@@ -54,7 +54,7 @@
                 </Border>
                 <ScrollViewer x:Name="ScrollViewerDocumentos" 
                               Visibility="Collapsed"
-                              MaxHeight="{Binding MaximaAlturaScrollViewers}">
+                              Height="{Binding MaximaAlturaScrollViewers}">
                     <uc:PanelMostrarArchivos Seccion="Documentos" DataContext="{Binding}" 
                                              x:Name="UCPanelMostrarArchivos"/>
                 </ScrollViewer>
@@ -76,7 +76,7 @@
                 </Border>
                 <ScrollViewer x:Name="ScrollViewerReglas" 
                               Visibility="Collapsed"
-                              MaxHeight="{Binding MaximaAlturaScrollViewers}">
+                              Height="{Binding MaximaAlturaScrollViewers}">
                     <ListView>
                         <uc:Resumen_reglas/>
                     </ListView>
@@ -101,7 +101,7 @@
                 </Border>
                 <ScrollViewer x:Name="ScrollViewerLore" 
                               Visibility="Collapsed"
-                              MaxHeight="{Binding MaximaAlturaScrollViewers}">
+                              Height="{Binding MaximaAlturaScrollViewers}">
 
                     <uc:PanelMostrarArchivos DataContext="{Binding}" x:Name="UCPanelMostrarArchivosLore"/>
                 </ScrollViewer>
@@ -123,7 +123,7 @@
                 </Border>
                 <ScrollViewer x:Name="ScrollViewerMedia" 
                               Visibility="Collapsed"
-                              MaxHeight="{Binding MaximaAlturaScrollViewers}">
+                              Height="{Binding MaximaAlturaScrollViewers}">
 
                     <uc:PanelMostrarArchivos DataContext="{Binding}" x:Name="UCPanelMostrarArchivosMedia"/>
                 </ScrollViewer>
@@ -145,7 +145,7 @@
                 </Border>
                 <ScrollViewer x:Name="ScrollViewerFichas" 
                               Visibility="Collapsed"
-                              MaxHeight="{Binding MaximaAlturaScrollViewers}">
+                              Height="{Binding MaximaAlturaScrollViewers}">
 
                     <uc:PanelMostrarArchivos DataContext="{Binding}" x:Name="UCPanelMostrarArchivosFichas"/>
                 </ScrollViewer>

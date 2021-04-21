@@ -1,5 +1,6 @@
 ﻿using ElEscribaDelDJ.Classes;
 using ElEscribaDelDJ.Classes.Utilidades;
+using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,8 +24,8 @@ namespace ElEscribaDelDJ.View.Resources
         public AnadirArchivo(Archivos archivo1, string tipoaventura, string seccion, int indice=0)
         {
             InitializeComponent();
-            Inicializar(archivo1,tipoaventura,seccion,indice = 0);
-            Traducir();
+            Inicializar(archivo1,tipoaventura,seccion,indice);
+            ConfiguracionPagina.DefinirIdioma(this, "Resources");
 
             this.DataContext = this;
         }
@@ -46,26 +47,11 @@ namespace ElEscribaDelDJ.View.Resources
             this.indice = indice;
         }
 
-        private void Traducir()
-        {
-            if (ConfiguracionAplicacion.Default.Idioma.Equals("EN"))
-            {
-                this.Title = "FileAdd";
-                CabeceraTextBlock.Text = "You must specify a name to show and the file location and/or the url";
-                NombreLabel.Content = "Name to show";
-                DireccionLabel.Content = "File Location";
-                UrlLabel.Content = "Url Location";
-                BotonAnadir.Content = "Add";
-                BotonEditar.Content = "Edit";
-                BotonCancelar.Content = "Cancel";
-            }          
-        }
-
         private void ErrorCampos()
         {
             if (ConfiguracionAplicacion.Default.Idioma.Equals("EN"))
             {
-                MessageBox.Show("All the required fields doesn't have been filled");
+                MessageBox.Show("Some or all required fields are missing");
             }
             else
             {

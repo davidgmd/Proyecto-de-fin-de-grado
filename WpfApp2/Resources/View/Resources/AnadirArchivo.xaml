@@ -1,0 +1,67 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Bloque de estilos generales -->
+    <Style TargetType="Label">
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="MinWidth" Value="200"/>
+    </Style>
+
+    <Style TargetType="TextBlock">
+        <Setter Property="MinWidth" Value="200"/>
+    </Style>
+
+    <Style TargetType="WrapPanel">
+        <Setter Property="MaxWidth" Value="600"/>
+    </Style>
+
+    <!-- Estilos no generales, empezamos por cabecera que describe el funcionamiento de la ventana -->
+    <Style x:Key="HeaderTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+
+    <!-- Donde se introduce el nombre a mostrar no la etiqueta -->
+    <Style x:Key="NameToShowTextBoxStyle" BasedOn="{StaticResource {x:Type TextBox}}" TargetType="TextBox">
+        <Setter Property="BorderBrush" Value="Red"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+    <!-- Donde aparece la extensión del archivo no la etiqueta -->
+    <Style x:Key="ExtensionTextBoxStyle" BasedOn="{StaticResource {x:Type TextBox}}" TargetType="TextBox">
+        <Setter Property="IsEnabled" Value="False"/>
+    </Style>
+
+    <!-- Donde aparece la ubicación del archivo no la etiqueta -->
+    <Style x:Key="FileLocationTextBoxStyle" BasedOn="{StaticResource {x:Type TextBox}}" TargetType="TextBox">
+        <Setter Property="BorderBrush" Value="Goldenrod"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="IsEnabled" Value="False"/>
+    </Style>
+
+    <!-- Donde se introduce la url no la etiqueta -->
+    <Style x:Key="UrlLocationTextBoxStyle" BasedOn="{StaticResource {x:Type TextBox}}" TargetType="TextBox">
+        <Setter Property="BorderBrush" Value="Goldenrod"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+    
+    <!-- Botones -->
+    <Style x:Key="AddButtonStyle" TargetType="Button">
+        <Setter Property="Margin" Value="250,10,0,10"/>
+        <Setter Property="IsEnabled" Value="False"/>
+    </Style>
+
+    <Style x:Key="EditButtonStyle" TargetType="Button">
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="IsEnabled" Value="False"/>
+    </Style>
+
+    <Style x:Key="CancelButtonStyle" TargetType="Button">
+        <Setter Property="Margin" Value="0, 10, 0, 10"/>
+    </Style>
+</ResourceDictionary>

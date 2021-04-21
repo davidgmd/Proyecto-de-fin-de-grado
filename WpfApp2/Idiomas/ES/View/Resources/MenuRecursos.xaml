@@ -2,6 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
+    <!-- Titulo -->
+    <system:String x:Key="WindowsTitle">MenuRecursos</system:String>
+
     <!-- Seccion Archivos/Documentos -->
     <system:String x:Key="DocumentsTitle">Archivos/Documentos</system:String>
     <system:String x:Key="DocumentsInfo">Sección que permite ver los documentos de la campaña, sesión o aventura, como por ejemplo los manuales, suplementos o añadir nuevos</system:String>

@@ -5,78 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElEscribaDelDJ.View.Resources"
         mc:Ignorable="d"
-        Title="AnadirArchivo" 
+        Title="{DynamicResource WindowsTitle}" 
         SizeToContent="WidthAndHeight">
 
     <Window.Resources>
-        <Style TargetType="Label">
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="2"/>
-        </Style>
-
-        <Style TargetType="TextBox">
-            <Setter Property="MinWidth" Value="200"/>
-        </Style>
-
-        <Style TargetType="TextBlock">
-            <Setter Property="MinWidth" Value="200"/>
-        </Style>
-
-        <Style TargetType="WrapPanel">
-            <Setter Property="MaxWidth" Value="600"/>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Resources/View/Resources/AnadirArchivo.xaml"/>
+                <ResourceDictionary Source="../../Idiomas/ES/View/Resources/AnadirArchivo.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     
     <Grid>
         <StackPanel>
-        <TextBlock Text="Debe especificar un nombre a mostrar y seleccionar el fichero y/o indicar la url " 
-                   FontSize="16" 
-                   FontWeight="SemiBold" 
-                   Margin="5"
-                   x:Name="CabeceraTextBlock"/>
+            <TextBlock x:Name="CabeceraTextBlock" 
+                   Text="{DynamicResource HeaderText}" 
+                   Style="{DynamicResource HeaderTextBlockStyle}"/>
         <WrapPanel>
-            <Label Content="Nombre a mostrar:"
+            <Label Content="{DynamicResource NameToShowLabel}"
                    x:Name="NombreLabel"/>
             <TextBox Text="{Binding ArchivoNuevo.NombreArchivo}" 
-                     BorderBrush="Red" 
-                     BorderThickness="2" 
+                     Style="{DynamicResource NameToShowTextBoxStyle}"
                      x:Name="NombreTextBox" 
                      TextChanged="NombreTextBox_TextChanged"/>
-            <Label Content="Extension:"/>
-            <TextBox IsEnabled="False" Text="{Binding ArchivoNuevo.Extension}"/>
-            <Label Content="Dirección Archivo:"
+            <Label Content="{DynamicResource ExtensionLabel}"/>
+            <TextBox Text="{Binding ArchivoNuevo.Extension}"
+                     Style="{DynamicResource ExtensionTextBoxStyle}"/>
+            <Label Content="{DynamicResource FileLocationLabel}"
                    x:Name="DireccionLabel"/>
             <StackPanel Orientation="Horizontal">
-                <TextBox IsEnabled="False" x:Name="textodireccionarchivo" Text="{Binding Path=ArchivoNuevo.Direccion,Mode=OneWay}" 
-                         BorderBrush="Goldenrod" 
-                         BorderThickness="2"
+                <TextBox x:Name="textodireccionarchivo" 
+                         Style="{DynamicResource FileLocationTextBoxStyle}"
+                         Text="{Binding Path=ArchivoNuevo.Direccion,Mode=OneWay}" 
                          TextChanged="textodireccionarchivo_TextChanged"/>
                 <Button Background="RosyBrown" x:Name="BotonBuscarArchivo" Click="BotonBuscarArchivo_Click">
                         <Image Source="/images/icons/icons8-folder.png" Width="25" Stretch="Uniform" RenderOptions.BitmapScalingMode="Fant"/>
                 </Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-            <Label Content="Dirección Url"
+            <Label Content="{DynamicResource UrlLocationLabel}"
                    x:Name="UrlLabel"/>
-                    <TextBox Text="{Binding ArchivoNuevo.Url}" 
-                             BorderBrush="Goldenrod" 
-                             BorderThickness="2"
-                             x:Name="UrlTextBox"
+                    <TextBox x:Name="UrlTextBox"
+                             Style="{DynamicResource UrlLocationTextBoxStyle}"
+                             Text="{Binding ArchivoNuevo.Url}"                         
                              TextChanged="UrlTextBox_TextChanged"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Button Content="Añadir" Margin="250, 10, 0, 10" 
-                        x:Name="BotonAnadir" 
-                        IsEnabled="False" 
-                        Click="BotonAnadir_Click"/>
-                <Button Content="Editar" 
-                        Margin="10, 10, 10, 10" 
-                        x:Name="BotonEditar" 
-                        IsEnabled="False" 
+                <Button x:Name="BotonAnadir"
+                        Style="{DynamicResource AddButtonStyle}"
+                        Content="{DynamicResource AddButton}"       
+                    Click="BotonAnadir_Click"/>
+                <Button x:Name="BotonEditar" 
+                        Style="{DynamicResource EditButtonStyle}"
+                        Content="{DynamicResource EditButton}" 
                         Click="BotonEditar_Click"/>
-                <Button Content="Cancelar" 
-                        Margin="0, 10, 0, 10" 
-                        x:Name="BotonCancelar" 
+                <Button x:Name="BotonCancelar"
+                        Style="{DynamicResource CancelButtonStyle}"
+                        Content="{DynamicResource CancelButton}" 
                         Click="BotonCancelar_Click"/>
             </StackPanel>
         </WrapPanel>

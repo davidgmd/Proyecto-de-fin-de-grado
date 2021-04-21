@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Titulo -->
+    <system:String x:Key="WindowsTitle">AñadirArchivo</system:String>
+
+    <!-- Texto cabecera -->
+    <system:String x:Key="HeaderText">Debe especificar el nombre a mostrar y selecccionar la ubicación del archivo y/o la Url</system:String>
+
+    <!-- Campos del formulario -->
+    <system:String x:Key="NameToShowLabel">Nombre a mostrar:</system:String>
+    <system:String x:Key="ExtensionLabel">Extension:</system:String>
+    <system:String x:Key="FileLocationLabel">Ubicación del archivo:</system:String>
+    <system:String x:Key="UrlLocationLabel">Url:</system:String>
+
+    <!-- Botones formulario -->
+    <system:String x:Key="AddButton">Añadir</system:String>
+    <system:String x:Key="EditButton">Editar</system:String>
+    <system:String x:Key="CancelButton">Cancelar</system:String>
+    
+    <!-- Error Campos -->
+    <system:String x:Key="MissingFieldsError">No se han rellenado todos los campos necesarios:</system:String>
+
+</ResourceDictionary>

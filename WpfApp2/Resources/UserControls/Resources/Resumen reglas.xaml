@@ -20,17 +20,27 @@
 
         <StackPanel Margin="0,0,5,0">
             <TextBlock Text="Buscador Reglas"/>
-            <TextBox HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWidth="350"/>
+            <TextBox HorizontalContentAlignment="Stretch" 
+                     HorizontalAlignment="Stretch" 
+                     VerticalAlignment="Stretch" 
+                     MinWidth="350"/>
         </StackPanel>
 
-        <Button Grid.Column="1" HorizontalAlignment="Left" Background="Transparent" BorderThickness="0">
+        <Button Grid.Column="1" 
+                HorizontalAlignment="Left" 
+                Background="Transparent" 
+                BorderThickness="0">
         <StackPanel >
-            <Image Source="/Images/icons/iconoMas.png" Width="25" HorizontalAlignment="Center"/>
+            <Image Source="/Images/icons/iconoMas.png" 
+                   Width="25" 
+                   HorizontalAlignment="Center"/>
             <TextBlock Text="Añadir"/>
         </StackPanel>
         </Button>
 
-        <ListView Grid.Row="1" Grid.ColumnSpan="2" x:Name="ListaResumenes">
+        <ListView Grid.Row="1" 
+                  Grid.ColumnSpan="2" 
+                  x:Name="ResumenesListView">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <uc:ReglaResumida/>
@@ -38,7 +48,9 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Grid Grid.Row="1" Grid.ColumnSpan="2" Visibility="Collapsed">
+        <Grid Grid.Row="1" 
+              Grid.ColumnSpan="2" 
+              Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -52,7 +64,9 @@
             
             <StackPanel Margin="0,0,5,0">
                 <TextBlock Text="Nombre"/>
-                <TextBox HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap"/>
+                <TextBox HorizontalAlignment="Stretch" 
+                         AcceptsReturn="True" 
+                         TextWrapping="Wrap"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1">
@@ -60,19 +74,28 @@
                 <TextBox HorizontalAlignment="Stretch"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
-                <TextBlock Text="Descripción" HorizontalAlignment="Center"/>
-                <TextBox HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap"/>
+            <StackPanel Grid.Row="1" 
+                        Grid.ColumnSpan="2">
+                <TextBlock Text="Descripción" 
+                           HorizontalAlignment="Center"/>
+                <TextBox HorizontalAlignment="Stretch" 
+                         AcceptsReturn="True" 
+                         TextWrapping="Wrap"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="2" Margin="0,0,5,0">
+            <StackPanel Grid.Row="2" 
+                        Margin="0,0,5,0">
                 <TextBlock Text="Pagina"/>
                 <TextBox HorizontalAlignment="Stretch"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="2" Grid.Column="1">
-                <TextBlock Text="Manual o Documento de referencia" TextWrapping="Wrap"/>
-                <TextBox HorizontalAlignment="Stretch" AcceptsReturn="True" TextWrapping="Wrap"/>
+            <StackPanel Grid.Row="2" 
+                        Grid.Column="1">
+                <TextBlock Text="Manual o Documento de referencia" 
+                           TextWrapping="Wrap"/>
+                <TextBox HorizontalAlignment="Stretch" 
+                         AcceptsReturn="True" 
+                         TextWrapping="Wrap"/>
             </StackPanel>
         </Grid>
     </Grid>
