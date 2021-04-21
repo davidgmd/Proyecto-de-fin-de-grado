@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:ElEscribaDelDJ.Resources.UserControls.Resources"
              xmlns:uc="clr-namespace:ElEscribaDelDJ.Resources.UserControls.Resources"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="White">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -18,7 +19,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Margin="0,0,5,0">
+        <StackPanel Margin="5,0,5,0">
             <TextBlock Text="Buscador Reglas"/>
             <TextBox HorizontalContentAlignment="Stretch" 
                      HorizontalAlignment="Stretch" 
@@ -26,21 +27,49 @@
                      MinWidth="350"/>
         </StackPanel>
 
-        <Button Grid.Column="1" 
-                HorizontalAlignment="Left" 
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="1" 
+                    HorizontalAlignment="Left">
+            <Button  
                 Background="Transparent" 
                 BorderThickness="0">
-        <StackPanel >
-            <Image Source="/Images/icons/iconoMas.png" 
-                   Width="25" 
-                   HorizontalAlignment="Center"/>
-            <TextBlock Text="Añadir"/>
-        </StackPanel>
-        </Button>
+                <StackPanel >
+                    <Image Source="/Images/icons/iconoMas.png" 
+                           Width="25" 
+                           HorizontalAlignment="Center"/>
+                    <TextBlock Text="Añadir"/>
+                </StackPanel>
+            </Button>
 
-        <ListView Grid.Row="1" 
+            <Button IsEnabled="False" 
+                Background="Transparent" 
+                BorderThickness="0">
+                <StackPanel >
+                    <Image Source="/Images/icons/icons8-pencil.png" 
+                           Width="25" 
+                           HorizontalAlignment="Center"/>
+                    <TextBlock Text="Editar"/>
+                </StackPanel>
+            </Button>
+
+            <Button  
+                Background="Transparent" 
+                BorderThickness="0"
+                IsEnabled="False">
+                <StackPanel >
+                    <Image Source="/Images/icons/icons8-delete.png" 
+                           Width="25" 
+                           HorizontalAlignment="Center"/>
+                    <TextBlock Text="Eliminar"/>
+                </StackPanel>
+            </Button>
+
+        </StackPanel>
+
+        <ListView x:Name="ResumenesListView"
+                  Grid.Row="1" 
                   Grid.ColumnSpan="2" 
-                  x:Name="ResumenesListView">
+                  SelectionChanged="ResumenesListView_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <uc:ReglaResumida/>

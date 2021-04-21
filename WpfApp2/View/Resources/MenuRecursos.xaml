@@ -77,9 +77,7 @@
                 <ScrollViewer x:Name="ScrollViewerReglas" 
                               Visibility="Collapsed"
                               Height="{Binding MaximaAlturaScrollViewers}">
-                    <ListView>
-                        <uc:Resumen_reglas/>
-                    </ListView>
+                    <uc:Resumen_reglas/>
                 </ScrollViewer>
             </StackPanel>
                 

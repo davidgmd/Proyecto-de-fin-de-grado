@@ -38,16 +38,24 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             //Añade todos los resumenes de la campaña, escenario y aventura seleccionada
             foreach (Resumenes resumen in DatosAplicacion.CampanaSeleccionada.Recursos.Resumenes)
             {
+                resumen.NombreTipoAventura = DatosAplicacion.CampanaSeleccionada.Nombre;
+                resumen.TipoAventura = "Campaña";
                 ListaResumenes.Add(resumen);
             }
 
+            if (!(DatosAplicacion.EscenarioSeleccionado is null))
             foreach (Resumenes resumen in DatosAplicacion.EscenarioSeleccionado.Recursos.Resumenes)
             {
+                resumen.NombreTipoAventura = DatosAplicacion.EscenarioSeleccionado.Nombre;
+                resumen.TipoAventura = "Escenario";
                 ListaResumenes.Add(resumen);
             }
 
-            foreach (Resumenes resumen in DatosAplicacion.AventuraSeleccionada.Recursos.Resumenes)
+            if (!(DatosAplicacion.AventuraSeleccionada is null))
+                foreach (Resumenes resumen in DatosAplicacion.AventuraSeleccionada.Recursos.Resumenes)
             {
+                resumen.NombreTipoAventura = DatosAplicacion.AventuraSeleccionada.Nombre;
+                resumen.TipoAventura = "Aventura";
                 ListaResumenes.Add(resumen);
             }
 
@@ -56,7 +64,8 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             {
                 Nombre = "Regla transformación en garou",
                 Etiquetas = "Hombre lobo, garou, mundo de tinieblas",
-                Descripcion = "Esta regla permite al hombre lobo pasar de su forma huminida a su forma garou obteniendo los diversos bonificadores",
+                NombreTipoAventura = "D&D 3.5",
+                Descripcion = "Esta regla permite al hombre lobo pasar de su forma hominida a su forma garou obteniendo los diversos bonificadores",
                 Pagina = 120,
                 Manual = "Hombre Lobo 20 aniversario"
             });
@@ -68,6 +77,16 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         public void ActualizarLista()
         {
             ListaResumenes[ResumenesListView.SelectedIndex] = (Resumenes)ResumenesListView.SelectedItem;
+        }
+
+        public void RemoverDeLaLista()
+        {
+            ListaResumenes.RemoveAt(ResumenesListView.SelectedIndex);
+        }
+
+        private void ResumenesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MessageBox.Show("Seleccionado " + ResumenesListView.SelectedItem);
         }
     }
 }

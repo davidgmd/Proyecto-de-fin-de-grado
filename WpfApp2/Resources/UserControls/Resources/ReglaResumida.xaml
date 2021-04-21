@@ -13,10 +13,16 @@
                 <TextBlock Margin="5,0,0,0" Text= "Nombre:" TextDecorations="Underline"/>
                 <TextBlock Margin="5,0,0,0" Text="{Binding Nombre}" FontWeight="Bold"/>
                 <TextBlock Margin="5,0,0,0" Text= "Etiquetas:" TextDecorations="Underline"/>
-                <TextBlock Margin="5,0,0,0" Text="{Binding Etiquetas}"/>
+                <TextBlock Margin="5,0,0,0" Text="{Binding Etiquetas}" FontStyle="Italic"/>
             </StackPanel>
-            <TextBlock Text="Descripción:" TextDecorations="Underline"/>
-            <TextBlock Text="{Binding Descripcion}"/>
+
+            <StackPanel>
+                <TextBlock Text="Relacionada con:" TextDecorations="Underline"/>
+                <TextBlock Text="{Binding NombreTipoAventura}" FontWeight="SemiBold"/>
+                <TextBlock Text="Descripción:" TextDecorations="Underline"/>
+                <TextBlock Text="{Binding Descripcion}"/>
+            </StackPanel>
+
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Pagina:" TextDecorations="Underline"/>
                 <TextBlock Text="{Binding Pagina}"/>

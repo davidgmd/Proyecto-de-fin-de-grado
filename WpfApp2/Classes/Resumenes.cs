@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace ElEscribaDelDJ.Classes
 {
-    public class Resumenes
+    public class Resumenes: INotifyPropertyChanged
     {
 
         private string _nombre;
@@ -12,7 +13,10 @@ namespace ElEscribaDelDJ.Classes
         public string Nombre
         {
             get { return _nombre; }
-            set { _nombre = value; }
+            set { 
+                _nombre = value;
+                OnPropertyChanged("Nombre");
+            }
         }
 
         private string _etiquetas;
@@ -20,7 +24,10 @@ namespace ElEscribaDelDJ.Classes
         public string Etiquetas
         {
             get { return _etiquetas; }
-            set { _etiquetas = value; }
+            set { 
+                _etiquetas = value;
+                OnPropertyChanged("Etiquetas");
+            }
         }
 
         private string _descripcion;
@@ -28,7 +35,10 @@ namespace ElEscribaDelDJ.Classes
         public string Descripcion
         {
             get { return _descripcion; }
-            set { _descripcion = value; }
+            set { 
+                _descripcion = value;
+                OnPropertyChanged("Descripcion");
+            }
         }
 
         private int _pagina;
@@ -36,7 +46,10 @@ namespace ElEscribaDelDJ.Classes
         public int Pagina
         {
             get { return _pagina; }
-            set { _pagina = value; }
+            set { 
+                _pagina = value;
+                OnPropertyChanged("Pagina");
+            }
         }
 
         private string _manual;
@@ -44,7 +57,39 @@ namespace ElEscribaDelDJ.Classes
         public string Manual
         {
             get { return _manual; }
-            set { _manual = value; }
+            set { 
+                _manual = value;
+                OnPropertyChanged("Manual");
+            }
+        }
+
+        private string _tipoaventura;
+
+        public string TipoAventura
+        {
+            get { return _tipoaventura; }
+            set { _tipoaventura = value; }
+        }
+
+
+        private string _nombretipoaventura;
+
+        public string NombreTipoAventura
+        {
+            get { return _nombretipoaventura; }
+            set {
+                _nombretipoaventura = value;
+                OnPropertyChanged("TipoAventura");
+            }
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropertyChanged(string PropertyName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
         }
     }
 }
