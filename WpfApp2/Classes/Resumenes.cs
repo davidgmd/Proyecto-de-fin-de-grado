@@ -63,6 +63,18 @@ namespace ElEscribaDelDJ.Classes
             }
         }
 
+        private string _manualurl;
+
+        public string ManualUrl
+        {
+            get { return _manualurl; }
+            set
+            {
+                _manualurl = value;
+                OnPropertyChanged("ManualUrl");
+            }
+        }
+
         private string _tipoaventura;
 
         public string TipoAventura

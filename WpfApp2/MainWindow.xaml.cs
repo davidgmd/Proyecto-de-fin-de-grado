@@ -45,7 +45,8 @@ namespace ElEscribaDelDJ
             //Se crean los componentes
             InitializeComponent();
 
-            //se crea si no existiera el entorno inicial de la aplicación y se registran los path que se usaran posteriormente
+            //se crea si no existiera el entorno inicial de la aplicación (Directorios necesarios de la aplicación)
+            //y se registran los path que se usaran posteriormente
             if (RecursosAplicacion.Directorios.Count == 0)
             RecursosAplicacion.EntornoInicialAplicacion();
 
@@ -91,7 +92,10 @@ namespace ElEscribaDelDJ
             }
         }
 
-        // Lee la configuración inicial
+        // Lee la configuración inicial, archivo tiene en cada linea la configuracion con un valor y separado por ":" su valor
+        // Leemos el archivo de la carpeta raiz del programa, y separamos de cada linea el parametro y su valor y guardamos los valores
+        //En un vector llamado valoresinicialesconf, donde guardamos la segunda parte la que contiene el valor y autoincrementamos i
+        //Por ultimo estos valores los pasamos a la variable configuraciónaplicación que es estatica y accesible desde todo el programa
         private void ConfiguracionInicial()
         {
             this.valoresinicialesconf = System.IO.File.ReadAllLines(RecursosAplicacion.DireccionBase + "\\Settings.ini");
@@ -103,7 +107,8 @@ namespace ElEscribaDelDJ
                 i += 1;
             }
 
-            Regex.Replace(this.valoresinicialesconf[1], @"\s+", "");
+            //Se utilizaba antes que por algún motivo el programa añadia unas "" fantasmas al primer valor booleano, ya no ocurre
+            //Regex.Replace(this.valoresinicialesconf[1], @"\s+", "");
 
             ConfiguracionAplicacion.Default.Idioma = this.valoresinicialesconf[0];
             ConfiguracionAplicacion.Default.RecordarUsuario = Convert.ToBoolean(this.valoresinicialesconf[1].Trim());

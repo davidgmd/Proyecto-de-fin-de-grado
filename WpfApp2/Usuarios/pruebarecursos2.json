@@ -1,0 +1,187 @@
+{
+  "Correo": "y?Hi????\t8\f?R??k+U?9g?U??sh\u0015?2^\u0006",
+  "ListCampaigns": [
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "/Images/icons/D&D.png",
+      "Recursos": {
+        "Documentos": [
+          {
+            "NombreArchivo": "pruebaotra",
+            "Extension": ".pdf",
+            "Direccion": "C:\\Users\\K_H_S\\Documents\\Complementos Material_Estadistica2012-13.pdf",
+            "Url": "www.prueba2.es"
+          },
+          {
+            "NombreArchivo": "prueba2",
+            "Extension": ".docx",
+            "Direccion": "C:\\Users\\K_H_S\\Documents\\Cronograma IC3 señales.docx",
+            "Url": "una"
+          },
+          {
+            "NombreArchivo": "prueba3",
+            "Extension": ".docx",
+            "Direccion": "C:\\Users\\K_H_S\\Documents\\Bases de datos.html.docx",
+            "Url": "asd"
+          },
+          {
+            "NombreArchivo": "prueba4",
+            "Extension": ".pdf",
+            "Direccion": "C:\\Users\\K_H_S\\Documents\\CalendarioAlumno 2019-2020 febrero.pdf",
+            "Url": "asd"
+          },
+          {
+            "NombreArchivo": "prueba5",
+            "Extension": ".pdf",
+            "Direccion": "C:\\Users\\K_H_S\\Documents\\chequea_tu_machismo.pdf",
+            "Url": "asda"
+          },
+          {
+            "NombreArchivo": "prueba6",
+            "Extension": ".pdf",
+            "Direccion": "C:\\Users\\K_H_S\\Documents\\BOJA pruebas de certificacion.pdf",
+            "Url": "asd"
+          },
+          {
+            "NombreArchivo": "prueba7",
+            "Extension": ".docx",
+            "Direccion": "C:\\Users\\K_H_S\\Documents\\Bases de datos.html.docx",
+            "Url": "https://www.youtube.com/watch?v=A_kZk8Mmq_c&list=OLAK5uy_n0niZjAefLu1tm131vRbik5N1HKbgPNmA&index=12"
+          },
+          {
+            "NombreArchivo": "prueba8",
+            "Extension": ".docx",
+            "Direccion": "C:\\Users\\K_H_S\\Documents\\Bases de datos 2.docx",
+            "Url": "asf"
+          }
+        ],
+        "Resumenes": [],
+        "Lore": [
+          {
+            "NombreArchivo": "pruebalore2",
+            "Extension": ".jpg",
+            "Direccion": "C:\\Users\\K_H_S\\Documents\\AG evolutivo.jpg",
+            "Url": null
+          }
+        ],
+        "Media": [
+          {
+            "NombreArchivo": "imagen",
+            "Extension": ".jpg",
+            "Direccion": "C:\\Users\\K_H_S\\Documents\\AG evolutivo.jpg",
+            "Url": null
+          }
+        ],
+        "Fichas": [
+          {
+            "NombreArchivo": "ficha1",
+            "Extension": ".pdf",
+            "Direccion": "C:\\Users\\K_H_S\\Documents\\Ficha Alyx.pdf",
+            "Url": null
+          }
+        ]
+      },
+      "Descripcion": "Base element for D&D 3.5 adventures",
+      "Nombre": "D&D3.5"
+    },
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "/Images/icons/warhammer-removebg.png",
+      "Recursos": {
+        "Documentos": [],
+        "Resumenes": [],
+        "Lore": [],
+        "Media": [],
+        "Fichas": []
+      },
+      "Descripcion": "Base element for warhammer 2º edition adventures",
+      "Nombre": "Warhammer 2ª edition"
+    },
+    {
+      "ListaEscenarios": [
+        {
+          "ListaAventuras": [
+            {
+              "NumeroAventura": 0,
+              "ListaAventuras": [],
+              "ListaEscenarios": [],
+              "DireccionImagen": "/Images/icons/icons8-escudopregunta.png",
+              "Recursos": {
+                "Documentos": [],
+                "Resumenes": [],
+                "Lore": [],
+                "Media": [],
+                "Fichas": []
+              },
+              "Descripcion": "Aventura no nula para la prueba",
+              "Nombre": "Aventura no nula"
+            }
+          ],
+          "ListaEscenarios": [],
+          "DireccionImagen": "/Images/icons/icons8-escudopregunta.png",
+          "Recursos": {
+            "Documentos": [],
+            "Resumenes": [],
+            "Lore": [],
+            "Media": [],
+            "Fichas": []
+          },
+          "Descripcion": "Escenario de prueba no nulo",
+          "Nombre": "Escenario prueba"
+        },
+        {
+          "ListaAventuras": [],
+          "ListaEscenarios": [],
+          "DireccionImagen": "/Images/icons/icons8-escudopregunta.png",
+          "Recursos": {
+            "Documentos": [],
+            "Resumenes": [],
+            "Lore": [],
+            "Media": [],
+            "Fichas": []
+          },
+          "Descripcion": "Escenario de prueba no nulo2",
+          "Nombre": "Escenario prueba2"
+        }
+      ],
+      "DireccionImagen": "C:\\Users\\K_H_S\\Source\\Repos\\davidgmd\\Proyecto-de-fin-de-grado\\WpfApp2\\bin\\Debug\\netcoreapp3.1\\Usuarios\\Imagenes\\\\pruebarecursos2\\Prueba de recursos con elementos no nulos\\icon\\comparaciones pechiplana.jpg",
+      "Recursos": {
+        "Documentos": [],
+        "Resumenes": [],
+        "Lore": [],
+        "Media": [],
+        "Fichas": []
+      },
+      "Descripcion": "Prueba de recursos con los elementos no nulos que deberia evitar el fallo que habia antes",
+      "Nombre": "Prueba de recursos con elementos no nulos"
+    },
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "/Images/icons/icons8-escudopregunta.png",
+      "Recursos": {
+        "Documentos": [],
+        "Resumenes": [],
+        "Lore": [],
+        "Media": [],
+        "Fichas": []
+      },
+      "Descripcion": "pruebainserccion",
+      "Nombre": "pruebainserccion"
+    },
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "C:\\Users\\K_H_S\\Source\\Repos\\davidgmd\\Proyecto-de-fin-de-grado\\WpfApp2\\bin\\Debug\\netcoreapp3.1\\Usuarios\\Imagenes\\\\pruebarecursos2\\pruebainserccion2\\icon\\codigos madres.jpg",
+      "Recursos": {
+        "Documentos": [],
+        "Resumenes": [],
+        "Lore": [],
+        "Media": [],
+        "Fichas": []
+      },
+      "Descripcion": "pruebainserccion2",
+      "Nombre": "pruebainserccion2"
+    }
+  ],
+  "NombreUsuario": "pruebarecursos2",
+  "Clave": "3???\u0006?\u0011q??\u0004??Z\t?????,WP?`?,?/&p?"
+}

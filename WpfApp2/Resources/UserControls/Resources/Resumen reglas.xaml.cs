@@ -1,5 +1,6 @@
 ﻿using ElEscribaDelDJ.Classes;
 using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+using ElEscribaDelDJ.View.Resources;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -87,6 +88,12 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         private void ResumenesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             MessageBox.Show("Seleccionado " + ResumenesListView.SelectedItem);
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            AnadirResumen anadir = new AnadirResumen(this, ListaResumenes);
+            anadir.ShowDialog();
         }
     }
 }

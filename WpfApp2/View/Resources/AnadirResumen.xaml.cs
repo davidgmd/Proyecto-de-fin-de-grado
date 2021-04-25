@@ -1,0 +1,119 @@
+﻿using ElEscribaDelDJ.Classes;
+using ElEscribaDelDJ.Classes.Utilidades;
+using ElEscribaDelDJ.Classes.Utilidades.Aplicacion;
+using ElEscribaDelDJ.Resources.UserControls.Resources;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace ElEscribaDelDJ.View.Resources
+{
+    /// <summary>
+    /// Lógica de interacción para AnadirResumen.xaml
+    /// </summary>
+    public partial class AnadirResumen : Window
+    {
+        public AnadirResumen(Resumen_reglas uc, ObservableCollection<Resumenes> listaresumenes, int indice = 0)
+        {
+            InitializeComponent();
+            Inicializar();
+            this.Resumenes = listaresumenes;
+            this.DataContext = this;
+            
+        }
+
+        public ObservableCollection<Campana> TiposAventuras { get; set; } = new ObservableCollection<Campana>();
+        public Resumenes Resumen { get; set; } = new Resumenes();
+        public ObservableCollection<Resumenes> Resumenes;
+        public List<string> camposcorrectos = new List<string>();
+
+        public void Inicializar()
+        {
+            TiposAventuras.Add(DatosAplicacion.CampanaSeleccionada);
+                if (!(DatosAplicacion.EscenarioSeleccionado is null))
+            TiposAventuras.Add(DatosAplicacion.EscenarioSeleccionado);
+            if (!(DatosAplicacion.AventuraSeleccionada is null))
+                TiposAventuras.Add(DatosAplicacion.AventuraSeleccionada);
+
+            if (ComboBoxTiposAventura.HasItems)
+            ComboBoxTiposAventura.SelectedIndex = 0;
+
+            
+        }
+
+        public void ValidarCampo(TextBox cajadetexto, Brush color)
+        {
+            if (cajadetexto.Text.Equals(""))
+            {
+                cajadetexto.BorderBrush = color;
+                camposcorrectos.Remove(cajadetexto.Name);
+            }
+            else
+            {
+                cajadetexto.BorderBrush = Brushes.Green;
+                if (!camposcorrectos.Contains(cajadetexto.Name))
+                    camposcorrectos.Add(cajadetexto.Name);
+            }
+        }
+
+        private void NombreAMostrarTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ValidarCampo((TextBox)sender, Brushes.Red);
+        }
+
+        private void EtiquetasTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ValidarCampo((TextBox)sender, Brushes.Red);
+        }
+
+        private void DescripcionTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ValidarCampo((TextBox)sender, Brushes.Red);
+        }
+
+        private void PaginaTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ValidarCampo((TextBox)sender, Brushes.Red);
+        }
+
+        private void ManualTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ValidarCampo((TextBox)sender, Brushes.Goldenrod);
+        }
+
+        private void UrlTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ValidarCampo((TextBox)sender, Brushes.Goldenrod);
+        }
+
+        private void AnadirButton_Click(object sender, RoutedEventArgs e)
+        {
+            Campana campana = (Campana)ComboBoxTiposAventura.SelectedItem;
+            Resumen.NombreTipoAventura = campana.Nombre;
+
+            if (ComboBoxTiposAventura.SelectedIndex == 0)
+                Resumen.TipoAventura = "Campana";
+            else if (ComboBoxTiposAventura.SelectedIndex == 1)
+                Resumen.TipoAventura = "Escenario";
+            else
+                Resumen.TipoAventura = "Aventura";
+
+            this.Resumenes.Add(Resumen);
+        }
+
+        private void AbrirExploradorBoton_Click(object sender, RoutedEventArgs e)
+        {
+            SelectorArchivos seleccionararchivo = new SelectorArchivos();
+            this.Resumen.Manual = seleccionararchivo.SeleccionarArchivo("Documentos");
+        }
+    }
+}

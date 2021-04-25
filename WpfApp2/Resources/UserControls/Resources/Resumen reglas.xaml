@@ -30,7 +30,8 @@
         <StackPanel Orientation="Horizontal"
                     Grid.Column="1" 
                     HorizontalAlignment="Left">
-            <Button  
+            <Button x:Name="AddButton"
+                    Click="AddButton_Click"
                 Background="Transparent" 
                 BorderThickness="0">
                 <StackPanel >

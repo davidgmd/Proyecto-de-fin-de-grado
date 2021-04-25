@@ -1,0 +1,95 @@
+﻿<Window x:Class="ElEscribaDelDJ.View.Resources.AnadirResumen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ElEscribaDelDJ.View.Resources"
+        mc:Ignorable="d"
+        Title="AnadirResumen" 
+        SizeToContent="WidthAndHeight">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Resources/View/Resources/AnadirResumen.xaml"/>
+                <ResourceDictionary Source="../../Idiomas/ES/View/Resources/AnadirArchivo.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <StackPanel>
+            <WrapPanel>
+                <Label Content="Nombre resumen"/>
+                <TextBox x:Name="NombreAMostrarTextBox" 
+                         Text="{Binding Resumen.Nombre}"
+                         TextChanged="NombreAMostrarTextBox_TextChanged"/>
+                <Label Content="Etiquetas"/>
+                <TextBox Name="EtiquetasTextBox" 
+                         Text="{Binding Resumen.Etiquetas}"
+                         TextChanged="EtiquetasTextBox_TextChanged"/>
+                <Label Content="Relacionado con"/>
+                <ComboBox x:Name="ComboBoxTiposAventura"
+                          ItemsSource="{Binding TiposAventuras}"
+                          IsSynchronizedWithCurrentItem="True"
+                    ItemTemplate="{StaticResource CustomerTemplate}"/>
+            </WrapPanel>
+
+            <WrapPanel>
+                <StackPanel>
+                    <Label Content="Descripción"/>
+                    <TextBox x:Name="DescripcionTextBox"
+                             Text="{Binding Resumen.Descripcion}"
+                             TextChanged="DescripcionTextBox_TextChanged"
+                             Style="{DynamicResource DescripcionTextBox}"/>
+                </StackPanel>
+            </WrapPanel>
+
+            <WrapPanel>
+                <Label Content="Pagina"/>
+                <TextBox x:Name="PaginaTextBox"
+                         Text="{Binding Resumen.Pagina}"
+                         TextChanged="PaginaTextBox_TextChanged"/>
+                <Label Content="Manual"/>
+                <TextBox x:Name="ManualTextBox" 
+                         Text="{Binding Resumen.Manual}"
+                         TextWrapping="Wrap"
+                         TextChanged="ManualTextBox_TextChanged"
+                         Style="{DynamicResource LocationManualTextBox}"/>
+                <Button x:Name="AbrirExploradorBoton" 
+                        Click="AbrirExploradorBoton_Click"
+                        Background="RosyBrown">
+                    <Image Source="/images/icons/icons8-folder.png" 
+                           Width="25" 
+                           Stretch="Uniform" 
+                           RenderOptions.BitmapScalingMode="Fant"                    
+                           ToolTip="Pulsa para abrir la ubicación en el explorador"/>
+                </Button>
+                <Label Content="Url Manual"/>
+                <TextBox x:Name="UrlTextBox"
+                         Text="{Binding Resumen.ManualUrl}"
+                         TextChanged="UrlTextBox_TextChanged"
+                         Style="{DynamicResource UrlManualTextBox}"/>
+                <Button>
+                    <Image Source="/images/icons/icons8-web.png" 
+                           Width="25" 
+                           Stretch="Uniform" 
+                           RenderOptions.BitmapScalingMode="Fant"
+                           ToolTip="Pulsa para abrir en el navegador la dirección web introducida"/>
+                </Button>
+            </WrapPanel>
+            <WrapPanel HorizontalAlignment="Center">
+                <Button x:Name="AnadirButton" 
+                        Content="Añadir" 
+                        Click="AnadirButton_Click"
+                        Margin="5"/>
+                <Button x:Name="EditarButton" 
+                        Content="Editar"  
+                        Margin="5"/>
+                <Button x:Name="CancelarButton" 
+                        Content="Cancelar"  
+                        Margin="5"/>
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>

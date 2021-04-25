@@ -82,13 +82,14 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             List<String> campos = new List<String>();
             string linea;
 
+            //Comprueba si el archivo logs existe en la carpeta "Logs", si no existe lo crea y finaliza.
             if (!File.Exists(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log"))
             {
                 File.Create(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log");
                 return null;
             }
 
-            
+            //Si el archivo esta vacio finaliza la lectura del login
             if (File.ReadAllText(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log").Trim().Equals(""))
             {
                 return null;

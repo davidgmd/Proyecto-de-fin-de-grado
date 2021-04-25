@@ -1,0 +1,56 @@
+{
+  "Correo": "y?Hi????\t8\f?R??k+U?9g?U??sh\u0015?2^\u0006",
+  "ListCampaigns": [
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "/Images/icons/D&D.png",
+      "Recursos": null,
+      "Descripcion": "Base element for D&D 3.5 adventures",
+      "Nombre": "D&D3.5"
+    },
+    {
+      "ListaEscenarios": [
+        {
+          "ListaAventuras": [],
+          "ListaEscenarios": [],
+          "DireccionImagen": null,
+          "Recursos": null,
+          "Descripcion": "Este escenario es solo una prueba para los recursos",
+          "Nombre": "EscenarioPrueba"
+        }
+      ],
+      "DireccionImagen": "/Images/icons/warhammer-removebg.png",
+      "Recursos": null,
+      "Descripcion": "Base element for warhammer 2º edition adventures",
+      "Nombre": "Warhammer 2ª edition"
+    },
+    {
+      "ListaEscenarios": [
+        {
+          "ListaAventuras": [
+            {
+              "NumeroAventura": 0,
+              "ListaAventuras": [],
+              "ListaEscenarios": [],
+              "DireccionImagen": null,
+              "Recursos": null,
+              "Descripcion": "Aventura que solo sirve para probar recursos",
+              "Nombre": "AventuraPrueba"
+            }
+          ],
+          "ListaEscenarios": [],
+          "DireccionImagen": null,
+          "Recursos": null,
+          "Descripcion": "Escenario de prueba 2, este con aventura",
+          "Nombre": "EscenarioPrueba2"
+        }
+      ],
+      "DireccionImagen": "C:\\Users\\K_H_S\\Source\\Repos\\davidgmd\\Proyecto-de-fin-de-grado\\WpfApp2\\bin\\Debug\\netcoreapp3.1\\Usuarios\\Imagenes\\\\pruebarecursos\\Prueba con todo completo\\icon\\comisaria mona.jpg",
+      "Recursos": null,
+      "Descripcion": "Campaña con escenario y aventura",
+      "Nombre": "Prueba con todo completo"
+    }
+  ],
+  "NombreUsuario": "pruebarecursos",
+  "Clave": "?K\u000ey\u0000\u001e?i??kg??\u00105$A??Q??O????\u0017jXQ"
+}

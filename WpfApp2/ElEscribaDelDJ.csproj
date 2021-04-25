@@ -386,6 +386,7 @@
 
   <ItemGroup>
     <Folder Include="Images\User\" />
+    <Folder Include="Usuarios\Archivos\" />
     <Folder Include="View\Options\" />
   </ItemGroup>
 
