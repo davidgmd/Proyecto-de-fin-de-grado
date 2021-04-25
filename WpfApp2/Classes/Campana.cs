@@ -102,7 +102,7 @@ namespace ElEscribaDelDJ.Classes
             RecursosAplicacion.SesionUsuario.ReemplazarCampana();
         }
 
-        public void EliminarArchivo(string seccion, Archivos archivo, int indice)
+        public void EliminarArchivo(string seccion, int indice)
         {
             switch (seccion)
             {
@@ -123,6 +123,23 @@ namespace ElEscribaDelDJ.Classes
                     break;
             }
             RecursosAplicacion.SesionUsuario.ReemplazarCampana();
+        }
+
+        public void AnadirResumen(Resumenes resumen)
+        {
+            DatosAplicacion.CampanaSeleccionada.Recursos.Resumenes.Add(resumen);
+            RecursosAplicacion.SesionUsuario.ReemplazarCampana();
+        }
+
+        public void EditarResumen(Resumenes resumen, int indice)
+        {
+            DatosAplicacion.CampanaSeleccionada.Recursos.Resumenes[indice] = resumen;
+            RecursosAplicacion.SesionUsuario.ReemplazarCampana();
+        }
+
+        public void EliminarResumen(int indice)
+        {
+            DatosAplicacion.CampanaSeleccionada.Recursos.Resumenes.RemoveAt(indice);
         }
     }
 }

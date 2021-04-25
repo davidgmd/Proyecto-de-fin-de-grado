@@ -99,13 +99,13 @@ namespace ElEscribaDelDJ.Classes
             switch (tipoaventura)
             {
                 case "Campana":
-                    DatosAplicacion.CampanaSeleccionada.EliminarArchivo(seccion, archivo, indice);
+                    DatosAplicacion.CampanaSeleccionada.EliminarArchivo(seccion, indice);
                     break;
                 case "Escenario":
-                    DatosAplicacion.EscenarioSeleccionado.EliminarArchivo(seccion, archivo, indice);
+                    DatosAplicacion.EscenarioSeleccionado.EliminarArchivo(seccion, indice);
                     break;
                 case "Aventura":
-                    DatosAplicacion.AventuraSeleccionada.EliminarArchivo(seccion, archivo, indice);
+                    DatosAplicacion.AventuraSeleccionada.EliminarArchivo(seccion, indice);
                     break;
                 default:
                     break;

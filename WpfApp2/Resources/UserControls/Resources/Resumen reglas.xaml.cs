@@ -68,7 +68,8 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
                 NombreTipoAventura = "D&D 3.5",
                 Descripcion = "Esta regla permite al hombre lobo pasar de su forma hominida a su forma garou obteniendo los diversos bonificadores",
                 Pagina = 120,
-                Manual = "Hombre Lobo 20 aniversario"
+                Manual = "Hombre Lobo 20 aniversario",
+                ManualUrl = "http://www.meloinvento.com"
             });
 
             //Vincula el listview con la lista para que aparezcan sus miembros
@@ -92,7 +93,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            AnadirResumen anadir = new AnadirResumen(this, ListaResumenes);
+            AnadirResumen anadir = new AnadirResumen(ListaResumenes);
             anadir.ShowDialog();
         }
     }

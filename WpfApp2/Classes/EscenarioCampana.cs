@@ -62,7 +62,7 @@ namespace ElEscribaDelDJ.Classes
             RecursosAplicacion.SesionUsuario.ActualizarCampana();
         }
 
-        public new void EliminarArchivo(string seccion, Archivos archivo, int indice)
+        public new void EliminarArchivo(string seccion, int indice)
         {
             switch (seccion)
             {
@@ -82,6 +82,24 @@ namespace ElEscribaDelDJ.Classes
                 default:
                     break;
             }
+            RecursosAplicacion.SesionUsuario.ActualizarCampana();
+        }
+
+        public new void AnadirResumen(Resumenes resumen)
+        {
+            DatosAplicacion.EscenarioSeleccionado.Recursos.Resumenes.Add(resumen);
+            RecursosAplicacion.SesionUsuario.ActualizarCampana();
+        }
+
+        public new void EditarResumen(Resumenes resumen, int indice)
+        {
+            DatosAplicacion.EscenarioSeleccionado.Recursos.Resumenes[indice] = resumen;
+            RecursosAplicacion.SesionUsuario.ActualizarCampana();
+        }
+
+        public new void EliminarResumen(int indice)
+        {
+            DatosAplicacion.EscenarioSeleccionado.Recursos.Resumenes.RemoveAt(indice);
             RecursosAplicacion.SesionUsuario.ActualizarCampana();
         }
     }

@@ -22,5 +22,18 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         {
             InitializeComponent();
         }
+
+        private void BotonMasDetalles_Click(object sender, RoutedEventArgs e)
+        {
+            if (StackPanelDetalles.Visibility.Equals(Visibility.Collapsed)){
+                StackPanelDetalles.Visibility = Visibility.Visible;
+                ImagenBotonMasDetalles.Source = new BitmapImage(new Uri("/images/icons/iconoMenos.png", UriKind.Relative));
+            }
+            else
+            {
+                StackPanelDetalles.Visibility = Visibility.Collapsed;
+                ImagenBotonMasDetalles.Source = new BitmapImage(new Uri("/images/icons/iconoMas.png", UriKind.Relative));
+            }
+        }
     }
 }

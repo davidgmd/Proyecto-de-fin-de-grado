@@ -50,11 +50,14 @@
                 <TextBox x:Name="PaginaTextBox"
                          Text="{Binding Resumen.Pagina}"
                          TextChanged="PaginaTextBox_TextChanged"/>
+            </WrapPanel>
+            <WrapPanel>
                 <Label Content="Manual"/>
                 <TextBox x:Name="ManualTextBox" 
                          Text="{Binding Resumen.Manual}"
                          TextWrapping="Wrap"
                          TextChanged="ManualTextBox_TextChanged"
+                         MaxWidth="400"
                          Style="{DynamicResource LocationManualTextBox}"/>
                 <Button x:Name="AbrirExploradorBoton" 
                         Click="AbrirExploradorBoton_Click"
@@ -65,25 +68,32 @@
                            RenderOptions.BitmapScalingMode="Fant"                    
                            ToolTip="Pulsa para abrir la ubicación en el explorador"/>
                 </Button>
-                <Label Content="Url Manual"/>
-                <TextBox x:Name="UrlTextBox"
-                         Text="{Binding Resumen.ManualUrl}"
-                         TextChanged="UrlTextBox_TextChanged"
-                         Style="{DynamicResource UrlManualTextBox}"/>
-                <Button>
-                    <Image Source="/images/icons/icons8-web.png" 
-                           Width="25" 
-                           Stretch="Uniform" 
-                           RenderOptions.BitmapScalingMode="Fant"
-                           ToolTip="Pulsa para abrir en el navegador la dirección web introducida"/>
-                </Button>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Url Manual"/>
+                    <TextBox x:Name="UrlTextBox"
+                             Text="{Binding Resumen.ManualUrl}"
+                             TextChanged="UrlTextBox_TextChanged"
+                             MaxWidth="400"
+                             TextWrapping="Wrap"
+                             Style="{DynamicResource UrlManualTextBox}"/>
+                    <Button>
+                        <Image Source="/images/icons/icons8-web.png" 
+                               Width="25" 
+                               Stretch="Uniform" 
+                               RenderOptions.BitmapScalingMode="Fant"
+                               ToolTip="Pulsa para abrir en el navegador la dirección web introducida"/>
+                    </Button>
+                </StackPanel>
             </WrapPanel>
             <WrapPanel HorizontalAlignment="Center">
                 <Button x:Name="AnadirButton" 
                         Content="Añadir" 
+                        IsEnabled="False"
                         Click="AnadirButton_Click"
                         Margin="5"/>
                 <Button x:Name="EditarButton" 
+                        IsEnabled="False"
                         Content="Editar"  
                         Margin="5"/>
                 <Button x:Name="CancelarButton" 

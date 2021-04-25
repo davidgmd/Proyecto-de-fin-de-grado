@@ -6,6 +6,17 @@
              xmlns:local="clr-namespace:ElEscribaDelDJ.Resources.UserControls.Resources"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style x:Key="ManualTextBlock" TargetType="TextBlock">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -17,17 +28,34 @@
             </StackPanel>
 
             <StackPanel>
-                <TextBlock Text="Relacionada con:" TextDecorations="Underline"/>
-                <TextBlock Text="{Binding NombreTipoAventura}" FontWeight="SemiBold"/>
-                <TextBlock Text="Descripción:" TextDecorations="Underline"/>
-                <TextBlock Text="{Binding Descripcion}"/>
-            </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="BotonMasDetalles" Click="BotonMasDetalles_Click">
+                        <Image Width="10" x:Name="ImagenBotonMasDetalles" Source="/images/icons/iconoMas.png"/>
+                    </Button>
+                <TextBlock Margin="5,0,0,0" Text="Detalles"/>
+                </StackPanel>
+                
+                <StackPanel x:Name="StackPanelDetalles" Visibility="Collapsed">
+                    <StackPanel>
+                        <TextBlock Text="Relacionada con:" TextDecorations="Underline"/>
+                        <TextBlock Text="{Binding NombreTipoAventura}" FontWeight="SemiBold"/>
+                        <TextBlock Text="Descripción:" TextDecorations="Underline"/>
+                        <TextBlock Text="{Binding Descripcion}" TextWrapping="Wrap"  MaxWidth="500" HorizontalAlignment="Left"/>
+                    </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Pagina:" TextDecorations="Underline"/>
-                <TextBlock Text="{Binding Pagina}"/>
-                <TextBlock Margin="5,0,0,0" Text="Manual:" TextDecorations="Underline"/>
-                <TextBlock Margin="5,0,0,0" Text="{Binding Manual}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Pagina:" TextDecorations="Underline"/>
+                        <TextBlock Text="{Binding Pagina}"/>
+                        <TextBlock Margin="5,0,0,0" Text="Manual:" TextDecorations="Underline"/>
+                        <TextBlock Margin="5,0,0,0" Text="{Binding Manual}" Foreground="Blue" Style="{DynamicResource ManualTextBlock}"/>
+
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock Text="Url:" TextDecorations="Underline"/>
+                        <TextBlock Text="{Binding ManualUrl}" Foreground="Blue" TextDecorations="Underline" Style="{DynamicResource ManualTextBlock}"/>
+                    </StackPanel>
+                </StackPanel>
             </StackPanel>
         </StackPanel>            
     </Grid>

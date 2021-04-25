@@ -22,12 +22,17 @@ namespace ElEscribaDelDJ.View.Resources
     /// </summary>
     public partial class AnadirResumen : Window
     {
-        public AnadirResumen(Resumen_reglas uc, ObservableCollection<Resumenes> listaresumenes, int indice = 0)
+        public AnadirResumen(ObservableCollection<Resumenes> listaresumenes, Resumen_reglas uc = null, int indice = 0)
         {
             InitializeComponent();
             Inicializar();
             this.Resumenes = listaresumenes;
             this.DataContext = this;
+
+            if (uc is null)
+                AnadirButton.IsEnabled = true;
+            else
+                EditarButton.IsEnabled = true;
             
         }
 
@@ -97,17 +102,39 @@ namespace ElEscribaDelDJ.View.Resources
 
         private void AnadirButton_Click(object sender, RoutedEventArgs e)
         {
-            Campana campana = (Campana)ComboBoxTiposAventura.SelectedItem;
-            Resumen.NombreTipoAventura = campana.Nombre;
+            if (camposcorrectos.Count >= 5)
+            {
+                Campana campana = (Campana)ComboBoxTiposAventura.SelectedItem;
+                Resumen.NombreTipoAventura = campana.Nombre;
 
-            if (ComboBoxTiposAventura.SelectedIndex == 0)
-                Resumen.TipoAventura = "Campana";
-            else if (ComboBoxTiposAventura.SelectedIndex == 1)
-                Resumen.TipoAventura = "Escenario";
+                if (ComboBoxTiposAventura.SelectedIndex == 0)
+                {
+                    Resumen.TipoAventura = "Campana";
+                    DatosAplicacion.CampanaSeleccionada.AnadirResumen(Resumen);
+                }          
+                else if (ComboBoxTiposAventura.SelectedIndex == 1)
+                {
+                    Resumen.TipoAventura = "Escenario";
+                    DatosAplicacion.EscenarioSeleccionado.AnadirResumen(Resumen);
+                }
+                else
+                {
+                    Resumen.TipoAventura = "Aventura";
+                    DatosAplicacion.AventuraSeleccionada.AnadirResumen(Resumen);
+                }               
+
+                this.Resumenes.Add(Resumen);
+            }
             else
-                Resumen.TipoAventura = "Aventura";
+            {
+                MostrarError();
+            }
 
-            this.Resumenes.Add(Resumen);
+        }
+
+        public void MostrarError()
+        {
+            MessageBox.Show("Faltan algunos o todos los campos esenciales");
         }
 
         private void AbrirExploradorBoton_Click(object sender, RoutedEventArgs e)
