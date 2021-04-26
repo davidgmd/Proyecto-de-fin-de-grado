@@ -46,8 +46,11 @@ namespace ElEscribaDelDJ.Classes
         public int Pagina
         {
             get { return _pagina; }
-            set { 
-                _pagina = value;
+            set {
+                if (value <= 0) 
+                    _pagina = 1;
+                else
+                    _pagina = value;
                 OnPropertyChanged("Pagina");
             }
         }

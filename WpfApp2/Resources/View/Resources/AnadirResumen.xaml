@@ -46,6 +46,16 @@
         <Setter Property="MaxWidth" Value="600"/>
     </Style>
 
+    <!-- Estilos concretos -->
+    <Style x:Key="EncabezadoTextBlock" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="MaxWidth" Value="500"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    
     <Style x:Key="DescripcionTextBox" BasedOn="{StaticResource {x:Type TextBox}}" TargetType="TextBox">
         <Setter Property="Width" Value="550"/>
         <Setter Property="MinHeight" Value="100"/>
@@ -58,10 +68,40 @@
     <Style x:Key="LocationManualTextBox" BasedOn="{StaticResource {x:Type TextBox}}" TargetType="TextBox">
         <Setter Property="IsEnabled" Value="False"/>
         <Setter Property="BorderBrush" Value="Goldenrod"/>
+        <Setter Property="MaxHeight" Value="400"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style x:Key="SeleccionarResumenButton" TargetType="Button">
+        <Setter Property="Background" Value="RosyBrown"/>
+    </Style>
+
+    <Style x:Key="ImagenSeleccionarResumen" TargetType="Image">
+        <Setter Property="Width" Value="25"/>
+        <Setter Property="Stretch" Value="Uniform"/>
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant"/>
     </Style>
 
     <Style x:Key="UrlManualTextBox" BasedOn="{StaticResource {x:Type TextBox}}" TargetType="TextBox">
         <Setter Property="BorderBrush" Value="Goldenrod"/>
+        <Setter Property="MaxWidth" Value="400"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
+    <Style x:Key="ImagenUrlButton" TargetType="Image">
+        <Setter Property="Width" Value="25"/>
+        <Setter Property="Stretch" Value="Uniform"/>
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant"/>
+    </Style>
+    
+    <!-- Formulario -->
+    <Style x:Key="BotonFormulario" TargetType="Button">
+        <Setter Property="IsEnabled" Value="False"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+
+    <Style x:Key="BotonCancelar" BasedOn="{StaticResource BotonFormulario}" TargetType="Button">
+        <Setter Property="IsEnabled" Value="True"/>
     </Style>
 
 </ResourceDictionary>

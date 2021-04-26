@@ -32,33 +32,43 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         }
 
         public ObservableCollection<Resumenes> ListaResumenes { get; set; } = new ObservableCollection<Resumenes>();
+        public Dictionary<string, int> Indices = new Dictionary<string, int>(); 
 
 
         public void Inicializar()
         {
             //Añade todos los resumenes de la campaña, escenario y aventura seleccionada
+            int indicereal = 0;
             foreach (Resumenes resumen in DatosAplicacion.CampanaSeleccionada.Recursos.Resumenes)
             {
                 resumen.NombreTipoAventura = DatosAplicacion.CampanaSeleccionada.Nombre;
                 resumen.TipoAventura = "Campaña";
                 ListaResumenes.Add(resumen);
+                Indices.Add(resumen.Nombre, indicereal);
+                indicereal++;
             }
 
+            indicereal = 0;
             if (!(DatosAplicacion.EscenarioSeleccionado is null))
             foreach (Resumenes resumen in DatosAplicacion.EscenarioSeleccionado.Recursos.Resumenes)
             {
                 resumen.NombreTipoAventura = DatosAplicacion.EscenarioSeleccionado.Nombre;
                 resumen.TipoAventura = "Escenario";
                 ListaResumenes.Add(resumen);
-            }
+                Indices.Add(resumen.Nombre, indicereal);
+                indicereal++;
+                }
 
+            indicereal = 0;
             if (!(DatosAplicacion.AventuraSeleccionada is null))
                 foreach (Resumenes resumen in DatosAplicacion.AventuraSeleccionada.Recursos.Resumenes)
             {
                 resumen.NombreTipoAventura = DatosAplicacion.AventuraSeleccionada.Nombre;
                 resumen.TipoAventura = "Aventura";
                 ListaResumenes.Add(resumen);
-            }
+                Indices.Add(resumen.Nombre, indicereal);
+                indicereal++;
+                }
 
             //Añade una de ejemplo por si no hay ninguna
             ListaResumenes.Add(new Resumenes()
@@ -79,11 +89,30 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         public void ActualizarLista()
         {
             ListaResumenes[ResumenesListView.SelectedIndex] = (Resumenes)ResumenesListView.SelectedItem;
+            Resumenes resumen = (Resumenes)ResumenesListView.SelectedItem;
+            AnadirResumen editar = new AnadirResumen(listaresumenes:ListaResumenes,indice:Indices[resumen.Nombre]);
         }
 
         public void RemoverDeLaLista()
         {
             ListaResumenes.RemoveAt(ResumenesListView.SelectedIndex);
+            Resumenes resumen = (Resumenes)ResumenesListView.SelectedItem;
+            switch (resumen.TipoAventura)
+            {
+                case "Campana":
+                    DatosAplicacion.CampanaSeleccionada.EliminarResumen(Indices[resumen.Nombre]);
+                    break;
+
+                case "Escenario":
+                    DatosAplicacion.EscenarioSeleccionado.EliminarResumen(Indices[resumen.Nombre]);
+                    break;
+
+                case "Aventura":
+                    DatosAplicacion.AventuraSeleccionada.EliminarResumen(Indices[resumen.Nombre]);
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void ResumenesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

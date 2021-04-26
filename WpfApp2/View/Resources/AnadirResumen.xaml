@@ -19,6 +19,8 @@
 
     <Grid>
         <StackPanel>
+            <TextBlock Text="Debe introducirse todos los campos en rojo y la ubicación del archivo o su url, el campo etiquetas debe ir separado por comas"      
+                       Style="{DynamicResource EncabezadoTextBlock}"/>
             <WrapPanel>
                 <Label Content="Nombre resumen"/>
                 <TextBox x:Name="NombreAMostrarTextBox" 
@@ -27,12 +29,13 @@
                 <Label Content="Etiquetas"/>
                 <TextBox Name="EtiquetasTextBox" 
                          Text="{Binding Resumen.Etiquetas}"
-                         TextChanged="EtiquetasTextBox_TextChanged"/>
+                         TextChanged="EtiquetasTextBox_TextChanged"
+                         LostFocus="EtiquetasTextBox_LostFocus"/>
                 <Label Content="Relacionado con"/>
                 <ComboBox x:Name="ComboBoxTiposAventura"
                           ItemsSource="{Binding TiposAventuras}"
                           IsSynchronizedWithCurrentItem="True"
-                    ItemTemplate="{StaticResource CustomerTemplate}"/>
+                          ItemTemplate="{StaticResource CustomerTemplate}"/>
             </WrapPanel>
 
             <WrapPanel>
@@ -49,23 +52,20 @@
                 <Label Content="Pagina"/>
                 <TextBox x:Name="PaginaTextBox"
                          Text="{Binding Resumen.Pagina}"
-                         TextChanged="PaginaTextBox_TextChanged"/>
+                         TextChanged="PaginaTextBox_TextChanged"
+                         LostFocus="PaginaTextBox_LostFocus"/>
             </WrapPanel>
             <WrapPanel>
                 <Label Content="Manual"/>
                 <TextBox x:Name="ManualTextBox" 
                          Text="{Binding Resumen.Manual}"
-                         TextWrapping="Wrap"
                          TextChanged="ManualTextBox_TextChanged"
-                         MaxWidth="400"
                          Style="{DynamicResource LocationManualTextBox}"/>
                 <Button x:Name="AbrirExploradorBoton" 
                         Click="AbrirExploradorBoton_Click"
-                        Background="RosyBrown">
+                        Style="{DynamicResource SeleccionarResumenButton}">
                     <Image Source="/images/icons/icons8-folder.png" 
-                           Width="25" 
-                           Stretch="Uniform" 
-                           RenderOptions.BitmapScalingMode="Fant"                    
+                           Style="{DynamicResource ImagenSeleccionarResumen}"                   
                            ToolTip="Pulsa para abrir la ubicación en el explorador"/>
                 </Button>
                 
@@ -74,14 +74,10 @@
                     <TextBox x:Name="UrlTextBox"
                              Text="{Binding Resumen.ManualUrl}"
                              TextChanged="UrlTextBox_TextChanged"
-                             MaxWidth="400"
-                             TextWrapping="Wrap"
                              Style="{DynamicResource UrlManualTextBox}"/>
                     <Button>
                         <Image Source="/images/icons/icons8-web.png" 
-                               Width="25" 
-                               Stretch="Uniform" 
-                               RenderOptions.BitmapScalingMode="Fant"
+                               Style="{DynamicResource ImagenUrlButton}"
                                ToolTip="Pulsa para abrir en el navegador la dirección web introducida"/>
                     </Button>
                 </StackPanel>
@@ -89,16 +85,14 @@
             <WrapPanel HorizontalAlignment="Center">
                 <Button x:Name="AnadirButton" 
                         Content="Añadir" 
-                        IsEnabled="False"
-                        Click="AnadirButton_Click"
-                        Margin="5"/>
+                        Style="{DynamicResource BotonFormulario}"
+                        Click="AnadirButton_Click"/>
                 <Button x:Name="EditarButton" 
-                        IsEnabled="False"
-                        Content="Editar"  
-                        Margin="5"/>
+                        Style="{DynamicResource BotonFormulario}"
+                        Content="Editar"/>
                 <Button x:Name="CancelarButton" 
                         Content="Cancelar"  
-                        Margin="5"/>
+                        Style="{DynamicResource BotonCancelar}"/>
             </WrapPanel>
         </StackPanel>
     </Grid>

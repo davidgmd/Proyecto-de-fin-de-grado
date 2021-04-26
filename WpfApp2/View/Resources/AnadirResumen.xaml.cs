@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -29,7 +30,7 @@ namespace ElEscribaDelDJ.View.Resources
             this.Resumenes = listaresumenes;
             this.DataContext = this;
 
-            if (uc is null)
+            if (indice == 0)
                 AnadirButton.IsEnabled = true;
             else
                 EditarButton.IsEnabled = true;
@@ -70,6 +71,16 @@ namespace ElEscribaDelDJ.View.Resources
             }
         }
 
+        public void ValidarCampoNumerico(TextBox pagina)
+        {
+            if (pagina.Text.Equals("0"))
+                pagina.Text = "1";
+
+            if (!camposcorrectos.Contains(pagina.Name))
+                camposcorrectos.Add(pagina.Name);
+            pagina.BorderBrush = Brushes.Green;
+        }
+
         private void NombreAMostrarTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             ValidarCampo((TextBox)sender, Brushes.Red);
@@ -77,7 +88,7 @@ namespace ElEscribaDelDJ.View.Resources
 
         private void EtiquetasTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ValidarCampo((TextBox)sender, Brushes.Red);
+            ValidarCampo((TextBox)sender,Brushes.Red);
         }
 
         private void DescripcionTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -87,7 +98,7 @@ namespace ElEscribaDelDJ.View.Resources
 
         private void PaginaTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ValidarCampo((TextBox)sender, Brushes.Red);
+            ValidarCampoNumerico((TextBox)sender);
         }
 
         private void ManualTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -141,6 +152,39 @@ namespace ElEscribaDelDJ.View.Resources
         {
             SelectorArchivos seleccionararchivo = new SelectorArchivos();
             this.Resumen.Manual = seleccionararchivo.SeleccionarArchivo("Documentos");
+        }
+
+        private void EtiquetasTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox etiquetas = (TextBox)sender;
+            //Eliminamos todos los espacios en blanco incluidos los que haya entre palabras (trim solo elimina al principio o al final)
+            string nuevo_texto = etiquetas.Text.Replace(" ", "");
+            //todos en los que haya más de una , sin ningún caracter entre medio se sustituyen por una sola coma.
+            nuevo_texto = Regex.Replace(nuevo_texto, @"[\,]{2,}", ",");
+            //si hay una , al final se elimina
+            nuevo_texto = Regex.Replace(nuevo_texto, @"[\,]$", "");
+            etiquetas.Text = nuevo_texto;
+        }
+
+        private void PaginaTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox pagina = (TextBox)sender;
+            //Eliminamos todos los espacios en blanco incluidos los que haya entre palabras (trim solo elimina al principio o al final)
+            string nuevo_texto = pagina.Text.Replace(" ", "");
+            if (pagina.Text.Equals(""))
+            {
+                pagina.Text = "1";
+            }
+            else { 
+                //Elimina todo lo que no sea un numero
+                nuevo_texto = Regex.Replace(nuevo_texto, @"\D+", "");
+                //si hay algún 0 a la izquierda lo elimina
+                nuevo_texto = Regex.Replace(nuevo_texto, @"^[0]+", "");
+                //si solo queda un espacio en blanco se cambia a 1
+                if (nuevo_texto.Equals(""))
+                    nuevo_texto = "1";
+                pagina.Text = nuevo_texto;
+            }
         }
     }
 }
