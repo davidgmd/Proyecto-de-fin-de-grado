@@ -83,6 +83,7 @@
     <Page Remove="Idiomas\EN\View\MainMenu.xaml" />
     <Page Remove="Idiomas\EN\View\Options\VentanaOpciones.xaml" />
     <Page Remove="Idiomas\EN\View\Resources\AnadirArchivo.xaml" />
+    <Page Remove="Idiomas\EN\View\Resources\AnadirResumen.xaml" />
     <Page Remove="Idiomas\EN\View\Resources\MenuRecursos.xaml" />
     <Page Remove="Idiomas\EN\View\Resources\PanelMostrarArchivos.xaml" />
     <Page Remove="Idiomas\EN\View\Roller\VentanaModal.xaml" />
@@ -388,6 +389,13 @@
     <Folder Include="Images\User\" />
     <Folder Include="Usuarios\Archivos\" />
     <Folder Include="View\Options\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Idiomas\EN\View\Resources\AnadirResumen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

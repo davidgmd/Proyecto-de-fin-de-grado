@@ -1,0 +1,37 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Titulo -->
+    <system:String x:Key="WindowsTitle">AñadirResumen</system:String>
+
+    <!-- Texto cabecera -->
+    <system:String x:Key="HeaderText">Complete todos los campos excepto manual o url manual, de dichos campos debe completar uno de ellos o ambos</system:String>
+
+    <!-- Campos del formulario -->
+    <system:String x:Key="NameToShowLabel">Nombre a mostrar:</system:String>
+    <system:String x:Key="LabelsLabel">Etiquetas:</system:String>
+    <system:String x:Key="ReferenceToLabel">Hace referencia a:</system:String>
+    <system:String x:Key="DescriptionLabel">Descripcion:</system:String>
+    <system:String x:Key="PageLabel">Pagina:</system:String>
+    <system:String x:Key="BookLabel">Manual:</system:String>
+    <system:String x:Key="BookUrlLabel">Url Manual:</system:String>
+
+    <!-- Botones formulario -->
+    <system:String x:Key="AddButton">Añadir</system:String>
+    <system:String x:Key="EditButton">Editar</system:String>
+    <system:String x:Key="CancelButton">Cancelar</system:String>
+    
+    <!-- Tooltips-->
+    <system:String x:Key="LabelsToolTip">El formato del campo debería ser palabra coma palabra, si esta erroneo intentara arreglarse si pulsa en otro campo</system:String>
+    <system:String x:Key="PageToolTip">El formato del campo debería ser solo digitos que no empiecen por 0, si esta erroneo intentara arreglarse si pulsa en otro campo</system:String>
+    <system:String x:Key="SelectFileToolTip">Pulse el boton para buscar el archivo en el explorador de archivos</system:String>
+    <system:String x:Key="OpenUrlInWebBrowserToolTip">Pulse el boton para abrir la Url en su navegador predeterminado</system:String>
+    
+    <!-- Mensaje confirmación -->
+    <system:String x:Key="FieldsRightMessage">Resumen añadido con exito:</system:String>
+
+    <!-- Error Campos -->
+    <system:String x:Key="MissingFieldsError">Falta alguno de los campos obligatorios o estan incorrectos:</system:String>
+
+</ResourceDictionary>

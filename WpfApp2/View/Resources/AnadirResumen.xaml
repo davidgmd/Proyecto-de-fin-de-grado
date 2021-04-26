@@ -5,33 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElEscribaDelDJ.View.Resources"
         mc:Ignorable="d"
-        Title="AnadirResumen" 
+        Title="{DynamicResource WindowsTitle}" 
         SizeToContent="WidthAndHeight">
 
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../../Resources/View/Resources/AnadirResumen.xaml"/>
-                <ResourceDictionary Source="../../Idiomas/ES/View/Resources/AnadirArchivo.xaml"/>
+                <ResourceDictionary Source="../../Idiomas/ES/View/Resources/AnadirResumen.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
 
     <Grid>
         <StackPanel>
-            <TextBlock Text="Debe introducirse todos los campos en rojo y la ubicación del archivo o su url, el campo etiquetas debe ir separado por comas"      
+            <TextBlock Text="{DynamicResource HeaderText}"      
                        Style="{DynamicResource EncabezadoTextBlock}"/>
             <WrapPanel>
-                <Label Content="Nombre resumen"/>
+                <Label Content="{DynamicResource NameToShowLabel}"/>
                 <TextBox x:Name="NombreAMostrarTextBox" 
                          Text="{Binding Resumen.Nombre}"
                          TextChanged="NombreAMostrarTextBox_TextChanged"/>
-                <Label Content="Etiquetas"/>
+                <Label Content="{DynamicResource LabelsLabel}"/>
                 <TextBox Name="EtiquetasTextBox" 
                          Text="{Binding Resumen.Etiquetas}"
                          TextChanged="EtiquetasTextBox_TextChanged"
-                         LostFocus="EtiquetasTextBox_LostFocus"/>
-                <Label Content="Relacionado con"/>
+                         LostFocus="EtiquetasTextBox_LostFocus"
+                         ToolTip="{DynamicResource LabelsToolTip}"/>
+                <Label Content="{DynamicResource ReferenceToLabel}"/>
                 <ComboBox x:Name="ComboBoxTiposAventura"
                           ItemsSource="{Binding TiposAventuras}"
                           IsSynchronizedWithCurrentItem="True"
@@ -40,7 +41,7 @@
 
             <WrapPanel>
                 <StackPanel>
-                    <Label Content="Descripción"/>
+                    <Label Content="{DynamicResource DescriptionLabel}"/>
                     <TextBox x:Name="DescripcionTextBox"
                              Text="{Binding Resumen.Descripcion}"
                              TextChanged="DescripcionTextBox_TextChanged"
@@ -49,14 +50,15 @@
             </WrapPanel>
 
             <WrapPanel>
-                <Label Content="Pagina"/>
+                <Label Content="{DynamicResource PageLabel}"/>
                 <TextBox x:Name="PaginaTextBox"
                          Text="{Binding Resumen.Pagina}"
                          TextChanged="PaginaTextBox_TextChanged"
-                         LostFocus="PaginaTextBox_LostFocus"/>
+                         LostFocus="PaginaTextBox_LostFocus"
+                         ToolTip="{DynamicResource PageToolTip}"/>
             </WrapPanel>
             <WrapPanel>
-                <Label Content="Manual"/>
+                <Label Content="{DynamicResource BookLabel}"/>
                 <TextBox x:Name="ManualTextBox" 
                          Text="{Binding Resumen.Manual}"
                          TextChanged="ManualTextBox_TextChanged"
@@ -66,11 +68,11 @@
                         Style="{DynamicResource SeleccionarResumenButton}">
                     <Image Source="/images/icons/icons8-folder.png" 
                            Style="{DynamicResource ImagenSeleccionarResumen}"                   
-                           ToolTip="Pulsa para abrir la ubicación en el explorador"/>
+                           ToolTip="{DynamicResource SelectFileToolTip}"/>
                 </Button>
                 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Url Manual"/>
+                    <Label Content="{DynamicResource BookUrlLabel}"/>
                     <TextBox x:Name="UrlTextBox"
                              Text="{Binding Resumen.ManualUrl}"
                              TextChanged="UrlTextBox_TextChanged"
@@ -78,20 +80,20 @@
                     <Button>
                         <Image Source="/images/icons/icons8-web.png" 
                                Style="{DynamicResource ImagenUrlButton}"
-                               ToolTip="Pulsa para abrir en el navegador la dirección web introducida"/>
+                               ToolTip="{DynamicResource OpenUrlInWebBrowserToolTip}"/>
                     </Button>
                 </StackPanel>
             </WrapPanel>
             <WrapPanel HorizontalAlignment="Center">
                 <Button x:Name="AnadirButton" 
-                        Content="Añadir" 
+                        Content="{DynamicResource AddButton}" 
                         Style="{DynamicResource BotonFormulario}"
                         Click="AnadirButton_Click"/>
                 <Button x:Name="EditarButton" 
                         Style="{DynamicResource BotonFormulario}"
-                        Content="Editar"/>
+                        Content="{DynamicResource EditButton}"/>
                 <Button x:Name="CancelarButton" 
-                        Content="Cancelar"  
+                        Content="{DynamicResource CancelButton}"  
                         Style="{DynamicResource BotonCancelar}"/>
             </WrapPanel>
         </StackPanel>

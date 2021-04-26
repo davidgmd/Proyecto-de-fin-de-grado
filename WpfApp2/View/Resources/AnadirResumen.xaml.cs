@@ -34,6 +34,8 @@ namespace ElEscribaDelDJ.View.Resources
                 AnadirButton.IsEnabled = true;
             else
                 EditarButton.IsEnabled = true;
+
+            ConfiguracionPagina.DefinirIdioma(this, "Resources");
             
         }
 
@@ -135,6 +137,7 @@ namespace ElEscribaDelDJ.View.Resources
                 }               
 
                 this.Resumenes.Add(Resumen);
+                MessageBox.Show(this.FindResource("FieldsRightMessage").ToString());
             }
             else
             {
@@ -145,7 +148,7 @@ namespace ElEscribaDelDJ.View.Resources
 
         public void MostrarError()
         {
-            MessageBox.Show("Faltan algunos o todos los campos esenciales");
+            MessageBox.Show(this.FindResource("MissingFieldsError").ToString());
         }
 
         private void AbrirExploradorBoton_Click(object sender, RoutedEventArgs e)

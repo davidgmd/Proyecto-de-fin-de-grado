@@ -3,7 +3,7 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <!-- Titulo -->
-    <system:String x:Key="WindowsTitle">FileAdd</system:String>
+    <system:String x:Key="WindowsTitle">AddFile</system:String>
 
     <!-- Texto cabecera -->
     <system:String x:Key="HeaderText">You must specify the name to show and select the file location and/or the url</system:String>
