@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:ElEscribaDelDJ.View.Resources"
         mc:Ignorable="d"
         Title="{DynamicResource WindowsTitle}" 
-        SizeToContent="WidthAndHeight">
+        SizeToContent="WidthAndHeight"
+        Loaded="Window_Loaded">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -91,10 +92,12 @@
                         Click="AnadirButton_Click"/>
                 <Button x:Name="EditarButton" 
                         Style="{DynamicResource BotonFormulario}"
-                        Content="{DynamicResource EditButton}"/>
+                        Content="{DynamicResource EditButton}"
+                        Click="EditarButton_Click"/>
                 <Button x:Name="CancelarButton" 
                         Content="{DynamicResource CancelButton}"  
-                        Style="{DynamicResource BotonCancelar}"/>
+                        Style="{DynamicResource BotonCancelar}"
+                        Click="CancelarButton_Click"/>
             </WrapPanel>
         </StackPanel>
     </Grid>

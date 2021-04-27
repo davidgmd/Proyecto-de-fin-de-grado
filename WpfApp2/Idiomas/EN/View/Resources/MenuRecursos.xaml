@@ -3,7 +3,7 @@
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <!-- Titulo -->
-    <system:String x:Key="WindowsTitle">ResourceMenu</system:String>
+    <system:String x:Key="WindowsResourcesTitle">ResourceMenu</system:String>
     
     <!-- Seccion Archivos/Documentos -->
     <system:String x:Key="DocumentsTitle">Files/Documents</system:String>

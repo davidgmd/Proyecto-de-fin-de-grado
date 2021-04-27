@@ -42,9 +42,10 @@
                 </StackPanel>
             </Button>
 
-            <Button IsEnabled="False" 
+            <Button x:Name="BotonEditar" IsEnabled="False" 
                 Background="Transparent" 
-                BorderThickness="0">
+                BorderThickness="0"
+                    Click="BotonEditar_Click">
                 <StackPanel >
                     <Image Source="/Images/icons/icons8-pencil.png" 
                            Width="25" 
@@ -53,10 +54,11 @@
                 </StackPanel>
             </Button>
 
-            <Button  
+            <Button x:Name="BotonEliminar" 
                 Background="Transparent" 
                 BorderThickness="0"
-                IsEnabled="False">
+                IsEnabled="False"
+                    Click="BotonEliminar_Click">
                 <StackPanel >
                     <Image Source="/Images/icons/icons8-delete.png" 
                            Width="25" 

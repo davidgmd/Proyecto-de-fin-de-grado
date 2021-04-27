@@ -140,6 +140,7 @@ namespace ElEscribaDelDJ.Classes
         public void EliminarResumen(int indice)
         {
             DatosAplicacion.CampanaSeleccionada.Recursos.Resumenes.RemoveAt(indice);
+            RecursosAplicacion.SesionUsuario.ReemplazarCampana();
         }
     }
 }

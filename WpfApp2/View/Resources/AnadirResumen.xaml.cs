@@ -23,19 +23,24 @@ namespace ElEscribaDelDJ.View.Resources
     /// </summary>
     public partial class AnadirResumen : Window
     {
-        public AnadirResumen(ObservableCollection<Resumenes> listaresumenes, Resumen_reglas uc = null, int indice = 0)
+        public AnadirResumen(ObservableCollection<Resumenes> listaresumenes, Resumenes resumen = null, int indice = -1)
         {
             InitializeComponent();
             Inicializar();
             this.Resumenes = listaresumenes;
             this.DataContext = this;
 
-            if (indice == 0)
+            if (indice == -1)
                 AnadirButton.IsEnabled = true;
             else
+            {
                 EditarButton.IsEnabled = true;
+                this.Resumen = resumen;
+                this.Indice = indice;
+            }
+                
 
-            ConfiguracionPagina.DefinirIdioma(this, "Resources");
+            
             
         }
 
@@ -43,6 +48,7 @@ namespace ElEscribaDelDJ.View.Resources
         public Resumenes Resumen { get; set; } = new Resumenes();
         public ObservableCollection<Resumenes> Resumenes;
         public List<string> camposcorrectos = new List<string>();
+        public int Indice;
 
         public void Inicializar()
         {
@@ -117,9 +123,6 @@ namespace ElEscribaDelDJ.View.Resources
         {
             if (camposcorrectos.Count >= 5)
             {
-                Campana campana = (Campana)ComboBoxTiposAventura.SelectedItem;
-                Resumen.NombreTipoAventura = campana.Nombre;
-
                 if (ComboBoxTiposAventura.SelectedIndex == 0)
                 {
                     Resumen.TipoAventura = "Campana";
@@ -188,6 +191,45 @@ namespace ElEscribaDelDJ.View.Resources
                     nuevo_texto = "1";
                 pagina.Text = nuevo_texto;
             }
+        }
+
+        private void EditarButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (camposcorrectos.Count >= 5)
+            {
+                if (ComboBoxTiposAventura.SelectedIndex == 0)
+                {
+                    Resumen.TipoAventura = "Campana";
+                    DatosAplicacion.CampanaSeleccionada.EditarResumen(Resumen, this.Indice);
+                }
+                else if (ComboBoxTiposAventura.SelectedIndex == 1)
+                {
+                    Resumen.TipoAventura = "Escenario";
+                    DatosAplicacion.EscenarioSeleccionado.EditarResumen(Resumen, this.Indice);
+                }
+                else
+                {
+                    Resumen.TipoAventura = "Aventura";
+                    DatosAplicacion.AventuraSeleccionada.EditarResumen(Resumen, this.Indice);
+                }
+
+                this.Resumenes.Add(Resumen);
+                MessageBox.Show(this.FindResource("FieldsRightMessage").ToString());
+            }
+            else
+            {
+                MostrarError();
+            }
+        }
+
+        private void CancelarButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ConfiguracionPagina.DefinirIdioma(this, "Resources");
         }
     }
 }

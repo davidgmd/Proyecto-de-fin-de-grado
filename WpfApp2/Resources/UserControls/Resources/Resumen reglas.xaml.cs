@@ -42,7 +42,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             foreach (Resumenes resumen in DatosAplicacion.CampanaSeleccionada.Recursos.Resumenes)
             {
                 resumen.NombreTipoAventura = DatosAplicacion.CampanaSeleccionada.Nombre;
-                resumen.TipoAventura = "Campaña";
+                resumen.TipoAventura = "Campana";
                 ListaResumenes.Add(resumen);
                 Indices.Add(resumen.Nombre, indicereal);
                 indicereal++;
@@ -86,16 +86,36 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             ResumenesListView.ItemsSource = ListaResumenes;
         }
 
-        public void ActualizarLista()
+        private void ResumenesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListaResumenes[ResumenesListView.SelectedIndex] = (Resumenes)ResumenesListView.SelectedItem;
-            Resumenes resumen = (Resumenes)ResumenesListView.SelectedItem;
-            AnadirResumen editar = new AnadirResumen(listaresumenes:ListaResumenes,indice:Indices[resumen.Nombre]);
+            if (ResumenesListView.SelectedIndex >= 0) 
+            { 
+                BotonEditar.IsEnabled = true;
+                BotonEliminar.IsEnabled = true;
+            }
+            else
+            {
+                BotonEditar.IsEnabled = false;
+                BotonEliminar.IsEnabled = false;
+            }
         }
 
-        public void RemoverDeLaLista()
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            ListaResumenes.RemoveAt(ResumenesListView.SelectedIndex);
+            AnadirResumen anadir = new AnadirResumen(ListaResumenes);
+            anadir.ShowDialog();
+        }
+
+        private void BotonEditar_Click(object sender, RoutedEventArgs e)
+        {
+            Resumenes resumen = (Resumenes)ResumenesListView.SelectedItem;
+            AnadirResumen editar = new AnadirResumen(ListaResumenes, resumen, Indices[resumen.Nombre]);
+            editar.ShowDialog();
+        }
+
+        private void BotonEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            
             Resumenes resumen = (Resumenes)ResumenesListView.SelectedItem;
             switch (resumen.TipoAventura)
             {
@@ -113,17 +133,8 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
                 default:
                     break;
             }
-        }
 
-        private void ResumenesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            MessageBox.Show("Seleccionado " + ResumenesListView.SelectedItem);
-        }
-
-        private void AddButton_Click(object sender, RoutedEventArgs e)
-        {
-            AnadirResumen anadir = new AnadirResumen(ListaResumenes);
-            anadir.ShowDialog();
+            ListaResumenes.RemoveAt(ResumenesListView.SelectedIndex);
         }
     }
 }

@@ -23,6 +23,8 @@ namespace ElEscribaDelDJ.View.Resources
         {
             InitializeComponent();
             ConfiguracionPagina.DefinirIdioma(this, "Resources");
+            if (ConfiguracionAplicacion.Default.Idioma.Equals("EN"))
+                this.Title = "ResourcesMenu";
             RefrescarUcs();
             
         }

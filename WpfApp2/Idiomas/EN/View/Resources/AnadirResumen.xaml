@@ -29,9 +29,9 @@
     <system:String x:Key="OpenUrlInWebBrowserToolTip">Press the button to open the url in your default web browser</system:String>
 
     <!-- Mensaje confirmación -->
-    <system:String x:Key="FieldsRightMessage">Summary Added Sucessfully:</system:String>
+    <system:String x:Key="FieldsRightMessage">Summary Added Sucessfully</system:String>
 
     <!-- Error Campos -->
-    <system:String x:Key="MissingFieldsError">Some or all the required fields are wrong or missing:</system:String>
+    <system:String x:Key="MissingFieldsError">Some or all the required fields are wrong or missing</system:String>
 
 </ResourceDictionary>

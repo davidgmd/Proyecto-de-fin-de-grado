@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ElEscribaDelDJ.View.Resources"
         xmlns:uc="clr-namespace:ElEscribaDelDJ.Resources.UserControls.Resources"
         mc:Ignorable="d"
-        Title="{DynamicResource WindowsTitle}"
+        Title="MenuRecursos"
         WindowStartupLocation="CenterOwner"
         WindowState="Maximized"
         Background="DarkRed"
