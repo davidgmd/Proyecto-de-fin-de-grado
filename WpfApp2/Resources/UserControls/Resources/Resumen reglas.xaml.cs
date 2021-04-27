@@ -26,13 +26,12 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         {
             InitializeComponent();
             Inicializar();
-            //recursos.Add(new Recursos() { NombreRecurso = "Jane Doe", Age = 39, Mail = "jane@doe-family.com" });
-            //recursos.Add(new Recursos() { NombreRecurso = "Sammy Doe", Age = 13, Mail = "sammy.doe@gmail.com" });
             
         }
 
         public ObservableCollection<Resumenes> ListaResumenes { get; set; } = new ObservableCollection<Resumenes>();
-        public Dictionary<string, int> Indices = new Dictionary<string, int>(); 
+        public Dictionary<string, int> Indices = new Dictionary<string, int>();
+        public CollectionView view;
 
 
         public void Inicializar()
@@ -84,7 +83,28 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
 
             //Vincula el listview con la lista para que aparezcan sus miembros
             ResumenesListView.ItemsSource = ListaResumenes;
+
+            view = (CollectionView)CollectionViewSource.GetDefaultView(ResumenesListView.ItemsSource);
+            view.Filter = UserFilter;
         }
+
+        private bool UserFilter(object item)
+        {
+            if (String.IsNullOrEmpty(BuscadorResumenesTextBox.Text))
+                return true;
+            else
+                return ((item as Resumenes).Nombre.IndexOf(BuscadorResumenesTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+        private bool LabelsFilter(object item)
+        {
+            if (String.IsNullOrEmpty(BuscadorResumenesTextBox.Text))
+                return true;
+            else
+                return ((item as Resumenes).Etiquetas.IndexOf(BuscadorResumenesTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+        }
+
+
 
         private void ResumenesListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -135,6 +155,35 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             }
 
             ListaResumenes.RemoveAt(ResumenesListView.SelectedIndex);
+        }
+
+        private void BuscadorResumenesTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(ResumenesListView.ItemsSource).Refresh();
+        }
+
+        private void BotonFiltro_Click(object sender, RoutedEventArgs e)
+        {
+            if (NombreFiltroTextBlock.Text.ToLower().Contains("nombre"))
+            {
+                this.view.Filter = LabelsFilter;
+                this.NombreFiltroTextBlock.Text = "Buscar por etiquetas";
+            }
+            else if (NombreFiltroTextBlock.Text.ToLower().Contains("name"))
+            {
+                this.view.Filter = LabelsFilter;
+                this.NombreFiltroTextBlock.Text = "Search for labels";
+            }
+            else if (NombreFiltroTextBlock.Text.ToLower().Contains("etiquetas"))
+            {
+                this.view.Filter = UserFilter;
+                this.NombreFiltroTextBlock.Text = "Buscar por nombre";
+            }
+            else
+            {
+                this.view.Filter = UserFilter;
+                this.NombreFiltroTextBlock.Text = "Search for name";
+            }
         }
     }
 }

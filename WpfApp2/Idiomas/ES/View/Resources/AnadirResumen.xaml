@@ -29,7 +29,7 @@
     <system:String x:Key="OpenUrlInWebBrowserToolTip">Pulse el boton para abrir la Url en su navegador predeterminado</system:String>
     
     <!-- Mensaje confirmación -->
-    <system:String x:Key="FieldsRightMessage">Resumen añadido con exito:</system:String>
+    <system:String x:Key="FieldsRightMessage">Operacion completada con exito</system:String>
 
     <!-- Error Campos -->
     <system:String x:Key="MissingFieldsError">Falta alguno de los campos obligatorios o estan incorrectos:</system:String>

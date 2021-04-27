@@ -14,6 +14,11 @@
                     <Setter Property="Cursor" Value="Hand" />
                 </Trigger>
             </Style.Triggers>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
         </Style>
     </UserControl.Resources>
     
@@ -40,7 +45,11 @@
                         <TextBlock Text="Relacionada con:" TextDecorations="Underline"/>
                         <TextBlock Text="{Binding NombreTipoAventura}" FontWeight="SemiBold"/>
                         <TextBlock Text="Descripción:" TextDecorations="Underline"/>
-                        <TextBlock Text="{Binding Descripcion}" TextWrapping="Wrap"  MaxWidth="500" HorizontalAlignment="Left"/>
+                        <TextBlock Text="{Binding Descripcion}" 
+                                   FontSize="16"
+                                   TextWrapping="Wrap"  
+                                   MaxWidth="500" 
+                                   HorizontalAlignment="Left"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">

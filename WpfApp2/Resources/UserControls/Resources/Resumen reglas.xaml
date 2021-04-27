@@ -21,10 +21,27 @@
 
         <StackPanel Margin="5,0,5,0">
             <TextBlock Text="Buscador Reglas"/>
-            <TextBox HorizontalContentAlignment="Stretch" 
+            <StackPanel Orientation="Horizontal">
+            <TextBox x:Name="BuscadorResumenesTextBox" 
+                     TextChanged="BuscadorResumenesTextBox_TextChanged"
+                     HorizontalContentAlignment="Stretch" 
                      HorizontalAlignment="Stretch" 
                      VerticalAlignment="Stretch" 
                      MinWidth="350"/>
+
+                <Button x:Name="BotonFiltro" 
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Margin="5,0,5,0"
+                        Click="BotonFiltro_Click">
+                    <TextBlock x:Name="NombreFiltroTextBlock" 
+                               Text="Filtrar por nombre"  
+                               FontWeight="Light" 
+                               FontFamily="Calibri"
+                               MaxWidth="60" 
+                               TextWrapping="Wrap"/>
+                </Button>
+            </StackPanel>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal"
