@@ -65,12 +65,15 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
                 //Introducimos una separación en el log
                 sw.WriteLine("");
 
+                string[] lineas = System.IO.File.ReadAllLines(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log");
+
+                if (lineas.Length <= 500) 
                 //Para que en vez de estar añadido al final, lo este al principio y tengamos ordenados los logins
                 //Del más reciente al más antiguo, anidamos las lineas originales tras escribir las nuevas
-                foreach (string linea in System.IO.File.ReadAllLines(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log"))
-                {
-                    sw.WriteLine(linea);
-                }               
+                    foreach (string linea in lineas)
+                    {
+                        sw.WriteLine(linea);
+                    }               
             }
 
             //Sustituimos el login original por el nuevo y se crea una copia de seguridad por si ocurriera algún error que sera un .back
