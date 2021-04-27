@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,6 +35,17 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
                 StackPanelDetalles.Visibility = Visibility.Collapsed;
                 ImagenBotonMasDetalles.Source = new BitmapImage(new Uri("/images/icons/iconoMas.png", UriKind.Relative));
             }
+        }
+
+        private void ManualTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Process.Start("explorer.exe", this.ManualTextBlock.Text);
+        }
+
+        private void UrlTextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            string url = this.UrlTextBlock.Text.Replace("&", "^&");
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
         }
     }
 }

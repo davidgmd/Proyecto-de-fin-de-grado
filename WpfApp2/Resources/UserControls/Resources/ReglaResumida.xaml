@@ -53,16 +53,30 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Pagina:" TextDecorations="Underline"/>
-                        <TextBlock Text="{Binding Pagina}"/>
-                        <TextBlock Margin="5,0,0,0" Text="Manual:" TextDecorations="Underline"/>
-                        <TextBlock Margin="5,0,0,0" Text="{Binding Manual}" Foreground="Blue" Style="{DynamicResource ManualTextBlock}"/>
+                        <TextBlock x:Name="PaginaTextBlock" 
+                                   Text="Pagina:" 
+                                   TextDecorations="Underline"/>
+                        <TextBlock x:Name="ValorPaginaTextBlock" Text="{Binding Pagina}"/>
+                        <TextBlock Margin="5,0,0,0" 
+                                   Text="Manual:" 
+                                   TextDecorations="Underline"/>
+                        <TextBlock x:Name="ManualTextBlock" 
+                                   Margin="5,0,0,0" 
+                                   Text="{Binding Manual}" 
+                                   Foreground="Blue" 
+                                   Style="{DynamicResource ManualTextBlock}"
+                                   MouseDown="ManualTextBlock_MouseDown"/>
 
                     </StackPanel>
 
                     <StackPanel>
                         <TextBlock Text="Url:" TextDecorations="Underline"/>
-                        <TextBlock Text="{Binding ManualUrl}" Foreground="Blue" TextDecorations="Underline" Style="{DynamicResource ManualTextBlock}"/>
+                        <TextBlock x:Name="UrlTextBlock" 
+                                   Text="{Binding ManualUrl}" 
+                                   Foreground="Blue" 
+                                   TextDecorations="Underline" 
+                                   Style="{DynamicResource ManualTextBlock}"
+                                   MouseDown="UrlTextBlock_MouseDown"/>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
