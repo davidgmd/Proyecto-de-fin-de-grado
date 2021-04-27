@@ -47,14 +47,15 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             //creamos un archivo temporal que luego sera eliminado, esto es simplemente para poder anidar al inicio
             using (StreamWriter sw = File.AppendText(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".temp"))
             {
-                //instruccion muy útil pero actualmente no usada
-                //Employee e = (Employee)line; // unbox once
-
                 //Primero escribimos el titulo
                 StringBuilder texto = new StringBuilder();
                 sw.WriteLine("[" + titulolog + "]");
                 //luego la fecha
-                sw.WriteLine(DateTime.Now.ToString("g", CultureInfo.CreateSpecificCulture("es-ES")));
+                string cultura = "es-ES";
+                if (ConfiguracionAplicacion.Default.Idioma.Equals("EN"))
+                    cultura = "en-GB";
+                sw.WriteLine(DateTime.Now.ToString("g", CultureInfo.CreateSpecificCulture(cultura)));
+
                 //los campos
                 foreach (string campo in camposlog)
                 {

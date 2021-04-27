@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Logs\**" />
+    <Page Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="ConfiguracionAplicacion.settings" />
     <None Remove="creditos.txt" />
     <None Remove="credits.txt" />
@@ -67,8 +74,6 @@
     <None Remove="Images\licencia.png" />
     <None Remove="Images\warhammer-removebg.png" />
     <None Remove="logodavid1.ico" />
-    <None Remove="Logs\login.back" />
-    <None Remove="Logs\login.log" />
     <None Remove="Settings.ini" />
     <None Remove="Utils\Credentials\googlecalendarcredentials.json" />
   </ItemGroup>
@@ -189,12 +194,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Idiomas\ES\View\Options\VentanaOpciones.xaml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Logs\login.back">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Logs\login.log">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Settings.ini">
