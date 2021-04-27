@@ -30,7 +30,7 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             set { camposlog = value; }
         }
 
-        public static DateTime FehacLog
+        public static DateTime FechaLog
         {
             get { return fechalog; }
             set { fechalog = value; }
@@ -42,7 +42,7 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             set { titulolog = value; }
         }
 
-        public static void GenerarLog(string titulolog, string[] camposlog, string nombrearchivo, string resultado)
+        public static void GenerarLog(string titulolog, string[] camposlog, string nombrearchivo)
         {
             //creamos un archivo temporal que luego sera eliminado, esto es simplemente para poder anidar al inicio
             using (StreamWriter sw = File.AppendText(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".temp"))
@@ -61,8 +61,7 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
                 {
                     sw.WriteLine(campo);
                 }
-                //el resultado
-                sw.WriteLine(resultado);
+
                 //Introducimos una separación en el log
                 sw.WriteLine("");
 
@@ -78,7 +77,7 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             System.IO.File.Replace(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".temp", RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log", RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".back");
         }
 
-        public static string[] LeerLog(string nombrearchivo, string exito, string fallo)
+        public static string[] LeerLog(string nombrearchivo)
         {
             List<String> campos = new List<String>();
             string linea;
@@ -95,41 +94,25 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
             {
                 return null;
             }
+
+            //Utilizamos using porque a si al acabar esta función el archivo se cierra automaticamente, buscamos el archivo de logs y lo leemos linea a linea
             using (StreamReader sr = new StreamReader(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log"))
             {
-                while ((linea = sr.ReadLine()) != null)
-                { 
-                    if (!linea.Equals(""))
-                    {
-                        Logs.titulolog = linea;
-                    }
-                    else
-                    {
-                        Logs.titulolog = sr.ReadLine();
-                    }
-                    
-                    Logs.fechalog = Convert.ToDateTime(sr.ReadLine());
+                //Leemos la 1ª linea que es el titulo del log y luego la segunda que es la fecha en la que se produjo
+                Logs.titulolog = sr.ReadLine();
+                Logs.fechalog = Convert.ToDateTime(sr.ReadLine());
 
-                    campos.Clear();
-                    while (!linea.Equals(exito) && !linea.Equals(fallo))
-                    {
-                        linea = sr.ReadLine();
-                        campos.Add(linea);                        
-                    }
-                    Logs.resultadolog = linea;
+                //Limpiamos los campos por si acaso
+                campos.Clear();
 
-                    if (Logs.resultadolog.Equals(exito))
-                    {
-                        Logs.camposlog = campos.ToArray();
-                        return Logs.camposlog;
-                    }
-                    else
-                    {
-                        return null;
-                    }
+                //Leemos todas las lineas que quedan hasta llegar al espacio en blanco que generamos entre logins
+                while ((linea = sr.ReadLine()) != "")
+                {
+                    campos.Add(linea);
                 }
 
-                return null;
+                Logs.camposlog = campos.ToArray();
+                return Logs.camposlog;
             }
         }
 

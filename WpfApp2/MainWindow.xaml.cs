@@ -73,7 +73,7 @@ namespace ElEscribaDelDJ
             if (ConfiguracionAplicacion.Default.RecordarUsuario)
             {
                 this.RememberUserCheck.IsChecked = true;
-                string[] ultimologin = Logs.LeerLog("login", "Login exitoso", this.FindResource("ErrorUser").ToString());
+                string[] ultimologin = Logs.LeerLog("login");
                 if (ultimologin != null)
                 {
                     this.userText.Text = ultimologin[0];
@@ -82,7 +82,7 @@ namespace ElEscribaDelDJ
             else
             {
                 this.RememberLoginCheck.IsChecked = true;
-                string[] ultimologin = Logs.LeerLog("login", "Login exitoso", this.FindResource("ErrorUser").ToString());
+                string[] ultimologin = Logs.LeerLog("login");
                 if (ultimologin != null)
                 {
                     this.userText.Text = ultimologin[0];
@@ -262,7 +262,7 @@ namespace ElEscribaDelDJ
 
                 //generamos el log como exitoso
                 System.Windows.MessageBox.Show(this.FindResource("RightLogin").ToString());
-                Logs.GenerarLog("Intento de login", campos, "login", "Login exitoso");
+                Logs.GenerarLog("Intento de login", campos, "login");
 
                 //mostramos la ventana del menu
                 menuPrincipal ventanaPrincipal = new menuPrincipal();
@@ -273,7 +273,7 @@ namespace ElEscribaDelDJ
             {
                 //generamos el log como erroneo
                 System.Windows.MessageBox.Show(this.FindResource("ErrorUser").ToString());
-                Logs.GenerarLog("Intento de login", campos, "login", this.FindResource("ErrorUser").ToString());
+                Logs.GenerarLog("Intento de login", campos, "errorlogin");
             }
         }
 
