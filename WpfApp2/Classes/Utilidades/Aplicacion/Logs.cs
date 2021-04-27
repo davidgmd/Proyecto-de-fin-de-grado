@@ -67,7 +67,7 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
 
                 string[] lineas = System.IO.File.ReadAllLines(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log");
 
-                if (lineas.Length <= 500) 
+                if (lineas.Length <= 300) 
                 //Para que en vez de estar añadido al final, lo este al principio y tengamos ordenados los logins
                 //Del más reciente al más antiguo, anidamos las lineas originales tras escribir las nuevas
                     foreach (string linea in lineas)
