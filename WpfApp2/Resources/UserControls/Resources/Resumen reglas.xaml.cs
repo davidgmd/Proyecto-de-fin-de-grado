@@ -26,6 +26,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         {
             InitializeComponent();
             Inicializar();
+            Traducir();
             
         }
 
@@ -70,7 +71,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
                 }
 
             //Añade una de ejemplo por si no hay ninguna
-            ListaResumenes.Add(new Resumenes()
+            /*ListaResumenes.Add(new Resumenes()
             {
                 Nombre = "Regla transformación en garou",
                 Etiquetas = "Hombre lobo, garou, mundo de tinieblas",
@@ -79,13 +80,25 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
                 Pagina = 120,
                 Manual = "Hombre Lobo 20 aniversario",
                 ManualUrl = "http://www.meloinvento.com"
-            });
+            });*/
 
             //Vincula el listview con la lista para que aparezcan sus miembros
             ResumenesListView.ItemsSource = ListaResumenes;
 
             view = (CollectionView)CollectionViewSource.GetDefaultView(ResumenesListView.ItemsSource);
             view.Filter = UserFilter;
+        }
+
+        public void Traducir()
+        {
+            if (ConfiguracionAplicacion.Default.Idioma.Equals("EN"))
+            {
+                RulesSearcherTextBlock.Text = "Rules Search";
+                NombreFiltroTextBlock.Text = "Filter by name";
+                AddButtonTextBlock.Text = "Add";
+                EditButtonTextBlock.Text = "Edit";
+                DeleteButtonTextBlock.Text = "Delete";
+            }
         }
 
         private bool UserFilter(object item)
@@ -172,7 +185,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             else if (NombreFiltroTextBlock.Text.ToLower().Contains("name"))
             {
                 this.view.Filter = LabelsFilter;
-                this.NombreFiltroTextBlock.Text = "Search for labels";
+                this.NombreFiltroTextBlock.Text = "Filter by labels";
             }
             else if (NombreFiltroTextBlock.Text.ToLower().Contains("etiquetas"))
             {
@@ -182,7 +195,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             else
             {
                 this.view.Filter = UserFilter;
-                this.NombreFiltroTextBlock.Text = "Search for name";
+                this.NombreFiltroTextBlock.Text = "Filter by name";
             }
         }
     }

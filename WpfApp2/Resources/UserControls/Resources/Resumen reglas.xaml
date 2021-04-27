@@ -20,7 +20,8 @@
         </Grid.RowDefinitions>
 
         <StackPanel Margin="5,0,5,0">
-            <TextBlock Text="Buscador Reglas"/>
+            <TextBlock x:Name="RulesSearcherTextBlock" 
+                       Text="Buscador Reglas"/>
             <StackPanel Orientation="Horizontal">
             <TextBox x:Name="BuscadorResumenesTextBox" 
                      TextChanged="BuscadorResumenesTextBox_TextChanged"
@@ -55,7 +56,8 @@
                     <Image Source="/Images/icons/iconoMas.png" 
                            Width="25" 
                            HorizontalAlignment="Center"/>
-                    <TextBlock Text="Añadir"/>
+                    <TextBlock x:Name="AddButtonTextBlock" 
+                               Text="Añadir"/>
                 </StackPanel>
             </Button>
 
@@ -67,7 +69,8 @@
                     <Image Source="/Images/icons/icons8-pencil.png" 
                            Width="25" 
                            HorizontalAlignment="Center"/>
-                    <TextBlock Text="Editar"/>
+                    <TextBlock x:Name="EditButtonTextBlock" 
+                               Text="Editar"/>
                 </StackPanel>
             </Button>
 
@@ -80,7 +83,8 @@
                     <Image Source="/Images/icons/icons8-delete.png" 
                            Width="25" 
                            HorizontalAlignment="Center"/>
-                    <TextBlock Text="Eliminar"/>
+                    <TextBlock x:Name="DeleteButtonTextBlock" 
+                               Text="Eliminar"/>
                 </StackPanel>
             </Button>
 

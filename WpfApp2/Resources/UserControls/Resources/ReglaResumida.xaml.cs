@@ -22,6 +22,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         public ReglaResumida()
         {
             InitializeComponent();
+            Traducir();
         }
 
         private void BotonMasDetalles_Click(object sender, RoutedEventArgs e)
@@ -46,6 +47,18 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         {
             string url = this.UrlTextBlock.Text.Replace("&", "^&");
             Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+        }
+
+        public void Traducir()
+        {
+            NameToShowTextBlock.Text = "Name to Show:";
+            LabelsTextBlock.Text = "Labels:";
+            DetallesTextBlock.Text = "Details";
+            ReferenceToTextBlock.Text = "Makes references to:";
+            DescriptionTextBlock.Text = "Description:";
+            PaginaTextBlock.Text = "Page:";
+            BookTextBlock.Text = "Book";
+            UrlTextBlock.Text = "Book Url:";
         }
     }
 }

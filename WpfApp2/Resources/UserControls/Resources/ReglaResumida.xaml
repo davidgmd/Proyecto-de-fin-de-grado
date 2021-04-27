@@ -25,26 +25,48 @@
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Image Width="10" Source="/images/icons/icons8-select.png" Opacity="0.5"/>
-                <TextBlock Margin="5,0,0,0" Text= "Nombre:" TextDecorations="Underline"/>
-                <TextBlock Margin="5,0,0,0" Text="{Binding Nombre}" FontWeight="Bold"/>
-                <TextBlock Margin="5,0,0,0" Text= "Etiquetas:" TextDecorations="Underline"/>
-                <TextBlock Margin="5,0,0,0" Text="{Binding Etiquetas}" FontStyle="Italic"/>
+                <Image Width="10" 
+                       Source="/images/icons/icons8-select.png" 
+                       Opacity="0.5"/>
+                <TextBlock x:Name="NameToShowTextBlock" 
+                           Margin="5,0,0,0" 
+                           Text= "Nombre a mostrar:" 
+                           TextDecorations="Underline"/>
+                <TextBlock Margin="5,0,0,0" 
+                           Text="{Binding Nombre}" 
+                           FontWeight="Bold"/>
+                <TextBlock x:Name="LabelsTextBlock" 
+                           Margin="5,0,0,0" 
+                           Text= "Etiquetas:" 
+                           TextDecorations="Underline"/>
+                <TextBlock Margin="5,0,0,0" 
+                           Text="{Binding Etiquetas}" 
+                           FontStyle="Italic"/>
             </StackPanel>
 
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="BotonMasDetalles" Click="BotonMasDetalles_Click">
-                        <Image Width="10" x:Name="ImagenBotonMasDetalles" Source="/images/icons/iconoMas.png"/>
+                    <Button x:Name="BotonMasDetalles" 
+                            Click="BotonMasDetalles_Click">
+                        <Image x:Name="ImagenBotonMasDetalles" 
+                               Width="10"  
+                               Source="/images/icons/iconoMas.png"/>
                     </Button>
-                <TextBlock Margin="5,0,0,0" Text="Detalles"/>
+                <TextBlock x:Name="DetallesTextBlock" 
+                           Margin="5,0,0,0" 
+                           Text="Detalles"/>
                 </StackPanel>
                 
-                <StackPanel x:Name="StackPanelDetalles" Visibility="Collapsed">
+                <StackPanel x:Name="StackPanelDetalles" 
+                            Visibility="Collapsed">
                     <StackPanel>
-                        <TextBlock Text="Relacionada con:" TextDecorations="Underline"/>
-                        <TextBlock Text="{Binding NombreTipoAventura}" FontWeight="SemiBold"/>
-                        <TextBlock Text="Descripción:" TextDecorations="Underline"/>
+                        <TextBlock x:Name="ReferenceToTextBlock" Text="Hace referencia a:" 
+                                   TextDecorations="Underline"/>
+                        <TextBlock Text="{Binding NombreTipoAventura}" 
+                                   FontWeight="SemiBold"/>
+                        <TextBlock x:Name="DescriptionTextBlock" 
+                                   Text="Descripción:" 
+                                   TextDecorations="Underline"/>
                         <TextBlock Text="{Binding Descripcion}" 
                                    FontSize="16"
                                    TextWrapping="Wrap"  
@@ -56,8 +78,10 @@
                         <TextBlock x:Name="PaginaTextBlock" 
                                    Text="Pagina:" 
                                    TextDecorations="Underline"/>
-                        <TextBlock x:Name="ValorPaginaTextBlock" Text="{Binding Pagina}"/>
-                        <TextBlock Margin="5,0,0,0" 
+                        <TextBlock x:Name="ValorPaginaTextBlock" 
+                                   Text="{Binding Pagina}"/>
+                        <TextBlock x:Name="BookTextBlock" 
+                                   Margin="5,0,0,0" 
                                    Text="Manual:" 
                                    TextDecorations="Underline"/>
                         <TextBlock x:Name="ManualTextBlock" 

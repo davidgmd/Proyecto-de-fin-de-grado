@@ -114,9 +114,16 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         {
             if (ConfiguracionAplicacion.Default.Idioma.Equals("EN"))
             {
+                //traducimos el texto
                 UbicacionTextBlock.Text = "Location";
                 EditarTextBlock.Text = "Edit";
                 EliminarTextBlock.Text = "Delete";
+
+                //traducimos los tooltips
+                BotonArchivo.ToolTip = "Click here once to open the file";
+                NameToShowTextBlock.ToolTip = "Name to show no the real file name";
+                BotonUbicacion.ToolTip = "Open the file folder in the file explorer";
+                BotonUrl.ToolTip = "Open the url in your default web browser";
             }
         }
 
