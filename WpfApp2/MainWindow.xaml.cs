@@ -281,7 +281,7 @@ namespace ElEscribaDelDJ
         private void IdiomaEN_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ConfiguracionAplicacion.Default.Idioma = "EN";
-            ConfiguracionPagina.DefinirIdioma(this, "Login");
+            ConfiguracionPagina.DefinirIdioma(this, "Raiz");
             GuardarConfiguracion();
         }
 
@@ -289,7 +289,7 @@ namespace ElEscribaDelDJ
         private void IdiomaES_MouseDown(object sender, MouseButtonEventArgs e)
         {
             ConfiguracionAplicacion.Default.Idioma = "ES";
-            ConfiguracionPagina.DefinirIdioma(this, "Login");
+            ConfiguracionPagina.DefinirIdioma(this, "Raiz");
             GuardarConfiguracion();
         }
 
