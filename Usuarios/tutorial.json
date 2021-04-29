@@ -1,0 +1,33 @@
+{
+  "Correo": "y?Hi????\t8\f?R??k+U?9g?U??sh\u0015?2^\u0006",
+  "ListCampaigns": [
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "/Images/icons/D&D.png",
+      "Recursos": {
+        "Documentos": [],
+        "Resumenes": [],
+        "Lore": [],
+        "Media": [],
+        "Fichas": []
+      },
+      "Descripcion": "Base element for D&D 3.5 adventures",
+      "Nombre": "D&D3.5"
+    },
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "/Images/icons/warhammer-removebg.png",
+      "Recursos": {
+        "Documentos": [],
+        "Resumenes": [],
+        "Lore": [],
+        "Media": [],
+        "Fichas": []
+      },
+      "Descripcion": "Base element for warhammer 2º edition adventures",
+      "Nombre": "Warhammer 2ª edition"
+    }
+  ],
+  "NombreUsuario": "tutorial",
+  "Clave": "?0\u0003\u000e\u0010.???r??#u?T?\u0014\"M???P&^???O?n"
+}
