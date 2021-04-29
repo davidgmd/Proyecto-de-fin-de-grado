@@ -9,5 +9,8 @@
     <system:String x:Key="CampaignDescription">Descripción Campaña</system:String>
     <system:String x:Key="CampaignImage">Imagen Campaña</system:String>
     <system:String x:Key="CampaignSelectImage">Seleccionar Imagen</system:String>
+    
+    <!-- Error -->
+    <system:String x:Key="ErrorAlreadyExists">Esta campaña ya existe, introduzca otro nombre de campaña o descripción</system:String>
 
 </ResourceDictionary>

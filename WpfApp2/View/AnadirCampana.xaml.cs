@@ -116,7 +116,7 @@ namespace ElEscribaDelDJ.View
             }
             else
             {
-                MessageBox.Show("Esta campaña ya existe, introduzca otro nombre de campaña o descripción");
+                MessageBox.Show(this.FindResource("ErrorAlreadyExists").ToString());
             }
             
         }

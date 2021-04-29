@@ -65,6 +65,8 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
                 //Introducimos una separación en el log
                 sw.WriteLine("");
 
+                if (File.Exists(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log")) { 
+
                 string[] lineas = System.IO.File.ReadAllLines(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log");
 
                 if (lineas.Length <= 300) 
@@ -73,7 +75,12 @@ namespace ElEscribaDelDJ.Classes.Utilidades.Aplicacion
                     foreach (string linea in lineas)
                     {
                         sw.WriteLine(linea);
-                    }               
+                    }
+                }
+                else
+                {
+                    File.Copy(RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".temp", RecursosAplicacion.Directorios["logs"] + nombrearchivo + ".log");
+                }
             }
 
             //Sustituimos el login original por el nuevo y se crea una copia de seguridad por si ocurriera algún error que sera un .back
