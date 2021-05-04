@@ -26,6 +26,50 @@
       },
       "Descripcion": "Base element for warhammer 2º edition adventures",
       "Nombre": "Warhammer 2ª edition"
+    },
+    {
+      "ListaEscenarios": [
+        {
+          "ListaAventuras": [
+            {
+              "NumeroAventura": 0,
+              "ListaAventuras": [],
+              "ListaEscenarios": [],
+              "DireccionImagen": "/Images/icons/icons8-escudopregunta.png",
+              "Recursos": {
+                "Documentos": [],
+                "Resumenes": [],
+                "Lore": [],
+                "Media": [],
+                "Fichas": []
+              },
+              "Descripcion": "Esta aventura sirve de gancho para introducir a los pjs a la historia y presentar a los lugareños",
+              "Nombre": "Llegando al pueblo de Dan Well"
+            }
+          ],
+          "ListaEscenarios": [],
+          "DireccionImagen": "/Images/icons/icons8-escudopregunta.png",
+          "Recursos": {
+            "Documentos": [],
+            "Resumenes": [],
+            "Lore": [],
+            "Media": [],
+            "Fichas": []
+          },
+          "Descripcion": "Esta aventura narra los extraños sucesos a los que se enfrenta un grupo de aventureros que se refugian de una terrible tormenta en este pintoresco pueblo",
+          "Nombre": "Pequeño conflicto en el pueblo de DanWell"
+        }
+      ],
+      "DireccionImagen": "C:\\Users\\K_H_S\\Source\\Repos\\davidgmd\\Proyecto-de-fin-de-grado\\WpfApp2\\bin\\Debug\\netcoreapp3.1\\Usuarios\\Imagenes\\\\tutorial\\Fate Acelerado\\icon\\fate-acelerado-papel.jpg",
+      "Recursos": {
+        "Documentos": [],
+        "Resumenes": [],
+        "Lore": [],
+        "Media": [],
+        "Fichas": []
+      },
+      "Descripcion": "Prueba para la aplicación ElEscribaDelDJ de Fate acelerado con sistema de licencia abierto CC BY 3.0",
+      "Nombre": "Fate Acelerado"
     }
   ],
   "NombreUsuario": "tutorial",
