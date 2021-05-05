@@ -8,4 +8,8 @@
     <system:String x:Key="ScenaryName">Nombre de escenario</system:String>
     <system:String x:Key="ScenaryDescription">Descripción de escenario</system:String>
 
+    <!-- Error -->
+    <system:String x:Key="ErrorAlreadyExists">Este escenario ya existe, introduzca otro nombre de escenario o descripción</system:String>
+    <system:String x:Key="ErrorDoesntExists">El escenario que intentas modificar, no existe</system:String>
+
 </ResourceDictionary>

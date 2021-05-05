@@ -7,5 +7,9 @@
     <system:String x:Key="AdventureWindowTitle">Añadir o modificar aventura</system:String>
     <system:String x:Key="AdventureName">Nombre Aventura</system:String>
     <system:String x:Key="AdventureDescription">Descripción aventura</system:String>
-    
+
+    <!-- Errors -->
+    <system:String x:Key="ErrorAlreadyExists">Esta aventura ya existe, introduce otro nombre o descripción</system:String>
+    <system:String x:Key="ErrorDoesntExists">La aventura que estas intentando modificar, no existe</system:String>
+
 </ResourceDictionary>

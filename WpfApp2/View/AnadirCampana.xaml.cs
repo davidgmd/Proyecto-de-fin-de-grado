@@ -79,7 +79,7 @@ namespace ElEscribaDelDJ.View
             }
             else
             {
-                MessageBox.Show("Esta intentado modificar una campaña que no existe");
+                MessageBox.Show(this.FindResource("ErrorDoesntExists").ToString());
             }
 
             

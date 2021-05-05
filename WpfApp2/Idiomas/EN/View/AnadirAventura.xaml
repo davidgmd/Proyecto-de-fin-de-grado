@@ -2,8 +2,14 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:ElEscribaDelDJ.Idiomas.EN.View" 
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
     <!-- Aventura -->
     <system:String x:Key="AdventureWindowTitle">Add or modify Adventure</system:String>
     <system:String x:Key="AdventureName">Adventure Name</system:String>
     <system:String x:Key="AdventureDescription">Adventure Description</system:String>
+    
+    <!-- Errors -->
+    <system:String x:Key="ErrorAlreadyExists">This adventure already exists, write another adventure name o description</system:String>
+    <system:String x:Key="ErrorDoesntExists">The adventure which you are trying to modify, doesn't exists</system:String>
+    
 </ResourceDictionary>

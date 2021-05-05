@@ -12,5 +12,6 @@
 
     <!-- Error -->
     <system:String x:Key="ErrorAlreadyExists">This campaign already exists, write another campaign name or description</system:String>
+    <system:String x:Key="ErrorDoesntExists">The campaign which you are trying to modify, doesn't exists</system:String>
 
 </ResourceDictionary>

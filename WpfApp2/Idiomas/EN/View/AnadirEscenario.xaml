@@ -8,4 +8,8 @@
     <system:String x:Key="ScenaryName">Scenary Name</system:String>
     <system:String x:Key="ScenaryDescription">Scenary Description</system:String>
 
+    <!-- Error -->
+    <system:String x:Key="ErrorAlreadyExists">This scenary already exists, write another scenary name o description</system:String>
+    <system:String x:Key="ErrorDoesntExists">The scenary which you are trying to modify, doesn't exists</system:String>
+
 </ResourceDictionary>

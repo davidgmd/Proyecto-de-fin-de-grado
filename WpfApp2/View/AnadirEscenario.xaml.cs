@@ -71,7 +71,7 @@ namespace ElEscribaDelDJ.View
             }
             else
             {
-                MessageBox.Show("Este escenario ya existe, si desea modificar, seleccionelo y pulse en el + en caso contrario cambie el nombre y/o la descripción");
+                MessageBox.Show(this.FindResource("ErrorAlreadyExists").ToString());
             }            
         }
 
@@ -121,7 +121,7 @@ namespace ElEscribaDelDJ.View
             }
             else
             {
-                MessageBox.Show("Este escenario no existe, si desea añadir, pulse en añadir");
+                MessageBox.Show(this.FindResource("ErrorDoesntExists").ToString());
             }
         }
     }
