@@ -183,7 +183,7 @@ namespace ElEscribaDelDJ.View.Calendar
             FiltrarEventos(Calendar.DisplayDate);
             ICollectionView view = CollectionViewSource.GetDefaultView(DatosEvento.ItemsSource);
             view.Refresh();
-            MessageBox.Show("El elemento calendario de la izquierda no muestra los cambios automaticamente hay que cambiar de fecha y volver a esta");
+            MessageBox.Show(this.FindResource("UpdatedCalendarWarning").ToString());
         }
 
         //Al inicializarse los botones del calendario, este carga el aspecto de los dias como botones, marca los dias importantes y 
@@ -246,7 +246,7 @@ namespace ElEscribaDelDJ.View.Calendar
                     DatosEvento.IsEditable = true;
                     DatosEvento.IsReadOnly = true;
                     DatosEvento.Focusable = false;
-                    DatosEvento.Text = "No hay eventos para esa fecha o posterior";
+                    DatosEvento.Text = this.FindResource("Theresnoevents").ToString();
                 }
             }     
         }
@@ -264,7 +264,7 @@ namespace ElEscribaDelDJ.View.Calendar
                 DatosEvento.IsEditable = true;
                 DatosEvento.IsReadOnly = true;
                 DatosEvento.Focusable = false;
-                DatosEvento.Text = "No hay eventos para esa fecha o posterior";
+                DatosEvento.Text = this.FindResource("Theresnoevents").ToString();
             }
         }
 
@@ -385,7 +385,12 @@ namespace ElEscribaDelDJ.View.Calendar
         private void FechaInicioDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             FechaFinDatePicker.IsEnabled = true;
-            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, FechaInicioDatePicker.SelectedDate.Value.AddDays(-1));
+            DateTime fechainicio = DateTime.Now;
+
+            if (FechaInicioDatePicker.SelectedDate.HasValue)
+                fechainicio = FechaInicioDatePicker.SelectedDate.Value;
+
+            CalendarDateRange cdr = new CalendarDateRange(DateTime.MinValue, fechainicio.AddDays(-1));
             FechaFinDatePicker.BlackoutDates.Clear();
 
             try
@@ -427,7 +432,7 @@ namespace ElEscribaDelDJ.View.Calendar
                 fecha = FechaFinDatePicker.SelectedDate.Value;
 
                 Evento.End = new EventDateTime();
-                Evento.End.DateTime = new DateTime(fecha.Year, fecha.Month, fecha.Day, 00, 0, 0);
+                Evento.End.DateTime = new DateTime(fecha.Year, fecha.Month, fecha.Day, 23, 59, 59);
 
                 if (!CamposCorrectos.ContainsKey(FechaFinDatePicker.Name))
                 {
@@ -511,7 +516,7 @@ namespace ElEscribaDelDJ.View.Calendar
         {
             Evento = null;
             ComboBoxEstado.Text = "";
-            FechaInicioDatePicker.SelectedDate = DateTime.Now;
+            FechaInicioDatePicker.Text = "";
             FechaFinDatePicker.Text = "";
             ComboBoxHoras.Text = "00";
             ComboBoxMinutos.Text = "00";

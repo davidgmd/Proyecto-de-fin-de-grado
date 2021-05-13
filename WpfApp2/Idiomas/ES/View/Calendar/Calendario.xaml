@@ -12,8 +12,11 @@
     <!-- Calendario en si -->
         <!-- La parte de la derecha texto, botón de actualizar, combobox y dos botones editar y eliminar -->
         <system:String x:Key="UpdateButtonText">Actualizar</system:String>
-    
-        <!-- Combobox -->
+
+        <!-- Mensaje actualización calendario -->
+        <system:String x:Key="UpdatedCalendarWarning">El elemento calendario de la izquierda no muestra los cambios automaticamente hay que cambiar de fecha y volver a esta</system:String>
+
+    <!-- Combobox -->
             <!-- Como se muestran los eventos -->
             <system:String x:Key="EventSummaryLabel">Resumen Evento</system:String>
             <system:String x:Key="EventOrganizerEmailLabel">Correo Organizador</system:String>
@@ -23,6 +26,9 @@
             <system:String x:Key="EventStartDateLabel">Fecha Inicio dd/mm/yyyy</system:String>
             <system:String x:Key="EventUpdatedDateLabel">Fecha actualización</system:String>
             <system:String x:Key="EventEndDateLabel">Fecha Fin dd/mm/yyyy</system:String>
+    
+            <!-- Mensajes del calendario -->
+            <system:String x:Key="Theresnoevents">No hay eventos para esa fecha o posterior</system:String>
     
             <!-- Botones para interactuar con los eventos -->
             <system:String x:Key="EventEditButtonText">Editar</system:String>

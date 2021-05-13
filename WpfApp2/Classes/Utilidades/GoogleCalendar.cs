@@ -75,12 +75,18 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             {
                 EventsResource.InsertRequest request = service.Events.Insert(evento, "primary");
                 var respuesta = request.Execute();
-                int a = 0;
+                if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
+                    MessageBox.Show("Evento introducido exitosamente");
+                else
+                    MessageBox.Show("The event has been added sucessfully");
                 return true;
             }
             catch (Exception e)
             {
-                MessageBox.Show("hubo un error " + e);
+                if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
+                    MessageBox.Show("Hubo un error " + e);
+                else
+                    MessageBox.Show("There was an error " + e);
                 return false;
                 throw;
             }
@@ -97,7 +103,10 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             }
             catch (Exception e)
             {
-                MessageBox.Show("hubo un error " + e);
+                if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
+                    MessageBox.Show("Hubo un error " + e);
+                else
+                    MessageBox.Show("There was an error " + e);
                 return false;
                 throw;
             }
@@ -112,8 +121,12 @@ namespace ElEscribaDelDJ.Classes.Utilidades
             }
             catch (Exception)
             {
-                MessageBox.Show("Ha ocurrido algún tipo de error, revise que la lista esta actualizada y no se ha intentado eliminar un evento ya borrado" +
+                if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
+                    MessageBox.Show("Ha ocurrido algún tipo de error, revise que la lista esta actualizada y no se ha intentado eliminar un evento ya borrado" +
                     "o que usted no sea propietario");
+                else
+                    MessageBox.Show("There's have been some type of error, check that the event list is updated because maybe you try to delete one event which is already deleted" +
+                    "or that doesn't belong to you");              
                 return false;
                 throw;
             }
