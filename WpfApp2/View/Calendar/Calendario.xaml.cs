@@ -525,6 +525,14 @@ namespace ElEscribaDelDJ.View.Calendar
             GridFormulario.DataContext = Evento;
         }
 
-        
+        private void ComboBoxEstado_Loaded(object sender, RoutedEventArgs e)
+        {
+            //Añadimos al combobox estado por confirmar o tentative según idioma
+            ComboBoxEstado.Items.Add(new ComboBoxItem().Content= this.FindResource("ComboboxStatusTentative"));
+            //Añadimos al combobox de los estados del evento confirmado o confirmed
+            ComboBoxEstado.Items.Add(new ComboBoxItem().Content = this.FindResource("ComboboxStatusConfirmed"));
+            //Añadimos el estado cancelado o cancelled
+            ComboBoxEstado.Items.Add(new ComboBoxItem().Content = this.FindResource("ComboboxStatusCancelled"));
+        }
     }
 }

@@ -37,8 +37,13 @@
         <system:String x:Key="FormStatus">Estado:</system:String>
         <system:String x:Key="FormEndDate">Fecha Fin:</system:String>
         <system:String x:Key="FormStartHour">Hora Inicio:</system:String>
-    
-        <!-- Botones del formulario -->
+
+        <!-- Estados de evento -->
+        <system:String x:Key="ComboboxStatusTentative">Por confirmar</system:String>
+        <system:String x:Key="ComboboxStatusConfirmed">Confirmado</system:String>
+        <system:String x:Key="ComboboxStatusCancelled">Cancelado</system:String>
+
+    <!-- Botones del formulario -->
         <system:String x:Key="FormAddButtonText">Agregar Evento</system:String>
         <system:String x:Key="FormEditButtonText">Editar Evento</system:String>
         <system:String x:Key="FormCleanButtonText">Limpiar Campos</system:String>

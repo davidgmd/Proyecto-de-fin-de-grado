@@ -229,10 +229,8 @@
                       Grid.Column="3"
                       x:Name="ComboBoxEstado"
                       Style="{DynamicResource ComboBoxBase}"
+                      Loaded="ComboBoxEstado_Loaded"
                       SelectionChanged="ComboBox_SelectionChanged">
-                <ComboBoxItem>Por confirmar</ComboBoxItem>
-                <ComboBoxItem>Confirmado</ComboBoxItem>
-                <ComboBoxItem>Cancelado</ComboBoxItem>
             </ComboBox>
 
             <TextBlock Grid.Row="2"
