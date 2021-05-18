@@ -309,8 +309,8 @@ namespace ElEscribaDelDJ.View.Calendar
             Evento.Start = eventoseleccionado.Start;
             FechaFinDatePicker.SelectedDate = eventoseleccionado.End.DateTime.Value.Date;
             Evento.End = eventoseleccionado.End;
-            ComboBoxHoras.Text = eventoseleccionado.Start.DateTime.Value.Hour.ToString();
-            ComboBoxMinutos.Text = eventoseleccionado.Start.DateTime.Value.Minute.ToString();
+            ComboBoxHoras.Text = eventoseleccionado.Start.DateTime.Value.Hour.ToString("00.##");
+            ComboBoxMinutos.Text = eventoseleccionado.Start.DateTime.Value.Minute.ToString("00.##");
 
             BotonAgregarEvento.IsEnabled = false;
             BotonFormularioEditar.IsEnabled = true;
