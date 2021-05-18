@@ -508,12 +508,14 @@ namespace ElEscribaDelDJ.View.Calendar
 
         private void LimpiarCampos()
         {
-            Evento = null;
+            Evento = new Event();
             ComboBoxEstado.Text = "";
             FechaInicioDatePicker.Text = "";
             FechaFinDatePicker.Text = "";
             ComboBoxHoras.Text = "00";
             ComboBoxMinutos.Text = "00";
+
+            BotonFormularioEditar.IsEnabled = false;
 
             RefrescarGrid();
         }
