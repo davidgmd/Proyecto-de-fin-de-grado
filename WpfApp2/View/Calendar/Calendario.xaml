@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ElEscribaDelDJ.View.Calendar"
         xmlns:SystemGlobalization="clr-namespace:System.Globalization;assembly=mscorlib"
+        xmlns:StatusConverter="clr-namespace:ElEscribaDelDJ.Classes.Utilidades.Conversores"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Calendario"
@@ -13,6 +14,7 @@
 
     <Window.Resources>
         <ResourceDictionary>
+            <StatusConverter:StatusConverter x:Key="StatusConverter"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Resources/View/Calendar/Calendario.xaml"/>
                 <ResourceDictionary Source="../../Idiomas/ES/View/Calendar/Calendario.xaml"/>
@@ -112,7 +114,7 @@
                                 <Border Style="{DynamicResource BordesCategoria}">
                                     <TextBlock Text="{DynamicResource EventDescriptionLabel}" Style="{DynamicResource ValorCategoria}"/>
                                 </Border>
-                                <TextBlock Text="{Binding Path=Description}"/>
+                                <TextBlock Text="{Binding Path=Description}" TextWrapping="Wrap"/>
                             </StackPanel>
 
                             <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">
@@ -126,7 +128,7 @@
                                 <Border Style="{DynamicResource BordesCategoria}">
                                     <TextBlock Text="{DynamicResource EventStatusLabel}" Style="{DynamicResource ValorCategoria}"/>
                                 </Border>
-                                <TextBlock Text="{Binding Path=Status}"/>
+                                <TextBlock Text="{Binding Path=Status,Converter={StaticResource StatusConverter}}"/>
                             </StackPanel>
 
                             <StackPanel Style="{DynamicResource StackPanelBloqueDatos}">

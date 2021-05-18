@@ -35,14 +35,8 @@ namespace ElEscribaDelDJ.View.Calendar
         private List<DateTime> _significantDates = new List<DateTime>();
         private List<Event> _eventosoriginales = new List<Event>();
         private Dictionary<String, Boolean> _camposcorrectos = new Dictionary<String, Boolean>();
-        private Event _evento = new Event();
 
-        public Event Evento
-        {
-            get { return _evento; }
-            set { _evento = value; }
-        }
-
+        public Event Evento { get; set; } = new Event();
 
         public Dictionary<String, Boolean> CamposCorrectos
         {
