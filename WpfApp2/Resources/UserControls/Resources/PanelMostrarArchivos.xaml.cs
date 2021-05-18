@@ -37,7 +37,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         {
             MostrarListaCampana();
             MostrarListaEscenario();
-            MostrarListaEscenario();      
+            MostrarListaAventuras();      
         }
 
         public void MostrarListaCampana()
@@ -153,7 +153,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         private void OnListaArchivosEscenarioChanged(ObservableCollection<Archivos> oldValue, ObservableCollection<Archivos> newValue)
         {
             WrapPanelScenary.Children.Clear();
-            RellenarPanel(this.ListaArchivosEscenario, WrapPanelCampaign, StackPanelScenary, "Escenario");
+            RellenarPanel(this.ListaArchivosEscenario, WrapPanelScenary, StackPanelScenary, "Escenario");
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         private void OnListaArchivosAventuraChanged(ObservableCollection<Archivos> oldValue, ObservableCollection<Archivos> newValue)
         {
             WrapPanelAdventures.Children.Clear();
-            RellenarPanel(this.ListaArchivosAventura, WrapPanelCampaign, StackPanelAdventure, "Aventura");
+            RellenarPanel(this.ListaArchivosAventura, WrapPanelAdventures, StackPanelAdventure, "Aventura");
         }
 
         /// <summary>
@@ -283,7 +283,12 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
                 {
                     stackpanel.Visibility = Visibility.Visible;
                     TextBlock textoinformativo = new TextBlock();
-                    textoinformativo.Text = this.FindResource("NoElements").ToString();
+
+                    if (ConfiguracionAplicacion.Default.Idioma.Equals("ES"))
+                        textoinformativo.Text = "No hay elementos que mostrar";
+                    else
+                        textoinformativo.Text = "There's no elements to show";
+
                     panel.HorizontalAlignment = HorizontalAlignment.Center;
                     textoinformativo.Padding = new Thickness(6);
                     panel.Children.Add(textoinformativo);

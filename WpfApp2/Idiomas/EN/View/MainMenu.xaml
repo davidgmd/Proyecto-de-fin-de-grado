@@ -15,7 +15,7 @@
     
     <!-- Botonera -->
     <system:String x:Key="Calendar">Calendar</system:String>
-    <system:String x:Key="CampaignResources">Campaign Resources</system:String>
+    <system:String x:Key="CampaignResources">Resources</system:String>
     <system:String x:Key="Roll">Dice roller</system:String>
     <system:String x:Key="Options">Options</system:String>
 
