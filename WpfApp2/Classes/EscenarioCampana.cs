@@ -18,7 +18,7 @@ namespace ElEscribaDelDJ.Classes
 
         public new void AnadirArchivo(string seccion, Archivos archivo)
         {
-            switch (seccion)
+            switch (seccion.ToLower())
             {
                 case "documentos":
                     DatosAplicacion.EscenarioSeleccionado.Recursos.Documentos.Add(archivo);
@@ -41,7 +41,7 @@ namespace ElEscribaDelDJ.Classes
 
         public new void EditarArchivo(string seccion, Archivos archivo, int indice)
         {
-            switch (seccion)
+            switch (seccion.ToLower())
             {
                 case "documentos":
                     DatosAplicacion.EscenarioSeleccionado.Recursos.Documentos[indice] = archivo;
@@ -64,7 +64,7 @@ namespace ElEscribaDelDJ.Classes
 
         public new void EliminarArchivo(string seccion, int indice)
         {
-            switch (seccion)
+            switch (seccion.ToLower())
             {
                 case "documentos":
                     DatosAplicacion.EscenarioSeleccionado.Recursos.Documentos.RemoveAt(indice);

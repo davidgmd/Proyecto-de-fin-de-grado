@@ -19,7 +19,10 @@
     <system:String x:Key="EditButton">Editar</system:String>
     <system:String x:Key="CancelButton">Cancelar</system:String>
     
-    <!-- Error Campos -->
-    <system:String x:Key="MissingFieldsError">No se han rellenado todos los campos necesarios:</system:String>
+    <!-- Mensajes -->
+        <!-- Añadido -->
+        <system:String x:Key="Addedsucesfully">Archivo añadido con exito</system:String>
+        <!-- Error Campos -->
+        <system:String x:Key="MissingFieldsError">No se han rellenado todos los campos necesarios</system:String>
 
 </ResourceDictionary>

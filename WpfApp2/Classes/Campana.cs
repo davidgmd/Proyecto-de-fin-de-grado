@@ -58,18 +58,18 @@ namespace ElEscribaDelDJ.Classes
 
         public void AnadirArchivo(string seccion, Archivos archivo)
         {
-            switch (seccion)
+            switch (seccion.ToLower())
             {
-                case "Documentos":
+                case "documentos":
                     DatosAplicacion.CampanaSeleccionada.Recursos.Documentos.Add(archivo);
                     break;
-                case "Lore":
+                case "lore":
                     DatosAplicacion.CampanaSeleccionada.Recursos.Lore.Add(archivo);
                     break;
-                case "Media":
+                case "media":
                     DatosAplicacion.CampanaSeleccionada.Recursos.Media.Add(archivo);
                     break;
-                case "Fichas":
+                case "fichas":
                     DatosAplicacion.CampanaSeleccionada.Recursos.Fichas.Add(archivo);
                     break;
 
@@ -81,18 +81,18 @@ namespace ElEscribaDelDJ.Classes
 
         public void EditarArchivo(string seccion, Archivos archivo, int indice)
         {
-            switch (seccion)
+            switch (seccion.ToLower())
             {
-                case "Documentos":
+                case "documentos":
                     DatosAplicacion.CampanaSeleccionada.Recursos.Documentos[indice] = archivo;
                     break;
-                case "Lore":
+                case "lore":
                     DatosAplicacion.CampanaSeleccionada.Recursos.Lore[indice] = archivo;
                     break;
-                case "Media":
+                case "media":
                     DatosAplicacion.CampanaSeleccionada.Recursos.Media[indice] = archivo;
                     break;
-                case "Fichas":
+                case "fichas":
                     DatosAplicacion.CampanaSeleccionada.Recursos.Fichas[indice] = archivo;
                     break;
 
@@ -104,18 +104,18 @@ namespace ElEscribaDelDJ.Classes
 
         public void EliminarArchivo(string seccion, int indice)
         {
-            switch (seccion)
+            switch (seccion.ToLower())
             {
-                case "Documentos":
+                case "documentos":
                     DatosAplicacion.CampanaSeleccionada.Recursos.Documentos.RemoveAt(indice);
                     break;
-                case "Lore":
+                case "lore":
                     DatosAplicacion.CampanaSeleccionada.Recursos.Lore.RemoveAt(indice);
                     break;
-                case "Media":
+                case "media":
                     DatosAplicacion.CampanaSeleccionada.Recursos.Media.RemoveAt(indice);
                     break;
-                case "Fichas":
+                case "fichas":
                     DatosAplicacion.CampanaSeleccionada.Recursos.Fichas.RemoveAt(indice);
                     break;
 

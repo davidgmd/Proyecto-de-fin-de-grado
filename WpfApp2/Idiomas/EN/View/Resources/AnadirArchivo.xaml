@@ -12,14 +12,17 @@
     <system:String x:Key="NameToShowLabel">Name to show:</system:String>
     <system:String x:Key="ExtensionLabel">Extension:</system:String>
     <system:String x:Key="FileLocationLabel">File Location:</system:String>
-    <system:String x:Key="UrlLocationLabel">File Location:</system:String>
+    <system:String x:Key="UrlLocationLabel">Url:</system:String>
 
     <!-- Botones formulario -->
     <system:String x:Key="AddButton">Add</system:String>
     <system:String x:Key="EditButton">Edit</system:String>
     <system:String x:Key="CancelButton">Cancel</system:String>
 
-    <!-- Error Campos -->
-    <system:String x:Key="MissingFieldsError">Some or all the required fields are missing:</system:String>
+    <!-- Mensajes -->
+        <!-- Añadido -->
+        <system:String x:Key="Addedsucesfully">File added sucesfully</system:String>
+        <!-- Error Campos -->
+        <system:String x:Key="MissingFieldsError">Some or all the required fields are missing:</system:String>
 
 </ResourceDictionary>

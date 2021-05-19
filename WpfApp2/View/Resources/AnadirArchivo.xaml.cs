@@ -68,7 +68,10 @@ namespace ElEscribaDelDJ.View.Resources
         private void BotonAnadir_Click(object sender, RoutedEventArgs e)
         {
             if (CamposCorrectos.Count >= 2)
+            {
                 ArchivoNuevo.AgregarArchivo(this.TipoAventura, ArchivoNuevo, this.Seccion);
+                MessageBox.Show(this.FindResource("Addedsucesfully").ToString());
+            }
             else
                 ErrorCampos();
         }

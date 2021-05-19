@@ -60,15 +60,15 @@ namespace ElEscribaDelDJ.Classes
 
         public void AgregarArchivo(string tipoaventura, Archivos archivo, string seccion)
         {
-            switch (tipoaventura)
+            switch (tipoaventura.ToLower())
             {
-                case "Campana":
+                case "campana":
                     DatosAplicacion.CampanaSeleccionada.AnadirArchivo(seccion, archivo);
                     break;
-                case "Escenario":
+                case "escenario":
                     DatosAplicacion.EscenarioSeleccionado.AnadirArchivo(seccion, archivo);
                     break;
-                case "Aventura":
+                case "aventura":
                     DatosAplicacion.AventuraSeleccionada.AnadirArchivo(seccion, archivo);
                     break;
                 default:
@@ -78,15 +78,15 @@ namespace ElEscribaDelDJ.Classes
 
         public void EditarArchivo(string tipoaventura, Archivos archivo, int indice, string seccion)
         {
-            switch (tipoaventura)
+            switch (tipoaventura.ToLower())
             {
-                case "Campana":
+                case "campana":
                     DatosAplicacion.CampanaSeleccionada.EditarArchivo(seccion, archivo, indice);
                     break;
-                case "Escenario":
+                case "escenario":
                     DatosAplicacion.EscenarioSeleccionado.EditarArchivo(seccion, archivo, indice);
                     break;
-                case "Aventura":
+                case "aventura":
                     DatosAplicacion.AventuraSeleccionada.EditarArchivo(seccion, archivo, indice);
                     break;
                 default:
@@ -96,15 +96,15 @@ namespace ElEscribaDelDJ.Classes
 
         public void EliminarArchivo(string tipoaventura, Archivos archivo, string seccion, int indice)
         {
-            switch (tipoaventura)
+            switch (tipoaventura.ToLower())
             {
-                case "Campana":
+                case "campana":
                     DatosAplicacion.CampanaSeleccionada.EliminarArchivo(seccion, indice);
                     break;
-                case "Escenario":
+                case "escenario":
                     DatosAplicacion.EscenarioSeleccionado.EliminarArchivo(seccion, indice);
                     break;
-                case "Aventura":
+                case "aventura":
                     DatosAplicacion.AventuraSeleccionada.EliminarArchivo(seccion, indice);
                     break;
                 default:
