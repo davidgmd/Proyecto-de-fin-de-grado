@@ -122,7 +122,12 @@ namespace ElEscribaDelDJ.View.Resources
                 TituloAventura = "Adventure";
                 TextoBoton = "Add";
             }
-            
+
+            TextoDescripcionDocumentos.Text = this.FindResource("DocumentsInfo").ToString();
+            TextoDescripcionResumenes.Text = this.FindResource("RulesInfo").ToString();
+            TextoDescripcionLore.Text = this.FindResource("LoreInfo").ToString();
+            TextoDescripcionMedia.Text = this.FindResource("MediaInfo").ToString();
+            TextoDescripcionFichas.Text = this.FindResource("SheetsInfo").ToString();
         }
 
         private void MostrarScrollViewer(ScrollViewer panel, Border bordeocultar)

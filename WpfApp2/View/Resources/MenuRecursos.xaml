@@ -49,7 +49,8 @@
             <!-- Control de usuario que controla titulo de campaña y el botón para crear uno nuevo -->
                 <Border x:Name="DescripcionDocumentos"
                         Style="{DynamicResource InformacionSeccion}">
-                    <TextBlock Style="{DynamicResource Texto_InformacionSeccion}"
+                    <TextBlock x:Name="TextoDescripcionDocumentos" 
+                               Style="{DynamicResource Texto_InformacionSeccion}"
                                Text="{DynamicResource DocumentsInfo}"/>
                 </Border>
                 <ScrollViewer x:Name="ScrollViewerDocumentos" 
@@ -71,7 +72,7 @@
                 </Button>
                 <Border x:Name="DescripcionResumenes"
                         Style="{DynamicResource InformacionSeccion}">
-                    <TextBlock Style="{DynamicResource Texto_InformacionSeccion}"
+                    <TextBlock x:Name="TextoDescripcionResumenes" Style="{DynamicResource Texto_InformacionSeccion}"
                                Text="{DynamicResource RulesInfo}"/>
                 </Border>
                 <ScrollViewer x:Name="ScrollViewerReglas" 
@@ -94,7 +95,7 @@
                 </Button>
                 <Border x:Name="DescripcionLore"
                     Style="{DynamicResource InformacionSeccion}">
-                    <TextBlock Style="{DynamicResource Texto_InformacionSeccion}"
+                    <TextBlock x:Name="TextoDescripcionLore" Style="{DynamicResource Texto_InformacionSeccion}"
                                    Text="{DynamicResource LoreInfo}"/>
                 </Border>
                 <ScrollViewer x:Name="ScrollViewerLore" 
@@ -116,7 +117,7 @@
                 </Button>
                 <Border x:Name="DescripcionMedia" 
                         Style="{DynamicResource InformacionSeccion}">
-                    <TextBlock Style="{DynamicResource Texto_InformacionSeccion}"
+                    <TextBlock x:Name="TextoDescripcionMedia" Style="{DynamicResource Texto_InformacionSeccion}"
                                    Text="{DynamicResource MediaInfo}"/>
                 </Border>
                 <ScrollViewer x:Name="ScrollViewerMedia" 
@@ -138,7 +139,7 @@
                 </Button>
                 <Border x:Name="DescripcionFichas" 
                         Style="{DynamicResource InformacionSeccion}">
-                    <TextBlock Style="{DynamicResource Texto_InformacionSeccion}"
+                    <TextBlock x:Name="TextoDescripcionFichas" Style="{DynamicResource Texto_InformacionSeccion}"
                                    Text="{DynamicResource SheetsInfo}"/>
                 </Border>
                 <ScrollViewer x:Name="ScrollViewerFichas" 
