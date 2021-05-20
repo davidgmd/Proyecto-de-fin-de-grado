@@ -40,14 +40,17 @@ namespace ElEscribaDelDJ.Classes.Utilidades
 
         public static BitmapImage IconoExtension(string extension)
         {
-            if (extension.Equals(".pdf"))
-                return new BitmapImage(new Uri("/Images/icons/icons8-pdf2.png", UriKind.Relative)); 
-            else if (Documentos.Contains(extension))
-                return new BitmapImage(new Uri("/Images/icons/icons8-textdocument2.png", UriKind.Relative));
-            else if (Imagenes.Contains(extension))
-                return new BitmapImage(new Uri("/Images/icons/icons8-images.png", UriKind.Relative));
-            else if (Musica.Contains(extension))
-                return new BitmapImage(new Uri("/Images/icons/icons8-music.png", UriKind.Relative));
+            if (!(extension is null))
+            {
+                if (extension.Equals(".pdf"))
+                    return new BitmapImage(new Uri("/Images/icons/icons8-pdf2.png", UriKind.Relative));
+                else if (Documentos.Contains(extension))
+                    return new BitmapImage(new Uri("/Images/icons/icons8-textdocument2.png", UriKind.Relative));
+                else if (Imagenes.Contains(extension))
+                    return new BitmapImage(new Uri("/Images/icons/icons8-images.png", UriKind.Relative));
+                else 
+                    return new BitmapImage(new Uri("/Images/icons/icons8-music.png", UriKind.Relative));
+            }
             else
                 return new BitmapImage(new Uri("/Images/icons/icons8-file.png", UriKind.Relative));
         }

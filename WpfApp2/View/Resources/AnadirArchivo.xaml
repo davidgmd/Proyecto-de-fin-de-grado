@@ -48,6 +48,8 @@
                    x:Name="UrlLabel"/>
                     <TextBox x:Name="UrlTextBox"
                              Style="{DynamicResource UrlLocationTextBoxStyle}"
+                             TextWrapping="Wrap"
+                             MaxWidth="500"
                              Text="{Binding ArchivoNuevo.Url}"                         
                              TextChanged="UrlTextBox_TextChanged"/>
             </StackPanel>
