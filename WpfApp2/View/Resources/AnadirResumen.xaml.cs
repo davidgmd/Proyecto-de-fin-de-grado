@@ -38,10 +38,6 @@ namespace ElEscribaDelDJ.View.Resources
                 this.Resumen = resumen;
                 this.Indice = indice;
             }
-                
-
-            
-            
         }
 
         public ObservableCollection<Campana> TiposAventuras { get; set; } = new ObservableCollection<Campana>();
@@ -123,22 +119,8 @@ namespace ElEscribaDelDJ.View.Resources
         {
             if (camposcorrectos.Count >= 5)
             {
-                if (ComboBoxTiposAventura.SelectedIndex == 0)
-                {
-                    Resumen.TipoAventura = "Campana";
-                    DatosAplicacion.CampanaSeleccionada.AnadirResumen(Resumen);
-                }          
-                else if (ComboBoxTiposAventura.SelectedIndex == 1)
-                {
-                    Resumen.TipoAventura = "Escenario";
-                    DatosAplicacion.EscenarioSeleccionado.AnadirResumen(Resumen);
-                }
-                else
-                {
-                    Resumen.TipoAventura = "Aventura";
-                    DatosAplicacion.AventuraSeleccionada.AnadirResumen(Resumen);
-                }               
-
+                Resumen.NombreTipoAventura = ComboBoxTiposAventura.Text;
+                this.ElegirYAnadirResumen();
                 this.Resumenes.Add(Resumen);
                 MessageBox.Show(this.FindResource("FieldsRightMessage").ToString());
             }
@@ -195,23 +177,20 @@ namespace ElEscribaDelDJ.View.Resources
 
         private void EditarButton_Click(object sender, RoutedEventArgs e)
         {
+            Campana elementoseleccionado = (Campana)ComboBoxTiposAventura.SelectedValue;
             if (camposcorrectos.Count >= 5)
             {
-                if (ComboBoxTiposAventura.SelectedIndex == 0)
+                if (Resumen.NombreTipoAventura.Equals(elementoseleccionado.Nombre))
                 {
-                    Resumen.TipoAventura = "Campana";
-                    DatosAplicacion.CampanaSeleccionada.EditarResumen(Resumen, this.Indice);
-                }
-                else if (ComboBoxTiposAventura.SelectedIndex == 1)
-                {
-                    Resumen.TipoAventura = "Escenario";
-                    DatosAplicacion.EscenarioSeleccionado.EditarResumen(Resumen, this.Indice);
+                    this.ElegirYEditarResumen(Resumen.TipoAventura);
                 }
                 else
                 {
-                    Resumen.TipoAventura = "Aventura";
-                    DatosAplicacion.AventuraSeleccionada.EditarResumen(Resumen, this.Indice);
+                    this.ElegiryEliminarResumen(Resumen.TipoAventura);
+                    Resumen.NombreTipoAventura = elementoseleccionado.Nombre;
+                    this.ElegirYAnadirResumen();
                 }
+                
 
                 this.Resumenes.Add(Resumen);
                 MessageBox.Show(this.FindResource("FieldsRightMessage").ToString());
@@ -230,6 +209,67 @@ namespace ElEscribaDelDJ.View.Resources
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             ConfiguracionPagina.DefinirIdioma(this, "Resources");
+        }
+
+        public void ElegirYAnadirResumen()
+        {
+            if (ComboBoxTiposAventura.SelectedIndex == 0)
+            {
+                Resumen.TipoAventura = "Campana";
+                DatosAplicacion.CampanaSeleccionada.AnadirResumen(Resumen);
+            }
+            else if (ComboBoxTiposAventura.SelectedIndex == 1)
+            {
+                Resumen.TipoAventura = "Escenario";
+                DatosAplicacion.EscenarioSeleccionado.AnadirResumen(Resumen);
+            }
+            else
+            {
+                Resumen.TipoAventura = "Aventura";
+                DatosAplicacion.AventuraSeleccionada.AnadirResumen(Resumen);
+            }
+        }
+
+        public void ElegirYEditarResumen (string tipoaventura)
+        {
+            switch (Resumen.TipoAventura.ToLower())
+            {
+                case "campana":
+                    DatosAplicacion.CampanaSeleccionada.EditarResumen(Resumen, this.Indice);
+                    break;
+
+                case "escenario":
+                    DatosAplicacion.EscenarioSeleccionado.EditarResumen(Resumen, this.Indice);
+                    break;
+
+                case "aventura":
+                    DatosAplicacion.AventuraSeleccionada.EditarResumen(Resumen, this.Indice);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        public void ElegiryEliminarResumen (string tipoaventura)
+        {
+            switch (Resumen.TipoAventura.ToLower())
+            {
+                case "campana":
+                    DatosAplicacion.CampanaSeleccionada.EliminarResumen(this.Indice);
+                    break;
+
+                case "escenario":
+                    DatosAplicacion.EscenarioSeleccionado.EliminarResumen(this.Indice);
+                    break;
+
+                case "aventura":
+                    DatosAplicacion.AventuraSeleccionada.EliminarResumen(this.Indice);
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

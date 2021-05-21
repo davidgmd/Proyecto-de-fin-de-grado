@@ -35,6 +35,7 @@
                          ToolTip="{DynamicResource LabelsToolTip}"/>
                 <Label Content="{DynamicResource ReferenceToLabel}"/>
                 <ComboBox x:Name="ComboBoxTiposAventura"
+                          SelectedValue="{Binding NombreTipoAventura}"
                           ItemsSource="{Binding TiposAventuras}"
                           IsSynchronizedWithCurrentItem="True"
                           ItemTemplate="{StaticResource CustomerTemplate}"/>

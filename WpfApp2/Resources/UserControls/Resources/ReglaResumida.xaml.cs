@@ -58,7 +58,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             DescriptionTextBlock.Text = "Description:";
             PaginaTextBlock.Text = "Page:";
             BookTextBlock.Text = "Book";
-            UrlTextBlock.Text = "Book Url:";
+            UrlLabel.Text = "Book Url:";
         }
     }
 }

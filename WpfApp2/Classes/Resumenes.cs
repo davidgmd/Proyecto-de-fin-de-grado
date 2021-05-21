@@ -83,9 +83,11 @@ namespace ElEscribaDelDJ.Classes
         public string TipoAventura
         {
             get { return _tipoaventura; }
-            set { _tipoaventura = value; }
+            set { 
+                _tipoaventura = value;
+                OnPropertyChanged("TipoAventura");
+            }
         }
-
 
         private string _nombretipoaventura;
 
@@ -94,7 +96,7 @@ namespace ElEscribaDelDJ.Classes
             get { return _nombretipoaventura; }
             set {
                 _nombretipoaventura = value;
-                OnPropertyChanged("TipoAventura");
+                OnPropertyChanged("NombreTipoAventura");
             }
         }
 

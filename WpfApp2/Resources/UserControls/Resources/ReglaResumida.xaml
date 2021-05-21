@@ -94,7 +94,9 @@
                     </StackPanel>
 
                     <StackPanel>
-                        <TextBlock Text="Url:" TextDecorations="Underline"/>
+                        <TextBlock x:Name="UrlLabel" 
+                                   Text="Url:" 
+                                   TextDecorations="Underline"/>
                         <TextBlock x:Name="UrlTextBlock" 
                                    Text="{Binding ManualUrl}" 
                                    Foreground="Blue" 
