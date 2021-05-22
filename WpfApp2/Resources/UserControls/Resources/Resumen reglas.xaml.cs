@@ -41,8 +41,6 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             int indicereal = 0;
             foreach (Resumenes resumen in DatosAplicacion.CampanaSeleccionada.Recursos.Resumenes)
             {
-                resumen.NombreTipoAventura = DatosAplicacion.CampanaSeleccionada.Nombre;
-                resumen.TipoAventura = "Campana";
                 ListaResumenes.Add(resumen);
                 Indices.Add(resumen.Nombre, indicereal);
                 indicereal++;
@@ -52,8 +50,6 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             if (!(DatosAplicacion.EscenarioSeleccionado is null))
             foreach (Resumenes resumen in DatosAplicacion.EscenarioSeleccionado.Recursos.Resumenes)
             {
-                resumen.NombreTipoAventura = DatosAplicacion.EscenarioSeleccionado.Nombre;
-                resumen.TipoAventura = "Escenario";
                 ListaResumenes.Add(resumen);
                 Indices.Add(resumen.Nombre, indicereal);
                 indicereal++;
@@ -63,8 +59,6 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             if (!(DatosAplicacion.AventuraSeleccionada is null))
                 foreach (Resumenes resumen in DatosAplicacion.AventuraSeleccionada.Recursos.Resumenes)
             {
-                resumen.NombreTipoAventura = DatosAplicacion.AventuraSeleccionada.Nombre;
-                resumen.TipoAventura = "Aventura";
                 ListaResumenes.Add(resumen);
                 Indices.Add(resumen.Nombre, indicereal);
                 indicereal++;

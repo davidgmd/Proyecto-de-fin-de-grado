@@ -35,7 +35,21 @@ namespace ElEscribaDelDJ.View.Resources
             else
             {
                 EditarButton.IsEnabled = true;
+                int posicionaventura = 0;
                 this.Resumen = resumen;
+
+                foreach (Campana objetocampana in ComboBoxTiposAventura.Items)
+                {
+                    if (objetocampana.Nombre.Equals(Resumen.NombreTipoAventura))
+                    {
+                        ComboBoxTiposAventura.SelectedIndex = posicionaventura;
+                    }
+                    else
+                    {
+                        posicionaventura++;
+                    }
+                }
+                
                 this.Indice = indice;
             }
         }
@@ -53,6 +67,8 @@ namespace ElEscribaDelDJ.View.Resources
             TiposAventuras.Add(DatosAplicacion.EscenarioSeleccionado);
             if (!(DatosAplicacion.AventuraSeleccionada is null))
                 TiposAventuras.Add(DatosAplicacion.AventuraSeleccionada);
+
+            ComboBoxTiposAventura.ItemsSource = TiposAventuras;
 
             if (ComboBoxTiposAventura.HasItems)
             ComboBoxTiposAventura.SelectedIndex = 0;
@@ -192,7 +208,7 @@ namespace ElEscribaDelDJ.View.Resources
                 }
                 
 
-                this.Resumenes.Add(Resumen);
+                this.Resumenes.Insert(this.Indice, Resumen);
                 MessageBox.Show(this.FindResource("FieldsRightMessage").ToString());
             }
             else
