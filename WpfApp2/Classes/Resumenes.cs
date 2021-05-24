@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using System.Windows;
 
 namespace ElEscribaDelDJ.Classes
 {
-    public class Resumenes: INotifyPropertyChanged
+    public class Resumenes: INotifyPropertyChanged, IEquatable<Resumenes>
     {
 
         private string _nombre;
@@ -101,12 +104,51 @@ namespace ElEscribaDelDJ.Classes
         }
 
 
+        private int _indice;
+
+        public int Indice
+        {
+            get { return _indice; }
+            set
+            {
+                _indice = value;
+                OnPropertyChanged("Indice");
+            }
+        }
+
+        private List<int> _indiceslibres;
+
+        public List<int> IndicesLibres
+        {
+            get { return _indiceslibres; }
+            set
+            {
+                _indiceslibres = value;
+                OnPropertyChanged("IndicesLibres");
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropertyChanged(string PropertyName)
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(PropertyName));
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Resumenes other && Equals(other);
+        }
+
+        public bool Equals(Resumenes other)
+        {
+            return other.Nombre == this.Nombre && other.Descripcion == this.Descripcion;
+        }
+
+        public override int GetHashCode()
+        {
+            return Nombre.GetHashCode();
         }
     }
 }

@@ -19,9 +19,9 @@ namespace ElEscribaDelDJ.Classes
             }
         }
 
-        private ObservableCollection<Resumenes> _resumenes = new ObservableCollection<Resumenes>();
+        private HashSet<Resumenes> _resumenes = new HashSet<Resumenes>();
 
-        public ObservableCollection<Resumenes> Resumenes
+        public HashSet<Resumenes> Resumenes
         {
             get { return _resumenes; }
             set { _resumenes = value; }

@@ -31,37 +31,27 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         }
 
         public ObservableCollection<Resumenes> ListaResumenes { get; set; } = new ObservableCollection<Resumenes>();
-        public Dictionary<string, int> Indices = new Dictionary<string, int>();
         public CollectionView view;
 
 
         public void Inicializar()
         {
             //Añade todos los resumenes de la campaña, escenario y aventura seleccionada
-            int indicereal = 0;
             foreach (Resumenes resumen in DatosAplicacion.CampanaSeleccionada.Recursos.Resumenes)
             {
                 ListaResumenes.Add(resumen);
-                Indices.Add(resumen.Nombre, indicereal);
-                indicereal++;
             }
 
-            indicereal = 0;
             if (!(DatosAplicacion.EscenarioSeleccionado is null))
             foreach (Resumenes resumen in DatosAplicacion.EscenarioSeleccionado.Recursos.Resumenes)
-            {
-                ListaResumenes.Add(resumen);
-                Indices.Add(resumen.Nombre, indicereal);
-                indicereal++;
+                {
+                    ListaResumenes.Add(resumen);
                 }
 
-            indicereal = 0;
             if (!(DatosAplicacion.AventuraSeleccionada is null))
                 foreach (Resumenes resumen in DatosAplicacion.AventuraSeleccionada.Recursos.Resumenes)
-            {
-                ListaResumenes.Add(resumen);
-                Indices.Add(resumen.Nombre, indicereal);
-                indicereal++;
+                {
+                    ListaResumenes.Add(resumen);
                 }
 
             //Vincula el listview con la lista para que aparezcan sus miembros
@@ -124,7 +114,7 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
         private void BotonEditar_Click(object sender, RoutedEventArgs e)
         {
             Resumenes resumen = (Resumenes)ResumenesListView.SelectedItem;
-            AnadirResumen editar = new AnadirResumen(ListaResumenes, resumen, Indices[resumen.Nombre]);
+            AnadirResumen editar = new AnadirResumen(ListaResumenes, resumen, ResumenesListView.SelectedIndex);
             editar.ShowDialog();
         }
 
@@ -135,15 +125,15 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
             switch (resumen.TipoAventura)
             {
                 case "Campana":
-                    DatosAplicacion.CampanaSeleccionada.EliminarResumen(Indices[resumen.Nombre]);
+                    DatosAplicacion.CampanaSeleccionada.EliminarResumen(resumen);
                     break;
 
                 case "Escenario":
-                    DatosAplicacion.EscenarioSeleccionado.EliminarResumen(Indices[resumen.Nombre]);
+                    DatosAplicacion.EscenarioSeleccionado.EliminarResumen(resumen);
                     break;
 
                 case "Aventura":
-                    DatosAplicacion.AventuraSeleccionada.EliminarResumen(Indices[resumen.Nombre]);
+                    DatosAplicacion.AventuraSeleccionada.EliminarResumen(resumen);
                     break;
                 default:
                     break;

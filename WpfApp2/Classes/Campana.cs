@@ -131,15 +131,16 @@ namespace ElEscribaDelDJ.Classes
             RecursosAplicacion.SesionUsuario.ReemplazarCampana();
         }
 
-        public void EditarResumen(Resumenes resumen, int indice)
+        public void EditarResumen(Resumenes resumen)
         {
-            DatosAplicacion.CampanaSeleccionada.Recursos.Resumenes[indice] = resumen;
+            DatosAplicacion.CampanaSeleccionada.Recursos.Resumenes.Remove(resumen);
+            DatosAplicacion.CampanaSeleccionada.Recursos.Resumenes.Add(resumen);
             RecursosAplicacion.SesionUsuario.ReemplazarCampana();
         }
 
-        public void EliminarResumen(int indice)
+        public void EliminarResumen(Resumenes resumen)
         {
-            DatosAplicacion.CampanaSeleccionada.Recursos.Resumenes.RemoveAt(indice);
+            DatosAplicacion.CampanaSeleccionada.Recursos.Resumenes.Remove(resumen);
             RecursosAplicacion.SesionUsuario.ReemplazarCampana();
         }
     }
