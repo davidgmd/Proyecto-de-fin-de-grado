@@ -101,6 +101,7 @@
     <Page Remove="Idiomas\ES\View\MainMenu.xaml" />
     <Page Remove="Idiomas\ES\View\Options\VentanaOpciones.xaml" />
     <Page Remove="Idiomas\ES\View\Resources\AnadirArchivo.xaml" />
+    <Page Remove="Idiomas\ES\View\Resources\AnadirResumen.xaml" />
     <Page Remove="Idiomas\ES\View\Resources\MenuRecursos.xaml" />
     <Page Remove="Idiomas\ES\View\Roller\VentanaModal.xaml" />
     <Page Remove="Idiomas\IdiomasLogin.xaml" />
@@ -167,6 +168,9 @@
     </Content>
     <Content Include="Idiomas\ES\View\Resources\AnadirArchivo.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Idiomas\ES\View\Resources\AnadirResumen.xaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Idiomas\ES\View\Resources\MenuRecursos.xaml">

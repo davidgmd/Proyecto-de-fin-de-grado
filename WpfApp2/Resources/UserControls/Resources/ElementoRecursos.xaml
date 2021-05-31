@@ -17,11 +17,15 @@
             <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
     </UserControl.Resources>
-    
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
         <!-- Elemento del menu, compuesto de un botón con un stackpanel para que contenga una imagen y texto pulsable
             Así mismo, contendra el panel que distribuye la lista con todos los documentos de campaña, escenario y aventuras y el botón añadir-->
-        <StackPanel Style="{DynamicResource ElementoRecursos}">
+        <StackPanel Style="{DynamicResource ElementoRecursos}" Margin="5,5,5,5" Grid.RowSpan="2">
             <!-- boton con dos partes, puesta en horizontal, una imagen y texto -->
             <Border BorderBrush="Black" BorderThickness="2">
                 <StackPanel Orientation="Horizontal">
@@ -33,7 +37,7 @@
 
 
             <StackPanel Background="White">
-                
+
             </StackPanel>
 
 
