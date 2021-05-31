@@ -1,0 +1,33 @@
+{
+  "Correo": "??`??\u001dzJ\"\u0016?Tr6??\u0016??7??os?h\u0000?o?+\u0002",
+  "ListCampaigns": [
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "/Images/icons/D&D.png",
+      "Recursos": {
+        "Documentos": [],
+        "Resumenes": [],
+        "Lore": [],
+        "Media": [],
+        "Fichas": []
+      },
+      "Descripcion": "Elemento base para las aventuras de D&D 3.5",
+      "Nombre": "D&D3.5"
+    },
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "/Images/icons/warhammer-removebg.png",
+      "Recursos": {
+        "Documentos": [],
+        "Resumenes": [],
+        "Lore": [],
+        "Media": [],
+        "Fichas": []
+      },
+      "Descripcion": "Elemento base para las aventuras de warhammer 2º edición",
+      "Nombre": "Warhammer 2ª edición"
+    }
+  ],
+  "NombreUsuario": "Antoinect",
+  "Clave": "\u0016???????_0{?\u000e???\u0019\tg[O????sS<BH\u0005?"
+}
