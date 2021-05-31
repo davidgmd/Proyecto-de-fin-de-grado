@@ -27,7 +27,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Image Source="{Binding DireccionImagen}" 
                            VerticalAlignment="Center" Stretch="Uniform" Height="{Binding Altura2}"/>
-                    <TextBlock Text="{Binding NombreElemento}" Margin="5" VerticalAlignment="Center" Foreground="Gray"/>
+                    <TextBlock Text="{Binding NombreElemento}" Margin="5" VerticalAlignment="Center" Foreground="black"/>
                 </StackPanel>
             </Border>
 

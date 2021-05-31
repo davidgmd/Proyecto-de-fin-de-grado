@@ -9,7 +9,7 @@
         Title="MenuRecursos"
         WindowStartupLocation="CenterOwner"
         WindowState="Maximized"
-        Background="DarkRed"
+        Background="Gray"
         ContentRendered="Window_ContentRendered">
 
     <Window.Resources>
