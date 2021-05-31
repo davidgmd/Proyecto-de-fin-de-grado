@@ -51,14 +51,17 @@ namespace ElEscribaDelDJ.Resources.UserControls.Resources
 
         public void Traducir()
         {
-            NameToShowTextBlock.Text = "Name to Show:";
-            LabelsTextBlock.Text = "Labels:";
-            DetallesTextBlock.Text = "Details";
-            ReferenceToTextBlock.Text = "Makes references to:";
-            DescriptionTextBlock.Text = "Description:";
-            PaginaTextBlock.Text = "Page:";
-            BookTextBlock.Text = "Book";
-            UrlLabel.Text = "Book Url:";
+            if (ConfiguracionAplicacion.Default.Idioma.Equals("EN"))
+            {
+                NameToShowTextBlock.Text = "Name to Show:";
+                LabelsTextBlock.Text = "Labels:";
+                DetallesTextBlock.Text = "Details";
+                ReferenceToTextBlock.Text = "Makes references to:";
+                DescriptionTextBlock.Text = "Description:";
+                PaginaTextBlock.Text = "Page:";
+                BookTextBlock.Text = "Book";
+                UrlLabel.Text = "Book Url:";
+            } 
         }
     }
 }
