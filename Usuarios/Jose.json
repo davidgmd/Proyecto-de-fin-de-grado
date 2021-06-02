@@ -1,0 +1,33 @@
+{
+  "Correo": "?[?\u0007?~?Q?\"?z\u0006i!#\u0018%??\u0014??%\u0011b3??\u0001s\u0013",
+  "ListCampaigns": [
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "/Images/icons/D&D.png",
+      "Recursos": {
+        "Documentos": [],
+        "Resumenes": [],
+        "Lore": [],
+        "Media": [],
+        "Fichas": []
+      },
+      "Descripcion": "Elemento base para las aventuras de D&D 3.5",
+      "Nombre": "D&D3.5"
+    },
+    {
+      "ListaEscenarios": [],
+      "DireccionImagen": "/Images/icons/warhammer-removebg.png",
+      "Recursos": {
+        "Documentos": [],
+        "Resumenes": [],
+        "Lore": [],
+        "Media": [],
+        "Fichas": []
+      },
+      "Descripcion": "Elemento base para las aventuras de warhammer 2º edición",
+      "Nombre": "Warhammer 2ª edición"
+    }
+  ],
+  "NombreUsuario": "Jose",
+  "Clave": "e^xft???{?^??7?????????<g?v??\u0010??"
+}
